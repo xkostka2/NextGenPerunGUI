@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="menu-items">
+      <a *ngFor="let item of items" [routerLink]="item.url"
+         class="menu-item {{item.style}}">
+        <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.alt}}">
+        <div>
+          {{item.label | translate}}
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

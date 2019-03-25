@@ -25,3 +25,52 @@ $service-creation-theme: mat-light-theme($service-creation-primary, $service-cre
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($service-creation-theme);
+
+
+// Perun entities colors
+$vo-color: #283593;
+$facility-color: #E64A19;
+$group-color: #388E3C;
+
+body {
+  background-color: #f8f8f8;
+}
+
+.menu-item {
+  padding: 1.5rem;
+  width: 14rem;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.5em;
+  color: #ffffff;
+  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
+  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
+
+  img {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+
+// Color styles for entities
+.vo-bg-color {
+  background-color: $vo-color;
+}
+
+.facility-bg-color {
+  background-color: $facility-color;
+}
+
+.group-bg-color {
+  background-color: $group-color;
+}

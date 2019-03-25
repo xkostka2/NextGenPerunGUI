@@ -1,0 +1,17 @@
+#side-menu {
+  background: #2c2c2c;
+  position: absolute;
+  height: 100vh;
+  //display: table;
+}
+
+#side-menu-icons {
+  //display: table-cell;
+  //vertical-align: middle;
+}
+
+.side-menu-icon {
+  width: 4rem;
+  padding: 1rem;
+  color: white;
+}
