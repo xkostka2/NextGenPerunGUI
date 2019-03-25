@@ -28,7 +28,7 @@
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.css",
-              "src/styles.sass"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -128,5 +128,10 @@
       }
     }
   },
-  "defaultProject": "NextGenPerunGUI"
+  "defaultProject": "NextGenPerunGUI",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
