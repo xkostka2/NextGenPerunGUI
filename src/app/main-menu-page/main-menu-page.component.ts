@@ -12,7 +12,7 @@ export class MainMenuPageComponent implements OnInit {
   items: any[] = [
     {
       icon: 'vo-white.svg',
-      url: '/vos',
+      url: '/organizations',
       label: 'MAIN_MENU.VOS',
       style: 'vo-bg-color'
     },
