@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from '../shared/MenuItem';
 
 @Component({
   selector: 'app-main-menu-page',
@@ -9,18 +10,18 @@ export class MainMenuPageComponent implements OnInit {
 
   constructor() { }
 
-  items: any[] = [
+  items: MenuItem[] = [
     {
       icon: 'vo-white.svg',
       url: '/organizations',
       label: 'MAIN_MENU.VOS',
-      style: 'vo-bg-color'
+      style: 'vo-btn'
     },
     {
       icon: 'facility-white.svg',
       url: '/facilities',
       label: 'MAIN_MENU.FACILITIES',
-      style: 'facility-bg-color'
+      style: 'facility-btn'
     }
   ];
 

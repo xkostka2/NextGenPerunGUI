@@ -1,11 +1,15 @@
 #side-menu {
   background: #2c2c2c;
   position: absolute;
-  height: 100vh;
+  width: 100%;
+  top: 0;
   //display: table;
 }
 
 #side-menu-icons {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: row;
   //display: table-cell;
   //vertical-align: middle;
 }

@@ -1,9 +1,9 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="menu-items">
-      <a *ngFor="let item of items" [routerLink]="item.url"
-         class="menu-item {{item.style}}">
-        <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.alt}}">
+<div class="container">
+  <div class="row mt-5">
+    <div *ngFor="let item of items" class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12">
+      <a [routerLink]="item.url"
+         class="menu-item box-button {{item.style}}">
+        <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.label}}">
         <div>
           {{item.label | translate}}
         </div>

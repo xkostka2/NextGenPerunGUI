@@ -1,3 +1,36 @@
-<p>
-  vo-select-page works!
-</p>
+<div class="container pt-3">
+  <h1 class="page-title">{{'VO_MANAGEMENT.TITLE' | translate}}</h1>
+
+  <form class="vo-find-form d-flex">
+    <mat-form-field class="vo-find-input vo-bg-color p-2 white-color-input mr-2">
+      <input
+        type="text"
+        placeholder="{{'VO_MANAGEMENT.INPUT_PLACEHOLDER' | translate}}"
+        aria-label="Number"
+        matInput
+        [formControl]="formControl"
+        [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="voSelected($event)">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <button type="button" class="app-btn vo-btn">
+      <mat-icon aria-hidden="false">arrow_forward</mat-icon>
+    </button>
+  </form>
+
+  <div class="row mt-5">
+    <div *ngFor="let item of items" class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12">
+      <a [routerLink]="item.url"
+         class="menu-item box-button {{item.style}}">
+        <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.label}}">
+        <div>
+          {{item.label | translate}}
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

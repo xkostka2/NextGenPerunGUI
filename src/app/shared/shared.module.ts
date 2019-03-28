@@ -1,19 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import {RouterModule} from '@angular/router';
+import {MatAutocompleteModule, MatFormFieldModule, MatIconModule, MatInputModule} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatIconModule
   ],
   exports: [
-    BrowserAnimationsModule,
     SideMenuComponent,
-    RouterModule
+    MatAutocompleteModule,
+    MatInputModule,
+    MatFormFieldModule,
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatIconModule
   ],
   declarations: [SideMenuComponent]
 })

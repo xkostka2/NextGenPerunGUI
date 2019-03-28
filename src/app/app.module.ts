@@ -8,6 +8,7 @@ import { MainMenuPageComponent } from './main-menu-page/main-menu-page.component
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -19,6 +20,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainMenuPageComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
     SharedModule,

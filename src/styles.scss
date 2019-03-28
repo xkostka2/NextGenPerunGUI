@@ -36,10 +36,36 @@ body {
   background-color: #f8f8f8;
 }
 
-.menu-item {
-  padding: 1.5rem;
-  width: 14rem;
-  margin: 2rem;
+.white-color-input {
+  color: #ffffff !important;
+
+  .mat-form-field-label {
+    color: #ffffff !important;
+  }
+
+  .mat-focused {
+    color: #ffffff !important;
+    background-color: #ffffff !important;
+  }
+  input {
+    caret-color: #ffffff !important;
+  }
+
+  .mat-form-field-underline {
+    background-color: #ffffff !important;
+  }
+
+  .mat-form-field-ripple {
+    background-color: #ffffff !important;
+  }
+}
+
+.page-title {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.box-button {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -55,8 +81,30 @@ body {
     width: 100%;
     flex-grow: 1;
   }
+}
+
+.menu-items {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.menu-item {
+
+  padding: 1.5rem;
+  width: 100%;
+  margin: 1rem;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 
   &:hover {
+    color: white;
     text-decoration: none !important;
   }
 }
@@ -73,4 +121,62 @@ body {
 
 .group-bg-color {
   background-color: $group-color;
+}
+
+.app-btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.app-btn.disabled, .app-btn:disabled {
+  opacity: 0.65;
+}
+
+.vo-btn {
+  background-color: $vo-color;
+  color: #ffffff;
+  border-radius: 0;
+
+
+  &:hover {
+    background-color: lighten($vo-color, 10%);
+  }
+
+  &:active {
+    background-color: darken($vo-color, 5%);
+  }
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.facility-btn {
+  background-color: $facility-color;
+  color: #ffffff;
+  border-radius: 0;
+
+  &:hover {
+    background-color: lighten($facility-color, 10%);
+  }
+
+  &:active {
+    background-color: darken($facility-color, 5%);
+  }
+
+  &:hover {
+    color: #ffffff;
+  }
 }

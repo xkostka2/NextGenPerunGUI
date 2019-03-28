@@ -2,5 +2,11 @@
   "MAIN_MENU": {
     "VOS": "Organizations",
     "FACILITIES": "Facilities"
+  },
+  "VO_MANAGEMENT": {
+    "TITLE": "Organizations",
+    "INPUT_PLACEHOLDER": "Find organization...",
+    "SELECT_VO_BUTTON": "Select organization",
+    "CREATE_VO": "New organization"
   }
 }
