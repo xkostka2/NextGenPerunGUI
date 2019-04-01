@@ -15,4 +15,8 @@ export class VoService {
   getAllVos(): Observable<Vo[]> {
     return this.apiService.get('json/vosManager/getAllVos');
   }
+
+  getVoById(id: number): Observable<Vo> {
+    return this.apiService.get(`json/vosManager/getVoById?id=${id}`);
+  }
 }

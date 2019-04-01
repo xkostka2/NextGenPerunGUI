@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SideMenuComponent } from './side-menu/side-menu.component';
+import { PerunNavComponent } from './perun-nav/perun-nav.component';
 import {RouterModule} from '@angular/router';
-import {MatAutocompleteModule, MatFormFieldModule, MatIconModule, MatInputModule} from '@angular/material';
+import {MatAutocompleteModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSidenavModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SideMenuComponent } from './side-menu/side-menu.component';
+import { SideMenuItemComponent } from './side-menu/side-menu-item/side-menu-item.component';
 
 @NgModule({
   imports: [
@@ -14,18 +16,21 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule
   ],
   exports: [
-    SideMenuComponent,
+    PerunNavComponent,
     MatAutocompleteModule,
     MatInputModule,
     MatFormFieldModule,
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    SideMenuComponent,
+    MatSidenavModule
   ],
-  declarations: [SideMenuComponent]
+  declarations: [PerunNavComponent, SideMenuComponent, SideMenuItemComponent]
 })
 export class SharedModule { }

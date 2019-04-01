@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {VoService} from '../../core/services/vo.service';
 import {Vo} from '../../core/models/Vo';
 import {Observable} from 'rxjs';
@@ -6,6 +6,8 @@ import {FormControl} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {MenuItem} from '../../shared/MenuItem';
 import {MatAutocompleteSelectedEvent} from '@angular/material';
+import {Router} from '@angular/router';
+import {SideMenuService} from '../../shared/side-menu.service';
 
 @Component({
   selector: 'app-vo-select-page',
@@ -15,7 +17,9 @@ import {MatAutocompleteSelectedEvent} from '@angular/material';
 export class VoSelectPageComponent implements OnInit {
 
   constructor(
-    private voService: VoService
+    private sideMenuService: SideMenuService,
+    private voService: VoService,
+    private router: Router
   ) { }
 
   formControl = new FormControl();
@@ -50,6 +54,7 @@ export class VoSelectPageComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.sideMenuService.setMenuItems([]);
     this.voService.getAllVos().subscribe(vos => {
       this.vos = vos;
       this.vos = vos.sort(((vo1, vo2) => {
@@ -71,20 +76,25 @@ export class VoSelectPageComponent implements OnInit {
     });
   }
 
-  private _filter(value: string): Vo[] {
+  private _filter(value: any): Vo[] {
     // Hack that ensures proper autocomplete value displaying
-    if (value && value.name) {
+    if (typeof value === 'object') {
       return [];
     }
+
+    console.log(value);
+
     const filterValue = value.toLowerCase();
 
     return value ? this.vos.filter(vo => vo.name.toLowerCase().indexOf(filterValue) === 0) : this.vos;
   }
 
   voSelected(event: MatAutocompleteSelectedEvent) {
-    const selectedVo: Vo = event.option.value;
+    const vo: Vo = event.option.value;
+    this.router.navigate([`/organizations/${vo.id}`]);
   }
 
+  // Hack that ensures proper autocomplete value displaying
   displayFn(vo: Vo) {
     return vo ? vo.name : vo;
   }

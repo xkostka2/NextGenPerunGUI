@@ -8,5 +8,12 @@
     "INPUT_PLACEHOLDER": "Find organization...",
     "SELECT_VO_BUTTON": "Select organization",
     "CREATE_VO": "New organization"
+  },
+
+  "MENU_ITEMS": {
+    "VO": {
+      "MEMBERS": "Members",
+      "GROUPS": "Groups"
+    }
   }
 }

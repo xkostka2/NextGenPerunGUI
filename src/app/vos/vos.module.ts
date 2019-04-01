@@ -4,6 +4,7 @@ import { VoSelectPageComponent } from './vo-select-page/vo-select-page.component
 import {VosRoutingModule} from './vos-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import {TranslateModule} from '@ngx-translate/core';
+import { VoDetailPageComponent } from './vo-detail-page/vo-detail-page.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import {TranslateModule} from '@ngx-translate/core';
     SharedModule,
     TranslateModule
   ],
-  declarations: [VoSelectPageComponent]
+  declarations: [VoSelectPageComponent, VoDetailPageComponent]
 })
 export class VosModule { }

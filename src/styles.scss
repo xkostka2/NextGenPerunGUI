@@ -144,6 +144,10 @@ body {
   opacity: 0.65;
 }
 
+.app-btn:focus {
+  outline: none;
+}
+
 .vo-btn {
   background-color: $vo-color;
   color: #ffffff;

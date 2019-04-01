@@ -1,4 +1,17 @@
-<app-side-menu></app-side-menu>
-<div id="content">
-  <router-outlet></router-outlet>
-</div>
+<app-perun-nav-menu></app-perun-nav-menu>
+<mat-sidenav-container id="content">
+  <mat-sidenav #sidenav
+               [mode]="'side'"
+               [opened]="false"
+               [fixedInViewport]="true"
+               [fixedTopGap]="64">
+
+    <app-side-menu [sideNav]="sidenav"></app-side-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

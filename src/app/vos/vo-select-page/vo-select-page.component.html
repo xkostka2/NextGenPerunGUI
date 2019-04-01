@@ -2,24 +2,29 @@
   <h1 class="page-title">{{'VO_MANAGEMENT.TITLE' | translate}}</h1>
 
   <form class="vo-find-form d-flex">
-    <mat-form-field class="vo-find-input vo-bg-color p-2 white-color-input mr-2">
+    <mat-form-field class="vo-find-input vo-bg-color p-2 white-color-input">
       <input
         type="text"
         placeholder="{{'VO_MANAGEMENT.INPUT_PLACEHOLDER' | translate}}"
         aria-label="Number"
+        spellcheck="false"
         matInput
         [formControl]="formControl"
         [matAutocomplete]="auto">
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="voSelected($event)">
+      <mat-autocomplete
+        autoActiveFirstOption
+        #auto="matAutocomplete"
+        [displayWith]="displayFn //noinspection InvalidExpressionResultType"
+        (optionSelected)="voSelected($event)">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option.name}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-
-    <button type="button" class="app-btn vo-btn">
+<!--
+    <button type="button" class="app-btn vo-btn" [disabled]="selectedVo === null">
       <mat-icon aria-hidden="false">arrow_forward</mat-icon>
-    </button>
+    </button>-->
   </form>
 
   <div class="row mt-5">

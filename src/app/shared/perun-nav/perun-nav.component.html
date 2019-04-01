@@ -1,0 +1,7 @@
+<div id="side-menu">
+  <div id="side-menu-icons">
+    <a *ngFor="let item of items" class="side-menu-icon" [routerLink]="item.url">
+      <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.alt}}">
+    </a>
+  </div>
+</div>

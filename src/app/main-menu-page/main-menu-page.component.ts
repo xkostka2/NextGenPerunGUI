@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from '../shared/MenuItem';
+import {SideMenuService} from '../shared/side-menu.service';
 
 @Component({
   selector: 'app-main-menu-page',
@@ -8,7 +9,9 @@ import { MenuItem } from '../shared/MenuItem';
 })
 export class MainMenuPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private sideMenuService: SideMenuService
+  ) { }
 
   items: MenuItem[] = [
     {
@@ -26,5 +29,6 @@ export class MainMenuPageComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.sideMenuService.setMenuItems([]);
   }
 }
