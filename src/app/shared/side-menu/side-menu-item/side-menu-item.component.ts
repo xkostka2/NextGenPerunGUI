@@ -13,6 +13,14 @@ export class SideMenuItemComponent implements OnInit {
   @Input()
   item: SideMenuItem;
 
+  @Input()
+  index: number;
+
+  @Input()
+  showOpen: boolean;
+
+  expanded = false;
+
   ngOnInit() {
   }
 

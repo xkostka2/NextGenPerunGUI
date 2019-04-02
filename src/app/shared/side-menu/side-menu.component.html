@@ -11,6 +11,11 @@
     <mat-icon>arrow_drop_down</mat-icon>
   </a>
 </div>-->
-
-<app-side-menu-item *ngFor="let item of items" [item]="item">
-</app-side-menu-item>
+<div class="accordion" id="sideMenuAccordion">
+  <app-side-menu-item
+    *ngFor="let item of items; let i = index"
+    [item]="item"
+    [index]="i"
+    [showOpen]="i === items.length-1">
+  </app-side-menu-item>
+</div>

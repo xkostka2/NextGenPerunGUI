@@ -1,7 +1,11 @@
 .entity-menu-item {
-  padding: 0.5rem 1rem;
   width: 270px;
 }
+
+.entity-menu-item-header {
+  padding: 0.5rem 1rem;
+}
+
 .entity-menu-item-label {
   display: flex;
   flex-direction: row;
