@@ -2,8 +2,22 @@
   width: 270px;
 }
 
+.side-entity-menu a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #616161;
+  display: block;
+  transition: 0.2s;
+}
+
+.side-entity-menu a:hover {
+  color: #313131;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .entity-menu-item-header {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
 }
 
 .entity-menu-item-label {

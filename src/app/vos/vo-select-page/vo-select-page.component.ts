@@ -32,24 +32,6 @@ export class VoSelectPageComponent implements OnInit {
       url: '/organizations/new',
       label: 'VO_MANAGEMENT.CREATE_VO',
       style: 'vo-btn'
-    },
-    {
-      icon: 'create1-white.svg',
-      url: '/organizations/new',
-      label: 'VO_MANAGEMENT.CREATE_VO',
-      style: 'vo-btn'
-    },
-    {
-      icon: 'create1-white.svg',
-      url: '/organizations/new',
-      label: 'VO_MANAGEMENT.CREATE_VO',
-      style: 'vo-btn'
-    },
-    {
-      icon: 'create1-white.svg',
-      url: '/organizations/new',
-      label: 'VO_MANAGEMENT.CREATE_VO',
-      style: 'vo-btn'
     }
   ];
 
@@ -81,8 +63,6 @@ export class VoSelectPageComponent implements OnInit {
     if (typeof value === 'object') {
       return [];
     }
-
-    console.log(value);
 
     const filterValue = value.toLowerCase();
 

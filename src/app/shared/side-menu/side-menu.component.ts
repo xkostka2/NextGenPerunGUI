@@ -21,10 +21,7 @@ export class SideMenuComponent implements OnInit {
   sideNav: MatSidenav;
 
   ngOnInit(): void {
-    this.router.events.subscribe(e => console.log('ROUTER: ' + e));
-
     this.sideMenuService.sideMenuItemsChange.subscribe(items => {
-      console.log('SET');
       if (items.length > 0) {
         this.sideNav.open();
       } else {

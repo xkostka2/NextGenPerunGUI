@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {SideMenuItem} from '../side-menu.component';
 
 @Component({
@@ -19,9 +19,20 @@ export class SideMenuItemComponent implements OnInit {
   @Input()
   showOpen: boolean;
 
+  @ViewChild('collapse') collapseDiv: ElementRef;
+
   expanded = false;
 
   ngOnInit() {
+    this.expanded = this.showOpen;
   }
 
+  // TODO
+  isExpanded() {
+    return this.expanded;
+  }
+
+  toggle() {
+    this.expanded = !this.expanded;
+  }
 }

@@ -2,10 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PerunNavComponent } from './perun-nav/perun-nav.component';
 import {RouterModule} from '@angular/router';
-import {MatAutocompleteModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSidenavModule} from '@angular/material';
+import {
+  MatAutocompleteModule, MatButtonModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatSidenavModule, MatSortModule, MatTableModule
+} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { SideMenuItemComponent } from './side-menu/side-menu-item/side-menu-item.component';
+import { MenuButtonsFieldComponent } from './components/menu-buttons-field/menu-buttons-field.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -17,7 +26,12 @@ import { SideMenuItemComponent } from './side-menu/side-menu-item/side-menu-item
     ReactiveFormsModule,
     FormsModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatExpansionModule,
+    TranslateModule,
+    MatButtonModule,
+    MatSortModule,
+    MatTableModule
   ],
   exports: [
     PerunNavComponent,
@@ -29,8 +43,12 @@ import { SideMenuItemComponent } from './side-menu/side-menu-item/side-menu-item
     FormsModule,
     MatIconModule,
     SideMenuComponent,
-    MatSidenavModule
+    MatSidenavModule,
+    TranslateModule,
+    MenuButtonsFieldComponent,
+    MatSortModule,
+    MatTableModule
   ],
-  declarations: [PerunNavComponent, SideMenuComponent, SideMenuItemComponent]
+  declarations: [PerunNavComponent, SideMenuComponent, SideMenuItemComponent, MenuButtonsFieldComponent]
 })
 export class SharedModule { }

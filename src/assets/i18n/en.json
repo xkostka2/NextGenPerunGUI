@@ -9,7 +9,9 @@
     "SELECT_VO_BUTTON": "Select organization",
     "CREATE_VO": "New organization"
   },
-
+  "VO_GROUPS": {
+    "TITLE": "Groups"
+  },
   "MENU_ITEMS": {
     "VO": {
       "MEMBERS": "Members",
