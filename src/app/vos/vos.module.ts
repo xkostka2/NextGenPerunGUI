@@ -5,7 +5,8 @@ import {VosRoutingModule} from './vos-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import { VoDetailPageComponent } from './vo-detail-page/vo-detail-page.component';
 import { GroupDetailPageComponent } from './group-detail-page/group-detail-page.component';
-import { VoGroupsPageComponent } from './vo-groups-page/vo-groups-page.component';
+import { GroupsTreeComponent } from './groups-tree/groups-tree.component';
+import { GroupsListComponent } from './groups-list/groups-list.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { VoGroupsPageComponent } from './vo-groups-page/vo-groups-page.component
     VosRoutingModule,
     SharedModule
   ],
-  declarations: [VoSelectPageComponent, VoDetailPageComponent, GroupDetailPageComponent, VoGroupsPageComponent]
+  declarations: [VoSelectPageComponent, VoDetailPageComponent, GroupDetailPageComponent, GroupsTreeComponent, GroupsListComponent]
 })
 export class VosModule { }

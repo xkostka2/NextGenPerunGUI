@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { PerunNavComponent } from './perun-nav/perun-nav.component';
 import {RouterModule} from '@angular/router';
 import {
-  MatAutocompleteModule, MatButtonModule,
+  MatAutocompleteModule, MatButtonModule, MatCheckboxModule,
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatSidenavModule, MatSortModule, MatTableModule
+  MatSidenavModule, MatSortModule, MatTableModule, MatTabsModule, MatTreeModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SideMenuComponent } from './side-menu/side-menu.component';
@@ -31,7 +31,11 @@ import {TranslateModule} from '@ngx-translate/core';
     TranslateModule,
     MatButtonModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule,
+    MatTreeModule,
+    MatButtonModule,
+    MatCheckboxModule
   ],
   exports: [
     PerunNavComponent,
@@ -47,7 +51,11 @@ import {TranslateModule} from '@ngx-translate/core';
     TranslateModule,
     MenuButtonsFieldComponent,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule,
+    MatTreeModule,
+    MatButtonModule,
+    MatCheckboxModule
   ],
   declarations: [PerunNavComponent, SideMenuComponent, SideMenuItemComponent, MenuButtonsFieldComponent]
 })

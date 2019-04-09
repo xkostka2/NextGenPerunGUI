@@ -33,6 +33,7 @@ export class GroupDetailPageComponent implements OnInit {
       this.voService.getVoById(voId).subscribe(vo => {
         this.vo = vo;
         this.groupService.getGroupById(groupId).subscribe(group => {
+          this.group = group;
           const voSideMenuItem = this.sideMenuItemService.parseVo(vo);
           const groupSideMenuItem = this.sideMenuItemService.parseGroup(group);
 

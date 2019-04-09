@@ -14,8 +14,14 @@
   },
   "MENU_ITEMS": {
     "VO": {
+      "OVERVIEW": "Overview",
       "MEMBERS": "Members",
       "GROUPS": "Groups"
+    },
+    "GROUP": {
+      "OVERVIEW": "Overview",
+      "MEMBERS": "Members",
+      "SUBGROUPS": "Subgroups"
     }
   }
 }

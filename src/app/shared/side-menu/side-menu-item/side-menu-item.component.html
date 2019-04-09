@@ -1,15 +1,15 @@
 <div class="entity-menu-item">
   <div class="entity-menu-item-header {{item.colorClass}}" id="heading{{index}}">
     <div class="entity-menu-item-link">
-      <div class="entity-menu-item-label">
-        <a [routerLink]="item.baseLink">
+      <a class="entity-menu-item-label" [routerLink]="item.baseLink">
+        <div>
           <img
             src="assets/img/PerunWebImages/{{item.icon}}"
             class="entity-menu-item-icon"
             alt="{{item.label}}">
-        </a>
-          <div class="ml-3">{{item.label}}</div>
-      </div>
+        </div>
+        <div class="ml-3">{{item.label}}</div>
+      </a>
       <a class="p-1" data-toggle="collapse" [attr.data-target]="'#collapse' + index">
         <mat-icon>expand_more</mat-icon>
 <!--        TODO: implement arrow change on toggle, use DOM Changes listener-->

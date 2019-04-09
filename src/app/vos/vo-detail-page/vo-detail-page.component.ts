@@ -21,8 +21,8 @@ export class VoDetailPageComponent implements OnInit {
   ) { }
 
   vo: Vo;
-
   items: MenuItem[];
+  showTreeStructure = false;
 
   private generateMenuItems(vo: Vo) {
     this.items = [
@@ -52,7 +52,7 @@ export class VoDetailPageComponent implements OnInit {
 
         this.sideMenuService.setMenuItems([sideMenuItem]);
 
-        this.generateMenuItems(vo);
+        // this.generateMenuItems(vo);
       });
     });
   }

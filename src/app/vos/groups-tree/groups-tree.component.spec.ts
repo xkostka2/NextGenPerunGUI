@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VoGroupsPageComponent } from './vo-groups-page.component';
+import { GroupsTreeComponent } from './groups-tree.component';
 
 describe('VoGroupsPageComponent', () => {
-  let component: VoGroupsPageComponent;
-  let fixture: ComponentFixture<VoGroupsPageComponent>;
+  let component: GroupsTreeComponent;
+  let fixture: ComponentFixture<GroupsTreeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VoGroupsPageComponent ]
+      declarations: [ GroupsTreeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VoGroupsPageComponent);
+    fixture = TestBed.createComponent(GroupsTreeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

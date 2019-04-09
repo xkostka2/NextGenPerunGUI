@@ -15,16 +15,16 @@ export class SideMenuItemService {
 
   parseGroup(group: Group): SideMenuItem {
     return {
-      baseLink: `/organizations/${group.voId}`,
+      baseLink: `/organizations/${group.voId}/groups/${group.id}`,
       label: group.name,
       links: [
         {
-          label: this.translate.instant('MENU_ITEMS.VO.MEMBERS'),
-          url: `/organizations/${group.voId}/groups`
+          label: this.translate.instant('MENU_ITEMS.GROUP.OVERVIEW'),
+          url: `/organizations/${group.voId}/groups/${group.id}`
         },
         {
-          label: this.translate.instant('MENU_ITEMS.VO.GROUPS'),
-          url: `/organizations/${group.voId}/groups`
+          label: this.translate.instant('MENU_ITEMS.GROUP.SUBGROUPS'),
+          url: `/organizations/${group.voId}/groups/${group.id}`
         }
       ],
       colorClass: 'group-bg-color',
@@ -38,12 +38,12 @@ export class SideMenuItemService {
       label: vo.name,
       links: [
         {
-          label: this.translate.instant('MENU_ITEMS.VO.MEMBERS'),
-          url: `/organizations/${vo.id}/members`
+          label: this.translate.instant('MENU_ITEMS.VO.OVERVIEW'),
+          url: `/organizations/${vo.id}`
         },
         {
           label: this.translate.instant('MENU_ITEMS.VO.GROUPS'),
-          url: `/organizations/${vo.id}/groups`
+          url: `/organizations/${vo.id}`
         }
       ],
       colorClass: 'vo-bg-color',

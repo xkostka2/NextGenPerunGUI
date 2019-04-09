@@ -1,3 +1,12 @@
-<p>
-  vo-groups-page works!
-</p>
+<div class="container-fluid pt-3 pl-xl-5 pr-xl-5" *ngIf="vo !== undefined && group !== undefined">
+  <h1 class="page-title">Group - {{group.name}}</h1>
+  <mat-tab-group>
+    <mat-tab label="Overview">
+      <p>
+        Here will be displayed info about group and group actions.
+      </p>
+    </mat-tab>
+    <mat-tab label="Subgroups">
+    </mat-tab>
+  </mat-tab-group>
+</div>

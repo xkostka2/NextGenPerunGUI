@@ -17,7 +17,7 @@ export class PerunNavComponent implements OnInit {
     },
     {
       icon: 'vo-white.svg',
-      url: '/vos',
+      url: '/organizations',
       alt: 'Virtual organizations'
     }
   ];

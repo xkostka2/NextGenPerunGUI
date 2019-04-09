@@ -24,6 +24,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  color: #ffffff;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .entity-menu-item-link {
