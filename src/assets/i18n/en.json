@@ -23,5 +23,12 @@
       "MEMBERS": "Members",
       "SUBGROUPS": "Subgroups"
     }
+  },
+  "VO_QA": {
+    "INVITE_MEMBER": "Invite member",
+    "CREATE_SERVICE_MEMBER": "Create service member",
+    "ADD_MANAGER": "Add manager",
+    "CREATE_GROUP": "Create group",
+    "ADD_MEMBER": "Add member"
   }
 }

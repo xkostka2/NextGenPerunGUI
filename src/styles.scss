@@ -124,15 +124,20 @@ button:focus {
 
 
 .box-button-medium {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  font-size: 1.5em;
   color: #ffffff;
   -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
   -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
+}
 
+
+.menu-items {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.menu-item-large {
   img {
     width: 100%;
     flex-grow: 1;
@@ -159,17 +164,10 @@ button:focus {
       padding-right: 1rem;
     }
   }
-}
-
-
-.menu-items {
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.menu-item-large {
-
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.5em;
   padding: 1.5rem;
   width: 100%;
   margin: 1rem;
@@ -188,8 +186,52 @@ button:focus {
   }
 }
 
+.menu-items-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.menu-item-medium-column {
+  flex-basis: 100%;
+
+}
+
+.menu-item-large-column {
+  flex-basis: 100%;
+}
+
+@media screen and (min-width: 576px) {
+  .column {
+    flex: 1;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .column {
+    flex: 1;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .column {
+    flex: 1;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .column {
+    flex: 1;
+  }
+}
+
 .menu-item-medium {
 
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
   padding: 0.75rem;
   width: 100%;
   margin: 1rem;
@@ -207,6 +249,38 @@ button:focus {
     color: white;
     text-decoration: none !important;
   }
+
+  img {
+    width: 4rem;
+    height: 4rem;
+    flex-grow: 1;
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
+
+  div {
+    flex-grow: 5;
+  }
+  /*@media (min-width: 992px) and (max-width: 1199px) {
+    img {
+      padding-left: .75rem;
+      padding-right: .75rem;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    img {
+      padding-left: .75rem;
+      padding-right: .75rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    img {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }*/
 }
 
 
