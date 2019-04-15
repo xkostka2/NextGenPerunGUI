@@ -42,5 +42,5 @@ export interface SideMenuItem {
 
 export interface EntityMenuLink {
   label: string;
-  url: string;
+  url:  any[] | string;
 }

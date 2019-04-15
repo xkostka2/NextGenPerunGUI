@@ -10,7 +10,8 @@
     "CREATE_VO": "New organization"
   },
   "VO_GROUPS": {
-    "TITLE": "Groups"
+    "CREATE_GROUP": "Create...",
+    "DELETE_GROUP": "Delete..."
   },
   "MENU_ITEMS": {
     "VO": {

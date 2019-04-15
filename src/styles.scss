@@ -12,19 +12,19 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$service-creation-primary: mat-palette($mat-gray, 900);
-$service-creation-accent: mat-palette($mat-blue, A400);
+$perun-primary: mat-palette($mat-gray, 900);
+$perun-accent: mat-palette($mat-green, 600);
 
 // The warn palette is optional (defaults to red).
-$service-creation-warn: mat-palette($mat-red);
+$perun-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$service-creation-theme: mat-light-theme($service-creation-primary, $service-creation-accent, $service-creation-warn);
+$perun-theme: mat-light-theme($perun-primary, $perun-accent, $perun-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($service-creation-theme);
+@include angular-material-theme($perun-theme);
 
 
 // Perun entities colors
@@ -186,44 +186,9 @@ button:focus {
   }
 }
 
-.menu-items-container {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
-.menu-item-medium-column {
-  flex-basis: 100%;
-
-}
-
-.menu-item-large-column {
-  flex-basis: 100%;
-}
-
-@media screen and (min-width: 576px) {
-  .column {
-    flex: 1;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .column {
-    flex: 1;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .column {
-    flex: 1;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .column {
-    flex: 1;
-  }
+.menu-items-row {
+  margin-left: -15px !important;
+  margin-right: -15px !important;
 }
 
 .menu-item-medium {
@@ -387,5 +352,18 @@ button:focus {
 
   &:hover {
     color: lighten($vo-color, 10%);
+  }
+}
+
+// HACKS
+
+// Dont show horizontal scroll at menu items
+.mat-tab-body-content {
+  overflow: hidden !important;
+}
+
+.no-label-margin-bottom {
+  label {
+    margin-bottom: 0 !important;
   }
 }

@@ -93,6 +93,5 @@ export class GroupsTreeComponent implements OnInit {
     this.dataSource.data = groupTree;
   }
 
-
   hasChild = (_: number, node: GroupFlatNode) => node.expandable;
 }

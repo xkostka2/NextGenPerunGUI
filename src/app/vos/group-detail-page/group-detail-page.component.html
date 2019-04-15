@@ -1,6 +1,6 @@
 <div class="container-fluid pl-xl-5 pr-xl-5" *ngIf="vo !== undefined && group !== undefined">
   <h1 class="page-title">Group - {{group.name}}</h1>
-  <mat-tab-group>
+  <mat-tab-group (selectedTabChange)="updateMatrixParam($event.index)" [(selectedIndex)]="selectedTab">
     <mat-tab label="Overview">
       <p>
         Here will be displayed info about group and group actions.
