@@ -1,19 +1,16 @@
-<div class="container-fluid pt-3 pb-5 pl-xl-5 pr-xl-5" *ngIf="vo !== undefined">
+<div class="container-fluid pl-xl-5 pr-xl-5" *ngIf="vo !== undefined">
   <h1 class="page-title">Organization - {{vo.name}}</h1>
-  <mat-tab-group class="tab-padding-top">
-    <mat-tab label="Overview">
-      <p>
-        Here will be displayed info about members and vo actions.
-      </p>
+  <mat-tab-group
+    (selectedTabChange)="updateMatrixParam($event.index)"
+    class="tab-padding-top" [(selectedIndex)]="selectedTab"
+    [dynamicHeight]="true"
+  >
+    <mat-tab label="Overview" [routerLink]="['', {tab:0}]">
+      <app-vo-quick-actions [vo]="vo"></app-vo-quick-actions>
     </mat-tab>
     <mat-tab label="Groups">
-      <mat-checkbox class="ml-3" [(ngModel)]="showTreeStructure">
-        Tree structure
-      </mat-checkbox>
-      <app-groups-tree *ngIf="showTreeStructure" [voId]="vo.id">
-      </app-groups-tree>
-      <app-groups-list *ngIf="!showTreeStructure" [voId]="vo.id">
-      </app-groups-list>
+      <app-vo-groups-tab [vo]="vo">
+      </app-vo-groups-tab>
     </mat-tab>
   </mat-tab-group>
 </div>

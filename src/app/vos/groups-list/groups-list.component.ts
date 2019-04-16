@@ -1,18 +1,20 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {MatSort, MatTableDataSource} from '@angular/material';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild} from '@angular/core';
+import {MatCheckboxChange, MatSort, MatTableDataSource} from '@angular/material';
 import {Group} from '../../core/models/Group';
-import {GroupService} from '../../core/services/group.service';
+
+export declare class GroupSelectChange {
+  group: Group;
+  checked: boolean;
+}
 
 @Component({
   selector: 'app-groups-list',
   templateUrl: './groups-list.component.html',
   styleUrls: ['./groups-list.component.scss']
 })
-export class GroupsListComponent implements OnInit {
+export class GroupsListComponent implements OnChanges {
 
-  constructor(
-    private groupService: GroupService
-  ) { }
+  constructor() { }
 
   @ViewChild(MatSort) set matSort(ms: MatSort) {
     this.sort = ms;
@@ -20,19 +22,18 @@ export class GroupsListComponent implements OnInit {
   }
 
   @Input()
-  voId: number;
+  groups: Group[] = [];
+
+  @Output()
+  groupSelectChange: EventEmitter<GroupSelectChange> = new EventEmitter<GroupSelectChange>();
 
   private sort: MatSort;
 
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['checkbox', 'id', 'name'];
   dataSource: MatTableDataSource<Group>;
-  groups: Group[] = [];
 
-  ngOnInit() {
-    this.groupService.getAllGroups(this.voId).subscribe(groups => {
-      this.groups = groups;
-      this.dataSource = new MatTableDataSource<Group>(groups);
-    });
+  ngOnChanges(changes: SimpleChanges) {
+    this.dataSource = new MatTableDataSource<Group>(this.groups);
   }
 
   setDataSource() {
@@ -40,4 +41,10 @@ export class GroupsListComponent implements OnInit {
       this.dataSource.sort = this.sort;
     }
   }
+
+  onGroupSelected(event: MatCheckboxChange, group: Group) {
+    console.log('Emitted');
+    this.groupSelectChange.emit({group: group, checked: event.checked});
+  }
 }
+

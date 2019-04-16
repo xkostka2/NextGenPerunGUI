@@ -1,7 +1,7 @@
 <app-perun-nav-menu id="nav-menu"></app-perun-nav-menu>
 <mat-sidenav-container id="content">
   <mat-sidenav #sidenav
-               [mode]="'side'"
+               [mode]="sidebarMode"
                [opened]="false"
                [fixedInViewport]="true"
                [fixedTopGap]="64">
@@ -10,7 +10,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <div>
+    <div class="pt-3 pb-5">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

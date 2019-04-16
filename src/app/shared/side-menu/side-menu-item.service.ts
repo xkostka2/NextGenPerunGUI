@@ -20,11 +20,11 @@ export class SideMenuItemService {
       links: [
         {
           label: this.translate.instant('MENU_ITEMS.GROUP.OVERVIEW'),
-          url: `/organizations/${group.voId}/groups/${group.id}`
+          url: [`/organizations/${group.voId}/groups/${group.id}`, {tab: 0}]
         },
         {
           label: this.translate.instant('MENU_ITEMS.GROUP.SUBGROUPS'),
-          url: `/organizations/${group.voId}/groups/${group.id}`
+          url: [`/organizations/${group.voId}/groups/${group.id}`, {tab: 1}]
         }
       ],
       colorClass: 'group-bg-color',
@@ -39,11 +39,11 @@ export class SideMenuItemService {
       links: [
         {
           label: this.translate.instant('MENU_ITEMS.VO.OVERVIEW'),
-          url: `/organizations/${vo.id}`
+          url: [`/organizations/${vo.id}`, {tab: 0}]
         },
         {
           label: this.translate.instant('MENU_ITEMS.VO.GROUPS'),
-          url: `/organizations/${vo.id}`
+          url: [`/organizations/${vo.id}`, {tab: 1}]
         }
       ],
       colorClass: 'vo-bg-color',

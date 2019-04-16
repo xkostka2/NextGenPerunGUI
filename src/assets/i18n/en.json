@@ -10,7 +10,8 @@
     "CREATE_VO": "New organization"
   },
   "VO_GROUPS": {
-    "TITLE": "Groups"
+    "CREATE_GROUP": "Create...",
+    "DELETE_GROUP": "Delete..."
   },
   "MENU_ITEMS": {
     "VO": {
@@ -22,6 +23,23 @@
       "OVERVIEW": "Overview",
       "MEMBERS": "Members",
       "SUBGROUPS": "Subgroups"
+    }
+  },
+  "VO_QA": {
+    "INVITE_MEMBER": "Invite member",
+    "CREATE_SERVICE_MEMBER": "Create service member",
+    "ADD_MANAGER": "Add manager",
+    "CREATE_GROUP": "Create group",
+    "ADD_MEMBER": "Add member"
+  },
+
+  "DIALOGS":{
+    "CREATE_GROUP": {
+      "TITLE": "Create group",
+      "NAME": "Name",
+      "DESCRIPTION": "Description",
+      "CANCEL": "Cancel",
+      "CREATE": "Create"
     }
   }
 }

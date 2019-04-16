@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>{{'DIALOGS.CREATE_GROUP.TITLE' | translate}}</h1>
+<div mat-dialog-content class="dialog-container">
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="{{'DIALOGS.CREATE_GROUP.NAME' | translate}}"
+      [(ngModel)]="name">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea
+      matInput
+      placeholder="{{'DIALOGS.CREATE_GROUP.DESCRIPTION' | translate}}"
+      [(ngModel)]="description"></textarea>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-flat-button
+    class="ml-auto"
+    (click)="onCancel()">
+    {{'DIALOGS.CREATE_GROUP.CANCEL' | translate}}
+  </button>
+  <button
+    mat-flat-button
+    class="ml-2"
+    color="accent"
+    (click)="onSubmit()">
+    {{'DIALOGS.CREATE_GROUP.CREATE' | translate}}
+  </button>
+</div>

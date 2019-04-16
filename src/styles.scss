@@ -12,19 +12,19 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$service-creation-primary: mat-palette($mat-gray, 900);
-$service-creation-accent: mat-palette($mat-blue, A400);
+$perun-primary: mat-palette($mat-gray, 900);
+$perun-accent: mat-palette($mat-green, 600);
 
 // The warn palette is optional (defaults to red).
-$service-creation-warn: mat-palette($mat-red);
+$perun-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$service-creation-theme: mat-light-theme($service-creation-primary, $service-creation-accent, $service-creation-warn);
+$perun-theme: mat-light-theme($perun-primary, $perun-accent, $perun-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($service-creation-theme);
+@include angular-material-theme($perun-theme);
 
 
 // Perun entities colors
@@ -78,10 +78,25 @@ button:focus {
   }
 }
 
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-container > * {
+  width: 100%;
+}
+
 .page-title {
   margin-top: 1rem;
   margin-bottom: 2rem;
   font-size: 2rem;
+}
+
+.page-subtitle {
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .box-button-large {
@@ -124,15 +139,20 @@ button:focus {
 
 
 .box-button-medium {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  font-size: 1.5em;
   color: #ffffff;
   -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
   -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
+}
 
+
+.menu-items {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.menu-item-large {
   img {
     width: 100%;
     flex-grow: 1;
@@ -159,17 +179,10 @@ button:focus {
       padding-right: 1rem;
     }
   }
-}
-
-
-.menu-items {
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.menu-item-large {
-
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.5em;
   padding: 1.5rem;
   width: 100%;
   margin: 1rem;
@@ -188,8 +201,17 @@ button:focus {
   }
 }
 
+.menu-items-row {
+  margin-left: -15px !important;
+  margin-right: -15px !important;
+}
+
 .menu-item-medium {
 
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
   padding: 0.75rem;
   width: 100%;
   margin: 1rem;
@@ -207,6 +229,38 @@ button:focus {
     color: white;
     text-decoration: none !important;
   }
+
+  img {
+    width: 4rem;
+    height: 4rem;
+    flex-grow: 1;
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
+
+  div {
+    flex-grow: 5;
+  }
+  /*@media (min-width: 992px) and (max-width: 1199px) {
+    img {
+      padding-left: .75rem;
+      padding-right: .75rem;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    img {
+      padding-left: .75rem;
+      padding-right: .75rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    img {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }*/
 }
 
 
@@ -313,5 +367,18 @@ button:focus {
 
   &:hover {
     color: lighten($vo-color, 10%);
+  }
+}
+
+// HACKS
+
+// Dont show horizontal scroll at menu items
+.mat-tab-body-content {
+  overflow: hidden !important;
+}
+
+.no-label-margin-bottom {
+  label {
+    margin-bottom: 0 !important;
   }
 }

@@ -19,4 +19,12 @@ export class GroupService {
   getAllGroups(voId: number): Observable<Group[]> {
     return this.apiService.get(`json/groupsManager/getAllGroups?vo=${voId}`);
   }
+
+  createGroup(voId: number, name: string, description: string): Observable<Group> {
+    return this.apiService.post('json/groupsManager/createGroup', {
+      vo: voId,
+      name: name,
+      description: description
+    });
+  }
 }
