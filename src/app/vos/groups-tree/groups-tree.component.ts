@@ -1,16 +1,9 @@
 /* tslint:disable:member-ordering */
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {SideMenuService} from '../../shared/side-menu.service';
-import {VoService} from '../../core/services/vo.service';
-import {ActivatedRoute} from '@angular/router';
-import {SideMenuItemService} from '../../shared/side-menu/side-menu-item.service';
-import {Vo} from '../../core/models/Vo';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Group} from '../../core/models/Group';
-import {GroupService} from '../../core/services/group.service';
-import {MatSort, MatTableDataSource, MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material';
+import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material';
 import {TreeGroup} from '../../core/models/TreeGroup';
 import {FlatTreeControl} from '@angular/cdk/tree';
-import {Tree} from '@angular/router/src/utils/tree';
 
 interface GroupFlatNode {
   expandable: boolean;
@@ -24,7 +17,10 @@ interface GroupFlatNode {
   templateUrl: './groups-tree.component.html',
   styleUrls: ['./groups-tree.component.scss']
 })
-export class GroupsTreeComponent implements OnInit {
+export class GroupsTreeComponent implements OnChanges {
+
+  constructor(
+  ) { }
 
   private transformer = (node: TreeGroup, level: number) => {
     return {
@@ -37,7 +33,7 @@ export class GroupsTreeComponent implements OnInit {
   };
 
   @Input()
-  voId: number;
+  groups: Group[];
 
   treeControl = new FlatTreeControl<GroupFlatNode>(
     node => node.level, node => node.expandable);
@@ -45,29 +41,10 @@ export class GroupsTreeComponent implements OnInit {
   treeFlattener = new MatTreeFlattener<TreeGroup, GroupFlatNode>(
     this.transformer, node => node.level, node => node.expandable, node => node.children);
 
-
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor(
-    private sideMenuService: SideMenuService,
-    private voService: VoService,
-    private route: ActivatedRoute,
-    private sideMenuItemService: SideMenuItemService,
-    private groupService: GroupService
-  ) { }
-
-  vo: Vo;
-  groups: Group[];
-
-  ngOnInit() {
-    this.voService.getVoById(this.voId).subscribe(vo => {
-      this.vo = vo;
-
-      this.groupService.getAllGroups(this.voId).subscribe(groups => {
-        this.groups = groups;
-        this.createGroupTrees(groups);
-      });
-    });
+  ngOnChanges(changes: SimpleChanges) {
+    this.createGroupTrees(this.groups);
   }
 
   createGroupTrees(groups: Group[]) {

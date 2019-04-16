@@ -78,10 +78,25 @@ button:focus {
   }
 }
 
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-container > * {
+  width: 100%;
+}
+
 .page-title {
   margin-top: 1rem;
   margin-bottom: 2rem;
   font-size: 2rem;
+}
+
+.page-subtitle {
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .box-button-large {

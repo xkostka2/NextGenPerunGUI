@@ -47,12 +47,6 @@ export class VoQuickActionsComponent implements OnInit {
         label: 'VO_QA.ADD_MEMBER',
         style: 'vo-btn',
         url: `/organizations/${this.vo.id}/invite-member`
-      },
-      {
-        icon: 'invite_member-white.svg',
-        label: 'VO_QA.INVITE_MEMBER',
-        style: 'vo-btn',
-        url: `/organizations/${this.vo.id}/invite-member`
       }
     ];
   }

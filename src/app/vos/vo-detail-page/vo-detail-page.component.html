@@ -1,6 +1,10 @@
 <div class="container-fluid pl-xl-5 pr-xl-5" *ngIf="vo !== undefined">
   <h1 class="page-title">Organization - {{vo.name}}</h1>
-  <mat-tab-group (selectedTabChange)="updateMatrixParam($event.index)" class="tab-padding-top" [(selectedIndex)]="selectedTab">
+  <mat-tab-group
+    (selectedTabChange)="updateMatrixParam($event.index)"
+    class="tab-padding-top" [(selectedIndex)]="selectedTab"
+    [dynamicHeight]="true"
+  >
     <mat-tab label="Overview" [routerLink]="['', {tab:0}]">
       <app-vo-quick-actions [vo]="vo"></app-vo-quick-actions>
     </mat-tab>

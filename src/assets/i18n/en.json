@@ -31,5 +31,15 @@
     "ADD_MANAGER": "Add manager",
     "CREATE_GROUP": "Create group",
     "ADD_MEMBER": "Add member"
+  },
+
+  "DIALOGS":{
+    "CREATE_GROUP": {
+      "TITLE": "Create group",
+      "NAME": "Name",
+      "DESCRIPTION": "Description",
+      "CANCEL": "Cancel",
+      "CREATE": "Create"
+    }
   }
 }

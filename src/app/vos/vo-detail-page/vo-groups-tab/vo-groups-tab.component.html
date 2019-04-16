@@ -1,4 +1,4 @@
-<button mat-flat-button color="accent">
+<button mat-flat-button color="accent" (click)="onCreateGroup()">
   {{'VO_GROUPS.CREATE_GROUP' | translate}}
 </button>
 <button mat-flat-button color="warn" class="ml-2" [disabled]="selectedGroups.size === 0">
@@ -8,10 +8,11 @@
   Tree structure
 </mat-checkbox>
 <div class="mt-3">
-  <app-groups-tree *ngIf="showTreeStructure" [voId]="vo.id">
+  <app-groups-tree *ngIf="showTreeStructure" [groups]="groups">
   </app-groups-tree>
   <app-groups-list
+    [groups]="groups"
     (groupSelectChange)="onGroupSelectChange($event)"
-    *ngIf="!showTreeStructure" [voId]="vo.id">
+    *ngIf="!showTreeStructure">
   </app-groups-list>
 </div>

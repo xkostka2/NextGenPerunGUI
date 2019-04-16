@@ -1,6 +1,6 @@
 <div class="card mt-2">
   <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-    <mat-tree-node class="group-tree-node" [routerLink]="['/organizations', vo.id, 'groups', node.groupId]"
+    <mat-tree-node class="group-tree-node" [routerLink]="['/organizations', node.voId, 'groups', node.groupId]"
                    *matTreeNodeDef="let node" matTreeNodePadding>
       <!-- use a disabled button to provide padding for tree leaf -->
       <mat-checkbox color="primary" class="no-label-margin-bottom ml-4" (click)="$event.stopPropagation()">
