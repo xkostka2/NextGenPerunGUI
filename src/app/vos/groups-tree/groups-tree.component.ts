@@ -59,7 +59,6 @@ export class GroupsTreeComponent implements OnChanges {
         const updatedParentGroup: TreeGroup = map.get(group.parentGroupId);
         updatedParentGroup.addChild(group);
         map.set(group.parentGroupId, updatedParentGroup);
-        map.delete(id);
       }
     });
 

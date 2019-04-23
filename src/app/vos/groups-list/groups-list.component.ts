@@ -34,6 +34,7 @@ export class GroupsListComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<Group>(this.groups);
+    this.setDataSource();
   }
 
   setDataSource() {
