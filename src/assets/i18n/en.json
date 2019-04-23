@@ -11,7 +11,9 @@
   },
   "VO_GROUPS": {
     "CREATE_GROUP": "Create...",
-    "DELETE_GROUP": "Delete..."
+    "DELETE_GROUP": "Delete...",
+    "TABLE_GROUP_ID": "Id",
+    "TABLE_GROUP_NAME": "Name"
   },
   "MENU_ITEMS": {
     "VO": {
