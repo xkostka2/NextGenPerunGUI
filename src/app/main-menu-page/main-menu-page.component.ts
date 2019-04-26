@@ -18,13 +18,19 @@ export class MainMenuPageComponent implements OnInit {
       icon: 'vo-white.svg',
       url: '/organizations',
       label: 'MAIN_MENU.VOS',
-      style: 'vo-btn'
+      style: 'vo-btn',
+      clickAction: function (any) {
+        return;
+      }
     },
     {
       icon: 'facility-white.svg',
       url: '/facilities',
       label: 'MAIN_MENU.FACILITIES',
-      style: 'facility-btn'
+      style: 'facility-btn',
+      clickAction: function (any) {
+        return;
+      }
     }
   ];
 

@@ -25,8 +25,8 @@
 <!--</div>-->
 
 <ul class="list" *ngIf="size === 'medium'">
-  <li class="list-item" *ngFor="let item of items">
-    <div class="list-content {{item.style}}">
+  <li class="list-item" *ngFor="let item of items" (click)="item.clickAction(dialog, voId)">
+    <div class="list-content {{item.style}}" >
       <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.label}}">
         {{item.label | translate}}
     </div>

@@ -42,6 +42,19 @@
       "DESCRIPTION": "Description",
       "CANCEL": "Cancel",
       "CREATE": "Create"
+    },
+    "INVITE_MEMBER": {
+      "TITLE": "Invite member",
+      "DESCRIPTION": "The person you are inviting will receive an email with a link to VOs application form. You can set up an email template in: Vo manager (advanced) -> Application form -> Notifications.",
+      "INVITE": "Invite",
+      "CANCEL": "Cancel",
+      "NAME": "Name",
+      "EMAIL": "Email",
+      "LANGUAGE": "Language",
+      "LANGUAGE_ENGLISH": "English",
+      "LANGUAGE_CZECH": "Czech",
+      "EMAIL_ERROR": "Fill in an correct email!",
+      "SUCCESS": "Invite was send to given email"
     }
   }
 }

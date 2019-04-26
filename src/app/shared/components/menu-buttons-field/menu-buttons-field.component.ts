@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MenuItem} from '../../MenuItem';
+import {MatDialog} from '@angular/material';
+import {InviteMemberDialogComponent} from '../dialogs/invite-member-dialog/invite-member-dialog.component';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-menu-buttons-field',
@@ -8,7 +11,8 @@ import {MenuItem} from '../../MenuItem';
 })
 export class MenuButtonsFieldComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog,
+              protected route: ActivatedRoute) { }
 
   @Input()
   items: MenuItem[];
@@ -16,7 +20,12 @@ export class MenuButtonsFieldComponent implements OnInit {
   @Input()
   size = 'large';
 
+  voId: number;
+
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.voId = params['voId'];
+    });
   }
 
 }

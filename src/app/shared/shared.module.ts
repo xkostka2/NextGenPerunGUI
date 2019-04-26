@@ -7,8 +7,8 @@ import {
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
-  MatSidenavModule, MatSortModule, MatTableModule, MatTabsModule, MatTreeModule
+  MatInputModule, MatSelectModule,
+  MatSidenavModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatTreeModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SideMenuComponent } from './side-menu/side-menu.component';
@@ -16,6 +16,7 @@ import { SideMenuItemComponent } from './side-menu/side-menu-item/side-menu-item
 import { MenuButtonsFieldComponent } from './components/menu-buttons-field/menu-buttons-field.component';
 import {TranslateModule} from '@ngx-translate/core';
 import { CreateGroupDialogComponent } from './components/dialogs/create-group-dialog/create-group-dialog.component';
+import { InviteMemberDialogComponent } from './components/dialogs/invite-member-dialog/invite-member-dialog.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,9 @@ import { CreateGroupDialogComponent } from './components/dialogs/create-group-di
     MatTreeModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
+    MatSnackBarModule
   ],
   exports: [
     PerunNavComponent,
@@ -58,11 +61,21 @@ import { CreateGroupDialogComponent } from './components/dialogs/create-group-di
     MatTreeModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
+    MatSnackBarModule
   ],
   entryComponents: [
-    CreateGroupDialogComponent
+    CreateGroupDialogComponent,
+    InviteMemberDialogComponent
   ],
-  declarations: [PerunNavComponent, SideMenuComponent, SideMenuItemComponent, MenuButtonsFieldComponent, CreateGroupDialogComponent]
+  declarations: [
+    PerunNavComponent,
+    SideMenuComponent,
+    SideMenuItemComponent,
+    MenuButtonsFieldComponent,
+    CreateGroupDialogComponent,
+    InviteMemberDialogComponent
+  ]
 })
 export class SharedModule { }

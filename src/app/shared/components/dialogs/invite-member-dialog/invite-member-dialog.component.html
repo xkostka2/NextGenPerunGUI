@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>{{'DIALOGS.INVITE_MEMBER.TITLE' | translate}}</h1>
+<div mat-dialog-content>
+  <div class="font-italic">
+    {{'DIALOGS.INVITE_MEMBER.DESCRIPTION' | translate}}
+  </div>
+
+  <mat-form-field class="w-100">
+    <input
+      matInput
+      placeholder="{{'DIALOGS.INVITE_MEMBER.NAME' | translate}}"
+      [(ngModel)]="name" required>
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <textarea
+      matInput
+      placeholder="{{'DIALOGS.INVITE_MEMBER.EMAIL' | translate}}"
+      [formControl]="emailForm" required ></textarea>
+    <mat-error *ngIf="emailForm.invalid">{{'DIALOGS.INVITE_MEMBER.EMAIL_ERROR' | translate}}</mat-error>
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>{{'DIALOGS.INVITE_MEMBER.LANGUAGE' | translate}}</mat-label>
+    <mat-select [(value)]="language">
+      <mat-option value="en">{{'DIALOGS.INVITE_MEMBER.LANGUAGE_ENGLISH' | translate}}</mat-option>
+      <mat-option value="cz">{{'DIALOGS.INVITE_MEMBER.LANGUAGE_CZECH' | translate}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-flat-button
+    class="ml-auto"
+    (click)="onCancel()">
+    {{'DIALOGS.INVITE_MEMBER.CANCEL' | translate}}
+  </button>
+  <button
+    mat-flat-button
+    class="ml-2"
+    color="accent"
+    [disabled]="emailForm.invalid || name.length == 0"
+    (click)="onSubmit()">
+    {{'DIALOGS.INVITE_MEMBER.INVITE' | translate}}
+  </button>
+</div>
