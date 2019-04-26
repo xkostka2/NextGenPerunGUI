@@ -10,6 +10,7 @@ interface GroupFlatNode {
   name: string;
   level: number;
   groupId: number;
+  voId: number;
 }
 
 @Component({
@@ -27,7 +28,8 @@ export class GroupsTreeComponent implements OnChanges {
       expandable: !!node.children && node.children.length > 0,
       name: node.shortName,
       level: level,
-      groupId: node.id
+      groupId: node.id,
+      voId: node.voId
     };
     // tslint:disable-next-line
   };
