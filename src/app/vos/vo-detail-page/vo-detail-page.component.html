@@ -3,14 +3,15 @@
   <mat-tab-group
     (selectedTabChange)="updateMatrixParam($event.index)"
     class="tab-padding-top" [(selectedIndex)]="selectedTab"
-    [dynamicHeight]="true"
-  >
-    <mat-tab label="Overview" [routerLink]="['', {tab:0}]">
+    [dynamicHeight]="false">
+    <mat-tab label="{{'VO_DETAIL.OVERVIEW' | translate}}">
       <app-vo-quick-actions [vo]="vo"></app-vo-quick-actions>
     </mat-tab>
-    <mat-tab label="Groups">
-      <app-vo-groups-tab [vo]="vo">
-      </app-vo-groups-tab>
+    <mat-tab label="{{'VO_DETAIL.MEMBERS' | translate}}">
+      <app-vo-members-tab [vo]="vo"></app-vo-members-tab>
+    </mat-tab>
+    <mat-tab label="{{'VO_DETAIL.GROUPS' | translate}}">
+      <app-vo-groups-tab [vo]="vo"></app-vo-groups-tab>
     </mat-tab>
   </mat-tab-group>
 </div>

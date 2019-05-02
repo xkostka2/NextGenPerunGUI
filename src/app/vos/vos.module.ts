@@ -9,6 +9,8 @@ import {GroupsTreeComponent} from './groups-tree/groups-tree.component';
 import {GroupsListComponent} from './groups-list/groups-list.component';
 import {VoQuickActionsComponent} from './vo-quick-actions/vo-quick-actions.component';
 import {VoGroupsTabComponent} from './vo-detail-page/vo-groups-tab/vo-groups-tab.component';
+import { VoMembersTabComponent } from './vo-detail-page/vo-members-tab/vo-members-tab.component';
+import { MembersListComponent } from './members-list/members-list.component';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import {VoGroupsTabComponent} from './vo-detail-page/vo-groups-tab/vo-groups-tab
     GroupsTreeComponent,
     GroupsListComponent,
     VoQuickActionsComponent,
-    VoGroupsTabComponent
+    VoGroupsTabComponent,
+    VoMembersTabComponent,
+    MembersListComponent
   ]
 })
 export class VosModule {

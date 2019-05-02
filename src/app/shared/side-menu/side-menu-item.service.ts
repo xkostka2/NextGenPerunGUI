@@ -42,8 +42,12 @@ export class SideMenuItemService {
           url: [`/organizations/${vo.id}`, {tab: 0}]
         },
         {
-          label: this.translate.instant('MENU_ITEMS.VO.GROUPS'),
+          label: this.translate.instant('MENU_ITEMS.VO.MEMBERS'),
           url: [`/organizations/${vo.id}`, {tab: 1}]
+        },
+        {
+          label: this.translate.instant('MENU_ITEMS.VO.GROUPS'),
+          url: [`/organizations/${vo.id}`, {tab: 2}]
         }
       ],
       colorClass: 'vo-bg-color',

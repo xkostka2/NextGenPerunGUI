@@ -9,11 +9,22 @@
     "SELECT_VO_BUTTON": "Select organization",
     "CREATE_VO": "New organization"
   },
+  "VO_DETAIL": {
+    "OVERVIEW": "Overview",
+    "MEMBERS": "Members",
+    "GROUPS": "Groups"
+  },
   "VO_GROUPS": {
     "CREATE_GROUP": "Create...",
     "DELETE_GROUP": "Delete...",
     "TABLE_GROUP_ID": "Id",
     "TABLE_GROUP_NAME": "Name"
+  },
+  "VO_MEMBERS": {
+    "ADD_MEMBER": "Add...",
+    "REMOVE_MEMBERS": "Remove...",
+    "SEARCH_DESCRIPTION": "Search by name, login or email",
+    "LIST_ALL": "List all members"
   },
   "MENU_ITEMS": {
     "VO": {
@@ -56,5 +67,7 @@
       "EMAIL_ERROR": "Fill in an correct email!",
       "SUCCESS": "Invite was send to given email"
     }
-  }
+  },
+  "MEMBERS_LIST.TABLE_ID": "Id",
+  "MEMBERS_LIST.TABLE_NAME": "Full name"
 }

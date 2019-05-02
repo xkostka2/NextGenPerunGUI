@@ -44,7 +44,6 @@ export class GroupsListComponent implements OnChanges {
   }
 
   onGroupSelected(event: MatCheckboxChange, group: Group) {
-    console.log('Emitted');
     this.groupSelectChange.emit({group: group, checked: event.checked});
   }
 }

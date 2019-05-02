@@ -7,7 +7,7 @@ import {
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatSelectModule,
+  MatInputModule, MatProgressSpinnerModule, MatSelectModule,
   MatSidenavModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatTreeModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -17,6 +17,7 @@ import { MenuButtonsFieldComponent } from './components/menu-buttons-field/menu-
 import {TranslateModule} from '@ngx-translate/core';
 import { CreateGroupDialogComponent } from './components/dialogs/create-group-dialog/create-group-dialog.component';
 import { InviteMemberDialogComponent } from './components/dialogs/invite-member-dialog/invite-member-dialog.component';
+import { UserFullNamePipe } from './pipes/user-full-name.pipe';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { InviteMemberDialogComponent } from './components/dialogs/invite-member-
     MatCheckboxModule,
     MatDialogModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     PerunNavComponent,
@@ -63,7 +65,9 @@ import { InviteMemberDialogComponent } from './components/dialogs/invite-member-
     MatCheckboxModule,
     MatDialogModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    UserFullNamePipe,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -75,7 +79,8 @@ import { InviteMemberDialogComponent } from './components/dialogs/invite-member-
     SideMenuItemComponent,
     MenuButtonsFieldComponent,
     CreateGroupDialogComponent,
-    InviteMemberDialogComponent
+    InviteMemberDialogComponent,
+    UserFullNamePipe
   ]
 })
 export class SharedModule { }
