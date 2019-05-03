@@ -2,10 +2,17 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Vo} from '../../../core/models/Vo';
 import {RichMember} from '../../../core/models/RichMember';
 import {MembersService} from '../../../core/services/members.service';
+import {TabComponent} from '../../../shared/components/tab.component';
 
 @Component({
   selector: 'app-vo-members-tab',
   templateUrl: './vo-members-tab.component.html',
+  // Could be useful in the future
+  //
+  // providers: [{
+  //   provide: TabComponent,
+  //   useExisting: VoMembersTabComponent
+  // }],
   styleUrls: ['./vo-members-tab.component.scss']
 })
 export class VoMembersTabComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SideMenuService} from '../../shared/side-menu.service';
 import {VoService} from '../../core/services/vo.service';
 import {ActivatedRoute, Router} from '@angular/router';

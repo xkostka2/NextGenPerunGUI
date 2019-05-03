@@ -18,6 +18,8 @@ import {TranslateModule} from '@ngx-translate/core';
 import { CreateGroupDialogComponent } from './components/dialogs/create-group-dialog/create-group-dialog.component';
 import { InviteMemberDialogComponent } from './components/dialogs/invite-member-dialog/invite-member-dialog.component';
 import { UserFullNamePipe } from './pipes/user-full-name.pipe';
+import {TabComponent} from './components/tab.component';
+import {TabPage} from './TabPage';
 
 @NgModule({
   imports: [
@@ -67,7 +69,9 @@ import { UserFullNamePipe } from './pipes/user-full-name.pipe';
     MatSelectModule,
     MatSnackBarModule,
     UserFullNamePipe,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    TabComponent,
+    TabPage
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -80,7 +84,9 @@ import { UserFullNamePipe } from './pipes/user-full-name.pipe';
     MenuButtonsFieldComponent,
     CreateGroupDialogComponent,
     InviteMemberDialogComponent,
-    UserFullNamePipe
+    UserFullNamePipe,
+    TabComponent,
+    TabPage
   ]
 })
 export class SharedModule { }

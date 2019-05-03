@@ -12,7 +12,6 @@ import {GroupService} from '../../../core/services/group.service';
   styleUrls: ['./vo-groups-tab.component.scss']
 })
 export class VoGroupsTabComponent implements OnInit {
-
   constructor(
     private dialog: MatDialog,
     private groupService: GroupService

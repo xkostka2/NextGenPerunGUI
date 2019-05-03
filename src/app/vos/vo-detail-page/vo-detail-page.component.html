@@ -1,6 +1,7 @@
 <div class="container-fluid pl-xl-5 pr-xl-5" *ngIf="vo !== undefined">
   <h1 class="page-title">Organization - {{vo.name}}</h1>
   <mat-tab-group
+    animationDuration="0ms"
     (selectedTabChange)="updateMatrixParam($event.index)"
     class="tab-padding-top" [(selectedIndex)]="selectedTab"
     [dynamicHeight]="false">
