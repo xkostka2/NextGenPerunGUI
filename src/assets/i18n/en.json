@@ -68,6 +68,11 @@
       "SUCCESS": "Invite was send to given email"
     }
   },
-  "MEMBERS_LIST.TABLE_ID": "Id",
-  "MEMBERS_LIST.TABLE_NAME": "Full name"
+  "MEMBERS_LIST": {
+    "ID": "Id",
+    "NAME": "Name",
+    "STATUS": "Status",
+    "EMAIL": "Email",
+    "LOGINS": "Logins"
+  }
 }

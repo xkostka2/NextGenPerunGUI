@@ -9,8 +9,13 @@ export declare class MemberSelectChange {
 }
 
 export interface TableMember {
-  id: number;
+  memberId: number;
   fullName: string;
+  status: string;
+  statusIcon: string;
+  statusColor: string;
+  email: string;
+  logins: string;
 }
 
 @Component({
@@ -38,7 +43,7 @@ export class MembersListComponent implements OnChanges {
   @Output()
   memberSelectChange: EventEmitter<MemberSelectChange> = new EventEmitter<MemberSelectChange>();
 
-  displayedColumns: string[] = ['checkbox', 'id', 'fullName'];
+  displayedColumns: string[] = ['checkbox', 'memberId', 'fullName', 'statusIcon', 'email', 'logins'];
   dataSource: MatTableDataSource<TableMember>;
 
   setDataSource() {
@@ -54,8 +59,13 @@ export class MembersListComponent implements OnChanges {
 
   private parseTableMember(richMember: RichMember) {
     return {
-      id: richMember.id,
-      fullName: parseFullName(richMember.user)
+      memberId: richMember.id,
+      fullName: parseFullName(richMember.user),
+      statusIcon: parseStatusIcon(richMember),
+      status: richMember.status,
+      statusColor: parseStatusColor(richMember),
+      email: parseEmail(richMember),
+      logins: parseLogins(richMember)
     };
   }
 
@@ -64,7 +74,68 @@ export class MembersListComponent implements OnChanges {
   }
 }
 
-export function parseFullName(user: User) {
+export function parseStatusIcon(richMember: RichMember): string {
+  switch (richMember.status) {
+    case 'VALID':
+      return 'verified_user';
+    case 'INVALID':
+      return 'report';
+    case 'SUSPENDED':
+      return 'lock';
+    case 'EXPIRED':
+      return 'schedule';
+    case 'DISABLED':
+      return 'delete';
+  }
+}
+
+export function parseStatusColor(richMember: RichMember): string {
+  switch (richMember.status) {
+    case 'VALID':
+      return 'accent';
+    case 'INVALID':
+      return 'warn';
+    default:
+      return 'primary';
+  }
+}
+
+export function parseEmail(richMember: RichMember): string {
+  let email = '';
+  richMember.memberAttributes.forEach(attr => {
+    if (attr.friendlyName === 'mail' && attr.value !== null) {
+      email = attr.value;
+    }
+  });
+
+  if (email.length === 0) {
+    richMember.userAttributes.forEach(attr => {
+      if (attr.friendlyName === 'preferredMail') {
+        email = attr.value;
+      }
+    });
+  }
+
+  return email;
+}
+
+export function parseLogins(richMember: RichMember): string {
+  let logins = '';
+
+  richMember.userAttributes.forEach(attr => {
+    if (attr.baseFriendlyName === 'login-namespace') {
+      logins += attr.friendlyNameParameter + ': ' + attr.value + ' ';
+    }
+  });
+
+  if (logins.endsWith(' ')) {
+    logins = logins.substring(0, logins.length - 1);
+  }
+
+  return logins;
+}
+
+export function parseFullName(user: User): string {
   let fullName = '';
 
   if (user.titleBefore !== null) {

@@ -382,3 +382,10 @@ button:focus {
     margin-bottom: 0 !important;
   }
 }
+
+// remove top border so the button position on all tabs is the same event when there is input used
+.no-border-mat-input {
+  .mat-form-field-infix {
+    border-top: 0;
+  }
+}

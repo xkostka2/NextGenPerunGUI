@@ -8,7 +8,7 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule, MatProgressSpinnerModule, MatSelectModule,
-  MatSidenavModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatTreeModule
+  MatSidenavModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatTooltipModule, MatTreeModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SideMenuComponent } from './side-menu/side-menu.component';
@@ -44,7 +44,8 @@ import {TabPage} from './TabPage';
     MatDialogModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTooltipModule
   ],
   exports: [
     PerunNavComponent,
@@ -71,7 +72,8 @@ import {TabPage} from './TabPage';
     UserFullNamePipe,
     MatProgressSpinnerModule,
     TabComponent,
-    TabPage
+    TabPage,
+    MatTooltipModule
   ],
   entryComponents: [
     CreateGroupDialogComponent,

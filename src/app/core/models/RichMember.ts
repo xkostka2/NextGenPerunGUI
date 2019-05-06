@@ -1,4 +1,6 @@
 import {User} from './User';
+import {Attribute} from './Attribute';
+import {UserExtSource} from './UserExtSource';
 
 export interface RichMember {
   id: number;
@@ -7,6 +9,7 @@ export interface RichMember {
   createdBy: string;
   createdByUid: number;
   groupStatus: string;
+  memberAttributes: Attribute[];
   membershipType: string;
   modifiedAt: string;
   modifiedBy: string;
@@ -15,4 +18,6 @@ export interface RichMember {
   sponsored: boolean;
   status: string;
   user: User;
+  userAttributes: Attribute[];
+  userExtSources: UserExtSource[];
 }

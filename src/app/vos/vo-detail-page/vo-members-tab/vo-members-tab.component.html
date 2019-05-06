@@ -1,11 +1,11 @@
-<div>
+<div (keyup)="foo($event)">
   <button mat-flat-button color="accent" (click)="onAddMember()">
     {{'VO_MEMBERS.ADD_MEMBER' | translate}}
   </button>
   <button mat-flat-button color="warn" class="ml-2" [disabled]="true">
     {{'VO_MEMBERS.REMOVE_MEMBERS' | translate}}
   </button>
-  <mat-form-field class="ml-2 search-field">
+  <mat-form-field class="ml-2 search-field no-border-mat-input">
     <input matInput placeholder="{{'VO_MEMBERS.SEARCH_DESCRIPTION' | translate}}" [(ngModel)]="searchString">
   </mat-form-field>
   <button mat-stroked-button class="ml-2" [disabled]="searchString.length === 0" (click)="onSearchByString()">

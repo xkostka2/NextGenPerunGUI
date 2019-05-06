@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Vo} from '../../../core/models/Vo';
 import {RichMember} from '../../../core/models/RichMember';
 import {MembersService} from '../../../core/services/members.service';
-import {TabComponent} from '../../../shared/components/tab.component';
 
 @Component({
   selector: 'app-vo-members-tab',
@@ -60,5 +59,11 @@ export class VoMembersTabComponent implements OnInit {
 
   onAddMember() {
 
+  }
+
+  foo(event: KeyboardEvent) {
+    if (event.key === 'Enter' && this.searchString.length > 0) {
+      this.onSearchByString();
+    }
   }
 }
