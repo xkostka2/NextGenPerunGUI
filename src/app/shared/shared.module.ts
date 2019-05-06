@@ -7,7 +7,7 @@ import {
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatProgressSpinnerModule, MatSelectModule,
+  MatInputModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule,
   MatSidenavModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatTooltipModule, MatTreeModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -45,6 +45,7 @@ import {TabPage} from './TabPage';
     MatSelectModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     MatTooltipModule
   ],
   exports: [
@@ -73,6 +74,7 @@ import {TabPage} from './TabPage';
     MatProgressSpinnerModule,
     TabComponent,
     TabPage,
+    MatProgressBarModule,
     MatTooltipModule
   ],
   entryComponents: [

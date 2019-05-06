@@ -1,5 +1,5 @@
-import {ActivatedRoute, NavigationStart, Router} from '@angular/router';
-import {AfterViewChecked, AfterViewInit, Component, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AfterViewChecked, Component, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {MatTab, MatTabGroup} from '@angular/material';
 
 @Component({
@@ -54,7 +54,7 @@ export class TabPage implements AfterViewChecked {
   }
 
   /**
-   * This code is used to disable tabs when switchit from one to another.
+   * This code is used to disable tabs when user switches from one to another.
    * If this would not be done, there could be a cycle if the user clicks fast
    * on the tabs.
    */
