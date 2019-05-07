@@ -29,10 +29,14 @@ export class GroupsListComponent implements OnChanges {
 
   private sort: MatSort;
 
+  @Input()
+  hideColumns: string[] = [];
+
   displayedColumns: string[] = ['checkbox', 'id', 'name'];
   dataSource: MatTableDataSource<Group>;
 
   ngOnChanges(changes: SimpleChanges) {
+    this.displayedColumns = this.displayedColumns.filter(x => !this.hideColumns.includes(x));
     this.dataSource = new MatTableDataSource<Group>(this.groups);
     this.setDataSource();
   }

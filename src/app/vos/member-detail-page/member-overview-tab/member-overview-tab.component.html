@@ -1,0 +1,24 @@
+<h1 class="page-subtitle">{{'MEMBER_DETAIL.OVERVIEW.MEMBERSHIP' | translate}}</h1>
+<table class="table table-bordered info-table col-3">
+  <tbody>
+  <tr>
+    <td>Status:</td>
+    <td class="d-flex border-0">
+      <mat-icon class="mr-1" [color]="statusIconColor">
+        {{statusIcon}}
+      </mat-icon>
+      <b>
+        {{member.status}}
+      </b>
+    </td>
+  </tr>
+  <tr>
+    <td>Expiration:</td>
+    <td>
+      <i>
+        {{expiration}}
+      </i>
+    </td>
+  </tr>
+  </tbody>
+</table>

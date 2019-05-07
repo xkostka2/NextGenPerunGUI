@@ -10,21 +10,37 @@
     "CREATE_VO": "New organization"
   },
   "VO_DETAIL": {
-    "OVERVIEW": "Overview",
-    "MEMBERS": "Members",
-    "GROUPS": "Groups"
+    "OVERVIEW_TAB": "Overview",
+    "MEMBERS_TAB": "Members",
+    "GROUPS_TAB": "Groups",
+    "GROUPS": {
+      "CREATE_GROUP": "Create...",
+      "DELETE_GROUP": "Delete...",
+      "TABLE_GROUP_ID": "Id",
+      "TABLE_GROUP_NAME": "Name"
+    },
+    "MEMBERS": {
+      "ADD_MEMBER": "Add...",
+      "REMOVE_MEMBERS": "Remove...",
+      "SEARCH_DESCRIPTION": "Search by name, login or email",
+      "LIST_ALL": "List all members"
+    },
+    "OVERVIEW": {
+      "INVITE_MEMBER": "Invite member",
+      "CREATE_SERVICE_MEMBER": "Create service member",
+      "ADD_MANAGER": "Add manager",
+      "CREATE_GROUP": "Create group",
+      "ADD_MEMBER": "Add member"
+    }
   },
-  "VO_GROUPS": {
-    "CREATE_GROUP": "Create...",
-    "DELETE_GROUP": "Delete...",
-    "TABLE_GROUP_ID": "Id",
-    "TABLE_GROUP_NAME": "Name"
-  },
-  "VO_MEMBERS": {
-    "ADD_MEMBER": "Add...",
-    "REMOVE_MEMBERS": "Remove...",
-    "SEARCH_DESCRIPTION": "Search by name, login or email",
-    "LIST_ALL": "List all members"
+  "MEMBER_DETAIL": {
+    "OVERVIEW": {
+      "NEVER_EXPIRES": "never",
+      "MEMBERSHIP": "Membership"
+    },
+    "GROUPS": {
+      "TITLE": "Member groups"
+    }
   },
   "MENU_ITEMS": {
     "VO": {
@@ -36,16 +52,12 @@
       "OVERVIEW": "Overview",
       "MEMBERS": "Members",
       "SUBGROUPS": "Subgroups"
+    },
+    "MEMBER": {
+      "OVERVIEW": "Overview",
+      "GROUPS": "Groups"
     }
   },
-  "VO_QA": {
-    "INVITE_MEMBER": "Invite member",
-    "CREATE_SERVICE_MEMBER": "Create service member",
-    "ADD_MANAGER": "Add manager",
-    "CREATE_GROUP": "Create group",
-    "ADD_MEMBER": "Add member"
-  },
-
   "DIALOGS":{
     "CREATE_GROUP": {
       "TITLE": "Create group",

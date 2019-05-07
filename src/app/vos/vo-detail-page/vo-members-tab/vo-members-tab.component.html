@@ -1,18 +1,18 @@
 <div (keyup)="foo($event)">
   <button mat-flat-button color="accent" (click)="onAddMember()">
-    {{'VO_MEMBERS.ADD_MEMBER' | translate}}
+    {{'VO_DETAIL.MEMBERS.ADD_MEMBER' | translate}}
   </button>
   <button mat-flat-button color="warn" class="ml-2" [disabled]="true">
-    {{'VO_MEMBERS.REMOVE_MEMBERS' | translate}}
+    {{'VO_DETAIL.MEMBERS.REMOVE_MEMBERS' | translate}}
   </button>
   <mat-form-field class="ml-2 search-field no-border-mat-input">
-    <input matInput placeholder="{{'VO_MEMBERS.SEARCH_DESCRIPTION' | translate}}" [(ngModel)]="searchString">
+    <input matInput placeholder="{{'VO_DETAIL.MEMBERS.SEARCH_DESCRIPTION' | translate}}" [(ngModel)]="searchString">
   </mat-form-field>
-  <button mat-stroked-button class="ml-2" [disabled]="searchString.length === 0" (click)="onSearchByString()">
+  <button mat-flat-button color="primary" class="ml-2" [disabled]="searchString.length === 0" (click)="onSearchByString()">
     <mat-icon>search</mat-icon>
   </button>
   <button mat-stroked-button class="ml-2" (click)="onListAll()">
-    {{'VO_MEMBERS.LIST_ALL' | translate}}
+    {{'VO_DETAIL.MEMBERS.LIST_ALL' | translate}}
   </button>
   <mat-spinner *ngIf="loading" class="ml-auto mr-auto">
   </mat-spinner>

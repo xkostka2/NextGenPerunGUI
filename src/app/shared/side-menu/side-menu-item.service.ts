@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Vo} from '../../core/models/Vo';
 import {SideMenuItem} from './side-menu.component';
 import {Group} from '../../core/models/Group';
+import {RichMember} from '../../core/models/RichMember';
+import {UtilsService} from '../utils.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,8 @@ import {Group} from '../../core/models/Group';
 export class SideMenuItemService {
 
   constructor(
-    private translate: TranslateService
+    private translate: TranslateService,
+    private utils: UtilsService
   ) { }
 
   parseGroup(group: Group): SideMenuItem {
@@ -52,6 +55,25 @@ export class SideMenuItemService {
       ],
       colorClass: 'vo-bg-color',
       icon: 'vo-white.svg'
+    };
+  }
+
+  parseMember(member: RichMember): SideMenuItem {
+    return {
+      baseLink: `/organizations/${member.voId}/members/${member.id}`,
+      label: this.utils.parseFullName(member.user),
+      links: [
+        {
+          label: this.translate.instant('MENU_ITEMS.MEMBER.OVERVIEW'),
+          url: [`/organizations/${member.voId}/members/${member.id}`, {tab: 0}]
+        },
+        {
+          label: this.translate.instant('MENU_ITEMS.MEMBER.GROUPS'),
+          url: [`//organizations/${member.voId}/members/${member.id}`, {tab: 1}]
+        }
+      ],
+      colorClass: 'member-bg-color',
+      icon: 'user-white.svg'
     };
   }
 }

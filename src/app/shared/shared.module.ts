@@ -20,6 +20,7 @@ import { InviteMemberDialogComponent } from './components/dialogs/invite-member-
 import { UserFullNamePipe } from './pipes/user-full-name.pipe';
 import {TabComponent} from './components/tab.component';
 import {TabPage} from './TabPage';
+import {Urns} from './Urns';
 
 @NgModule({
   imports: [

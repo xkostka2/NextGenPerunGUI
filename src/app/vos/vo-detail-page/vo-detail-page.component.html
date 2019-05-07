@@ -1,17 +1,17 @@
-<div class="container-fluid pl-xl-5 pr-xl-5" *ngIf="vo !== undefined">
+<div class="container-fluid pl-xl-5 pr-xl-5 vo-theme" *ngIf="vo !== undefined">
   <h1 class="page-title">Organization - {{vo.name}}</h1>
   <mat-tab-group
     animationDuration="0ms"
     (selectedTabChange)="updateMatrixParam($event.index)"
     class="tab-padding-top" [(selectedIndex)]="selectedTab"
     [dynamicHeight]="false">
-    <mat-tab label="{{'VO_DETAIL.OVERVIEW' | translate}}">
-      <app-vo-quick-actions [vo]="vo"></app-vo-quick-actions>
+    <mat-tab label="{{'VO_DETAIL.OVERVIEW_TAB' | translate}}">
+      <app-vo-overview-tab [vo]="vo"></app-vo-overview-tab>
     </mat-tab>
-    <mat-tab label="{{'VO_DETAIL.MEMBERS' | translate}}">
+    <mat-tab label="{{'VO_DETAIL.MEMBERS_TAB' | translate}}">
       <app-vo-members-tab [vo]="vo"></app-vo-members-tab>
     </mat-tab>
-    <mat-tab label="{{'VO_DETAIL.GROUPS' | translate}}">
+    <mat-tab label="{{'VO_DETAIL.GROUPS_TAB' | translate}}">
       <app-vo-groups-tab [vo]="vo"></app-vo-groups-tab>
     </mat-tab>
   </mat-tab-group>

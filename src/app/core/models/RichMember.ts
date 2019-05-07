@@ -17,6 +17,7 @@ export interface RichMember {
   sourceGroupId: number;
   sponsored: boolean;
   status: string;
+  voId: number;
   user: User;
   userAttributes: Attribute[];
   userExtSources: UserExtSource[];

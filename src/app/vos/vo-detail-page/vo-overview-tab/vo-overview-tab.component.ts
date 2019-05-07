@@ -1,15 +1,15 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Vo} from '../../core/models/Vo';
-import {MenuItem} from '../../shared/MenuItem';
-import {InviteMemberDialogComponent} from '../../shared/components/dialogs/invite-member-dialog/invite-member-dialog.component';
+import {Vo} from '../../../core/models/Vo';
+import {MenuItem} from '../../../shared/MenuItem';
+import {InviteMemberDialogComponent} from '../../../shared/components/dialogs/invite-member-dialog/invite-member-dialog.component';
 import {MatDialog} from '@angular/material';
 
 @Component({
-  selector: 'app-vo-quick-actions',
-  templateUrl: './vo-quick-actions.component.html',
-  styleUrls: ['./vo-quick-actions.component.scss']
+  selector: 'app-vo-overview-tab',
+  templateUrl: './vo-overview-tab.component.html',
+  styleUrls: ['./vo-overview-tab.component.scss']
 })
-export class VoQuickActionsComponent implements OnInit {
+export class VoOverviewTabComponent implements OnInit {
 
   constructor() { }
 
@@ -22,7 +22,7 @@ export class VoQuickActionsComponent implements OnInit {
     this.items = [
       {
         icon: 'invite_member-white.svg',
-        label: 'VO_QA.INVITE_MEMBER',
+        label: 'VO_DETAIL.OVERVIEW.INVITE_MEMBER',
         style: 'vo-btn',
         url: `/organizations/${this.vo.id}/invite-member`,
         clickAction: function (dialog: MatDialog, voId: number) {
@@ -38,7 +38,7 @@ export class VoQuickActionsComponent implements OnInit {
       },
       {
         icon: 'service_identity-white.svg',
-        label: 'VO_QA.CREATE_SERVICE_MEMBER',
+        label: 'VO_DETAIL.OVERVIEW.CREATE_SERVICE_MEMBER',
         style: 'vo-btn',
         url: `/organizations/${this.vo.id}/create-service-member`,
         clickAction: function (dialog: MatDialog, voId: number) {
@@ -47,7 +47,7 @@ export class VoQuickActionsComponent implements OnInit {
       },
       {
         icon: 'manager-white.svg',
-        label: 'VO_QA.ADD_MANAGER',
+        label: 'VO_DETAIL.OVERVIEW.ADD_MANAGER',
         style: 'vo-btn',
         url: `/organizations/${this.vo.id}/add-manager`,
         clickAction: function (dialog: MatDialog, voId: number) {
@@ -56,7 +56,7 @@ export class VoQuickActionsComponent implements OnInit {
       },
       {
         icon: 'group-white.svg',
-        label: 'VO_QA.CREATE_GROUP',
+        label: 'VO_DETAIL.OVERVIEW.CREATE_GROUP',
         style: 'vo-btn',
         url: `/organizations/${this.vo.id}/create-group`,
         clickAction: function (dialog: MatDialog, voId: number) {
@@ -65,7 +65,7 @@ export class VoQuickActionsComponent implements OnInit {
       },
       {
         icon: 'create1-white.svg',
-        label: 'VO_QA.ADD_MEMBER',
+        label: 'VO_DETAIL.OVERVIEW.ADD_MEMBER',
         style: 'vo-btn',
         url: `/organizations/${this.vo.id}/invite-member`,
         clickAction: function (dialog: MatDialog, voId: number) {

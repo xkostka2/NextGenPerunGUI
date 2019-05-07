@@ -32,7 +32,16 @@ export class VoSelectPageComponent implements OnInit {
       url: '/organizations/new',
       label: 'VO_MANAGEMENT.CREATE_VO',
       style: 'vo-btn',
-      clickAction: function (any) {
+      clickAction: function () {
+        return;
+      }
+    },
+    {
+      icon: 'create1-white.svg',
+      url: '/organizations/new',
+      label: 'VO_MANAGEMENT.CREATE_VO',
+      style: 'vo-btn',
+      clickAction: function () {
         return;
       }
     }

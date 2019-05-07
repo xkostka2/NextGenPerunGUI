@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {MatCheckboxChange, MatSort, MatTableDataSource} from '@angular/material';
 import {RichMember} from '../../core/models/RichMember';
-import {User} from '../../core/models/User';
+import {UtilsService} from '../../shared/utils.service';
 
 export declare class MemberSelectChange {
   member: RichMember;
@@ -10,6 +10,7 @@ export declare class MemberSelectChange {
 
 export interface TableMember {
   memberId: number;
+  voId: number;
   fullName: string;
   status: string;
   statusIcon: string;
@@ -25,7 +26,9 @@ export interface TableMember {
 })
 export class MembersListComponent implements OnChanges {
 
-  constructor() { }
+  constructor(
+    private utils: UtilsService
+  ) { }
 
   private sort: MatSort;
 
@@ -60,102 +63,17 @@ export class MembersListComponent implements OnChanges {
   private parseTableMember(richMember: RichMember) {
     return {
       memberId: richMember.id,
-      fullName: parseFullName(richMember.user),
-      statusIcon: parseStatusIcon(richMember),
+      voId: richMember.voId,
+      fullName: this.utils.parseFullName(richMember.user),
+      statusIcon: this.utils.parseStatusIcon(richMember),
       status: richMember.status,
-      statusColor: parseStatusColor(richMember),
-      email: parseEmail(richMember),
-      logins: parseLogins(richMember)
+      statusColor: this.utils.parseStatusColor(richMember),
+      email: this.utils.parseEmail(richMember),
+      logins: this.utils.parseLogins(richMember)
     };
   }
 
   onMemberSelected(event: MatCheckboxChange, member: RichMember) {
     this.memberSelectChange.emit({member: member, checked: event.checked});
   }
-}
-
-export function parseStatusIcon(richMember: RichMember): string {
-  switch (richMember.status) {
-    case 'VALID':
-      return 'verified_user';
-    case 'INVALID':
-      return 'report';
-    case 'SUSPENDED':
-      return 'lock';
-    case 'EXPIRED':
-      return 'schedule';
-    case 'DISABLED':
-      return 'delete';
-  }
-}
-
-export function parseStatusColor(richMember: RichMember): string {
-  switch (richMember.status) {
-    case 'VALID':
-      return 'accent';
-    case 'INVALID':
-      return 'warn';
-    default:
-      return 'primary';
-  }
-}
-
-export function parseEmail(richMember: RichMember): string {
-  let email = '';
-  richMember.memberAttributes.forEach(attr => {
-    if (attr.friendlyName === 'mail' && attr.value !== null) {
-      email = attr.value;
-    }
-  });
-
-  if (email.length === 0) {
-    richMember.userAttributes.forEach(attr => {
-      if (attr.friendlyName === 'preferredMail') {
-        email = attr.value;
-      }
-    });
-  }
-
-  return email;
-}
-
-export function parseLogins(richMember: RichMember): string {
-  let logins = '';
-
-  richMember.userAttributes.forEach(attr => {
-    if (attr.baseFriendlyName === 'login-namespace') {
-      logins += attr.friendlyNameParameter + ': ' + attr.value + ' ';
-    }
-  });
-
-  if (logins.endsWith(' ')) {
-    logins = logins.substring(0, logins.length - 1);
-  }
-
-  return logins;
-}
-
-export function parseFullName(user: User): string {
-  let fullName = '';
-
-  if (user.titleBefore !== null) {
-    fullName += user.titleBefore + ' ';
-  }
-  if (user.firstName !== null) {
-    fullName += user.firstName + ' ';
-  }
-  if (user.middleName !== null) {
-    fullName += user.middleName + ' ';
-  }
-  if (user.lastName !== null) {
-    fullName += user.lastName + ' ';
-  }
-  if (user.titleAfter !== null) {
-    fullName += user.titleAfter + ' ';
-  }
-  if (fullName.endsWith(' ')) {
-    fullName = fullName.substring(0, fullName.length - 1);
-  }
-
-  return fullName;
 }

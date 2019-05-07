@@ -27,4 +27,8 @@ export class GroupService {
       description: description
     });
   }
+
+  getMemberGroups(memberId: number): Observable<Group[]> {
+    return this.apiService.get(`json/groupsManager/getMemberGroups?member=${memberId}`);
+  }
 }
