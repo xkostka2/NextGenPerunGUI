@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MenuItem} from '../../MenuItem';
 import {MatDialog} from '@angular/material';
-import {InviteMemberDialogComponent} from '../dialogs/invite-member-dialog/invite-member-dialog.component';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
