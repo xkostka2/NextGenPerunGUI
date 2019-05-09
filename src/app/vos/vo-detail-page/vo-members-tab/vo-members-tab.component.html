@@ -16,6 +16,9 @@
   </button>
   <mat-spinner *ngIf="loading" class="ml-auto mr-auto">
   </mat-spinner>
+  <div class="perun-alert vo-alert" *ngIf="!firstSearchDone">
+    {{'VO_DETAIL.MEMBERS.SEARCH_ALERT' | translate}}
+  </div>
   <div class="mt-3" *ngIf="members !== null && !loading">
     <app-members-list
       [members]="members"

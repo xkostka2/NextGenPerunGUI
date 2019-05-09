@@ -23,7 +23,8 @@
       "ADD_MEMBER": "Add...",
       "REMOVE_MEMBERS": "Remove...",
       "SEARCH_DESCRIPTION": "Search by name, login or email",
-      "LIST_ALL": "List all members"
+      "LIST_ALL": "List all members",
+      "SEARCH_ALERT": "You can search member by name, login and email. Also, you can list all valid members."
     },
     "OVERVIEW": {
       "INVITE_MEMBER": "Invite member",

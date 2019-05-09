@@ -1,10 +1,10 @@
 <div class="container-fluid pl-xl-5 pr-xl-5 member-theme" *ngIf="vo !== undefined && member !== undefined">
   <h1 class="page-title">{{vo.name}} - {{fullName}}</h1>
-
   <mat-tab-group
+    class="tab-padding-top"
+    animationDuration="0ms"
     (selectedTabChange)="updateMatrixParam($event.index)"
-    [(selectedIndex)]="selectedTab"
-    class="tab-padding-top">
+    [(selectedIndex)]="selectedTab">
     <mat-tab label="Overview">
       <app-member-overview-tab [member]="member">
       </app-member-overview-tab>

@@ -1,10 +1,10 @@
 <div class="container-fluid pl-xl-5 pr-xl-5 vo-theme" *ngIf="vo !== undefined">
   <h1 class="page-title">Organization - {{vo.name}}</h1>
   <mat-tab-group
+    class="tab-padding-top"
     animationDuration="0ms"
     (selectedTabChange)="updateMatrixParam($event.index)"
-    class="tab-padding-top" [(selectedIndex)]="selectedTab"
-    [dynamicHeight]="false">
+    [(selectedIndex)]="selectedTab">
     <mat-tab label="{{'VO_DETAIL.OVERVIEW_TAB' | translate}}">
       <app-vo-overview-tab [vo]="vo"></app-vo-overview-tab>
     </mat-tab>

@@ -26,6 +26,7 @@ export class VoMembersTabComponent implements OnInit {
   members: RichMember[] = null;
 
   searchString = '';
+  firstSearchDone = false;
 
   loading = false;
 
@@ -35,6 +36,7 @@ export class VoMembersTabComponent implements OnInit {
 
   onSearchByString() {
     this.loading = true;
+    this.firstSearchDone = true;
 
     this.membersService.findCompleteRichMembers(this.vo.id, this.searchString).subscribe(
       members => {

@@ -64,6 +64,19 @@ button:focus {
   outline: none !important;
 }
 
+.perun-alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid;
+}
+
+.vo-alert {
+  color: #000000;
+  background-color: #d2e2ff;
+  border-color: #283593;
+}
+
 // might be useful
 .main-progress-bar {
   z-index: 999999;
@@ -433,6 +446,16 @@ button:focus {
   label {
     margin-bottom: 0 !important;
   }
+}
+
+.mat-stroked-button {
+  border-radius: 0 !important;
+}
+.mat-flat-button {
+  border-radius: 0 !important;
+}
+.mat-button {
+  border-radius: 0 !important;
 }
 
 // remove top border so the button position on all tabs is the same event when there is input used
