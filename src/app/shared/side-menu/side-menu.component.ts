@@ -54,4 +54,5 @@ export interface SideMenuItem {
 export interface EntityMenuLink {
   label: string;
   url:  any[] | string;
+  activatedRegex: string;
 }

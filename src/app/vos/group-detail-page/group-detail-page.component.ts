@@ -13,18 +13,16 @@ import {TabPage} from '../../shared/TabPage';
   templateUrl: './group-detail-page.component.html',
   styleUrls: ['./group-detail-page.component.scss']
 })
-export class GroupDetailPageComponent extends TabPage implements OnInit {
+export class GroupDetailPageComponent implements OnInit {
 
   constructor(
     private sideMenuService: SideMenuService,
     private voService: VoService,
-    protected route: ActivatedRoute,
-    protected router: Router,
+    private route: ActivatedRoute,
+    private router: Router,
     private sideMenuItemService: SideMenuItemService,
     private groupService: GroupService
-  ) {
-    super(route, router);
-  }
+  ) {}
 
   vo: Vo;
   group: Group;

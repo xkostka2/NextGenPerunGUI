@@ -1,17 +1,12 @@
 <div class="container-fluid pl-xl-5 pr-xl-5 member-theme" *ngIf="vo !== undefined && member !== undefined">
-  <h1 class="page-title">{{vo.name}} - {{fullName}}</h1>
-  <mat-tab-group
-    class="tab-padding-top"
-    animationDuration="0ms"
-    (selectedTabChange)="updateMatrixParam($event.index)"
-    [(selectedIndex)]="selectedTab">
-    <mat-tab label="Overview">
-      <app-member-overview-tab [member]="member">
-      </app-member-overview-tab>
-    </mat-tab>
-    <mat-tab label="Groups">
-      <app-member-groups-tab [member]="member">
-      </app-member-groups-tab>
-    </mat-tab>
-  </mat-tab-group>
+  <h1 class="page-title">
+    <a class="title-link" [routerLink]="['/organizations', vo.id]">
+      {{vo.name}}
+    </a>
+     -
+    <a class="member-link" [routerLink]="['/organizations', vo.id, 'members', member.id]">
+      {{fullName}}
+    </a>
+  </h1>
+  <router-outlet></router-outlet>
 </div>

@@ -10,16 +10,16 @@
     "CREATE_VO": "New organization"
   },
   "VO_DETAIL": {
-    "OVERVIEW_TAB": "Overview",
-    "MEMBERS_TAB": "Members",
-    "GROUPS_TAB": "Groups",
+    "TITLE": "Organization - ",
     "GROUPS": {
+      "TITLE": "Groups",
       "CREATE_GROUP": "Create...",
       "DELETE_GROUP": "Delete...",
       "TABLE_GROUP_ID": "Id",
       "TABLE_GROUP_NAME": "Name"
     },
     "MEMBERS": {
+      "TITLE": "Members",
       "ADD_MEMBER": "Add...",
       "REMOVE_MEMBERS": "Remove...",
       "SEARCH_DESCRIPTION": "Search by name, login or email",
@@ -33,6 +33,9 @@
       "CREATE_GROUP": "Create group",
       "ADD_MEMBER": "Add member"
     }
+  },
+  "GROUP_DETAIL": {
+    "TITLE": "Group - "
   },
   "MEMBER_DETAIL": {
     "OVERVIEW": {

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VoMembersTabComponent } from './vo-members-tab.component';
+import { VoGroupsComponent } from './vo-groups.component';
 
-describe('VoMembersTabComponent', () => {
-  let component: VoMembersTabComponent;
-  let fixture: ComponentFixture<VoMembersTabComponent>;
+describe('VoGroupsTabComponent', () => {
+  let component: VoGroupsComponent;
+  let fixture: ComponentFixture<VoGroupsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VoMembersTabComponent ]
+      declarations: [ VoGroupsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VoMembersTabComponent);
+    fixture = TestBed.createComponent(VoGroupsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

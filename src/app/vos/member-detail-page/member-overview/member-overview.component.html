@@ -1,5 +1,5 @@
 <h1 class="page-subtitle">{{'MEMBER_DETAIL.OVERVIEW.MEMBERSHIP' | translate}}</h1>
-<table class="table table-bordered info-table col-3">
+<table *ngIf="member !== null" class="table table-bordered info-table col-3">
   <tbody>
   <tr>
     <td>Status:</td>

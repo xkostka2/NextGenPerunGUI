@@ -30,7 +30,7 @@ $perun-theme: mat-light-theme($perun-primary, $perun-accent, $perun-warn);
 $vo-color: #283593;
 $facility-color: #E64A19;
 $group-color: #388E3C;
-$member-color: #d32f2f;
+$member-color: #BF360C;
 
 .vo-theme {
   $vo-primary: mat-palette($mat-indigo, 800);
@@ -72,9 +72,21 @@ button:focus {
   border-left: 4px solid;
 }
 
+.warn-alert {
+  color: #000000;
+  background-color: #f4ebd0;
+  border-color: #c69a14;
+}
+
+.error-alert {
+  color: #000000;
+  background-color: #fae2e2;
+  border-color: #d32f2f;
+}
+
 .vo-alert {
   color: #000000;
-  background-color: #d2e2ff;
+  background-color: #e9f1ff;
   border-color: #283593;
 }
 
@@ -425,14 +437,30 @@ button:focus {
   }
 }
 
+.title-link {
+  color: #000000;
+  text-decoration: underline;
+
+  &:hover {
+    color: #404040;
+  }
+}
+
 .vo-link {
   color: $vo-color;
-  &:hover {
-    text-decoration: none;
-  }
+  text-decoration: underline;
 
   &:hover {
     color: lighten($vo-color, 10%);
+  }
+}
+
+.member-link {
+  color: $member-color;
+  text-decoration: underline;
+
+  &:hover {
+    color: lighten($member-color, 10%);
   }
 }
 
@@ -460,8 +488,8 @@ button:focus {
 }
 
 // remove top border so the button position on all tabs is the same event when there is input used
-.no-border-mat-input {
-  .mat-form-field-infix {
-    border-top: 0;
-  }
-}
+//.no-border-mat-input {
+//  .mat-form-field-infix {
+//    border-top: 0;
+//  }
+//}

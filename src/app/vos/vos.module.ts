@@ -7,13 +7,15 @@ import {VoDetailPageComponent} from './vo-detail-page/vo-detail-page.component';
 import {GroupDetailPageComponent} from './group-detail-page/group-detail-page.component';
 import {GroupsTreeComponent} from './groups-tree/groups-tree.component';
 import {GroupsListComponent} from './groups-list/groups-list.component';
-import {VoOverviewTabComponent} from './vo-detail-page/vo-overview-tab/vo-overview-tab.component';
-import {VoGroupsTabComponent} from './vo-detail-page/vo-groups-tab/vo-groups-tab.component';
-import { VoMembersTabComponent } from './vo-detail-page/vo-members-tab/vo-members-tab.component';
-import { MembersListComponent } from './members-list/members-list.component';
-import { MemberDetailPageComponent } from './member-detail-page/member-detail-page.component';
-import { MemberOverviewTabComponent } from './member-detail-page/member-overview-tab/member-overview-tab.component';
-import { MemberGroupsTabComponent } from './member-detail-page/member-groups-tab/member-groups-tab.component';
+import {VoOverviewComponent} from './vo-detail-page/vo-overview/vo-overview.component';
+import {VoGroupsComponent} from './vo-detail-page/vo-groups/vo-groups.component';
+import {VoMembersComponent} from './vo-detail-page/vo-members/vo-members.component';
+import {MembersListComponent} from './members-list/members-list.component';
+import {MemberDetailPageComponent} from './member-detail-page/member-detail-page.component';
+import {MemberOverviewComponent} from './member-detail-page/member-overview/member-overview.component';
+import {MemberGroupsComponent} from './member-detail-page/member-groups/member-groups.component';
+import {GroupOverviewComponent} from './group-detail-page/group-overview/group-overview.component';
+import {GroupSubgroupsComponent} from './group-detail-page/group-subgroups/group-subgroups.component';
 
 @NgModule({
   imports: [
@@ -27,13 +29,15 @@ import { MemberGroupsTabComponent } from './member-detail-page/member-groups-tab
     GroupDetailPageComponent,
     GroupsTreeComponent,
     GroupsListComponent,
-    VoOverviewTabComponent,
-    VoGroupsTabComponent,
-    VoMembersTabComponent,
+    VoOverviewComponent,
+    VoGroupsComponent,
+    VoMembersComponent,
     MembersListComponent,
     MemberDetailPageComponent,
-    MemberOverviewTabComponent,
-    MemberGroupsTabComponent
+    MemberOverviewComponent,
+    MemberGroupsComponent,
+    GroupOverviewComponent,
+    GroupSubgroupsComponent
   ]
 })
 export class VosModule {

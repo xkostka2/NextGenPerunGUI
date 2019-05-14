@@ -5,24 +5,21 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Vo} from '../../core/models/Vo';
 import {SideMenuItemService} from '../../shared/side-menu/side-menu-item.service';
 import {MenuItem} from '../../shared/MenuItem';
-import {TabPage} from '../../shared/TabPage';
 
 @Component({
   selector: 'app-vo-detail-page',
   templateUrl: './vo-detail-page.component.html',
   styleUrls: ['./vo-detail-page.component.scss']
 })
-export class VoDetailPageComponent extends TabPage implements OnInit {
+export class VoDetailPageComponent implements OnInit {
 
   constructor(
     private sideMenuService: SideMenuService,
     private voService: VoService,
-    protected route: ActivatedRoute,
-    protected router: Router,
+    private route: ActivatedRoute,
+    private router: Router,
     private sideMenuItemService: SideMenuItemService,
-  ) {
-    super(route, router);
-  }
+  ) {}
 
   vo: Vo;
   items: MenuItem[];

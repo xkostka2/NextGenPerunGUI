@@ -1,15 +1,4 @@
 <div class="container-fluid pl-xl-5 pr-xl-5 group-theme" *ngIf="vo !== undefined && group !== undefined">
-  <h1 class="page-title">Group - {{group.name}}</h1>
-  <mat-tab-group
-    animationDuration="0ms"
-    (selectedTabChange)="updateMatrixParam($event.index)"
-    [(selectedIndex)]="selectedTab">
-    <mat-tab label="Overview">
-      <p>
-        Here will be displayed info about group and group actions.
-      </p>
-    </mat-tab>
-    <mat-tab label="Subgroups">
-    </mat-tab>
-  </mat-tab-group>
+  <h1 class="page-title">{{'GROUP_DETAIL.TITLE' | translate}}{{group.name}}</h1>
+  <router-outlet></router-outlet>
 </div>

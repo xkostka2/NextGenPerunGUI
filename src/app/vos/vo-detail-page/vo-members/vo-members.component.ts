@@ -1,26 +1,26 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Vo} from '../../../core/models/Vo';
 import {RichMember} from '../../../core/models/RichMember';
 import {MembersService} from '../../../core/services/members.service';
+import {SideMenuService} from '../../../shared/side-menu.service';
+import {VoService} from '../../../core/services/vo.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-vo-members-tab',
-  templateUrl: './vo-members-tab.component.html',
-  // Could be useful in the future
-  //
-  // providers: [{
-  //   provide: TabComponent,
-  //   useExisting: VoMembersTabComponent
-  // }],
-  styleUrls: ['./vo-members-tab.component.scss']
+  selector: 'app-vo-members',
+  templateUrl: './vo-members.component.html',
+  styleUrls: ['./vo-members.component.scss']
 })
-export class VoMembersTabComponent implements OnInit {
+export class VoMembersComponent implements OnInit {
 
   constructor(
-    private membersService: MembersService
+    private membersService: MembersService,
+    private sideMenuService: SideMenuService,
+    private voService: VoService,
+    protected route: ActivatedRoute,
+    protected router: Router
   ) { }
 
-  @Input()
   vo: Vo;
 
   members: RichMember[] = null;
@@ -31,7 +31,13 @@ export class VoMembersTabComponent implements OnInit {
   loading = false;
 
   ngOnInit() {
-    console.log(this.members);
+    this.route.parent.params.subscribe(parentParams => {
+      const voId = parentParams['voId'];
+
+      this.voService.getVoById(voId).subscribe(vo => {
+        this.vo = vo;
+      });
+    });
   }
 
   onSearchByString() {

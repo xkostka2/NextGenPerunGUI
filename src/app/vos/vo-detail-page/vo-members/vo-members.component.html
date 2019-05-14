@@ -1,4 +1,6 @@
 <div (keyup)="foo($event)">
+  <h1 class="page-subtitle">{{'VO_DETAIL.MEMBERS.TITLE' | translate}}</h1>
+
   <button mat-flat-button color="accent" class="mr-2"(click)="onAddMember()">
     {{'VO_DETAIL.MEMBERS.ADD_MEMBER' | translate}}
   </button>
@@ -6,7 +8,7 @@
     {{'VO_DETAIL.MEMBERS.REMOVE_MEMBERS' | translate}}
   </button>
   <mat-form-field class="mr-2 search-field no-border-mat-input">
-    <input matInput placeholder="{{'VO_DETAIL.MEMBERS.SEARCH_DESCRIPTION' | translate}}" [(ngModel)]="searchString">
+    <input matInput autocomplete="false" placeholder="{{'VO_DETAIL.MEMBERS.SEARCH_DESCRIPTION' | translate}}" [(ngModel)]="searchString">
   </mat-form-field>
   <button mat-flat-button color="primary" class="mr-2" [disabled]="searchString.length === 0" (click)="onSearchByString()">
     <mat-icon>search</mat-icon>
@@ -25,7 +27,7 @@
       *ngIf="members.length !== 0">
     </app-members-list>
 
-    <div *ngIf="members.length === 0">
+    <div *ngIf="members.length === 0" class="perun-alert warn-alert">
       No members found.
     </div>
   </div>

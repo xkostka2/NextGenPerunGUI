@@ -23,11 +23,13 @@ export class SideMenuItemService {
       links: [
         {
           label: this.translate.instant('MENU_ITEMS.GROUP.OVERVIEW'),
-          url: [`/organizations/${group.voId}/groups/${group.id}`, {tab: 0}]
+          url: [`/organizations/${group.voId}/groups/${group.id}`],
+          activatedRegex: '/organizations/\\d+/groups/\\d+$'
         },
         {
           label: this.translate.instant('MENU_ITEMS.GROUP.SUBGROUPS'),
-          url: [`/organizations/${group.voId}/groups/${group.id}`, {tab: 1}]
+          url: [`/organizations/${group.voId}/groups/${group.id}/subgroups`],
+          activatedRegex: '/organizations/\\d+/groups/\\d+/subgroups$'
         }
       ],
       colorClass: 'group-bg-color',
@@ -42,15 +44,18 @@ export class SideMenuItemService {
       links: [
         {
           label: this.translate.instant('MENU_ITEMS.VO.OVERVIEW'),
-          url: [`/organizations/${vo.id}`, {tab: 0}]
+          url: [`/organizations/${vo.id}`],
+          activatedRegex: '/organizations/\\d+$'
         },
         {
           label: this.translate.instant('MENU_ITEMS.VO.MEMBERS'),
-          url: [`/organizations/${vo.id}`, {tab: 1}]
+          url: [`/organizations/${vo.id}/members`],
+          activatedRegex: '/organizations/\\d+/members$'
         },
         {
           label: this.translate.instant('MENU_ITEMS.VO.GROUPS'),
-          url: [`/organizations/${vo.id}`, {tab: 2}]
+          url: [`/organizations/${vo.id}/groups`],
+          activatedRegex: '/organizations/\\d+/groups$'
         }
       ],
       colorClass: 'vo-bg-color',
@@ -65,11 +70,13 @@ export class SideMenuItemService {
       links: [
         {
           label: this.translate.instant('MENU_ITEMS.MEMBER.OVERVIEW'),
-          url: [`/organizations/${member.voId}/members/${member.id}`, {tab: 0}]
+          url: [`/organizations/${member.voId}/members/${member.id}`],
+          activatedRegex: '/organizations/\\d+/members/\\d+$'
         },
         {
           label: this.translate.instant('MENU_ITEMS.MEMBER.GROUPS'),
-          url: [`//organizations/${member.voId}/members/${member.id}`, {tab: 1}]
+          url: [`//organizations/${member.voId}/members/${member.id}/groups`],
+          activatedRegex: '/organizations/\\d+/members/\\d+/groups$'
         }
       ],
       colorClass: 'member-bg-color',

@@ -1,5 +1,6 @@
-import {AfterViewChecked, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {SideMenuItem} from '../side-menu.component';
+import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-side-menu-item',
@@ -8,7 +9,19 @@ import {SideMenuItem} from '../side-menu.component';
 })
 export class SideMenuItemComponent implements OnInit {
 
-  constructor() { }
+  private currentUrl: string;
+
+  constructor(
+    private router: Router
+  ) {
+    this.currentUrl = router.url;
+
+    router.events.subscribe((_: NavigationEnd) => {
+      if (_ instanceof NavigationEnd) {
+        this.currentUrl = _.url;
+      }
+    });
+  }
 
   @Input()
   item: SideMenuItem;
@@ -34,5 +47,11 @@ export class SideMenuItemComponent implements OnInit {
 
   toggle() {
     this.expanded = !this.expanded;
+  }
+
+  isActive(currentUrl: string, regexValue: string) {
+    const regexp = new RegExp(regexValue);
+
+    return regexp.test(currentUrl);
   }
 }

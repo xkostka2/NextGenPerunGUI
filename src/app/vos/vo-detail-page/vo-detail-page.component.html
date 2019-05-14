@@ -1,19 +1,10 @@
 <div class="container-fluid pl-xl-5 pr-xl-5 vo-theme" *ngIf="vo !== undefined">
-  <h1 class="page-title">Organization - {{vo.name}}</h1>
-  <mat-tab-group
-    class="tab-padding-top"
-    animationDuration="0ms"
-    (selectedTabChange)="updateMatrixParam($event.index)"
-    [(selectedIndex)]="selectedTab">
-    <mat-tab label="{{'VO_DETAIL.OVERVIEW_TAB' | translate}}">
-      <app-vo-overview-tab [vo]="vo"></app-vo-overview-tab>
-    </mat-tab>
-    <mat-tab label="{{'VO_DETAIL.MEMBERS_TAB' | translate}}">
-      <app-vo-members-tab [vo]="vo"></app-vo-members-tab>
-    </mat-tab>
-    <mat-tab label="{{'VO_DETAIL.GROUPS_TAB' | translate}}">
-      <app-vo-groups-tab [vo]="vo"></app-vo-groups-tab>
-    </mat-tab>
-  </mat-tab-group>
+  <h1 class="page-title">
+    {{'VO_DETAIL.TITLE' | translate}}
+    <a class="vo-link" [routerLink]="['/organizations/', vo.id]">
+      {{vo.name}}
+    </a>
+  </h1>
+  <router-outlet></router-outlet>
 </div>
 

@@ -1,24 +1,42 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Vo} from '../../../core/models/Vo';
 import {MenuItem} from '../../../shared/MenuItem';
 import {InviteMemberDialogComponent} from '../../../shared/components/dialogs/invite-member-dialog/invite-member-dialog.component';
 import {MatDialog} from '@angular/material';
+import {SideMenuService} from '../../../shared/side-menu.service';
+import {VoService} from '../../../core/services/vo.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-vo-overview-tab',
-  templateUrl: './vo-overview-tab.component.html',
-  styleUrls: ['./vo-overview-tab.component.scss']
+  selector: 'app-vo-overview',
+  templateUrl: './vo-overview.component.html',
+  styleUrls: ['./vo-overview.component.scss']
 })
-export class VoOverviewTabComponent implements OnInit {
+export class VoOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private sideMenuService: SideMenuService,
+    private voService: VoService,
+    protected route: ActivatedRoute,
+    protected router: Router
+  ) { }
 
-  @Input()
   vo: Vo;
-
   items: MenuItem[] = [];
 
   ngOnInit(): void {
+    this.route.parent.params.subscribe(parentParams => {
+      const voId = parentParams['voId'];
+
+      this.voService.getVoById(voId).subscribe(vo => {
+        this.vo = vo;
+
+        this.initItems();
+      });
+    });
+  }
+
+  private initItems() {
     this.items = [
       {
         icon: 'invite_member-white.svg',

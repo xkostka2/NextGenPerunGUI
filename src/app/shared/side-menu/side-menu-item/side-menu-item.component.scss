@@ -11,6 +11,12 @@
   transition: 0.2s;
 }
 
+.activated {
+  background: rgba(0, 0, 0, 0.1);
+  color: #313131 !important;
+  border-right: 3px solid;
+}
+
 .side-entity-menu a:hover {
   color: #313131;
   background-color: rgba(0, 0, 0, 0.1);

@@ -1,9 +1,16 @@
 import {RouterModule, Routes} from '@angular/router';
 import {VoSelectPageComponent} from './vo-select-page/vo-select-page.component';
 import {NgModule} from '@angular/core';
-import {VoDetailPageComponent} from './vo-detail-page/vo-detail-page.component';
 import {GroupDetailPageComponent} from './group-detail-page/group-detail-page.component';
 import {MemberDetailPageComponent} from './member-detail-page/member-detail-page.component';
+import {VoOverviewComponent} from './vo-detail-page/vo-overview/vo-overview.component';
+import {VoGroupsComponent} from './vo-detail-page/vo-groups/vo-groups.component';
+import {VoMembersComponent} from './vo-detail-page/vo-members/vo-members.component';
+import {VoDetailPageComponent} from './vo-detail-page/vo-detail-page.component';
+import {MemberOverviewComponent} from './member-detail-page/member-overview/member-overview.component';
+import {MemberGroupsComponent} from './member-detail-page/member-groups/member-groups.component';
+import {GroupOverviewComponent} from './group-detail-page/group-overview/group-overview.component';
+import {GroupSubgroupsComponent} from './group-detail-page/group-subgroups/group-subgroups.component';
 
 const routes: Routes = [
   {
@@ -12,19 +19,49 @@ const routes: Routes = [
   },
   {
     path: ':voId',
-    component: VoDetailPageComponent
-  },
-  {
-    path: ':voId/groups',
-    component: VoDetailPageComponent
-  },
-  {
-    path: ':voId/groups/:groupId',
-    component: GroupDetailPageComponent
+    component: VoDetailPageComponent,
+    children: [
+      {
+        path: '',
+        component: VoOverviewComponent
+      },
+      {
+        path: 'groups',
+        component: VoGroupsComponent
+      },
+      {
+        path: 'members',
+        component: VoMembersComponent
+      }
+    ]
   },
   {
     path: ':voId/members/:memberId',
-    component: MemberDetailPageComponent
+    component: MemberDetailPageComponent,
+    children: [
+      {
+        path: '',
+        component: MemberOverviewComponent
+      },
+      {
+        path: 'groups',
+        component: MemberGroupsComponent
+      }
+    ]
+  },
+  {
+    path: ':voId/groups/:groupId',
+    component: GroupDetailPageComponent,
+    children: [
+      {
+        path: '',
+        component: GroupOverviewComponent
+      },
+      {
+        path: 'subgroups',
+        component: GroupSubgroupsComponent
+      }
+    ]
   }
 ];
 
