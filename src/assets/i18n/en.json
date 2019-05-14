@@ -11,6 +11,7 @@
   },
   "VO_DETAIL": {
     "TITLE": "Organization - ",
+    "BACK": "Back",
     "GROUPS": {
       "TITLE": "Groups",
       "CREATE_GROUP": "Create...",

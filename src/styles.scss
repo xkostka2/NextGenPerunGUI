@@ -72,6 +72,12 @@ button:focus {
   border-left: 4px solid;
 }
 
+.info-alert {
+  color: #000000;
+  background-color: #e9f1ff;
+  border-color: #056dbf;
+}
+
 .warn-alert {
   color: #000000;
   background-color: #f4ebd0;
@@ -82,12 +88,6 @@ button:focus {
   color: #000000;
   background-color: #fae2e2;
   border-color: #d32f2f;
-}
-
-.vo-alert {
-  color: #000000;
-  background-color: #e9f1ff;
-  border-color: #283593;
 }
 
 // might be useful
@@ -161,43 +161,20 @@ button:focus {
 }
 
 .box-button-large {
-  display: flex;
-  flex-direction: column;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.25em;
   color: #ffffff;
   -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
   -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
-
-  img {
-    width: 100%;
-    flex-grow: 1;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  @media (min-width: 992px) and (max-width: 1199px) {
-    img {
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
-  }
-
-  @media (min-width: 768px) and (max-width: 991px) {
-    img {
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    img {
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
-  }
 }
 
+.box-button-small {
+  color: #ffffff;
+  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
+  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
+}
 
 .box-button-medium {
   color: #ffffff;
@@ -220,14 +197,14 @@ button:focus {
     padding-left: .5rem;
     padding-right: .5rem;
   }
-  @media (min-width: 992px) and (max-width: 1199px) {
+  @media (min-width: 768px) and (max-width: 991px) {
     img {
       padding-left: .75rem;
       padding-right: .75rem;
     }
   }
 
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (min-width: 992px) and (max-width: 1199px) {
     img {
       padding-left: .75rem;
       padding-right: .75rem;
@@ -243,8 +220,64 @@ button:focus {
   display: flex;
   flex-direction: column;
   text-align: center;
-  font-size: 1.5em;
-  padding: 1.5rem;
+  font-size: 1.25em;
+  padding: .5rem .5rem 1.5rem .5rem;
+  width: 100%;
+  margin: 1rem;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    color: white;
+    text-decoration: none !important;
+  }
+}
+
+.menu-item-small {
+  img {
+    width: 100%;
+    flex-grow: 1;
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    img {
+      padding-left: .75rem;
+      padding-right: .75rem;
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    img {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    img {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    img {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.25em;
+  padding: 0.5rem;
   width: 100%;
   margin: 1rem;
 
@@ -417,12 +450,10 @@ button:focus {
   }
 }
 
-
 .group-btn {
   background-color: $group-color;
   color: #ffffff;
   border-radius: 0;
-
 
   &:hover {
     background-color: lighten($group-color, 10%);
@@ -430,6 +461,24 @@ button:focus {
 
   &:active {
     background-color: darken($group-color, 5%);
+  }
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.member-btn {
+  background-color: $member-color;
+  color: #ffffff;
+  border-radius: 0;
+
+  &:hover {
+    background-color: lighten($member-color, 10%);
+  }
+
+  &:active {
+    background-color: darken($member-color, 5%);
   }
 
   &:hover {

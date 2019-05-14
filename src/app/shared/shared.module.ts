@@ -21,6 +21,7 @@ import { UserFullNamePipe } from './pipes/user-full-name.pipe';
 import {TabComponent} from './components/tab.component';
 import {TabPage} from './TabPage';
 import {Urns} from './Urns';
+import { BackButtonComponent } from './components/back-button/back-button.component';
 
 @NgModule({
   imports: [
@@ -76,7 +77,8 @@ import {Urns} from './Urns';
     TabComponent,
     TabPage,
     MatProgressBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    BackButtonComponent
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -91,7 +93,8 @@ import {Urns} from './Urns';
     InviteMemberDialogComponent,
     UserFullNamePipe,
     TabComponent,
-    TabPage
+    TabPage,
+    BackButtonComponent
   ]
 })
 export class SharedModule { }

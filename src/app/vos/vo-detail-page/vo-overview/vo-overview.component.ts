@@ -24,6 +24,8 @@ export class VoOverviewComponent implements OnInit {
   vo: Vo;
   items: MenuItem[] = [];
 
+  navItems: MenuItem[] = [];
+
   ngOnInit(): void {
     this.route.parent.params.subscribe(parentParams => {
       const voId = parentParams['voId'];
@@ -31,9 +33,33 @@ export class VoOverviewComponent implements OnInit {
       this.voService.getVoById(voId).subscribe(vo => {
         this.vo = vo;
 
-        this.initItems();
+        // this.initItems();
+        this.initNavItems();
       });
     });
+  }
+
+  private initNavItems() {
+    this.navItems = [
+      {
+        icon: 'user-white.svg',
+        url: `/organizations/${this.vo.id}/members`,
+        label: 'MENU_ITEMS.VO.MEMBERS',
+        style: 'vo-btn',
+        clickAction: function () {
+          return;
+        }
+      },
+        {
+          icon: 'group-white.svg',
+          url: `/organizations/${this.vo.id}/groups`,
+          label: 'MENU_ITEMS.VO.GROUPS',
+          style: 'vo-btn',
+          clickAction: function () {
+            return;
+          }
+        }
+    ];
   }
 
   private initItems() {

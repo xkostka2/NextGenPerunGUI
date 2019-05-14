@@ -15,7 +15,7 @@ export class PerunNavComponent implements OnInit {
 
   items: any[] = [
     {
-      icon: 'perun_admin-white.svg',
+      icon: 'perun_logo-white.svg',
       url: '/',
       alt: 'Home'
     },

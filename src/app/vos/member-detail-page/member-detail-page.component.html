@@ -8,5 +8,7 @@
       {{fullName}}
     </a>
   </h1>
+  <app-back-button *ngIf="backButtonDisplayed" [url]="['/organizations', vo.id, 'members', member.id]">
+  </app-back-button>
   <router-outlet></router-outlet>
 </div>

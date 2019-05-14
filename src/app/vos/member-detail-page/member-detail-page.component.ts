@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {VoService} from '../../core/services/vo.service';
 import {Vo} from '../../core/models/Vo';
 import {RichMember} from '../../core/models/RichMember';
@@ -25,8 +25,23 @@ export class MemberDetailPageComponent implements OnInit {
     private membersService: MembersService,
     private utils: UtilsService,
     private voService: VoService,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.currentUrl = router.url;
+
+    router.events.subscribe((_: NavigationEnd) => {
+      if (_ instanceof NavigationEnd) {
+        this.currentUrl = _.url;
+
+        this.backButtonDisplayed = !this.overviewUrlRegex.test(this.currentUrl);
+      }
+    });
+  }
+
+  overviewUrlRegex = new RegExp('/organizations/\\d+/members/\\d+$');
+  currentUrl;
+  backButtonDisplayed = false;
 
   vo: Vo;
   member: RichMember;

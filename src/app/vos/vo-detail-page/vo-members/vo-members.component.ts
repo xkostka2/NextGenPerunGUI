@@ -55,6 +55,7 @@ export class VoMembersComponent implements OnInit {
 
   onListAll() {
     this.loading = true;
+    this.firstSearchDone = true;
 
     this.membersService.getCompleteRichMembers(this.vo.id).subscribe(
       members => {

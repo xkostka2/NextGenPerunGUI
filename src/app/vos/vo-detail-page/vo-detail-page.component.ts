@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {SideMenuService} from '../../shared/side-menu.service';
 import {VoService} from '../../core/services/vo.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Vo} from '../../core/models/Vo';
 import {SideMenuItemService} from '../../shared/side-menu/side-menu-item.service';
-import {MenuItem} from '../../shared/MenuItem';
+import {current} from 'codelyzer/util/syntaxKind';
 
 @Component({
   selector: 'app-vo-detail-page',
@@ -19,10 +19,23 @@ export class VoDetailPageComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private sideMenuItemService: SideMenuItemService,
-  ) {}
+  ) {
+    this.currentUrl = router.url;
+
+    router.events.subscribe((_: NavigationEnd) => {
+      if (_ instanceof NavigationEnd) {
+        this.currentUrl = _.url;
+
+        this.backButtonDisplayed = !this.overviewUrlRegex.test(this.currentUrl);
+      }
+    });
+  }
 
   vo: Vo;
-  items: MenuItem[];
+
+  overviewUrlRegex = new RegExp('/organizations/\\d+$');
+  currentUrl;
+  backButtonDisplayed = false;
 
   ngOnInit() {
     this.route.params.subscribe(params => {

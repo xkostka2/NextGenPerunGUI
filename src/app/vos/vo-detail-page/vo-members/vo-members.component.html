@@ -7,18 +7,19 @@
   <button mat-flat-button color="warn" class="mr-2" [disabled]="true">
     {{'VO_DETAIL.MEMBERS.REMOVE_MEMBERS' | translate}}
   </button>
+  <button mat-stroked-button class="mr-2 mb-2" (click)="onListAll()">
+    {{'VO_DETAIL.MEMBERS.LIST_ALL' | translate}}
+  </button>
+
   <mat-form-field class="mr-2 search-field no-border-mat-input">
     <input matInput autocomplete="false" placeholder="{{'VO_DETAIL.MEMBERS.SEARCH_DESCRIPTION' | translate}}" [(ngModel)]="searchString">
   </mat-form-field>
   <button mat-flat-button color="primary" class="mr-2" [disabled]="searchString.length === 0" (click)="onSearchByString()">
     <mat-icon>search</mat-icon>
   </button>
-  <button mat-stroked-button class="mr-2" (click)="onListAll()">
-    {{'VO_DETAIL.MEMBERS.LIST_ALL' | translate}}
-  </button>
   <mat-spinner *ngIf="loading" class="ml-auto mr-auto">
   </mat-spinner>
-  <div class="perun-alert vo-alert" *ngIf="!firstSearchDone">
+  <div class="perun-alert info-alert" *ngIf="!firstSearchDone">
     {{'VO_DETAIL.MEMBERS.SEARCH_ALERT' | translate}}
   </div>
   <div class="mt-3" *ngIf="members !== null && !loading">
