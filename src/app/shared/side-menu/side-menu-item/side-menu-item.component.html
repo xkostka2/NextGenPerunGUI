@@ -1,5 +1,5 @@
 <div class="entity-menu-item">
-  <div class="entity-menu-item-header {{item.colorClass}}" id="heading{{index}}">
+  <div class="entity-menu-item-header {{item.colorClass}}">
     <div class="entity-menu-item-link">
       <a class="entity-menu-item-label" [routerLink]="item.baseLink">
         <div>
@@ -10,15 +10,14 @@
         </div>
         <div class="ml-3">{{item.label}}</div>
       </a>
-      <a class="p-1" data-toggle="collapse" [attr.data-target]="'#collapse' + index">
-        <mat-icon>expand_more</mat-icon>
-<!--        TODO: implement arrow change on toggle, use DOM Changes listener-->
-<!--        <mat-icon *ngIf="!isExpanded()">keyboard_arrow_up</mat-icon>-->
+      <a class="p-1" (click)="toggle()">
+        <mat-icon *ngIf="expanded">expand_less</mat-icon>
+        <mat-icon *ngIf="!expanded">expand_more</mat-icon>
       </a>
     </div>
   </div>
 
-  <div #collapse id="collapse{{index}}" class="collapse" [class.show]="showOpen" data-parent="#sideMenuAccordion">
+  <div *ngIf="expanded">
     <div class="side-entity-menu">
       <a *ngFor="let link of item.links" [routerLink]="link.url">
         {{link.label}}

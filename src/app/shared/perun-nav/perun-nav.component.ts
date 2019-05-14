@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {MatSidenav} from '@angular/material';
 
 @Component({
   selector: 'app-perun-nav-menu',
@@ -9,17 +10,20 @@ export class PerunNavComponent implements OnInit {
 
   constructor() { }
 
+  @Input()
+  sideNav: MatSidenav;
+
   items: any[] = [
     {
       icon: 'perun_admin-white.svg',
       url: '/',
       alt: 'Home'
     },
-    {
-      icon: 'vo-white.svg',
-      url: '/organizations',
-      alt: 'Virtual organizations'
-    }
+    // {
+    //   icon: 'vo-white.svg',
+    //   url: '/organizations',
+    //   alt: 'Virtual organizations'
+    // }
   ];
 
   ngOnInit() {

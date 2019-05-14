@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {MatSidenav} from '@angular/material';
 import {SideMenuService} from '../side-menu.service';
 import {Router} from '@angular/router';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-side-menu',
@@ -11,8 +12,7 @@ import {Router} from '@angular/router';
 export class SideMenuComponent implements OnInit {
 
   constructor(
-    private sideMenuService: SideMenuService,
-    private router: Router
+    private sideMenuService: SideMenuService
   ) { }
 
   items: SideMenuItem[] = [];
@@ -20,12 +20,23 @@ export class SideMenuComponent implements OnInit {
   @Input()
   sideNav: MatSidenav;
 
+  mobileView = false;
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+    this.mobileView = window.innerWidth <= AppComponent.minWidth;
+  }
+
   ngOnInit(): void {
+    this.getScreenSize(null);
+
     this.sideMenuService.sideMenuItemsChange.subscribe(items => {
-      if (items.length > 0) {
-        this.sideNav.open();
-      } else {
-        this.sideNav.close();
+      if (!this.mobileView) {
+        if (items.length > 0) {
+          this.sideNav.open();
+        } else {
+          this.sideNav.close();
+        }
       }
       this.items = items;
     });

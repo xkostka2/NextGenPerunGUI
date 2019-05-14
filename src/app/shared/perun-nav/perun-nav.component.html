@@ -1,4 +1,11 @@
 <div id="nav-menu-icons">
+  <button mat-icon-button
+          class="mr-2 text-white mt-auto mb-auto d-block d-md-none"
+          (click)="sideNav.toggle()">
+    <mat-icon>
+      menu
+    </mat-icon>
+  </button>
   <a *ngFor="let item of items" class="nav-menu-icon" [routerLink]="item.url">
     <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.alt}}">
   </a>
