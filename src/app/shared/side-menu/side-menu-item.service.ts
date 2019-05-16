@@ -56,6 +56,21 @@ export class SideMenuItemService {
           label: this.translate.instant('MENU_ITEMS.VO.GROUPS'),
           url: [`/organizations/${vo.id}/groups`],
           activatedRegex: '/organizations/\\d+/groups$'
+        },
+        {
+          label: this.translate.instant('MENU_ITEMS.VO.RESOURCES'),
+          url: [`/organizations/${vo.id}/resources`],
+          activatedRegex: '/organizations/\\d+/resources'
+        },
+        {
+          label: this.translate.instant('MENU_ITEMS.VO.APPLICATIONS'),
+          url: [`/organizations/${vo.id}/applications`],
+          activatedRegex: '/organizations/\\d+/applications$'
+        },
+        {
+          label: this.translate.instant('MENU_ITEMS.VO.SETTINGS'),
+          url: [`/organizations/${vo.id}/settings`],
+          activatedRegex: '/organizations/\\d+/settings$'
         }
       ],
       colorClass: 'vo-bg-color',

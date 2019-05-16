@@ -16,6 +16,9 @@ import {MemberOverviewComponent} from './member-detail-page/member-overview/memb
 import {MemberGroupsComponent} from './member-detail-page/member-groups/member-groups.component';
 import {GroupOverviewComponent} from './group-detail-page/group-overview/group-overview.component';
 import {GroupSubgroupsComponent} from './group-detail-page/group-subgroups/group-subgroups.component';
+import { VoResourcesComponent } from './vo-detail-page/vo-resources/vo-resources.component';
+import { VoApplicationsComponent } from './vo-detail-page/vo-applications/vo-applications.component';
+import { VoSettingsComponent } from './vo-detail-page/vo-settings/vo-settings.component';
 
 @NgModule({
   imports: [
@@ -37,7 +40,10 @@ import {GroupSubgroupsComponent} from './group-detail-page/group-subgroups/group
     MemberOverviewComponent,
     MemberGroupsComponent,
     GroupOverviewComponent,
-    GroupSubgroupsComponent
+    GroupSubgroupsComponent,
+    VoResourcesComponent,
+    VoApplicationsComponent,
+    VoSettingsComponent
   ]
 })
 export class VosModule {
