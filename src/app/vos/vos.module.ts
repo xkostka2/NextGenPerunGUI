@@ -19,6 +19,8 @@ import {GroupSubgroupsComponent} from './group-detail-page/group-subgroups/group
 import { VoResourcesComponent } from './vo-detail-page/vo-resources/vo-resources.component';
 import { VoApplicationsComponent } from './vo-detail-page/vo-applications/vo-applications.component';
 import { VoSettingsComponent } from './vo-detail-page/vo-settings/vo-settings.component';
+import { VoSettingsAttributesComponent } from './vo-detail-page/vo-settings/vo-settings-attributes/vo-settings-attributes.component';
+import { VoSettingsOverviewComponent } from './vo-detail-page/vo-settings/vo-settings-overview/vo-settings-overview.component';
 
 @NgModule({
   imports: [
@@ -43,7 +45,9 @@ import { VoSettingsComponent } from './vo-detail-page/vo-settings/vo-settings.co
     GroupSubgroupsComponent,
     VoResourcesComponent,
     VoApplicationsComponent,
-    VoSettingsComponent
+    VoSettingsComponent,
+    VoSettingsAttributesComponent,
+    VoSettingsOverviewComponent
   ]
 })
 export class VosModule {

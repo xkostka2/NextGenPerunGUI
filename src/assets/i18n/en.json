@@ -54,7 +54,8 @@
       "GROUPS": "Groups",
       "APPLICATIONS": "Applications",
       "RESOURCES": "Resources",
-      "SETTINGS": "Settings"
+      "SETTINGS": "Settings",
+      "ATTRIBUTES": "Attributes"
     },
     "GROUP": {
       "OVERVIEW": "Overview",

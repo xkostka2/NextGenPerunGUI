@@ -14,6 +14,8 @@ import {GroupSubgroupsComponent} from './group-detail-page/group-subgroups/group
 import {VoResourcesComponent} from './vo-detail-page/vo-resources/vo-resources.component';
 import {VoApplicationsComponent} from './vo-detail-page/vo-applications/vo-applications.component';
 import {VoSettingsComponent} from './vo-detail-page/vo-settings/vo-settings.component';
+import {VoSettingsAttributesComponent} from './vo-detail-page/vo-settings/vo-settings-attributes/vo-settings-attributes.component';
+import {VoSettingsOverviewComponent} from './vo-detail-page/vo-settings/vo-settings-overview/vo-settings-overview.component';
 
 const routes: Routes = [
   {
@@ -46,7 +48,17 @@ const routes: Routes = [
       },
       {
         path: 'settings',
-        component: VoSettingsComponent
+        component: VoSettingsComponent,
+        children: [
+          {
+            path: '',
+            component: VoSettingsOverviewComponent
+          },
+          {
+            path: 'attributes',
+            component: VoSettingsAttributesComponent
+          }
+        ]
       }
     ]
   },

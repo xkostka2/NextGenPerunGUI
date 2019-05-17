@@ -26,14 +26,14 @@ export class VoDetailPageComponent implements OnInit {
       if (_ instanceof NavigationEnd) {
         this.currentUrl = _.url;
 
-        this.backButtonDisplayed = !this.overviewUrlRegex.test(this.currentUrl);
+        this.backButtonDisplayed = this.backButtonRegex.test(this.currentUrl);
       }
     });
   }
 
   vo: Vo;
 
-  overviewUrlRegex = new RegExp('/organizations/\\d+$');
+  backButtonRegex = new RegExp('/organizations/\\d+/\\w+$');
   currentUrl;
   backButtonDisplayed = false;
 

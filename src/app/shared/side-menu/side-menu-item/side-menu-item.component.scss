@@ -1,5 +1,5 @@
 .entity-menu-item {
-  width: 270px;
+  width: 300px;
 }
 
 .side-entity-menu a {
@@ -12,7 +12,7 @@
 }
 
 .activated {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.05);
   color: #313131 !important;
   border-right: 5px solid #313131
 }
@@ -24,6 +24,12 @@
 
 .entity-menu-item-header {
   padding: 0.5rem 0.5rem 0.5rem 1rem;
+  cursor: pointer;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .entity-menu-item-label {

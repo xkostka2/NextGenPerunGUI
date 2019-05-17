@@ -70,7 +70,15 @@ export class SideMenuItemService {
         {
           label: this.translate.instant('MENU_ITEMS.VO.SETTINGS'),
           url: [`/organizations/${vo.id}/settings`],
-          activatedRegex: '/organizations/\\d+/settings$'
+          activatedRegex: '/organizations/\\d+/settings$',
+          children: [
+            {
+              label: this.translate.instant('MENU_ITEMS.VO.ATTRIBUTES'),
+              url: [`/organizations/${vo.id}/settings/attributes`],
+              activatedRegex: '/organizations/\\d+/settings/attributes$'
+            }
+          ],
+          showChildrenRegex: '/organizations/\\d+/settings'
         }
       ],
       colorClass: 'vo-bg-color',

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {MenuItem} from '../../../shared/MenuItem';
+import {SideMenuService} from '../../../shared/side-menu.service';
+import {VoService} from '../../../core/services/vo.service';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {Vo} from '../../../core/models/Vo';
 
 @Component({
   selector: 'app-vo-settings',
@@ -7,9 +12,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VoSettingsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.currentUrl = router.url;
+    this.backButtonDisplayed = this.backButtonRegex.test(this.currentUrl);
 
-  ngOnInit() {
+    router.events.subscribe((_: NavigationEnd) => {
+      if (_ instanceof NavigationEnd) {
+        this.currentUrl = _.url;
+
+        this.backButtonDisplayed = this.backButtonRegex.test(this.currentUrl);
+      }
+    });
   }
 
+  backButtonRegex = new RegExp('/organizations/\\d+/settings/\\w+$');
+  currentUrl;
+  backButtonDisplayed = false;
+
+  voId: number;
+
+  ngOnInit(): void {
+    this.route.parent.params.subscribe(parentParams => {
+      this.voId = parentParams['voId'];
+    });
+  }
 }

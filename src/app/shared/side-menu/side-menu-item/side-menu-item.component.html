@@ -1,7 +1,7 @@
 <div class="entity-menu-item">
-  <div class="entity-menu-item-header {{item.colorClass}}">
+  <div class="entity-menu-item-header {{item.colorClass}}" (click)="toggle()">
     <div class="entity-menu-item-link">
-      <a class="entity-menu-item-label" [routerLink]="item.baseLink">
+      <a class="entity-menu-item-label">
         <div>
           <img
             src="assets/img/PerunWebImages/{{item.icon}}"
@@ -10,7 +10,7 @@
         </div>
         <div class="ml-3">{{item.label}}</div>
       </a>
-      <a class="p-1" (click)="toggle()">
+      <a class="p-1">
         <mat-icon *ngIf="expanded">expand_less</mat-icon>
         <mat-icon *ngIf="!expanded">expand_more</mat-icon>
       </a>
@@ -19,9 +19,16 @@
 
   <div *ngIf="expanded">
     <div class="side-entity-menu">
-      <a *ngFor="let link of item.links" [routerLink]="link.url" [class.activated]="isActive(currentUrl, link.activatedRegex)">
-        {{link.label}}
-      </a>
+      <div *ngFor="let link of item.links">
+        <a [routerLink]="link.url" [class.activated]="isActive(currentUrl, link.activatedRegex)">
+          {{link.label}}
+        </a>
+        <div *ngIf="isActive(currentUrl, link.showChildrenRegex)">
+          <a class="pl-5" *ngFor="let child of link?.children" [routerLink]="child.url" [class.activated]="isActive(currentUrl, child.activatedRegex)">
+            {{child.label}}
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

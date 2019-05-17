@@ -55,4 +55,6 @@ export interface EntityMenuLink {
   label: string;
   url:  any[] | string;
   activatedRegex: string;
+  children?: EntityMenuLink[];
+  showChildrenRegex?: string;
 }
