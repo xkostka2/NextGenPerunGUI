@@ -22,6 +22,7 @@ import {TabComponent} from './components/tab.component';
 import {TabPage} from './TabPage';
 import {Urns} from './Urns';
 import { BackButtonComponent } from './components/back-button/back-button.component';
+import { DeleteGroupDialogComponent } from './components/dialogs/delete-group-dialog/delete-group-dialog.component';
 
 @NgModule({
   imports: [
@@ -82,7 +83,8 @@ import { BackButtonComponent } from './components/back-button/back-button.compon
   ],
   entryComponents: [
     CreateGroupDialogComponent,
-    InviteMemberDialogComponent
+    InviteMemberDialogComponent,
+    DeleteGroupDialogComponent
   ],
   declarations: [
     PerunNavComponent,
@@ -94,7 +96,8 @@ import { BackButtonComponent } from './components/back-button/back-button.compon
     UserFullNamePipe,
     TabComponent,
     TabPage,
-    BackButtonComponent
+    BackButtonComponent,
+    DeleteGroupDialogComponent
   ]
 })
 export class SharedModule { }

@@ -87,6 +87,14 @@
       "LANGUAGE_CZECH": "Czech",
       "EMAIL_ERROR": "Fill in an correct email!",
       "SUCCESS": "Invite was send to given email"
+    },
+    "DELETE_GROUP": {
+      "TITLE": "Confirm delete action",
+      "DESCRIPTION": "Following groups (including all sub-groups) will be deleted.",
+      "ASK": "Do you want to proceed?",
+      "CANCEL": "Cancel",
+      "DELETE": "Delete",
+      "SUCCESS": "Selected groups were deleted"
     }
   },
   "MEMBERS_LIST": {
