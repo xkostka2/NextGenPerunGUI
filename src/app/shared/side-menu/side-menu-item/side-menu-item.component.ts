@@ -1,11 +1,26 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {SideMenuItem} from '../side-menu.component';
 import {NavigationEnd, Router} from '@angular/router';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-side-menu-item',
   templateUrl: './side-menu-item.component.html',
-  styleUrls: ['./side-menu-item.component.scss']
+  styleUrls: ['./side-menu-item.component.scss'],
+  animations: [
+    trigger('openClose', [
+      state('open', style({
+        overflow: 'hidden'
+      })),
+      state('closed', style({
+        height: '0px',
+        overflow: 'hidden'
+      })),
+      transition('open <=> closed', [
+        animate('.3s ease-in')
+      ]),
+    ])
+  ]
 })
 export class SideMenuItemComponent implements OnInit {
 

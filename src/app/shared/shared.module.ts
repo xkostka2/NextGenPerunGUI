@@ -17,6 +17,7 @@ import {
   MatProgressBarModule,
   MatProgressSpinnerModule,
   MatRadioModule,
+  MatRippleModule,
   MatSelectModule,
   MatSidenavModule,
   MatSlideToggleModule,
@@ -71,7 +72,8 @@ import {SettingsToggleItemComponent} from './components/settings-toggle-item/set
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
-    MatDividerModule
+    MatDividerModule,
+    MatRippleModule,
   ],
   exports: [
     PerunNavComponent,
@@ -107,7 +109,8 @@ import {SettingsToggleItemComponent} from './components/settings-toggle-item/set
     MatNativeDateModule,
     MatRadioModule,
     MatDividerModule,
-    SettingsToggleItemComponent
+    SettingsToggleItemComponent,
+    MatRippleModule,
   ],
   entryComponents: [
     CreateGroupDialogComponent,
