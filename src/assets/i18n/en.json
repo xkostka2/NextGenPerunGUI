@@ -33,6 +33,29 @@
       "ADD_MANAGER": "Add manager",
       "CREATE_GROUP": "Create group",
       "ADD_MEMBER": "Add member"
+    },
+    "SETTINGS": {
+      "EXPIRATION": {
+        "TITLE": "Membership expiration",
+        "DISABLED": "Disabled",
+        "ENABLED": "Enabled",
+        "PERIOD_LABEL": "Period",
+        "PERIOD_TYPE_STATIC": "Static",
+        "PERIOD_TYPE_DYNAMIC": "Dynamic",
+        "DP_PLACEHOLDER": "Choose a date",
+        "DP_HINT": "The year is ignored. Expiration will occur every year.",
+        "AMOUNT_VALUE": "Amount",
+        "AMOUNT_TYPE": "Unit",
+        "DONT_ALLOW_LOA_LABEL": "Forbidden LOAs",
+        "DONT_ALLOW_LOA_SELECT": "Choose LOAs",
+        "DONT_EXTEND_LOA_LABEL": "Don't extend LOAs",
+        "DONT_EXTEND_LOA_SELECT": "Choose LOAs",
+        "GRACE_PERIOD_LABEL": "Grace period",
+        "GRACE_AMOUNT_VALUE": "Amount",
+        "GRACE_AMOUNT_TYPE": "Unit",
+        "LOA_PERIOD_LABEL": "Special loa periods",
+        "SAVE": "Save"
+      }
     }
   },
   "GROUP_DETAIL": {
@@ -55,7 +78,8 @@
       "APPLICATIONS": "Applications",
       "RESOURCES": "Resources",
       "SETTINGS": "Settings",
-      "ATTRIBUTES": "Attributes"
+      "ATTRIBUTES": "Attributes",
+      "EXPIRATION": "Membership"
     },
     "GROUP": {
       "OVERVIEW": "Overview",

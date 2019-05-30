@@ -388,6 +388,23 @@ button:focus {
   background-color: $member-color;
 }
 
+.setting-item {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.clickable {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.unselected-setting {
+  color: #888888;
+}
+
 .app-btn {
   display: inline-block;
   font-weight: 400;

@@ -76,6 +76,11 @@ export class SideMenuItemService {
               label: this.translate.instant('MENU_ITEMS.VO.ATTRIBUTES'),
               url: [`/organizations/${vo.id}/settings/attributes`],
               activatedRegex: '/organizations/\\d+/settings/attributes$'
+            },
+            {
+              label: this.translate.instant('MENU_ITEMS.VO.EXPIRATION'),
+              url: [`/organizations/${vo.id}/settings/expiration`],
+              activatedRegex: '/organizations/\\d+/settings/expiration$'
             }
           ],
           showChildrenRegex: '/organizations/\\d+/settings'

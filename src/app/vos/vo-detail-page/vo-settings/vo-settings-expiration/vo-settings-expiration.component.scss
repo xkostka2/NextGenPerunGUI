@@ -1,0 +1,21 @@
+.period-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+}
+
+.amount-field {
+  width: 80px;
+}
+
+.date-field {
+  width: 100%;
+}
+
+.settings-header {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

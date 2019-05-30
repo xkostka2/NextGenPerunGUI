@@ -35,10 +35,7 @@ export class GroupOverviewComponent implements OnInit {
         icon: 'group-white.svg',
         url: `/organizations/${this.voId}/groups/${this.groupId}/subgroups`,
         label: 'MENU_ITEMS.GROUP.SUBGROUPS',
-        style: 'group-btn',
-        clickAction: function () {
-          return;
-        }
+        style: 'group-btn'
       }
     ];
   }
