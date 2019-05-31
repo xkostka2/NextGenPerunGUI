@@ -87,7 +87,10 @@
     "GROUP": {
       "OVERVIEW": "Overview",
       "MEMBERS": "Members",
-      "SUBGROUPS": "Subgroups"
+      "SUBGROUPS": "Subgroups",
+      "RESOURCES": "Resources",
+      "APPLICATIONS": "Applications",
+      "SETTINGS": "Settings"
     },
     "MEMBER": {
       "OVERVIEW": "Overview",

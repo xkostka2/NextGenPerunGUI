@@ -92,7 +92,7 @@ const routes: Routes = [
       {
         path: 'subgroups',
         component: GroupSubgroupsComponent
-      }
+      },
     ]
   }
 ];

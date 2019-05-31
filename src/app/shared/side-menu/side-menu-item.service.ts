@@ -27,9 +27,29 @@ export class SideMenuItemService {
           activatedRegex: '/organizations/\\d+/groups/\\d+$'
         },
         {
+          label: this.translate.instant('MENU_ITEMS.GROUP.MEMBERS'),
+          url: [`/organizations/${group.voId}/groups/${group.id}/members`],
+          activatedRegex: '/organizations/\\d+/groups/\\d+/members$'
+        },
+        {
           label: this.translate.instant('MENU_ITEMS.GROUP.SUBGROUPS'),
           url: [`/organizations/${group.voId}/groups/${group.id}/subgroups`],
           activatedRegex: '/organizations/\\d+/groups/\\d+/subgroups$'
+        },
+        {
+          label: this.translate.instant('MENU_ITEMS.GROUP.RESOURCES'),
+          url: [`/organizations/${group.voId}/groups/${group.id}/resources`],
+          activatedRegex: '/organizations/\\d+/groups/\\d+/resources$'
+        },
+        {
+          label: this.translate.instant('MENU_ITEMS.GROUP.APPLICATIONS'),
+          url: [`/organizations/${group.voId}/groups/${group.id}/applications`],
+          activatedRegex: '/organizations/\\d+/groups/\\d+/applications$'
+        },
+        {
+          label: this.translate.instant('MENU_ITEMS.GROUP.SETTINGS'),
+          url: [`/organizations/${group.voId}/groups/${group.id}/settings`],
+          activatedRegex: '/organizations/\\d+/groups/\\d+/settings$'
         }
       ],
       colorClass: 'group-bg-color',
