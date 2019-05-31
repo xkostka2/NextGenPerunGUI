@@ -74,14 +74,14 @@ button:focus {
 
 .info-alert {
   color: #000000;
-  background-color: #e9f1ff;
-  border-color: #056dbf;
+  background-color: rgba(25,118,210,.05);
+  border-color: #1976d2;
 }
 
 .warn-alert {
   color: #000000;
-  background-color: #f4ebd0;
-  border-color: #c69a14;
+  background-color: #fff2cd;
+  border-color: #ffd657;
 }
 
 .error-alert {
@@ -527,6 +527,15 @@ button:focus {
 
   &:hover {
     color: lighten($member-color, 10%);
+  }
+}
+
+.group-link {
+  color: $group-color;
+  text-decoration: underline;
+
+  &:hover {
+    color: #lighten($group-color, 10%);
   }
 }
 

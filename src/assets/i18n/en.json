@@ -17,7 +17,8 @@
       "CREATE_GROUP": "Create...",
       "DELETE_GROUP": "Delete...",
       "TABLE_GROUP_ID": "Id",
-      "TABLE_GROUP_NAME": "Name"
+      "TABLE_GROUP_NAME": "Name",
+      "LIST_VIEW": "List view"
     },
     "MEMBERS": {
       "TITLE": "Members",
@@ -25,7 +26,8 @@
       "REMOVE_MEMBERS": "Remove...",
       "SEARCH_DESCRIPTION": "Search by name, login or email",
       "LIST_ALL": "List all members",
-      "SEARCH_ALERT": "You can search member by name, login and email. Also, you can list all valid members."
+      "SEARCH_ALERT": "You can search member by name, login and email. Also, you can list all valid members.",
+      "NO_MEMBERS_ALERT": "No members found."
     },
     "OVERVIEW": {
       "INVITE_MEMBER": "Invite member",
@@ -62,6 +64,7 @@
     "TITLE": "Group - "
   },
   "MEMBER_DETAIL": {
+    "TITLE": "Member - ",
     "OVERVIEW": {
       "NEVER_EXPIRES": "never",
       "MEMBERSHIP": "Membership"

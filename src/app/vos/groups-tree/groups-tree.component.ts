@@ -5,6 +5,7 @@ import { MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material';
 import {TreeGroup} from '../../core/models/TreeGroup';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {SelectionModel} from '@angular/cdk/collections';
+import {debug} from 'util';
 
 interface GroupFlatNode {
   expandable: boolean;

@@ -29,7 +29,7 @@ export class VoGroupsComponent implements OnInit {
 
   groups: Group[] = [];
 
-  showTreeStructure = false;
+  showGroupList = false;
 
   selected = new SelectionModel<Group>(true, []);
 
