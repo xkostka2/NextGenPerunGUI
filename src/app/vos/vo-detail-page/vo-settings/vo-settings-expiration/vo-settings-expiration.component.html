@@ -1,6 +1,6 @@
-<div class="col-12 col-md-12 col-xl-6 pl-0">
+<div class="card settings-card col-12 col-md-12 col-xl-6">
   <div class="d-flex flex-row align-items-baseline justify-content-between">
-    <h1 class="page-subtitle settings-header" (click)="mainToggle.toggle()"
+    <h1 class="settings-header" (click)="mainToggle.toggle()"
         [class.unselected-setting]="!mainToggle.checked">
       {{'VO_DETAIL.SETTINGS.EXPIRATION.TITLE' | translate}}
     </h1>
@@ -8,7 +8,7 @@
     </mat-slide-toggle>
   </div>
 
-  <div class="pl-3" *ngIf="mainToggle.checked">
+  <div [@openClose]="mainToggle.checked ? 'open' : 'closed'">
     <label class="setting-item">{{'VO_DETAIL.SETTINGS.EXPIRATION.PERIOD_LABEL' | translate}}</label>
     <div class="ml-3">
       <mat-radio-group [(ngModel)]="currentConfiguration.periodType">
@@ -144,8 +144,8 @@
     </app-settings-toggle-item>
   </div>
 
-  <div class="w-100 d-flex mt-3">
-    <button mat-flat-button color="primary" class="ml-auto" [disabled]="!areChangesMade()">
+  <div *ngIf="areChangesMade()" class="w-100 d-flex mt-3 mb-3">
+    <button mat-flat-button color="primary" class="ml-auto">
       {{'VO_DETAIL.SETTINGS.EXPIRATION.SAVE' | translate}}
     </button>
   </div>

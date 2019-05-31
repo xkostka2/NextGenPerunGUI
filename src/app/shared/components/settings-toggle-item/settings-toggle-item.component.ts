@@ -1,9 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {openClose} from '../../animations/Animations';
 
 @Component({
   selector: 'app-settings-toggle-item',
   templateUrl: './settings-toggle-item.component.html',
-  styleUrls: ['./settings-toggle-item.component.scss']
+  styleUrls: ['./settings-toggle-item.component.scss'],
+  animations: [
+    openClose
+  ]
 })
 export class SettingsToggleItemComponent implements OnInit {
 

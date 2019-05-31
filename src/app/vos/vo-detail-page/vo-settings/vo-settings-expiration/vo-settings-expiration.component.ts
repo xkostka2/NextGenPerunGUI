@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {openClose} from '../../../../shared/animations/Animations';
 
 export interface ExpirationConfiguration {
   enabled: boolean;
@@ -20,7 +21,10 @@ export interface ExpirationConfiguration {
 @Component({
   selector: 'app-vo-settings-expiration',
   templateUrl: './vo-settings-expiration.component.html',
-  styleUrls: ['./vo-settings-expiration.component.scss']
+  styleUrls: ['./vo-settings-expiration.component.scss'],
+  animations: [
+    openClose
+  ]
 })
 export class VoSettingsExpirationComponent implements OnInit {
 
