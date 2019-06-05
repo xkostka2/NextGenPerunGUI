@@ -49,7 +49,9 @@ import { VoSettingsExpirationComponent } from './vo-detail-page/vo-settings/vo-s
     VoSettingsComponent,
     VoSettingsAttributesComponent,
     VoSettingsOverviewComponent,
-    VoSettingsExpirationComponent
+    VoSettingsExpirationComponent,
+    VoSettingsOverviewComponent,
+    GroupSubgroupsComponent
   ]
 })
 export class VosModule {
