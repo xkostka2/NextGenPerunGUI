@@ -3,8 +3,8 @@ import {MatDialog} from '@angular/material';
 import {GroupService} from '../../../core/services/group.service';
 import {Group} from '../../../core/models/Group';
 import {CreateGroupDialogComponent} from '../../../shared/components/dialogs/create-group-dialog/create-group-dialog.component';
-import {GroupSelectChange} from '../../groups-list/groups-list.component';
 import {ActivatedRoute} from '@angular/router';
+import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-group-subgroups',
@@ -24,7 +24,7 @@ export class GroupSubgroupsComponent implements OnInit {
 
   groups: Group[] = [];
 
-  selectedGroups: Set<Group> = new Set<Group>();
+  selected = new SelectionModel<Group>(true, []);
 
   showTreeStructure = false;
 
@@ -50,14 +50,4 @@ export class GroupSubgroupsComponent implements OnInit {
       });
     });
   }
-
-  onGroupSelectChange(event: GroupSelectChange) {
-    if (event.checked) {
-      this.selectedGroups.add(event.group);
-    } else {
-      this.selectedGroups.delete(event.group);
-    }
-    console.log(this.selectedGroups);
-  }
-
 }
