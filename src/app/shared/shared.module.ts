@@ -26,7 +26,8 @@ import {
   MatTableModule,
   MatTabsModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
+  MatPaginatorModule,
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SideMenuComponent} from './side-menu/side-menu.component';
@@ -41,6 +42,7 @@ import {TabPage} from './TabPage';
 import {DeleteGroupDialogComponent} from './components/dialogs/delete-group-dialog/delete-group-dialog.component';
 import {BackButtonComponent} from './components/back-button/back-button.component';
 import {SettingsToggleItemComponent} from './components/settings-toggle-item/settings-toggle-item.component';
+import { ApplicationStatePipe } from './pipes/application-state.pipe';
 
 @NgModule({
   imports: [
@@ -74,6 +76,7 @@ import {SettingsToggleItemComponent} from './components/settings-toggle-item/set
     MatRadioModule,
     MatDividerModule,
     MatRippleModule,
+    MatPaginatorModule
   ],
   exports: [
     PerunNavComponent,
@@ -111,6 +114,8 @@ import {SettingsToggleItemComponent} from './components/settings-toggle-item/set
     MatDividerModule,
     SettingsToggleItemComponent,
     MatRippleModule,
+    ApplicationStatePipe,
+    MatPaginatorModule
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -129,7 +134,8 @@ import {SettingsToggleItemComponent} from './components/settings-toggle-item/set
     TabPage,
     BackButtonComponent,
     DeleteGroupDialogComponent,
-    SettingsToggleItemComponent
+    SettingsToggleItemComponent,
+    ApplicationStatePipe
   ]
 })
 export class SharedModule { }

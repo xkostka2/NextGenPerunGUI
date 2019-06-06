@@ -22,6 +22,8 @@ import { VoSettingsComponent } from './vo-detail-page/vo-settings/vo-settings.co
 import { VoSettingsAttributesComponent } from './vo-detail-page/vo-settings/vo-settings-attributes/vo-settings-attributes.component';
 import { VoSettingsOverviewComponent } from './vo-detail-page/vo-settings/vo-settings-overview/vo-settings-overview.component';
 import { VoSettingsExpirationComponent } from './vo-detail-page/vo-settings/vo-settings-expiration/vo-settings-expiration.component';
+import { ApplicationsListComponent } from './applications-list/applications-list.component';
+import { GroupApplicationsComponent } from './group-detail-page/group-applications/group-applications.component';
 
 @NgModule({
   imports: [
@@ -50,8 +52,8 @@ import { VoSettingsExpirationComponent } from './vo-detail-page/vo-settings/vo-s
     VoSettingsAttributesComponent,
     VoSettingsOverviewComponent,
     VoSettingsExpirationComponent,
-    VoSettingsOverviewComponent,
-    GroupSubgroupsComponent
+    ApplicationsListComponent,
+    GroupApplicationsComponent
   ]
 })
 export class VosModule {

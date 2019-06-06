@@ -59,6 +59,31 @@
         "LOA_PERIOD_LABEL": "Special loa periods",
         "SAVE": "Save"
       }
+    },
+    "APPLICATION": {
+      "TITLE": "Application",
+      "SEARCH": "Search",
+      "SELECTION_ALL": "All",
+      "SELECTION_WFMV": "Waiting for mail verification",
+      "SELECTION_SUBMITTED": "Submitted",
+      "SELECTION_PENDING": "Pending",
+      "SELECTION_APPROVED": "Approved",
+      "SELECTION_REJECTED": "Rejected",
+      "TABLE_ID": "App ID",
+      "TABLE_CREATED_DATE": "Created Date",
+      "TABLE_TYPE": "Type",
+      "TABLE_STATE": "State",
+      "TABLE_SUBMITTED_BY": "Submitted by",
+      "TABLE_LOA": "LoA",
+      "TABLE_GROUP_NAME": "Group",
+      "TABLE_MODIFIED_BY": "Modified by",
+      "NO_APPLICATION_FOUND": "No applications matching search criteria found for this VO or it's groups.",
+      "STATE": {
+        "APPROVED": "Approved",
+        "REJECTED": "Rejected",
+        "NEW": "New",
+        "VERIFIED": "Submited"
+      }
     }
   },
   "GROUP_DETAIL": {

@@ -7,6 +7,7 @@ import {FlatTreeControl} from '@angular/cdk/tree';
 import {SelectionModel} from '@angular/cdk/collections';
 import {debug} from 'util';
 
+
 interface GroupFlatNode {
   expandable: boolean;
   name: string;
@@ -60,7 +61,6 @@ export class GroupsTreeComponent implements OnChanges {
     for (const group of groups) {
       idGroupMap.set(group.id, new TreeGroup(group));
     }
-
     idGroupMap.forEach((group: TreeGroup, id: number, map: Map<number, TreeGroup>) => {
       // FIXME
       const updatedParentGroup: TreeGroup = map.get(group.parentGroupId);
