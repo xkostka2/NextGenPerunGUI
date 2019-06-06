@@ -12,7 +12,11 @@ export class AttributesService {
     private apiService: ApiService
   ) { }
 
-  getAttribute(memberId: number, urn: string): Observable<Attribute> {
+  getMemberAttribute(memberId: number, urn: string): Observable<Attribute> {
     return this.apiService.get(`json/attributesManager/getAttribute?member=${memberId}&attributeName=${urn}`);
+  }
+
+  getVoAttribute(voId: number, urn: string): Observable<Attribute> {
+    return this.apiService.get(`json/attributesManager/getAttribute?vo=${voId}&attributeName=${urn}`);
   }
 }
