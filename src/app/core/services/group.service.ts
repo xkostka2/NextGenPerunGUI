@@ -20,8 +20,12 @@ export class GroupService {
     return this.apiService.get(`json/groupsManager/getAllGroups?vo=${voId}`);
   }
 
-  getAllSubGroups(groupId: number): Observable<Group[]> {
+  getSubGroups(groupId: number): Observable<Group[]> {
     return this.apiService.get(`json/groupsManager/getSubGroups?parentGroup=${groupId}`);
+  }
+
+  getAllRichSubGroupsWithAttributesByNames(groupId: number): Observable<Group[]> {
+    return this.apiService.get(`json/groupsManager/getAllRichSubGroupsWithAttributesByNames?group=${groupId}&attrNames=[]`);
   }
 
   createGroup(voId: number, name: string, description: string): Observable<Group> {

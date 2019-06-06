@@ -61,19 +61,26 @@ export class GroupsTreeComponent implements OnChanges {
     for (const group of groups) {
       idGroupMap.set(group.id, new TreeGroup(group));
     }
+
+    // groups which have parentGroupId but the parent cannot be view in subgroups view
+    const pseudoRooGroups: Set<number> = new Set<number>();
+
     idGroupMap.forEach((group: TreeGroup, id: number, map: Map<number, TreeGroup>) => {
       // FIXME
       const updatedParentGroup: TreeGroup = map.get(group.parentGroupId);
-      if (updatedParentGroup != null) {
+      if (updatedParentGroup !== undefined) {
         updatedParentGroup.addChild(group);
         map.set(group.parentGroupId, updatedParentGroup);
+      }
+      if (group.parentGroupId !== null && updatedParentGroup === undefined) {
+        pseudoRooGroups.add(group.id);
       }
     });
 
     const groupTree = [];
 
     idGroupMap.forEach((group) => {
-      if (group.parentGroupId === null) {
+      if (group.parentGroupId === null || pseudoRooGroups.has(group.id)) {
         groupTree.push(group);
       }
     });

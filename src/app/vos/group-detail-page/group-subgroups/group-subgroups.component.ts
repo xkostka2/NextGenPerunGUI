@@ -26,7 +26,7 @@ export class GroupSubgroupsComponent implements OnInit {
 
   selected = new SelectionModel<Group>(true, []);
 
-  showTreeStructure = false;
+  showGroupList = false;
 
   onCreateGroup() {
     const dialogRef = this.dialog.open(CreateGroupDialogComponent, {
@@ -45,7 +45,7 @@ export class GroupSubgroupsComponent implements OnInit {
       this.groupService.getGroupById(groupId).subscribe(group => {
         this.group = group;
       });
-      this.groupService.getAllSubGroups(groupId).subscribe(groups => {
+      this.groupService.getAllRichSubGroupsWithAttributesByNames(groupId).subscribe(groups => {
         this.groups = groups;
       });
     });

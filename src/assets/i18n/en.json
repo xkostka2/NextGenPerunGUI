@@ -89,7 +89,14 @@
     }
   },
   "GROUP_DETAIL": {
-    "TITLE": "Group - "
+    "TITLE": "Group - ",
+    "SUBGROUPS": {
+      "TITLE": "Subgroups",
+      "CREATE_GROUP": "Create subgroup",
+      "DELETE_GROUP": "Delete subgroup",
+      "SHOW_LIST": "List view",
+      "NO_SUBGROUPS": "This group has no subgroups."
+    }
   },
   "MEMBER_DETAIL": {
     "TITLE": "Member - ",
