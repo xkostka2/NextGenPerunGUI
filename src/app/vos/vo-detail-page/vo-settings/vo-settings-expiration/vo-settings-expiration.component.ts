@@ -204,8 +204,11 @@ export class VoSettingsExpirationComponent implements OnInit {
     let specialPeriodValue = value.periodLoa.substring(value.periodLoa.indexOf('|') + 1, value.periodLoa.length);
 
     if (specialPeriodValue.startsWith('+')) {
-      config.specialLoaPeriodExtendExpiredMembers = specialPeriodValue.endsWith('.');
-      specialPeriodValue = specialPeriodValue.substring(0, specialPeriodValue.length - 1);
+
+      if (specialPeriodValue.endsWith('.')) {
+        config.specialLoaPeriodExtendExpiredMembers = true;
+        specialPeriodValue = specialPeriodValue.substring(0, specialPeriodValue.length - 1);
+      }
 
       config.specialLoaPeriodType = 'dynamic';
 
@@ -213,8 +216,11 @@ export class VoSettingsExpirationComponent implements OnInit {
       config.specialLoaPeriodDynamic = specialPeriodValue.substring(1, specialPeriodValue.length - 1);
       config.specialLoaPeriodDynamicUnit = <'m'|'d'|'y'>unit;
     } else {
-      config.specialLoaPeriodExtendExpiredMembers = specialPeriodValue.endsWith('..');
-      specialPeriodValue = specialPeriodValue.substring(0, specialPeriodValue.length - 1);
+
+      if (specialPeriodValue.endsWith('..')) {
+        config.specialLoaPeriodExtendExpiredMembers = true;
+        specialPeriodValue = specialPeriodValue.substring(0, specialPeriodValue.length - 1);
+      }
 
       config.specialLoaPeriodType = 'static';
 
