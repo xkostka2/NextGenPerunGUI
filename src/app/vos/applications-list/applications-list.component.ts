@@ -55,7 +55,7 @@ export class ApplicationsListComponent implements OnChanges {
             return '-';
           }
           case 'modifiedBy': {
-            const index = item.modifiedBy.lastIndexOf('/CN=')
+            const index = item.modifiedBy.lastIndexOf('/CN=');
             if (index !== -1) {
               const string =  item.modifiedBy.slice(index + 4, item.modifiedBy.length).replace('/unstructuredName=', ' ').toLowerCase();
               if (string.lastIndexOf('\\') !== -1) {
@@ -81,7 +81,7 @@ export class ApplicationsListComponent implements OnChanges {
   }
 
   getFriendlyName(modifiedBy: string) {
-    const index = modifiedBy.lastIndexOf('/CN=')
+    const index = modifiedBy.lastIndexOf('/CN=');
     if (index !== -1) {
       const string =  modifiedBy.slice(index + 4, modifiedBy.length).replace('/unstructuredName=', ' ');
       if (string.lastIndexOf('\\') !== -1) {

@@ -38,7 +38,6 @@ import {CreateGroupDialogComponent} from './components/dialogs/create-group-dial
 import {InviteMemberDialogComponent} from './components/dialogs/invite-member-dialog/invite-member-dialog.component';
 import {UserFullNamePipe} from './pipes/user-full-name.pipe';
 import {TabComponent} from './components/tab.component';
-import {TabPage} from './TabPage';
 import {DeleteGroupDialogComponent} from './components/dialogs/delete-group-dialog/delete-group-dialog.component';
 import {BackButtonComponent} from './components/back-button/back-button.component';
 import {SettingsToggleItemComponent} from './components/settings-toggle-item/settings-toggle-item.component';
@@ -103,7 +102,6 @@ import { ApplicationStatePipe } from './pipes/application-state.pipe';
     UserFullNamePipe,
     MatProgressSpinnerModule,
     TabComponent,
-    TabPage,
     MatProgressBarModule,
     MatTooltipModule,
     BackButtonComponent,
@@ -131,7 +129,6 @@ import { ApplicationStatePipe } from './pipes/application-state.pipe';
     InviteMemberDialogComponent,
     UserFullNamePipe,
     TabComponent,
-    TabPage,
     BackButtonComponent,
     DeleteGroupDialogComponent,
     SettingsToggleItemComponent,
