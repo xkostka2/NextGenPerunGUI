@@ -19,4 +19,11 @@ export class AttributesService {
   getVoAttribute(voId: number, urn: string): Observable<Attribute> {
     return this.apiService.get(`json/attributesManager/getAttribute?vo=${voId}&attributeName=${urn}`);
   }
+
+  setVoAttribute(voId: number, attribute: Attribute): Observable<void> {
+    return this.apiService.post(`json/attributesManager/setAttribute`, {
+      vo: voId,
+      attribute: attribute
+    });
+  }
 }

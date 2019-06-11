@@ -2,6 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {openClose} from '../../../../shared/animations/Animations';
 import {AttributesService} from '../../../../core/services/attributes.service';
 import {ActivatedRoute} from '@angular/router';
+import {Attribute} from '../../../../core/models/Attribute';
+
+export class ExpirationAttrValue {
+  period: string;
+  doNotExtendLoa?: string;
+  doNotAllowLoa?: string;
+  gracePeriod?: string;
+  periodLoa?: string;
+}
 
 export interface ExpirationConfiguration {
   enabled: boolean;
@@ -62,37 +71,72 @@ export class VoSettingsExpirationComponent implements OnInit {
     text: 'Years'
   }];
 
+  expirationAttribute: Attribute;
+  voId: number;
+
   ngOnInit() {
     const loaPeriods = new Map();
     this.LOAS.forEach(loa => loaPeriods.set(loa, ''));
 
     this.route.parent.parent.params.subscribe(params => {
-      const voId = params['voId'];
+      this.voId = params['voId'];
 
-      this.attributesService.getVoAttribute(voId, this.EXPIRATION_ATTR_URN).subscribe(attr => {
-        this.initialConfiguration = this.parseAttrValue(<ExpirationAttrValue>attr.value);
-        this.currentConfiguration = this.parseAttrValue(<ExpirationAttrValue>attr.value);
-      });
+      this.loadSettings();
+    });
+  }
+
+  private loadSettings(): void {
+    this.attributesService.getVoAttribute(this.voId, this.EXPIRATION_ATTR_URN).subscribe(attr => {
+      this.expirationAttribute = attr;
+      this.initialConfiguration = this.unParseAttrValue(<ExpirationAttrValue>attr.value);
+      this.currentConfiguration = this.unParseAttrValue(<ExpirationAttrValue>attr.value);
     });
   }
 
   areChangesMade(): boolean {
-    if (this.currentConfiguration.enabled !== this.initialConfiguration.enabled) {
-      return true;
+    const currentValue = this.parseAttributeValueFromConfig(this.currentConfiguration);
+    const initValue = this.parseAttributeValueFromConfig(this.initialConfiguration);
+
+    if (initValue === null) {
+      return currentValue !== null;
     }
-    if (this.currentConfiguration.doNotAllowLoas !== this.initialConfiguration.doNotAllowLoas) {
-      return true;
-    }
-    if (this.currentConfiguration.doNotExtendLoas !== this.initialConfiguration.doNotExtendLoas) {
+
+    if (currentValue === null) {
       return true;
     }
 
-    // TODO finish
-    return false;
+    return currentValue.period !== initValue.period ||
+            currentValue.gracePeriod !== initValue.gracePeriod ||
+            currentValue.doNotExtendLoa !== initValue.doNotExtendLoa ||
+            currentValue.doNotAllowLoa !== initValue.doNotAllowLoa ||
+            currentValue.periodLoa !== initValue.periodLoa;
   }
 
   saveChanges(): void {
+    const expirationAttribute = this.parseExpirationRulesAttribute();
 
+    this.attributesService.setVoAttribute(this.voId, expirationAttribute).subscribe(() => {
+      console.log('success');
+      this.loadSettings();
+      // TODO add info about success
+    });
+  }
+
+  parseExpirationRulesAttribute(): Attribute {
+    this.expirationAttribute.value = this.parseAttributeValueFromConfig(this.currentConfiguration);
+
+    return this.expirationAttribute;
+  }
+
+  parsePeriod(config: ExpirationConfiguration): string {
+    switch (config.periodType) {
+      case 'dynamic':
+        return this.parseDynamicPeriod(config);
+      case 'static':
+        return this.parseStaticPeriod(config);
+      default:
+        // TODO show error
+    }
   }
 
   createInitConfiguration(): ExpirationConfiguration {
@@ -105,9 +149,9 @@ export class VoSettingsExpirationComponent implements OnInit {
       periodStatic: '',
       periodDynamic: '',
       periodDynamicUnit: 'm',
+      doNotAllowLoas: [],
       doNotAllowLoasEnabled: false,
-      doNotAllowLoas: null,
-      doNotExtendLoas: null,
+      doNotExtendLoas: [],
       doNotExtendLoasEnabled: false,
       gracePeriodEnabled: false,
       gracePeriod: null,
@@ -123,7 +167,7 @@ export class VoSettingsExpirationComponent implements OnInit {
     };
   }
 
-  parseAttrValue(value: ExpirationAttrValue): ExpirationConfiguration {
+  unParseAttrValue(value: ExpirationAttrValue): ExpirationConfiguration {
     let config = this.createInitConfiguration();
 
     if (value == null) {
@@ -164,7 +208,7 @@ export class VoSettingsExpirationComponent implements OnInit {
     } else {
       config.periodType = 'static';
 
-      config.periodStatic = value.period.replace('.', '/').replace('.', '');
+      config.periodStatic = value.period;
     }
     return config;
   }
@@ -192,7 +236,7 @@ export class VoSettingsExpirationComponent implements OnInit {
   private setGracePeriodValues(value: ExpirationAttrValue, config: ExpirationConfiguration): ExpirationConfiguration {
     config.gracePeriodEnabled = true;
     const unit = value.gracePeriod.charAt(value.gracePeriod.length - 1);
-    config.gracePeriod = value.period.substring(0, value.gracePeriod.length - 1);
+    config.gracePeriod = value.gracePeriod.substring(0, value.gracePeriod.length - 1);
     config.gracePeriodUnit = <'m'|'d'|'y'>unit;
     return config;
   }
@@ -224,18 +268,118 @@ export class VoSettingsExpirationComponent implements OnInit {
 
       config.specialLoaPeriodType = 'static';
 
-      config.specialLoaPeriodStatic = specialPeriodValue.replace('.', '/').replace('.', '');
+      config.specialLoaPeriodStatic = specialPeriodValue;
     }
 
     return config;
   }
-}
 
-export class ExpirationAttrValue {
-  doNotExtendLoa: string;
-  doNotAllowLoa: string;
-  gracePeriod: string;
-  period: string;
-  periodLoa: string;
-}
+  private parseDynamicPeriod(config: ExpirationConfiguration): string {
+    return '+' + config.periodDynamic + config.periodDynamicUnit;
+  }
 
+  private parseStaticPeriod(config: ExpirationConfiguration): string {
+    return config.periodStatic;
+  }
+
+  private parseDontAllowLoas(config: ExpirationConfiguration): string {
+    if (!config.doNotAllowLoasEnabled) {
+      return null;
+    }
+
+    let dontAllowLoas = '';
+    config.doNotAllowLoas.forEach(loa => dontAllowLoas += loa + ',');
+
+    if (dontAllowLoas.length > 0) {
+      dontAllowLoas = dontAllowLoas.substring(0, dontAllowLoas.length - 1);
+    }
+
+    return dontAllowLoas.length > 0 ? dontAllowLoas : null;
+  }
+
+  private parseDontExtendLoas(config: ExpirationConfiguration): string {
+    if (!config.doNotExtendLoasEnabled) {
+      return null;
+    }
+
+    let dontExtendLoas = '';
+    config.doNotExtendLoas.forEach(loa => dontExtendLoas += loa + ',');
+
+    if (dontExtendLoas.length > 0) {
+      dontExtendLoas = dontExtendLoas.substring(0, dontExtendLoas.length - 1);
+    }
+
+    return dontExtendLoas.length > 0 ? dontExtendLoas : null;
+  }
+
+  private parseGracePeriod(config: ExpirationConfiguration): string {
+    if (!config.gracePeriodEnabled) {
+      return null;
+    }
+
+    return config.gracePeriod + config.gracePeriodUnit;
+  }
+
+  private parseSpecialLoaPeriod(config: ExpirationConfiguration) {
+    if (!config.specialLoaPeriodEnabled) {
+      return null;
+    }
+
+    let period = config.specialLoa + '|';
+
+    switch (config.specialLoaPeriodType) {
+      case 'static':
+        period += this.parseSpecialLoaPeriodStatic(config);
+        break;
+      case 'dynamic':
+        period += this.parseSpecialLoaPeriodDynamic(config);
+        break;
+      default:
+        // TODO show error
+    }
+
+    if (period != null && config.specialLoaPeriodExtendExpiredMembers) {
+      period += '.';
+    }
+
+    return period;
+  }
+
+  private parseSpecialLoaPeriodStatic(config: ExpirationConfiguration) {
+    return config.specialLoaPeriodStatic;
+  }
+
+  private parseSpecialLoaPeriodDynamic(config: ExpirationConfiguration) {
+    return '+' + config.specialLoaPeriodDynamic + config.specialLoaPeriodDynamicUnit;
+  }
+
+  private parseAttributeValueFromConfig(config: ExpirationConfiguration) {
+    if (!config.enabled) {
+      return null;
+    }
+    const period = this.parsePeriod(config);
+    const dontAllowLoas = this.parseDontAllowLoas(config);
+    const dontExtendLoad = this.parseDontExtendLoas(config);
+    const gracePeriod = this.parseGracePeriod(config);
+    const specialLoaPeriod = this.parseSpecialLoaPeriod(config);
+
+    const value: ExpirationAttrValue = {
+      period: period,
+    };
+
+    if (dontExtendLoad !== null) {
+      value.doNotExtendLoa = dontExtendLoad;
+    }
+    if (dontAllowLoas !== null) {
+      value.doNotAllowLoa = dontAllowLoas;
+    }
+    if (gracePeriod !== null) {
+      value.gracePeriod = gracePeriod;
+    }
+    if (specialLoaPeriod !== null) {
+      value.periodLoa = specialLoaPeriod;
+    }
+
+    return value;
+  }
+}

@@ -139,19 +139,21 @@
                 </mat-select>
               </mat-form-field>
             </div>
-            <mat-checkbox
-              color="primary"
-              [(ngModel)]="currentConfiguration.specialLoaPeriodExtendExpiredMembers">
-              {{'VO_DETAIL.SETTINGS.EXPIRATION.EXTEND_EXPIRED_MEMBERS_CHECKBOX' | translate}}
-            </mat-checkbox>
+            <div>
+              <mat-checkbox
+                color="primary"
+                [(ngModel)]="currentConfiguration.specialLoaPeriodExtendExpiredMembers">
+                {{'VO_DETAIL.SETTINGS.EXPIRATION.EXTEND_EXPIRED_MEMBERS_CHECKBOX' | translate}}
+              </mat-checkbox>
+            </div>
           </div>
         </div>
       </div>
     </app-settings-toggle-item>
   </div>
 
-  <div *ngIf="areChangesMade()" class="w-100 d-flex mt-3 mb-3">
-    <button mat-flat-button color="primary" class="ml-auto" (click)="saveChanges()">
+  <div class="w-100 d-flex mt-3 mb-3">
+    <button [disabled]="!areChangesMade()" mat-flat-button color="primary" class="ml-auto" (click)="saveChanges()">
       {{'VO_DETAIL.SETTINGS.EXPIRATION.SAVE' | translate}}
     </button>
   </div>
