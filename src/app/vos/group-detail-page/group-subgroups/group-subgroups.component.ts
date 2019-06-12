@@ -19,7 +19,6 @@ export class GroupSubgroupsComponent implements OnInit {
     private route: ActivatedRoute
   ) {
   }
-
   group: Group;
 
   groups: Group[] = [];

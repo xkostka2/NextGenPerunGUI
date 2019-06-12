@@ -41,6 +41,7 @@ import {TabComponent} from './components/tab.component';
 import {DeleteGroupDialogComponent} from './components/dialogs/delete-group-dialog/delete-group-dialog.component';
 import {BackButtonComponent} from './components/back-button/back-button.component';
 import {SettingsToggleItemComponent} from './components/settings-toggle-item/settings-toggle-item.component';
+import { ResourceTagsToStringPipe } from './pipes/resource-tags-to-string.pipe';
 import { ApplicationStatePipe } from './pipes/application-state.pipe';
 
 @NgModule({
@@ -112,6 +113,7 @@ import { ApplicationStatePipe } from './pipes/application-state.pipe';
     MatDividerModule,
     SettingsToggleItemComponent,
     MatRippleModule,
+    ResourceTagsToStringPipe,
     ApplicationStatePipe,
     MatPaginatorModule
   ],
@@ -132,6 +134,7 @@ import { ApplicationStatePipe } from './pipes/application-state.pipe';
     BackButtonComponent,
     DeleteGroupDialogComponent,
     SettingsToggleItemComponent,
+    ResourceTagsToStringPipe,
     ApplicationStatePipe
   ]
 })

@@ -37,6 +37,16 @@
       "CREATE_GROUP": "Create group",
       "ADD_MEMBER": "Add member"
     },
+    "RESOURCES": {
+      "TITLE": "Resources",
+      "DELETE": "Remove selected",
+      "TABLE_RESOURCE_ID": "id",
+      "TABLE_RESOURCE_NAME": "Name",
+      "TABLE_FACILITY_NAME": "Facility name",
+      "TABLE_RESOURCE_TAGS": "Tags",
+      "TABLE_RESOURCE_DESCRIPTION": "Description",
+      "TABLE_SEARCH": "Filter by name, description or ID"
+    },
     "SETTINGS": {
       "EXPIRATION": {
         "TITLE": "Membership expiration",
@@ -132,7 +142,7 @@
       "GROUPS": "Groups"
     }
   },
-  "DIALOGS":{
+  "DIALOGS": {
     "CREATE_GROUP": {
       "TITLE": "Create group",
       "TITLE_SUB_GROUP": "Create subgroup for ",
