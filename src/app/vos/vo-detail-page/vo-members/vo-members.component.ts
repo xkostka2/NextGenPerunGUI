@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Vo} from '../../../core/models/Vo';
 import {RichMember} from '../../../core/models/RichMember';
-import {MembersService} from '../../../core/services/members.service';
-import {SideMenuService} from '../../../shared/side-menu.service';
-import {VoService} from '../../../core/services/vo.service';
+import {MembersService} from '../../../core/services/api/members.service';
+import {SideMenuService} from '../../../core/services/common/side-menu.service';
+import {VoService} from '../../../core/services/api/vo.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({

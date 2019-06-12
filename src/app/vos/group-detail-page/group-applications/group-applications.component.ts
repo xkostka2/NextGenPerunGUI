@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {RegistrarService} from '../../../core/services/registrar.service';
+import {RegistrarService} from '../../../core/services/api/registrar.service';
 import {ActivatedRoute} from '@angular/router';
 import {Application} from '../../../core/models/Application';
-import {GroupService} from '../../../core/services/group.service';
+import {GroupService} from '../../../core/services/api/group.service';
 import {Group} from '../../../core/models/Group';
 
 @Component({

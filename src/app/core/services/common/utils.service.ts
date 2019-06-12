@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {RichMember} from '../core/models/RichMember';
-import {User} from '../core/models/User';
+import {RichMember} from '../../models/RichMember';
+import {User} from '../../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -122,4 +122,12 @@ export class UtilsService {
     return fullName;
   }
 
+  async doAfterDelay(delayMs: number, callback: () => void) {
+    await this.delay(delayMs);
+    callback();
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
 }

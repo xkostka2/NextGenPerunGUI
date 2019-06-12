@@ -1,0 +1,6 @@
+<div id="notificator">
+  <div *ngFor="let data of notifications" @flyInOut>
+    <app-notification  [data]="data">
+    </app-notification>
+  </div>
+</div>

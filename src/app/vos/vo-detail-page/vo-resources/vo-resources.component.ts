@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {SideMenuService} from '../../../shared/side-menu.service';
-import {VoService} from '../../../core/services/vo.service';
 import {ActivatedRoute} from '@angular/router';
 import {Vo} from '../../../core/models/Vo';
 import {SelectionModel} from '@angular/cdk/collections';
 import {ResourcesService} from '../../../core/services/resources.service';
 import {RichResource} from '../../../core/models/RichResource';
+import {SideMenuService} from '../../../core/services/common/side-menu.service';
+import {VoService} from '../../../core/services/api/vo.service';
 
 @Component({
   selector: 'app-vo-resources',

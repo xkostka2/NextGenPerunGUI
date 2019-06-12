@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {MatCheckboxChange, MatSort, MatTableDataSource} from '@angular/material';
 import {RichMember} from '../../core/models/RichMember';
-import {UtilsService} from '../../shared/utils.service';
+import {UtilsService} from '../../core/services/common/utils.service';
 
 export declare class MemberSelectChange {
   member: RichMember;

@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {RegistrarService} from '../../../../core/services/registrar.service';
+import {RegistrarService} from '../../../../core/services/api/registrar.service';
 import {TranslateService} from '@ngx-translate/core';
 
 

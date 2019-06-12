@@ -37,12 +37,14 @@ import {TranslateModule} from '@ngx-translate/core';
 import {CreateGroupDialogComponent} from './components/dialogs/create-group-dialog/create-group-dialog.component';
 import {InviteMemberDialogComponent} from './components/dialogs/invite-member-dialog/invite-member-dialog.component';
 import {UserFullNamePipe} from './pipes/user-full-name.pipe';
-import {TabComponent} from './components/tab.component';
 import {DeleteGroupDialogComponent} from './components/dialogs/delete-group-dialog/delete-group-dialog.component';
 import {BackButtonComponent} from './components/back-button/back-button.component';
 import {SettingsToggleItemComponent} from './components/settings-toggle-item/settings-toggle-item.component';
 import { ResourceTagsToStringPipe } from './pipes/resource-tags-to-string.pipe';
 import { ApplicationStatePipe } from './pipes/application-state.pipe';
+import { NotificatorComponent } from './components/notificator/notificator.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { NotificationDialogComponent } from './components/notification-dialog/notification-dialog.component';
 
 @NgModule({
   imports: [
@@ -102,7 +104,6 @@ import { ApplicationStatePipe } from './pipes/application-state.pipe';
     MatSnackBarModule,
     UserFullNamePipe,
     MatProgressSpinnerModule,
-    TabComponent,
     MatProgressBarModule,
     MatTooltipModule,
     BackButtonComponent,
@@ -115,12 +116,14 @@ import { ApplicationStatePipe } from './pipes/application-state.pipe';
     MatRippleModule,
     ResourceTagsToStringPipe,
     ApplicationStatePipe,
-    MatPaginatorModule
+    MatPaginatorModule,
+    NotificatorComponent
   ],
   entryComponents: [
     CreateGroupDialogComponent,
     InviteMemberDialogComponent,
-    DeleteGroupDialogComponent
+    DeleteGroupDialogComponent,
+    NotificationDialogComponent
   ],
   declarations: [
     PerunNavComponent,
@@ -130,12 +133,14 @@ import { ApplicationStatePipe } from './pipes/application-state.pipe';
     CreateGroupDialogComponent,
     InviteMemberDialogComponent,
     UserFullNamePipe,
-    TabComponent,
     BackButtonComponent,
     DeleteGroupDialogComponent,
     SettingsToggleItemComponent,
     ResourceTagsToStringPipe,
-    ApplicationStatePipe
+    ApplicationStatePipe,
+    NotificatorComponent,
+    NotificationComponent,
+    NotificationDialogComponent
   ]
 })
 export class SharedModule { }

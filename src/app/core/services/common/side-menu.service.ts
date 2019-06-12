@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import {SideMenuItem} from './side-menu/side-menu.component';
+import {SideMenuItem} from '../../../shared/side-menu/side-menu.component';
 
 @Injectable({
   providedIn: 'root'

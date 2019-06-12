@@ -13,3 +13,13 @@ export const openClose =
     animate('.3s ease-in')
   ]),
 ]);
+
+export const flyInOut = trigger('flyInOut', [
+  transition(':enter', [
+    style({transform: 'translateX(100%)'}),
+    animate('.25s')
+  ]),
+  transition(':leave', [
+    animate('.5s', style({transform: 'translateX(100%)'}))
+  ])
+]);

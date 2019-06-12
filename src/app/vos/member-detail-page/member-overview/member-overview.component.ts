@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {RichMember} from '../../../core/models/RichMember';
-import {UtilsService} from '../../../shared/utils.service';
+import {UtilsService} from '../../../core/services/common/utils.service';
 import {Urns} from '../../../shared/Urns';
-import {AttributesService} from '../../../core/services/attributes.service';
+import {AttributesService} from '../../../core/services/api/attributes.service';
 import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute} from '@angular/router';
-import {MembersService} from '../../../core/services/members.service';
-import {MenuItem} from '../../../shared/MenuItem';
+import {MembersService} from '../../../core/services/api/members.service';
+import {MenuItem} from '../../../shared/models/MenuItem';
 
 @Component({
   selector: 'app-member-overview',

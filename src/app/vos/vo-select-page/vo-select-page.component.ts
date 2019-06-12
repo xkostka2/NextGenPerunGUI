@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {VoService} from '../../core/services/vo.service';
+import {VoService} from '../../core/services/api/vo.service';
 import {Vo} from '../../core/models/Vo';
 import {Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
-import {MenuItem} from '../../shared/MenuItem';
+import {MenuItem} from '../../shared/models/MenuItem';
 import {MatAutocompleteSelectedEvent} from '@angular/material';
 import {Router} from '@angular/router';
-import {SideMenuService} from '../../shared/side-menu.service';
+import {SideMenuService} from '../../core/services/common/side-menu.service';
 
 @Component({
   selector: 'app-vo-select-page',

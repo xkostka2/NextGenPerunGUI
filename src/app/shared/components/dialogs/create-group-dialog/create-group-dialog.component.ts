@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Group} from '../../../../core/models/Group';
-import {GroupService} from '../../../../core/services/group.service';
+import {GroupService} from '../../../../core/services/api/group.service';
 import {TranslateService} from '@ngx-translate/core';
 
 export interface CreateGroupDialogData {

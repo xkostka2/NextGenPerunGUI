@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {RichMember} from '../../../core/models/RichMember';
-import {GroupService} from '../../../core/services/group.service';
+import {GroupService} from '../../../core/services/api/group.service';
 import {Group} from '../../../core/models/Group';
 import {ActivatedRoute} from '@angular/router';
 

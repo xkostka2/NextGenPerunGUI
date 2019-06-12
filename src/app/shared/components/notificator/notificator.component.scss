@@ -1,0 +1,15 @@
+#notificator {
+  position: fixed;
+  right: 0;
+  top: 64px;
+  z-index: 900;
+  padding: 8px;
+}
+
+@media (max-width: 768px) {
+  #notificator {
+    width: 100%;
+    top: initial;
+    bottom: 0;
+  }
+}

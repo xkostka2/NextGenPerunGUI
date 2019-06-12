@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {VoService} from '../../../core/services/vo.service';
-import {RegistrarService} from '../../../core/services/registrar.service';
+import {VoService} from '../../../core/services/api/vo.service';
+import {RegistrarService} from '../../../core/services/api/registrar.service';
 import {Vo} from '../../../core/models/Vo';
 import {ActivatedRoute} from '@angular/router';
 import {Application} from '../../../core/models/Application';

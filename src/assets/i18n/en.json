@@ -69,7 +69,9 @@
         "LOA_PERIOD_LABEL": "Special period for loa",
         "SAVE": "Save",
         "SPECIAL_LOA_SELECT": "Choose loa",
-        "EXTEND_EXPIRED_MEMBERS_CHECKBOX": "Extend already expired members"
+        "EXTEND_EXPIRED_MEMBERS_CHECKBOX": "Extend already expired members",
+        "SUCCESS_MESSAGE": "Settings saved.",
+        "ERROR_MESSAGE": "Failed to save settings."
       }
     },
     "APPLICATION": {
@@ -179,5 +181,11 @@
     "STATUS": "Status",
     "EMAIL": "Email",
     "LOGINS": "Logins"
+  },
+  "NOTIFICATOR": {
+    "NOTIFICATION": {
+      "DEFAULT_ACTION": "Show",
+      "DIALOG_CLOSE": "Close"
+    }
   }
 }

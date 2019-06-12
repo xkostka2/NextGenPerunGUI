@@ -1,8 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {openClose} from '../../../../shared/animations/Animations';
-import {AttributesService} from '../../../../core/services/attributes.service';
+import {AttributesService} from '../../../../core/services/api/attributes.service';
 import {ActivatedRoute} from '@angular/router';
 import {Attribute} from '../../../../core/models/Attribute';
+import {Urns} from '../../../../shared/Urns';
+import {NotificatorService} from '../../../../core/services/common/notificator.service';
+import {RPCError} from '../../../../core/models/RPCError';
+import {TranslateService} from '@ngx-translate/core';
 
 export class ExpirationAttrValue {
   period: string;
@@ -47,17 +51,21 @@ export class VoSettingsExpirationComponent implements OnInit {
 
   constructor(
     private attributesService: AttributesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private translate: TranslateService,
+    private notificator: NotificatorService
   ) {
+    this.translate.get('VO_DETAIL.SETTINGS.EXPIRATION.SUCCESS_MESSAGE').subscribe(value => this.successMessage = value);
+    this.translate.get('VO_DETAIL.SETTINGS.EXPIRATION.ERROR_MESSAGE').subscribe(value => this.errrorMessage = value);
   }
-
-  // attributes
-  EXPIRATION_ATTR_URN = 'urn:perun:vo:attribute-def:def:membershipExpirationRules';
 
   initialConfiguration: ExpirationConfiguration;
   currentConfiguration: ExpirationConfiguration;
 
   LOAS = [0, 1, 2];
+
+  successMessage: string;
+  errrorMessage: string;
 
   // TODO translation
   amountOptions = [{
@@ -86,7 +94,7 @@ export class VoSettingsExpirationComponent implements OnInit {
   }
 
   private loadSettings(): void {
-    this.attributesService.getVoAttribute(this.voId, this.EXPIRATION_ATTR_URN).subscribe(attr => {
+    this.attributesService.getVoAttribute(this.voId, Urns.VO_DEF_EXPIRATION_RULES).subscribe(attr => {
       this.expirationAttribute = attr;
       this.initialConfiguration = this.unParseAttrValue(<ExpirationAttrValue>attr.value);
       this.currentConfiguration = this.unParseAttrValue(<ExpirationAttrValue>attr.value);
@@ -116,9 +124,10 @@ export class VoSettingsExpirationComponent implements OnInit {
     const expirationAttribute = this.parseExpirationRulesAttribute();
 
     this.attributesService.setVoAttribute(this.voId, expirationAttribute).subscribe(() => {
-      console.log('success');
       this.loadSettings();
-      // TODO add info about success
+      this.notificator.showSuccess(this.successMessage);
+    }, (error: RPCError) => {
+      this.notificator.showRPCError(this.errrorMessage, error);
     });
   }
 

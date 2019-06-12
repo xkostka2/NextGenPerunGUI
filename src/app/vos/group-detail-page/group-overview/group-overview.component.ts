@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MenuItem} from '../../../shared/MenuItem';
+import {MenuItem} from '../../../shared/models/MenuItem';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({

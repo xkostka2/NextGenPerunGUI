@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef, MatSnackBar, MatTableDataSource} from '@angular/material';
 import {TranslateService} from '@ngx-translate/core';
 import {Group} from '../../../../core/models/Group';
-import {GroupService} from '../../../../core/services/group.service';
+import {GroupService} from '../../../../core/services/api/group.service';
 
 export interface DeleteGroupDialogData {
   voId: number;

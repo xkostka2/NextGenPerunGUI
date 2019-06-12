@@ -4,7 +4,7 @@ import {Vo} from '../../core/models/Vo';
 import {SideMenuItem} from './side-menu.component';
 import {Group} from '../../core/models/Group';
 import {RichMember} from '../../core/models/RichMember';
-import {UtilsService} from '../utils.service';
+import {UtilsService} from '../../core/services/common/utils.service';
 
 @Injectable({
   providedIn: 'root'

@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Vo} from '../../../core/models/Vo';
-import {MenuItem} from '../../../shared/MenuItem';
+import {MenuItem} from '../../../shared/models/MenuItem';
 import {InviteMemberDialogComponent} from '../../../shared/components/dialogs/invite-member-dialog/invite-member-dialog.component';
 import {MatDialog} from '@angular/material';
-import {SideMenuService} from '../../../shared/side-menu.service';
-import {VoService} from '../../../core/services/vo.service';
+import {SideMenuService} from '../../../core/services/common/side-menu.service';
+import {VoService} from '../../../core/services/api/vo.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
