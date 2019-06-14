@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'organizations',
-    loadChildren: './vos/vos.module#VosModule'
+    loadChildren: () => import('./vos/vos.module').then(m => m.VosModule)
   },
 ];
 

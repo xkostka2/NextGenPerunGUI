@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {MenuItem} from '../../shared/models/MenuItem';
-import {MatAutocompleteSelectedEvent} from '@angular/material';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import {Router} from '@angular/router';
 import {SideMenuService} from '../../core/services/common/side-menu.service';
 

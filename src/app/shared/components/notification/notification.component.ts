@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NotificationData} from '../../models/NotificationData';
-import {MatDialog} from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import {NotificationDialogComponent} from '../notification-dialog/notification-dialog.component';
 
 @Component({

@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild} from '@angular/core';
-import {MatCheckboxChange, MatSort, MatTableDataSource} from '@angular/material';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import {RichMember} from '../../core/models/RichMember';
 import {UtilsService} from '../../core/services/common/utils.service';
 
@@ -32,7 +34,7 @@ export class MembersListComponent implements OnChanges {
 
   private sort: MatSort;
 
-  @ViewChild(MatSort) set matSort(ms: MatSort) {
+  @ViewChild(MatSort, { static: true }) set matSort(ms: MatSort) {
     this.sort = ms;
     this.setDataSource();
   }

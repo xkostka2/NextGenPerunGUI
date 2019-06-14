@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {openClose} from '../../animations/Animations';
-import {MatSlideToggle} from '@angular/material';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-settings-toggle-item',
@@ -14,7 +14,7 @@ export class SettingsToggleItemComponent implements AfterViewInit {
 
   constructor() { }
 
-  @ViewChild(MatSlideToggle)
+  @ViewChild(MatSlideToggle, { static: true })
   toggle: MatSlideToggle;
 
   @Input()

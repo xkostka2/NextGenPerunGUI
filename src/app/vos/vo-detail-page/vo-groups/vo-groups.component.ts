@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Vo} from '../../../core/models/Vo';
 import {Group} from '../../../core/models/Group';
-import {MatDialog} from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import {CreateGroupDialogComponent} from '../../../shared/components/dialogs/create-group-dialog/create-group-dialog.component';
 import {GroupService} from '../../../core/services/api/group.service';
 import {SideMenuService} from '../../../core/services/common/side-menu.service';

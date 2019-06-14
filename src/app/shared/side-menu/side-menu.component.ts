@@ -1,5 +1,5 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
-import {MatSidenav} from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 import {SideMenuService} from '../../core/services/common/side-menu.service';
 import {Router} from '@angular/router';
 import {AppComponent} from '../../app.component';

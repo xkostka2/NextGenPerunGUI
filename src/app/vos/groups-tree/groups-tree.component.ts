@@ -1,7 +1,7 @@
 /* tslint:disable:member-ordering */
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Group} from '../../core/models/Group';
-import { MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material';
+import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import {TreeGroup} from '../../core/models/TreeGroup';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {SelectionModel} from '@angular/cdk/collections';

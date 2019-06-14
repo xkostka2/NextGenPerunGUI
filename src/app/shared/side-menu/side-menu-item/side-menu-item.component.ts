@@ -37,7 +37,7 @@ export class SideMenuItemComponent implements OnInit {
   @Input()
   showOpen: boolean;
 
-  @ViewChild('collapse') collapseDiv: ElementRef;
+  @ViewChild('collapse', { static: false }) collapseDiv: ElementRef;
 
   expanded = false;
 

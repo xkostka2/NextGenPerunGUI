@@ -1,5 +1,7 @@
 import {Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import {Application} from '../../core/models/Application';
 
 @Component({
@@ -11,7 +13,7 @@ export class ApplicationsListComponent implements OnChanges {
 
   constructor() { }
 
-  @ViewChild(MatSort) set matSort(ms: MatSort) {
+  @ViewChild(MatSort, { static: false }) set matSort(ms: MatSort) {
     this.sort = ms;
     this.setDataSource();
   }
@@ -27,7 +29,7 @@ export class ApplicationsListComponent implements OnChanges {
 
   dataSource: MatTableDataSource<Application>;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   private sort: MatSort;
 
 
