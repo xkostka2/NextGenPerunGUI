@@ -1,0 +1,11 @@
+<div class="container-fluid pl-xl-5 pr-xl-5 member-theme" *ngIf="vo !== undefined && member !== undefined">
+  <app-back-button>
+  </app-back-button>
+  <h1 class="page-title">
+    {{'MEMBER_DETAIL.TITLE' | translate}}
+    <a class="member-link" [routerLink]="['/organizations', vo.id, 'members', member.id]">
+      {{fullName}}
+    </a>
+  </h1>
+  <router-outlet></router-outlet>
+</div>

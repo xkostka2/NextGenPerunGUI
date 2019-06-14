@@ -124,7 +124,7 @@ export class SideMenuItemService {
         {
           label: this.translate.instant('MENU_ITEMS.MEMBER.GROUPS'),
           url: [`//organizations/${member.voId}/members/${member.id}/groups`],
-          activatedRegex: '/organizations/\\d+/members/\\d+/groups$'
+          activatedRegex: '/organizations/\\d+/members/\\d+/groups'
         }
       ],
       colorClass: 'member-bg-color',

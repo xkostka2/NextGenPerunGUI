@@ -1,30 +1,32 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {VoSelectPageComponent} from './vo-select-page/vo-select-page.component';
+import {VoSelectPageComponent} from './pages/vo-select-page/vo-select-page.component';
 import {VosRoutingModule} from './vos-routing.module';
 import {SharedModule} from '../shared/shared.module';
-import {VoDetailPageComponent} from './vo-detail-page/vo-detail-page.component';
-import {GroupDetailPageComponent} from './group-detail-page/group-detail-page.component';
-import {GroupsTreeComponent} from './groups-tree/groups-tree.component';
-import {GroupsListComponent} from './groups-list/groups-list.component';
-import {VoOverviewComponent} from './vo-detail-page/vo-overview/vo-overview.component';
-import {VoGroupsComponent} from './vo-detail-page/vo-groups/vo-groups.component';
-import {VoMembersComponent} from './vo-detail-page/vo-members/vo-members.component';
-import {MembersListComponent} from './members-list/members-list.component';
-import {MemberDetailPageComponent} from './member-detail-page/member-detail-page.component';
-import {MemberOverviewComponent} from './member-detail-page/member-overview/member-overview.component';
-import {MemberGroupsComponent} from './member-detail-page/member-groups/member-groups.component';
-import {GroupOverviewComponent} from './group-detail-page/group-overview/group-overview.component';
-import {GroupSubgroupsComponent} from './group-detail-page/group-subgroups/group-subgroups.component';
-import { VoResourcesComponent } from './vo-detail-page/vo-resources/vo-resources.component';
-import { VoApplicationsComponent } from './vo-detail-page/vo-applications/vo-applications.component';
-import { VoSettingsComponent } from './vo-detail-page/vo-settings/vo-settings.component';
-import { VoSettingsAttributesComponent } from './vo-detail-page/vo-settings/vo-settings-attributes/vo-settings-attributes.component';
-import { VoSettingsOverviewComponent } from './vo-detail-page/vo-settings/vo-settings-overview/vo-settings-overview.component';
-import { ResourcesListComponent } from './resources-list/resources-list.component';
-import { VoSettingsExpirationComponent } from './vo-detail-page/vo-settings/vo-settings-expiration/vo-settings-expiration.component';
-import { ApplicationsListComponent } from './applications-list/applications-list.component';
-import { GroupApplicationsComponent } from './group-detail-page/group-applications/group-applications.component';
+import {VoDetailPageComponent} from './pages/vo-detail-page/vo-detail-page.component';
+import {GroupDetailPageComponent} from './pages/group-detail-page/group-detail-page.component';
+import {GroupsTreeComponent} from './components/groups-tree/groups-tree.component';
+import {GroupsListComponent} from './components/groups-list/groups-list.component';
+import {VoOverviewComponent} from './pages/vo-detail-page/vo-overview/vo-overview.component';
+import {VoGroupsComponent} from './pages/vo-detail-page/vo-groups/vo-groups.component';
+import {VoMembersComponent} from './pages/vo-detail-page/vo-members/vo-members.component';
+import {MembersListComponent} from './components/members-list/members-list.component';
+import {MemberDetailPageComponent} from './pages/member-detail-page/member-detail-page.component';
+import {MemberOverviewComponent} from './pages/member-detail-page/member-overview/member-overview.component';
+import {MemberGroupsComponent} from './pages/member-detail-page/member-groups/member-groups.component';
+import {GroupOverviewComponent} from './pages/group-detail-page/group-overview/group-overview.component';
+import {GroupSubgroupsComponent} from './pages/group-detail-page/group-subgroups/group-subgroups.component';
+import { VoResourcesComponent } from './pages/vo-detail-page/vo-resources/vo-resources.component';
+import { VoApplicationsComponent } from './pages/vo-detail-page/vo-applications/vo-applications.component';
+import { VoSettingsComponent } from './pages/vo-detail-page/vo-settings/vo-settings.component';
+import { VoSettingsAttributesComponent } from './pages/vo-detail-page/vo-settings/vo-settings-attributes/vo-settings-attributes.component';
+import { VoSettingsOverviewComponent } from './pages/vo-detail-page/vo-settings/vo-settings-overview/vo-settings-overview.component';
+import { ResourcesListComponent } from './components/resources-list/resources-list.component';
+import { VoSettingsExpirationComponent } from './pages/vo-detail-page/vo-settings/vo-settings-expiration/vo-settings-expiration.component';
+import { ApplicationsListComponent } from './components/applications-list/applications-list.component';
+import { GroupApplicationsComponent } from './pages/group-detail-page/group-applications/group-applications.component';
+import { MemberGroupsDetailComponent } from './pages/member-detail-page/member-groups/member-groups-detail/member-groups-detail.component';
+import { MemberGroupListComponent } from './components/member-group-list/member-group-list.component';
 
 @NgModule({
   imports: [
@@ -55,7 +57,9 @@ import { GroupApplicationsComponent } from './group-detail-page/group-applicatio
     ResourcesListComponent,
     VoSettingsExpirationComponent,
     ApplicationsListComponent,
-    GroupApplicationsComponent
+    GroupApplicationsComponent,
+    MemberGroupsDetailComponent,
+    MemberGroupListComponent
   ]
 })
 export class VosModule {

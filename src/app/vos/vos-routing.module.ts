@@ -1,23 +1,24 @@
 import {RouterModule, Routes} from '@angular/router';
-import {VoSelectPageComponent} from './vo-select-page/vo-select-page.component';
+import {VoSelectPageComponent} from './pages/vo-select-page/vo-select-page.component';
 import {NgModule} from '@angular/core';
-import {GroupDetailPageComponent} from './group-detail-page/group-detail-page.component';
-import {MemberDetailPageComponent} from './member-detail-page/member-detail-page.component';
-import {VoOverviewComponent} from './vo-detail-page/vo-overview/vo-overview.component';
-import {VoGroupsComponent} from './vo-detail-page/vo-groups/vo-groups.component';
-import {VoMembersComponent} from './vo-detail-page/vo-members/vo-members.component';
-import {VoDetailPageComponent} from './vo-detail-page/vo-detail-page.component';
-import {MemberOverviewComponent} from './member-detail-page/member-overview/member-overview.component';
-import {MemberGroupsComponent} from './member-detail-page/member-groups/member-groups.component';
-import {GroupOverviewComponent} from './group-detail-page/group-overview/group-overview.component';
-import {GroupSubgroupsComponent} from './group-detail-page/group-subgroups/group-subgroups.component';
-import {VoResourcesComponent} from './vo-detail-page/vo-resources/vo-resources.component';
-import {VoApplicationsComponent} from './vo-detail-page/vo-applications/vo-applications.component';
-import {VoSettingsComponent} from './vo-detail-page/vo-settings/vo-settings.component';
-import {VoSettingsAttributesComponent} from './vo-detail-page/vo-settings/vo-settings-attributes/vo-settings-attributes.component';
-import {VoSettingsOverviewComponent} from './vo-detail-page/vo-settings/vo-settings-overview/vo-settings-overview.component';
-import {VoSettingsExpirationComponent} from './vo-detail-page/vo-settings/vo-settings-expiration/vo-settings-expiration.component';
-import {GroupApplicationsComponent} from './group-detail-page/group-applications/group-applications.component';
+import {GroupDetailPageComponent} from './pages/group-detail-page/group-detail-page.component';
+import {MemberDetailPageComponent} from './pages/member-detail-page/member-detail-page.component';
+import {VoOverviewComponent} from './pages/vo-detail-page/vo-overview/vo-overview.component';
+import {VoGroupsComponent} from './pages/vo-detail-page/vo-groups/vo-groups.component';
+import {VoMembersComponent} from './pages/vo-detail-page/vo-members/vo-members.component';
+import {VoDetailPageComponent} from './pages/vo-detail-page/vo-detail-page.component';
+import {MemberOverviewComponent} from './pages/member-detail-page/member-overview/member-overview.component';
+import {MemberGroupsComponent} from './pages/member-detail-page/member-groups/member-groups.component';
+import {GroupOverviewComponent} from './pages/group-detail-page/group-overview/group-overview.component';
+import {GroupSubgroupsComponent} from './pages/group-detail-page/group-subgroups/group-subgroups.component';
+import {VoResourcesComponent} from './pages/vo-detail-page/vo-resources/vo-resources.component';
+import {VoApplicationsComponent} from './pages/vo-detail-page/vo-applications/vo-applications.component';
+import {VoSettingsComponent} from './pages/vo-detail-page/vo-settings/vo-settings.component';
+import {VoSettingsAttributesComponent} from './pages/vo-detail-page/vo-settings/vo-settings-attributes/vo-settings-attributes.component';
+import {VoSettingsOverviewComponent} from './pages/vo-detail-page/vo-settings/vo-settings-overview/vo-settings-overview.component';
+import {VoSettingsExpirationComponent} from './pages/vo-detail-page/vo-settings/vo-settings-expiration/vo-settings-expiration.component';
+import {GroupApplicationsComponent} from './pages/group-detail-page/group-applications/group-applications.component';
+import {MemberGroupsDetailComponent} from './pages/member-detail-page/member-groups/member-groups-detail/member-groups-detail.component';
 
 const routes: Routes = [
   {
@@ -79,6 +80,10 @@ const routes: Routes = [
       {
         path: 'groups',
         component: MemberGroupsComponent
+      },
+      {
+        path: 'groups/:memberGroupId',
+        component: MemberGroupsDetailComponent
       }
     ]
   },
