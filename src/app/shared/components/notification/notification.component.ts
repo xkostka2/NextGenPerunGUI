@@ -8,7 +8,7 @@ import {NotificationDialogComponent} from '../notification-dialog/notification-d
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.scss']
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent {
 
   constructor(
     private dialog: MatDialog
@@ -17,13 +17,14 @@ export class NotificationComponent implements OnInit {
   @Input()
   data: NotificationData;
 
-  ngOnInit() {
-  }
-
-  openDescription(): void {
-    this.dialog.open(NotificationDialogComponent, {
-      width: '400px',
-      data: this.data
-    });
+  doAction(): void {
+    if (this.data.action !== undefined) {
+      this.data.action();
+    } else {
+      this.dialog.open(NotificationDialogComponent, {
+        width: '400px',
+        data: this.data
+      });
+    }
   }
 }

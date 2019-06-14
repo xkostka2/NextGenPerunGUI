@@ -4,4 +4,6 @@ export interface NotificationData {
   description: string;
   type: 'success' | 'error';
   delay: number;
+  icon: string;
+  action: () => void;
 }

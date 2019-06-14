@@ -2,14 +2,14 @@
      [class.error]="data.type === 'error'"
      [class.success]="data.type === 'success'">
   <div class="notification-container">
+    <div *ngIf="data.icon !== null" class="notification-icon">
+      <mat-icon>{{data.icon}}</mat-icon>
+    </div>
     <div class="notification-text">
       {{data.title}}
     </div>
-    <div class="notification-action" (click)="openDescription()">
+    <div class="notification-action" (click)="doAction()">
       {{data.actionText}}
-    </div>
-    <div *ngIf="data.type === 'success' && data.actionText === null" class="notification-icon">
-      <mat-icon>done</mat-icon>
     </div>
   </div>
 <!--  <button mat-icon-button>-->

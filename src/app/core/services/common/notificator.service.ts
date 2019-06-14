@@ -22,27 +22,53 @@ export class NotificatorService {
   @Output()
   addNotification: EventEmitter<NotificationData> = new EventEmitter<NotificationData>();
 
+  /**
+   * Shows default RPC error
+   *
+   * @param title - text that is shown on the notification
+   * @param rpcError - error returned by the backend
+   */
   showRPCError(title: string, rpcError: RPCError): void {
     this.showError(title + '\n' + rpcError.name, rpcError.message);
   }
 
-  showError(title: string, description?: string, action?: string): void {
+  /**
+   * Shows error notification
+   *
+   * @param title - text that is shown on the notification
+   * @param description - text shown in the body of dialog which is displayed after clicking the action
+   * @param actionText - clickable text shown on the notification which starts specified or default action
+   * @param action - action which will be executed after clicking the actionText
+   */
+  showError(title: string, description?: string, actionText?: string, action?: () => void): void {
     this.addNotification.emit({
       type: 'error',
       description: description,
       title: title,
-      actionText: action !== undefined ? action : this.defaultAction,
-      delay: this.defaultErrorDelayMs
+      actionText: actionText === undefined && description !== undefined ? this.defaultAction : actionText ,
+      delay: this.defaultErrorDelayMs,
+      icon: 'error_outline',
+      action: action
     });
   }
 
-  showSuccess(title: string): void {
+  /**
+   * Shows success notification
+   *
+   * @param title - text that is shown on the notification
+   * @param description - text shown in the body of dialog which is displayed after clicking the action
+   * @param actionText - clickable text shown on the notification which starts specified or default action
+   * @param action - action which will be executed after clicking the actionText
+   */
+  showSuccess(title: string, description?: string, actionText?: string, action?: () => void): void {
     this.addNotification.emit({
       type: 'success',
-      description: null,
+      description: description,
       title: title,
-      actionText: null,
-      delay: this.defaultSuccessDelayMs
+      actionText: actionText === undefined && description !== undefined ? this.defaultAction : actionText,
+      delay: this.defaultSuccessDelayMs,
+      icon: 'done',
+      action: action
     });
   }
 }
