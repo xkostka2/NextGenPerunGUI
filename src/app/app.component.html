@@ -1,4 +1,9 @@
-<app-perun-nav-menu id="nav-menu" [sideNav]="sidenav"></app-perun-nav-menu>
+<app-perun-nav-menu
+  *ngIf="principal !== undefined"
+  id="nav-menu"
+  [sideNav]="sidenav"
+  [principal]="principal">
+</app-perun-nav-menu>
 <app-notificator></app-notificator>
 <mat-sidenav-container id="content">
   <mat-sidenav #sidenav

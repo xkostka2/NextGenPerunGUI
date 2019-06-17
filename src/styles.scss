@@ -116,6 +116,8 @@ button:focus {
   width: 100%;
   z-index: 99999;
   top: 0;
+  display: flex;
+  justify-content: space-between;
   //display: table;
 }
 

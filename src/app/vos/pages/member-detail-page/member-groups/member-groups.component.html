@@ -1,3 +1,5 @@
 <h1 class="page-subtitle">{{'MEMBER_DETAIL.GROUPS.TITLE' | translate}}</h1>
+<!--this list is duplicated because it might contain
+other data than the one displayed in vo detail(e.g. members status-->
 <app-member-group-list [groups]="groups" [hideColumns]="['checkbox']">
 </app-member-group-list>

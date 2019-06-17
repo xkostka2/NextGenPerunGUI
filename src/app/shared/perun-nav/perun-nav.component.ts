@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import {PerunPrincipal} from '../../core/models/PerunPrincipal';
 
 @Component({
   selector: 'app-perun-nav-menu',
@@ -18,13 +19,11 @@ export class PerunNavComponent implements OnInit {
       icon: 'perun_logo-white.svg',
       url: '/',
       alt: 'Home'
-    },
-    // {
-    //   icon: 'vo-white.svg',
-    //   url: '/organizations',
-    //   alt: 'Virtual organizations'
-    // }
+    }
   ];
+
+  @Input()
+  principal: PerunPrincipal;
 
   ngOnInit() {
   }

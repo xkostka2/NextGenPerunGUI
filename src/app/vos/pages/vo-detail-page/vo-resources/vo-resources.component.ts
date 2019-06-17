@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Vo} from '../../../../core/models/Vo';
 import {SelectionModel} from '@angular/cdk/collections';
-import {ResourcesService} from '../../../../core/services/resources.service';
+import {ResourcesService} from '../../../../core/services/api/resources.service';
 import {RichResource} from '../../../../core/models/RichResource';
 import {SideMenuService} from '../../../../core/services/common/side-menu.service';
 import {VoService} from '../../../../core/services/api/vo.service';

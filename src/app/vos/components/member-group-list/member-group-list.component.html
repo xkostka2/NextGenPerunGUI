@@ -32,7 +32,7 @@
       <tr
         mat-row
         *matRowDef="let group; columns: displayedColumns;"
-        [routerLink]="['/organizations', group.voId, 'members', memberId, 'groups', group.id]"
+        [routerLink]="['/organizations', group.voId, 'groups', group.id]"
         class="dark-hover-list-item">
       </tr>
     </table>
