@@ -63,6 +63,8 @@ export class VoSettingsExpirationComponent implements OnInit {
   currentConfiguration: ExpirationConfiguration;
 
   LOAS = [0, 1, 2];
+  datePattern = '^(3[01]|[12][0-9]|0?[1-9])\\.(1[012]|0?[1-9])\\.$';
+  dynamicAmountPattern = '^[1-9]+$';
 
   successMessage: string;
   errrorMessage: string;

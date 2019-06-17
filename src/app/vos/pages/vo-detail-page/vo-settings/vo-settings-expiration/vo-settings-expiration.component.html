@@ -22,6 +22,7 @@
       <div class="form-container" *ngIf="staticPeriod.checked">
         <mat-form-field class="date-field">
           <input
+            pattern="{{datePattern}}"
             matInput
             [(ngModel)]="currentConfiguration.periodStatic"
             placeholder="{{'VO_DETAIL.SETTINGS.EXPIRATION.PERIOD_INPUT_STATIC' | translate}}">
@@ -31,6 +32,7 @@
       <div class="d-flex flex-row" *ngIf="dynamicPeriod.checked">
         <mat-form-field class="mr-2 amount-field">
           <input
+            pattern="{{dynamicAmountPattern}}"
             matInput
             [(ngModel)]="currentConfiguration.periodDynamic"
             placeholder="{{'VO_DETAIL.SETTINGS.EXPIRATION.AMOUNT_VALUE' | translate}}">
@@ -78,6 +80,7 @@
       <div class="d-flex flex-row">
         <mat-form-field class="mr-2 amount-field">
           <input
+            pattern="{{dynamicAmountPattern}}"
             matInput
             [(ngModel)]="currentConfiguration.gracePeriod"
             placeholder="{{'VO_DETAIL.SETTINGS.EXPIRATION.GRACE_AMOUNT_VALUE' | translate}}">
@@ -119,6 +122,7 @@
             <div class="form-container" *ngIf="loaStaticRadioButton.checked">
               <mat-form-field class="date-field">
                 <input
+                  pattern="{{datePattern}}"
                   [(ngModel)]="currentConfiguration.specialLoaPeriodStatic"
                   matInput
                   placeholder="{{'VO_DETAIL.SETTINGS.EXPIRATION.PERIOD_INPUT_STATIC' | translate}}">
@@ -128,6 +132,7 @@
             <div class="d-flex flex-row" *ngIf="loaDynamicRadioButton.checked">
               <mat-form-field class="mr-2 amount-field">
                 <input
+                  pattern="{{dynamicAmountPattern}}"
                   [(ngModel)]="currentConfiguration.specialLoaPeriodDynamic"
                   matInput
                   placeholder="{{'VO_DETAIL.SETTINGS.EXPIRATION.AMOUNT_VALUE' | translate}}">
