@@ -15,6 +15,39 @@ export class SideMenuItemService {
     private translate: TranslateService,
   ) { }
 
+  getAdminItem(): SideMenuItem {
+    return {
+      baseLink: '/admin',
+      label: this.translate.instant('MENU_ITEMS.ADMIN.TITLE'),
+      colorClass: 'admin-bg-color',
+      icon: 'perun_admin-white.svg',
+      links: [
+        {
+          label: this.translate.instant('MENU_ITEMS.ADMIN.OVERVIEW'),
+          url: ['/admin'],
+          activatedRegex: '^/admin$'
+        },
+        {
+          label: this.translate.instant('MENU_ITEMS.ADMIN.ATTRIBUTES'),
+          url: ['/admin/attributes'],
+          activatedRegex: '^/admin/attributes$'
+        },
+        {
+          label: this.translate.instant('MENU_ITEMS.ADMIN.VISUALIZER'),
+          url: ['/admin/visualizer'],
+          activatedRegex: '^/admin/visualizer$',
+          children: [
+            {
+              label: this.translate.instant('MENU_ITEMS.VISUALIZER.ATTR_DEPENDENCIES'),
+              url: ['/admin/visualizer/attrDependencies'],
+              activatedRegex: '^/admin/visualizer/attrDependencies'
+            }
+          ]
+        }
+      ]
+    };
+  }
+
   parseGroup(group: Group): SideMenuItem {
     return {
       baseLink: `/organizations/${group.voId}/groups/${group.id}`,
