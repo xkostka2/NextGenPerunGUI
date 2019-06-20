@@ -44,7 +44,6 @@ export class SideMenuComponent implements OnInit {
 }
 
 export interface SideMenuItem {
-  baseLink: string;
   label: string;
   links: EntityMenuLink[];
   colorClass: string;

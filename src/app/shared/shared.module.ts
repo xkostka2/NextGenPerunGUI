@@ -44,6 +44,7 @@ import { NotificationComponent } from './components/notification/notification.co
 import { NotificationDialogComponent } from './components/notification-dialog/notification-dialog.component';
 import { AttributeTypeCleanPipe } from './pipes/attribute-type-clean.pipe';
 import { NameSpaceToDefPipe } from './pipes/name-space-to-def.pipe';
+import {UsersListComponent} from './components/users-list/users-list.component';
 
 @NgModule({
   imports: [
@@ -118,7 +119,8 @@ import { NameSpaceToDefPipe } from './pipes/name-space-to-def.pipe';
     MatPaginatorModule,
     NotificatorComponent,
     AttributeTypeCleanPipe,
-    NameSpaceToDefPipe
+    NameSpaceToDefPipe,
+    UsersListComponent
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -143,7 +145,8 @@ import { NameSpaceToDefPipe } from './pipes/name-space-to-def.pipe';
     NotificationComponent,
     NotificationDialogComponent,
     AttributeTypeCleanPipe,
-    NameSpaceToDefPipe
+    NameSpaceToDefPipe,
+    UsersListComponent
   ]
 })
 export class SharedModule { }

@@ -9,6 +9,6 @@
   <button mat-flat-button color="warn" (click)="onRemoveManager()" [disabled]="selection.selected.length === 0">
     {{'VO_DETAIL.SETTINGS.MANAGERS.REMOVE' | translate}}
   </button>
-  <app-managers-list [managers]="managers" [selection]="selection">
-  </app-managers-list>
+  <app-users-list [users]="managers" [selection]="selection">
+  </app-users-list>
 </div>

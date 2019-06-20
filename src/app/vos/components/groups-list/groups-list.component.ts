@@ -26,9 +26,6 @@ export class GroupsListComponent implements OnChanges {
 
   private sort: MatSort;
 
-  @Input()
-  hideColumns: string[] = [];
-
   displayedColumns: string[] = ['select', 'id', 'name'];
   dataSource: MatTableDataSource<Group>;
 

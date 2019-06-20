@@ -1,0 +1,29 @@
+<div class="container pt-3 user-theme" (keyup)="onKeyDown($event)">
+  <app-back-button>
+  </app-back-button>
+  <h1 class="page-title">{{'USER_MANAGEMENT.TITLE' | translate}}</h1>
+
+  <div class="d-flex flex-row mt-2 mb-5">
+    <mat-form-field class="main-input w-100 user-bg-color p-2 white-color-input">
+      <input
+        type="text"
+        placeholder="{{'USER_MANAGEMENT.INPUT_PLACEHOLDER' | translate}}"
+        aria-label="Number"
+        spellcheck="false"
+        matInput
+        [(ngModel)]="searchString">
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      class="ml-2"
+      [disabled]="searchString.length === 0"
+      (click)="onSearchClick()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  <mat-spinner *ngIf="loading" class="ml-auto mr-auto">
+  </mat-spinner>
+
+  <app-users-list *ngIf="users.length > 0" [users]="users" [hideColumns]="['select']"></app-users-list>
+</div>

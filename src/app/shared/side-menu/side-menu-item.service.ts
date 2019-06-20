@@ -4,6 +4,7 @@ import {Vo} from '../../core/models/Vo';
 import {SideMenuItem} from './side-menu.component';
 import {Group} from '../../core/models/Group';
 import {RichMember} from '../../core/models/RichMember';
+import {User} from '../../core/models/User';
 import {parseFullName} from '../utils';
 
 @Injectable({
@@ -17,7 +18,6 @@ export class SideMenuItemService {
 
   getAdminItem(): SideMenuItem {
     return {
-      baseLink: '/admin',
       label: this.translate.instant('MENU_ITEMS.ADMIN.TITLE'),
       colorClass: 'admin-bg-color',
       icon: 'perun_admin-white.svg',
@@ -50,7 +50,6 @@ export class SideMenuItemService {
 
   parseGroup(group: Group): SideMenuItem {
     return {
-      baseLink: `/organizations/${group.voId}/groups/${group.id}`,
       label: group.name,
       links: [
         {
@@ -91,7 +90,6 @@ export class SideMenuItemService {
 
   parseVo(vo: Vo): SideMenuItem {
     return {
-      baseLink: `/organizations/${vo.id}`,
       label: vo.name,
       links: [
         {
@@ -150,7 +148,6 @@ export class SideMenuItemService {
 
   parseMember(member: RichMember): SideMenuItem {
     return {
-      baseLink: `/organizations/${member.voId}/members/${member.id}`,
       label: parseFullName(member.user),
       links: [
         {
@@ -165,6 +162,15 @@ export class SideMenuItemService {
         }
       ],
       colorClass: 'member-bg-color',
+      icon: 'user-white.svg'
+    };
+  }
+
+  parseUser(user: User): SideMenuItem {
+    return {
+      label: parseFullName(user),
+      links: [],
+      colorClass: 'user-bg-color',
       icon: 'user-white.svg'
     };
   }

@@ -1,21 +1,16 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
 import {RichUser} from '../../../core/models/RichUser';
-import {MatSort, MatTableDataSource} from '@angular/material';
-import {getRichUserAttribute, parseFullName} from '../../../shared/utils';
-import {Urns} from '../../../shared/urns';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {getRichUserAttribute, parseFullName} from '../../utils';
+import {Urns} from '../../urns';
 import {SelectionModel} from '@angular/cdk/collections';
 
-export interface ManagerSelectChange {
-  manager: RichUser;
-  checked: boolean;
-}
-
 @Component({
-  selector: 'app-managers-list',
-  templateUrl: './managers-list.component.html',
-  styleUrls: ['./managers-list.component.scss']
+  selector: 'app-users-list',
+  templateUrl: './users-list.component.html',
+  styleUrls: ['./users-list.component.scss']
 })
-export class ManagersListComponent implements OnChanges {
+export class UsersListComponent implements OnChanges {
 
   constructor() { }
 
@@ -24,8 +19,11 @@ export class ManagersListComponent implements OnChanges {
     this.setDataSource();
   }
 
+  @ViewChild(MatPaginator, { static: true })
+  paginator: MatPaginator;
+
   @Input()
-  managers: RichUser[];
+  users: RichUser[];
 
   private sort: MatSort;
 
@@ -33,10 +31,10 @@ export class ManagersListComponent implements OnChanges {
   searchString: string;
 
   @Input()
-  selection = new SelectionModel<RichUser>(true, []);
+  hideColumns: string[] = [];
 
-  @Output()
-  managerSelectChange: EventEmitter<ManagerSelectChange> = new EventEmitter<ManagerSelectChange>();
+  @Input()
+  selection = new SelectionModel<RichUser>(true, []);
 
   displayedColumns: string[] = ['select', 'id', 'name', 'organization', 'email'];
 
@@ -52,7 +50,7 @@ export class ManagersListComponent implements OnChanges {
           case 'email':
             return this.getPreferredMail(item);
           case 'organization':
-            return this.getManagerOrganization(item);
+            return this.getUserOrganization(item);
           default:
             return item[property];
         }
@@ -61,20 +59,22 @@ export class ManagersListComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.dataSource = new MatTableDataSource<RichUser>(this.managers);
+    this.displayedColumns = this.displayedColumns.filter(x => !this.hideColumns.includes(x));
+    this.dataSource = new MatTableDataSource<RichUser>(this.users);
+    this.dataSource.paginator = this.paginator;
     this.setDataSource();
   }
 
-  parseFullName(manager: RichUser): string {
-    return parseFullName(manager);
+  parseFullName(user: RichUser): string {
+    return parseFullName(user);
   }
 
-  getManagerOrganization(manager: RichUser): string {
-    return getRichUserAttribute(manager, Urns.USER_DEF_ORGANIZATION).value;
+  getUserOrganization(user: RichUser): string {
+    return getRichUserAttribute(user, Urns.USER_DEF_ORGANIZATION).value;
   }
 
-  getPreferredMail(manager: RichUser) {
-    return getRichUserAttribute(manager, Urns.USER_DEF_PREFERRED_MAIL).value;
+  getPreferredMail(user: RichUser) {
+    return getRichUserAttribute(user, Urns.USER_DEF_PREFERRED_MAIL).value;
   }
 
 

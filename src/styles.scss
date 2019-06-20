@@ -32,7 +32,7 @@ $facility-color: #E64A19;
 $group-color: #388E3C;
 $member-color: #BF360C;
 $admin-color: #4a148c;
-$user-color: #00695c;
+$user-color: #00796b;
 
 .vo-theme {
   $vo-primary: mat-palette($mat-indigo, 800);
@@ -66,12 +66,29 @@ $user-color: #00695c;
   @include angular-material-theme($admin-theme);
 }
 
+.user-theme {
+  $user-primary: mat-palette($mat-teal, 700);
+  $user-accent: mat-palette($mat-green, 600);
+  $user-theme: mat-light-theme($user-primary, $user-accent);
+
+  @include angular-material-theme($user-theme);
+}
+
 body {
   background-color: #fafafa;
 }
 
+button {
+  border-radius: 0 !important;
+}
+
 button:focus {
   outline: none !important;
+}
+
+.main-input {
+  font-size: 1.2rem !important;
+  line-height: 1.2 !important;
 }
 
 .perun-alert {
@@ -200,9 +217,9 @@ button:focus {
 }
 
 .button-shadow {
-  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
-  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
+  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35) !important;
+  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35) !important;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35) !important;
 }
 
 .menu-items {

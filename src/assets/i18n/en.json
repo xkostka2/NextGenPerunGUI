@@ -8,8 +8,11 @@
   "VO_MANAGEMENT": {
     "TITLE": "Organizations",
     "INPUT_PLACEHOLDER": "Find organization...",
-    "SELECT_VO_BUTTON": "Select organization",
     "CREATE_VO": "New organization"
+  },
+  "USER_MANAGEMENT": {
+    "TITLE": "Users",
+    "INPUT_PLACEHOLDER": "Enter user's name, login or email..."
   },
   "VO_DETAIL": {
     "TITLE": "Organization - ",

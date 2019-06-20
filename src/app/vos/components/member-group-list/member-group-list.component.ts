@@ -30,9 +30,6 @@ export class MemberGroupListComponent implements OnInit, OnChanges {
 
   private sort: MatSort;
 
-  @Input()
-  hideColumns: string[] = [];
-
   displayedColumns: string[] = ['select', 'id', 'name'];
   dataSource: MatTableDataSource<Group>;
 

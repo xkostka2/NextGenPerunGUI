@@ -1,0 +1,8 @@
+<div class="container-fluid pl-xl-5 pr-xl-5 user-theme" *ngIf="user !== undefined">
+  <app-back-button>
+  </app-back-button>
+  <h1 class="page-title">
+    {{getTitle()}}
+  </h1>
+  <router-outlet></router-outlet>
+</div>

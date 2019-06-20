@@ -3,6 +3,7 @@ import {ApiService} from './api.service';
 import {Observable} from 'rxjs';
 import {Vo} from '../../models/Vo';
 import {RichUser} from '../../models/RichUser';
+import {parseUrnsToUrlParam} from '../../../shared/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,7 @@ export class VoService {
   }
 
   getDirectRichAdminsWithSpecificAttributes(voId: number, attributes: string[]): Observable<RichUser[]> {
-    let attributesParam = '';
-    attributes.forEach(a => attributesParam = attributesParam.concat('&specificAttributes%5B%5D=').concat(a));
+    const attributesParam = parseUrnsToUrlParam('specificAttributes', attributes);
     return this.apiService.get(`json/vosManager/getDirectRichAdminsWithSpecificAttributes?vo=${voId}${attributesParam}`);
   }
 }

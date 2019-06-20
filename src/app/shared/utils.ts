@@ -86,6 +86,12 @@ export function parseLogins(richMember: RichMember|RichUser): string {
   return logins;
 }
 
+export function parseUrnsToUrlParam(paramName: string, urns: string[]): string {
+  let attributesParam = '';
+  urns.forEach(a => attributesParam = attributesParam.concat(`&${paramName}%5B%5D=`).concat(a));
+  return attributesParam;
+}
+
 /**
  * Creates full name for given user form his titles and names.
  *
