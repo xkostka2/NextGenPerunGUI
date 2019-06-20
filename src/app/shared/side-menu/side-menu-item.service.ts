@@ -133,6 +133,11 @@ export class SideMenuItemService {
               label: this.translate.instant('MENU_ITEMS.VO.EXPIRATION'),
               url: [`/organizations/${vo.id}/settings/expiration`],
               activatedRegex: '/organizations/\\d+/settings/expiration$'
+            },
+            {
+              label: this.translate.instant('MENU_ITEMS.VO.MANAGERS'),
+              url: [`/organizations/${vo.id}/settings/managers`],
+              activatedRegex: '/organizations/\\d+/settings/managers$'
             }
           ],
           showChildrenRegex: '/organizations/\\d+/settings'

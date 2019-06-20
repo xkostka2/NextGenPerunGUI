@@ -1,5 +1,7 @@
 import {RichMember} from '../core/models/RichMember';
 import {User} from '../core/models/User';
+import {RichUser} from '../core/models/RichUser';
+import {Attribute} from '../core/models/Attribute';
 
 
 /**
@@ -68,7 +70,7 @@ export function parseEmail(richMember: RichMember): string {
  *
  * @param richMember member
  */
-export function parseLogins(richMember: RichMember): string {
+export function parseLogins(richMember: RichMember|RichUser): string {
   let logins = '';
 
   richMember.userAttributes.forEach(attr => {
@@ -112,6 +114,24 @@ export function parseFullName(user: User): string {
   }
 
   return fullName;
+}
+
+/**
+ * Returns attribute with specific urn from given rich user.
+ * If the given user doesn't have attribute with given urn, null is returned.
+ *
+ * @param user user with attributes
+ * @param urn urn for required attribute
+ */
+export function getRichUserAttribute(user: RichUser, urn: string): Attribute {
+  for (const attribute of user.userAttributes) {
+    const attributeUrn = attribute.namespace + ':' + attribute.friendlyName;
+    if (attributeUrn === urn) {
+      return attribute;
+    }
+  }
+
+  return null;
 }
 
 export async function doAfterDelay(delayMs: number, callback: () => void) {

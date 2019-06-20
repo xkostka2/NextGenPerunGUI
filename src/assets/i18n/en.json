@@ -74,6 +74,11 @@
         "EXTEND_EXPIRED_MEMBERS_CHECKBOX": "Extend already expired members",
         "SUCCESS_MESSAGE": "Settings saved.",
         "ERROR_MESSAGE": "Failed to save settings."
+      },
+      "MANAGERS": {
+        "TITLE": "Managers",
+        "ADD": "Add...",
+        "REMOVE": "Remove"
       }
     },
     "APPLICATION": {
@@ -132,7 +137,8 @@
       "RESOURCES": "Resources",
       "SETTINGS": "Settings",
       "ATTRIBUTES": "Attributes",
-      "EXPIRATION": "Membership"
+      "EXPIRATION": "Membership",
+      "MANAGERS": "Managers"
     },
     "GROUP": {
       "OVERVIEW": "Overview",
@@ -191,6 +197,13 @@
     "ID": "Id",
     "NAME": "Name",
     "STATUS": "Status",
+    "EMAIL": "Email",
+    "LOGINS": "Logins"
+  },
+  "MANAGERS_LIST": {
+    "ID": "User ID",
+    "NAME": "Name",
+    "ORGANIZATION": "Organization",
     "EMAIL": "Email",
     "LOGINS": "Logins"
   },

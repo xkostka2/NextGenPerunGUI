@@ -1,0 +1,14 @@
+<div>
+  <h1 class="page-subtitle">
+    {{'VO_DETAIL.SETTINGS.MANAGERS.TITLE' | translate}}
+  </h1>
+
+  <button mat-flat-button color="accent" class="mr-2" (click)="onAddManager()">
+    {{'VO_DETAIL.SETTINGS.MANAGERS.ADD' | translate}}
+  </button>
+  <button mat-flat-button color="warn" (click)="onRemoveManager()" [disabled]="selection.selected.length === 0">
+    {{'VO_DETAIL.SETTINGS.MANAGERS.REMOVE' | translate}}
+  </button>
+  <app-managers-list [managers]="managers" [selection]="selection">
+  </app-managers-list>
+</div>

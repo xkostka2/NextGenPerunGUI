@@ -47,6 +47,12 @@ export class VoSettingsOverviewComponent implements OnInit {
         url: `/organizations/${this.vo.id}/settings/expiration`,
         label: 'MENU_ITEMS.VO.EXPIRATION',
         style: 'vo-btn'
+      },
+      {
+        icon: 'manager-white.svg',
+        url: `/organizations/${this.vo.id}/settings/managers`,
+        label: 'MENU_ITEMS.VO.MANAGERS',
+        style: 'vo-btn'
       }
     ];
   }
