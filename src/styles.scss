@@ -99,19 +99,19 @@ button:focus {
   border-left: 4px solid;
 }
 
-.info-alert {
+.perun-alert.info-alert {
   color: #000000;
   background-color: rgba(25,118,210,.05);
   border-color: #1976d2;
 }
 
-.warn-alert {
+.perun-alert.warn-alert {
   color: #000000;
   background-color: #fff2cd;
   border-color: #ffd657;
 }
 
-.error-alert {
+.perun-alert.error-alert {
   color: #000000;
   background-color: #fae2e2;
   border-color: #d32f2f;
@@ -432,6 +432,9 @@ button:focus {
 
 .user-bg-color {
   background-color: $user-color;
+  .cdk-text-field-autofilled {
+    background-color: black !important;
+  }
 }
 
 .setting-item {
@@ -621,6 +624,14 @@ button:focus {
   }
 }
 
+.user-link {
+  color: $user-color;
+  text-decoration: underline;
+
+  &:hover {
+    color: lighten($user-color, 10%);
+  }
+}
 // HACKS
 
 // Dont show horizontal scroll at menu items

@@ -169,7 +169,13 @@ export class SideMenuItemService {
   parseUser(user: User): SideMenuItem {
     return {
       label: parseFullName(user),
-      links: [],
+      links: [
+        {
+          label: this.translate.instant('MENU_ITEMS.USER.OVERVIEW'),
+          url: [`/users/${user.id}`],
+          activatedRegex: '^/users/\\d+$'
+        }
+      ],
       colorClass: 'user-bg-color',
       icon: 'user-white.svg'
     };

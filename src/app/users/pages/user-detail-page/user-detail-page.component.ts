@@ -37,7 +37,7 @@ export class UserDetailPageComponent implements OnInit {
     });
   }
 
-  getTitle(): string {
+  getUserFullName(): string {
     return parseFullName(this.user);
   }
 }

@@ -22,6 +22,7 @@ export class UserSelectPageComponent implements OnInit {
   loading = false;
 
   users: RichUser[] = [];
+  firstSearchDone = false;
 
   ngOnInit() {
     this.sideMenuService.setMenuItems([]);
@@ -29,6 +30,7 @@ export class UserSelectPageComponent implements OnInit {
 
   onSearchClick() {
     this.loading = true;
+    this.firstSearchDone = true;
     this.usersService.findRichUsersWithAttributes(this.searchString, [Urns.USER_DEF_ORGANIZATION, Urns.USER_DEF_PREFERRED_MAIL])
       .subscribe(users => {
         this.users = users;

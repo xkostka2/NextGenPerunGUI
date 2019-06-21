@@ -2,7 +2,10 @@
   <app-back-button>
   </app-back-button>
   <h1 class="page-title">
-    {{getTitle()}}
+    {{'USER_DETAIL.OVERVIEW.TITLE' | translate}}
+    <a class="user-link" [routerLink]="['/users', user.id]">
+      {{getUserFullName()}}
+    </a>
   </h1>
   <router-outlet></router-outlet>
 </div>

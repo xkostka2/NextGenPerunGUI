@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {UserSelectPageComponent} from './pages/user-select-page/user-select-page.component';
 import {UserDetailPageComponent} from './pages/user-detail-page/user-detail-page.component';
+import {UserOverviewComponent} from './pages/user-detail-page/user-overview/user-overview.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,10 @@ const routes: Routes = [
     path: ':userId',
     component: UserDetailPageComponent,
     children: [
-
+      {
+        path: '',
+        component: UserOverviewComponent
+      }
     ]
   }
 ];
