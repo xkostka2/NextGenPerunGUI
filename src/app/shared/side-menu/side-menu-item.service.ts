@@ -42,7 +42,8 @@ export class SideMenuItemService {
               url: ['/admin/visualizer/attrDependencies'],
               activatedRegex: '^/admin/visualizer/attrDependencies'
             }
-          ]
+          ],
+          showChildrenRegex: '/admin/visualizer'
         }
       ]
     };

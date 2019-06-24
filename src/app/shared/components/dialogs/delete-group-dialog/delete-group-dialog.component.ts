@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatTableDataSource } from '@angular/material/table';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MatTableDataSource} from '@angular/material/table';
 import {TranslateService} from '@ngx-translate/core';
 import {Group} from '../../../../core/models/Group';
 import {GroupService} from '../../../../core/services/api/group.service';
+import {NotificatorService} from '../../../../core/services/common/notificator.service';
 
 export interface DeleteGroupDialogData {
   voId: number;
@@ -20,7 +20,7 @@ export class DeleteGroupDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DeleteGroupDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DeleteGroupDialogData,
-              private snackBar: MatSnackBar,
+              private notificator: NotificatorService,
               private translate: TranslateService,
               private groupService: GroupService) { }
 
@@ -38,10 +38,9 @@ export class DeleteGroupDialogComponent implements OnInit {
   onSubmit() {
     this.groupService.deleteGroups(this.data.groups).subscribe( () => {
       this.translate.get('DIALOGS.DELETE_GROUP.SUCCESS').subscribe(successMessage => {
-        this.snackBar.open(successMessage, null, {duration: 5000});
+        this.notificator.showSuccess(successMessage);
         this.dialogRef.close(true);
       });
     });
   }
-
 }

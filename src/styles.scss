@@ -31,7 +31,7 @@ $vo-color: #283593;
 $facility-color: #E64A19;
 $group-color: #388E3C;
 $member-color: #BF360C;
-$admin-color: #4a148c;
+$admin-color: #c62828;
 $user-color: #00796b;
 
 .vo-theme {
@@ -59,7 +59,7 @@ $user-color: #00796b;
 }
 
 .admin-theme {
-  $admin-primary: mat-palette($mat-purple, 900);
+  $admin-primary: mat-palette($mat-red, 800);
   $admin-accent: mat-palette($mat-green, 600);
   $admin-theme: mat-light-theme($admin-primary, $admin-accent);
 
@@ -675,10 +675,6 @@ button:focus {
 .material-icons.blue {
   color: #1a87ff;
   vertical-align: bottom;
-}
-
-.mat-cell {
-  padding-left: 8px !important;
 }
 
 //specific style for dialog without any border

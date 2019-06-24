@@ -17,7 +17,7 @@ export class VoSettingsManagersComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  managers: RichUser[];
+  managers: RichUser[] = null;
 
   selection = new SelectionModel<RichUser>(true, []);
 
