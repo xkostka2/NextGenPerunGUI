@@ -29,7 +29,7 @@ export class ApplicationStatePipe implements PipeTransform {
       }
       case 'NEW': {
         this.translate.get('VO_DETAIL.APPLICATION.STATE.NEW').subscribe(response => {
-          this.returnData = `<i class="material-icons orange">hourglass_empty</i>${response}`;
+          this.returnData = `<i class="material-icons orange">contact_mail</i> ${response}`;
         });
         break;
       }

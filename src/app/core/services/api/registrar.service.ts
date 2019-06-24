@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {ApiService} from './api.service';
 import {Observable} from 'rxjs';
 import {Application} from '../../models/Application';
+import {ApplicationFormItemData} from '../../models/ApplicationFormItemData';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,58 @@ export class RegistrarService {
     return this.apiService.post('json/registrarManager/getApplicationsForGroup', {
       'group': groupId,
       'state': state
+    });
+  }
+
+  getApplicationById(applicationId: number): Observable<Application> {
+    return this.apiService.post('json/registrarManager/getApplicationById', {
+      'id': applicationId
+    });
+  }
+
+  getApplicationDataById(applicationId: number): Observable<ApplicationFormItemData[]> {
+    return this.apiService.post('json/registrarManager/getApplicationDataById', {
+      'id': applicationId
+    });
+  }
+
+  verifyApplication(applicationId: number): Observable<Application> {
+    return this.apiService.post('json/registrarManager/verifyApplication', {
+      'id': applicationId
+    });
+  }
+
+  approveApplication(applicationId: number): Observable<Application> {
+    return this.apiService.post('json/registrarManager/approveApplication', {
+      'id': applicationId
+    });
+  }
+
+  rejectApplication(applicationId: number, reason: string): Observable<Application> {
+    return this.apiService.post('json/registrarManager/rejectApplication', {
+      'id': applicationId,
+      'reason': reason
+    });
+  }
+
+  deleteApplication(applicationId: number): Observable<Application> {
+    return this.apiService.post('json/registrarManager/deleteApplication', {
+      'id': applicationId
+    });
+  }
+
+  sendMessage(applicationId: number, mailType: string) {
+    return this.apiService.post('json/registrarManager/sendMessage', {
+      'appId': applicationId,
+      'mailType': mailType
+    });
+  }
+
+  sendMessageWithReason(applicationId: number, mailType: string, reason: string) {
+    return this.apiService.post('json/registrarManager/sendMessage', {
+      'appId': applicationId,
+      'mailType': mailType,
+      'reason': reason
     });
   }
 }

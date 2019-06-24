@@ -68,6 +68,7 @@
       <tr
         mat-row
         *matRowDef="let application; columns: displayedColumns;"
+        (click)="selectApplication(application)"
         class="dark-hover-list-item">
       </tr>
     </table>

@@ -20,6 +20,7 @@ import {VoSettingsExpirationComponent} from './pages/vo-detail-page/vo-settings/
 import {GroupApplicationsComponent} from './pages/group-detail-page/group-applications/group-applications.component';
 import {MemberGroupsDetailComponent} from './pages/member-detail-page/member-groups/member-groups-detail/member-groups-detail.component';
 import {VoSettingsManagersComponent} from './pages/vo-detail-page/vo-settings/vo-settings-managers/vo-settings-managers.component';
+import {ApplicationDetailComponent} from './components/application-detail/application-detail.component';
 import {GroupMembersComponent} from './group-detail-page/group-members/group-members.component';
 
 const routes: Routes = [
@@ -50,6 +51,10 @@ const routes: Routes = [
       {
         path: 'applications',
         component: VoApplicationsComponent
+      },
+      {
+        path: 'applications/:applicationId',
+        component: ApplicationDetailComponent
       },
       {
         path: 'settings',
@@ -112,6 +117,10 @@ const routes: Routes = [
       {
         path: 'applications',
         component: GroupApplicationsComponent
+      },
+      {
+        path: 'applications/:applicationId',
+        component: ApplicationDetailComponent
       }
     ]
   }

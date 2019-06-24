@@ -1,0 +1,75 @@
+<h4>{{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.TITLE' | translate}}</h4>
+<mat-divider class="mb-4"></mat-divider>
+
+<mat-spinner *ngIf="loading" class="ml-auto mr-auto">
+</mat-spinner>
+
+<div *ngIf="!loading">
+  <button mat-flat-button color="accent" class="mr-2" (click)="verifyApplication()" *ngIf="this.application.state == 'NEW'">
+    {{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.VERIFY' | translate}}
+  </button>
+  <button mat-flat-button color="accent" class="mr-2" (click)="approveApplication()" *ngIf="this.application.state == 'VERIFIED' || this.application.state == 'NEW'">
+    {{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.APPROVE' | translate}}
+  </button>
+  <button mat-flat-button color="warn" class="mr-2" (click)="rejectApplication()" *ngIf="this.application.state == 'VERIFIED' || this.application.state == 'NEW'">
+    {{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.REJECT' | translate}}
+  </button>
+  <button mat-flat-button color="warn" class="mr-2" (click)="deleteApplication()" *ngIf="this.application.state == 'REJECTED' || this.application.state == 'NEW'">
+    {{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.DELETE' | translate}}
+  </button>
+  <button mat-stroked-button class="mr-2 mb-2" (click)="resendNotification()">
+    <i class="material-icons">
+      mail_outline
+    </i> {{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.SEND_NOTIFICATION' | translate}}
+  </button>
+
+  <div>
+    <span class="font-weight-bold">{{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.APPLICATION_FOR_VO' | translate}}</span> : {{this.application.vo.name}}
+  </div>
+  <div>
+    <span class="font-weight-bold">{{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.STATE' | translate}}</span>: <span [outerHTML]="this.application.state | applicationState"></span>
+  </div>
+  <div>
+    <span class="font-weight-bold">{{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.TYPE' | translate}}</span>:
+    <span *ngIf="application.type == 'INITIAL'; else extension">
+      <mat-icon class="align-text-bottom" >arrow_right_alt</mat-icon>Initial
+    </span>
+    <ng-template #extension>
+      <mat-icon class="align-text-bottom">cached</mat-icon>Extension
+    </ng-template>
+  </div>
+
+  <div class="card p-3 mt-2" *ngIf="this.application.state == 'REJECTED'">
+    <mat-card-title><i class="material-icons red">clear</i> {{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.REJECTED_BY' | translate}}: {{getModifiedAtName(application.modifiedBy)}}</mat-card-title>
+    <div><span class="font-weight-bold">{{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.DATE' | translate}}</span>: {{this.application.modifiedAt | date:'d.M.y h:mm:ss a'}}</div>
+  </div>
+
+  <div class="card p-3 mt-2" *ngIf="this.application.state == 'APPROVED'">
+    <mat-card-title><i class="material-icons green">done</i> {{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.APPROVED_BY' | translate}}: {{getModifiedAtName(application.modifiedBy)}}</mat-card-title>
+    <div><span class="font-weight-bold">{{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.DATE' | translate}}</span>: {{this.application.modifiedAt | date:'d.M.y h:mm:ss a'}}</div>
+  </div>
+
+  <div class="card p-4 mt-2">
+    <mat-card-title><i class="material-icons">redo</i> {{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.SUBMITTED_BY' | translate}}: {{application.user === null ? submittedBy() : application.user | userFullName}}</mat-card-title>
+
+    <div><span class="font-weight-bold">{{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.EXT_SRC' | translate}}</span>: {{this.application.extSourceName}}</div>
+    <div><span class="font-weight-bold">{{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.LOA' | translate}}</span>: {{this.application.extSourceLoa}}</div>
+    <div><span class="font-weight-bold">{{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.DATE' | translate}}</span>: {{this.application.createdAt | date:'d.M.y h:mm:ss a'}}</div>
+
+    <table mat-table [dataSource]="dataSource" class="w-100" *ngIf="userData.length !== 0">
+      <ng-container matColumnDef="label">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let userData" class="font-weight-bold">{{getLabel(userData.formItem)}}{{userData.formItem.type.startsWith("FROM_FEDERATION") ? '*' : ''}}</td>
+      </ng-container>
+      <ng-container matColumnDef="value">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let userData"> {{userData.value}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" class="h-50"></tr>
+      <tr mat-row *matRowDef="let userData; columns: displayedColumns;"></tr>
+    </table>
+    <div *ngIf="userData.length !== 0" class="font-italic">*{{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.VALUE_BY_EXTERNALS' | translate}}</div>
+
+  </div>
+</div>

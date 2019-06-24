@@ -665,3 +665,15 @@ button:focus {
   color: #1a87ff;
   vertical-align: bottom;
 }
+
+.mat-cell {
+  padding-left: 8px !important;
+}
+
+//specific style for dialog without any border
+.noBorderDialog .mat-dialog-container {
+  padding: 0px !important;
+}
+
+
+

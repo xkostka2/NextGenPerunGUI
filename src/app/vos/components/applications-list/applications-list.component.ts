@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {Application} from '../../../core/models/Application';
+import {Router} from '@angular/router';
+import {Group} from '../../../core/models/Group';
 
 @Component({
   selector: 'app-applications-list',
@@ -11,7 +13,7 @@ import {Application} from '../../../core/models/Application';
 })
 export class ApplicationsListComponent implements OnChanges {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   @ViewChild(MatSort, { static: false }) set matSort(ms: MatSort) {
     this.sort = ms;
@@ -23,6 +25,9 @@ export class ApplicationsListComponent implements OnChanges {
 
   @Input()
   applications: Application[] = [];
+
+  @Input()
+  group: Group;
 
   @Input()
   displayedColumns: string[] = [];
@@ -92,4 +97,11 @@ export class ApplicationsListComponent implements OnChanges {
     return modifiedBy;
   }
 
+  selectApplication(application: Application) {
+    if (this.group) {
+      this.router.navigate(['/organizations', application.vo.id, 'groups', this.group.id, 'applications', application.id]);
+    } else {
+      this.router.navigate(['/organizations', application.vo.id, 'applications', application.id]);
+    }
+  }
 }

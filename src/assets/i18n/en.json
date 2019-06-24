@@ -105,8 +105,29 @@
       "STATE": {
         "APPROVED": "Approved",
         "REJECTED": "Rejected",
-        "NEW": "New",
-        "VERIFIED": "Submited"
+        "NEW": "Waiting for mail verification",
+        "VERIFIED": "Submitted"
+      },
+      "APPLICATION_DETAIL": {
+        "TITLE": "Application detail",
+        "APPROVE": "Approve",
+        "REJECT": "Reject",
+        "SEND_NOTIFICATION": "Re-send notifications",
+        "DELETE": "Delete",
+        "TYPE": "Type",
+        "STATE": "State",
+        "SUBMITTED_BY": "Submitted by",
+        "EXT_SRC": "From External Source",
+        "LOA": "Level of Assurance",
+        "APPLICATION_FOR_VO": "Application for VO",
+        "APPROVED_BY": "Approved by",
+        "REJECTED_BY": "Rejected by",
+        "DATE": "Date",
+        "VALUE_BY_EXTERNALS": "Value provided by external source.",
+        "VERIFY": "Verify",
+        "DELETE_MESSAGE": "Application was deleted",
+        "APPROVE_MESSAGE": "Application was approved",
+        "VERIFY_MESSAGE": "Application was verified"
       }
     }
   },
@@ -203,6 +224,29 @@
       "CANCEL": "Cancel",
       "DELETE": "Delete",
       "SUCCESS": "Selected groups were deleted"
+    },
+    "RE_SEND_NOTIFICATION": {
+      "TITLE": "Re-send notification",
+      "SEND": "Send",
+      "CANCEL": "Cancel",
+      "SELECT": "Select notification",
+      "REASON": "Reason",
+      "SUCCESS": "Notification was sent",
+      "NOTIFICATION_TYPE": {
+        "APP_CREATED_USER": "Created / user",
+        "APP_CREATED_VO_ADMIN": "Created / manager",
+        "MAIL_VALIDATION": "Mail validation / user",
+        "APP_APPROVED_USER": "Approved / user",
+        "APP_REJECTED_USER": "Rejected / user",
+        "APP_ERROR_VO_ADMIN": "Error / manager"
+      }
+    },
+    "REJECT_APPLICATION": {
+      "TITLE": "Specify reason",
+      "TEXT": "Please specify reason of rejection to let user know why was application rejected.",
+      "SUBMIT": "Reject",
+      "CANCEL": "Cancel",
+      "SUCCESS": "Application was rejected"
     }
   },
   "MEMBERS_LIST": {

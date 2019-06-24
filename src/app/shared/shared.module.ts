@@ -26,6 +26,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatCardModule } from '@angular/material/card';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SideMenuComponent} from './side-menu/side-menu.component';
 import {SideMenuItemComponent} from './side-menu/side-menu-item/side-menu-item.component';
@@ -45,6 +46,9 @@ import { NotificationDialogComponent } from './components/notification-dialog/no
 import { AttributeTypeCleanPipe } from './pipes/attribute-type-clean.pipe';
 import { NameSpaceToDefPipe } from './pipes/name-space-to-def.pipe';
 import {UsersListComponent} from './components/users-list/users-list.component';
+import { ApplicationReSendNotificationDialogComponent
+} from './components/dialogs/application-re-send-notification-dialog/application-re-send-notification-dialog.component';
+import { ApplicationRejectDialogComponent } from './components/dialogs/application-reject-dialog/application-reject-dialog.component';
 
 @NgModule({
   imports: [
@@ -78,7 +82,8 @@ import {UsersListComponent} from './components/users-list/users-list.component';
     MatRadioModule,
     MatDividerModule,
     MatRippleModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule
   ],
   exports: [
     PerunNavComponent,
@@ -112,6 +117,7 @@ import {UsersListComponent} from './components/users-list/users-list.component';
     MatNativeDateModule,
     MatRadioModule,
     MatDividerModule,
+    MatCardModule,
     SettingsToggleItemComponent,
     MatRippleModule,
     ResourceTagsToStringPipe,
@@ -126,7 +132,9 @@ import {UsersListComponent} from './components/users-list/users-list.component';
     CreateGroupDialogComponent,
     InviteMemberDialogComponent,
     DeleteGroupDialogComponent,
-    NotificationDialogComponent
+    NotificationDialogComponent,
+    ApplicationReSendNotificationDialogComponent,
+    ApplicationRejectDialogComponent
   ],
   declarations: [
     PerunNavComponent,
@@ -146,7 +154,10 @@ import {UsersListComponent} from './components/users-list/users-list.component';
     NotificationDialogComponent,
     AttributeTypeCleanPipe,
     NameSpaceToDefPipe,
-    UsersListComponent
+    UsersListComponent,
+    ApplicationStatePipe,
+    ApplicationReSendNotificationDialogComponent,
+    ApplicationRejectDialogComponent
   ]
 })
 export class SharedModule { }
