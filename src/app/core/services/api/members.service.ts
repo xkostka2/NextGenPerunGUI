@@ -27,4 +27,27 @@ export class MembersService {
   getRichMemberWithAttributes(memberId: number): Observable<RichMember> {
     return this.apiService.get(`json/membersManager/getRichMemberWithAttributes?id=${memberId}`);
   }
+
+  findCompleteRichMembersForGroup(groupId: number, searchString: string): Observable<RichMember[]> {
+    return this.apiService.post('json/membersManager/findCompleteRichMembers', {
+      'group' : groupId,
+      'attrsNames' : ['urn:perun:member:attribute-def:def:organization', 'urn:perun:user:attribute-def:def:organization',
+                        'urn:perun:user:attribute-def:def:preferredMail', 'urn:perun:member:attribute-def:def:mail'] ,
+      'allowedStatuses' : ['INVALID', 'SUSPENDED', 'EXPIRED', 'VALID', 'DISABLED'] ,
+      'searchString' : searchString,
+      'lookingInParentGroup' : false
+      }
+    );
+  }
+
+  getCompleteRichMembersForGroup(groupId: number): Observable<RichMember[]> {
+    return this.apiService.post('json/membersManager/getCompleteRichMembers', {
+        'group' : groupId,
+        'attrsNames' : ['urn:perun:member:attribute-def:def:organization', 'urn:perun:user:attribute-def:def:organization',
+          'urn:perun:user:attribute-def:def:preferredMail', 'urn:perun:member:attribute-def:def:mail'] ,
+        'allowedStatuses' : ['INVALID', 'SUSPENDED', 'VALID'] ,
+        'lookingInParentGroup' : false
+      }
+    );
+  }
 }

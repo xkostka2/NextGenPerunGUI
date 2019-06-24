@@ -28,6 +28,7 @@ import { GroupApplicationsComponent } from './pages/group-detail-page/group-appl
 import { MemberGroupsDetailComponent } from './pages/member-detail-page/member-groups/member-groups-detail/member-groups-detail.component';
 import { MemberGroupListComponent } from './components/member-group-list/member-group-list.component';
 import { VoSettingsManagersComponent } from './pages/vo-detail-page/vo-settings/vo-settings-managers/vo-settings-managers.component';
+import { GroupMembersComponent } from './group-detail-page/group-members/group-members.component';
 
 @NgModule({
   imports: [
@@ -64,6 +65,7 @@ import { VoSettingsManagersComponent } from './pages/vo-detail-page/vo-settings/
     MemberGroupsDetailComponent,
     MemberGroupListComponent,
     VoSettingsManagersComponent,
+    GroupMembersComponent
   ]
 })
 export class VosModule {

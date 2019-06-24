@@ -119,7 +119,16 @@
       "SHOW_LIST": "List view",
       "NO_SUBGROUPS": "This group has no subgroups."
     },
-    "SUBGROUP_INFO": "This group is a subgroup of "
+    "SUBGROUP_INFO": "This group is a subgroup of ",
+    "MEMBERS": {
+      "TITLE": "Members",
+      "ADD_MEMBER": "Add...",
+      "REMOVE_MEMBERS": "Remove...",
+      "SEARCH_DESCRIPTION": "Search by name, login or email",
+      "LIST_ALL": "List all members",
+      "SEARCH_ALERT": "You can search member by name, login and email. Also, you can list all valid members.",
+      "NO_MEMBERS_ALERT": "No members found."
+    }
   },
   "MEMBER_DETAIL": {
     "TITLE": "Member - ",

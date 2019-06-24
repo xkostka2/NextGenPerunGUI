@@ -20,6 +20,7 @@ import {VoSettingsExpirationComponent} from './pages/vo-detail-page/vo-settings/
 import {GroupApplicationsComponent} from './pages/group-detail-page/group-applications/group-applications.component';
 import {MemberGroupsDetailComponent} from './pages/member-detail-page/member-groups/member-groups-detail/member-groups-detail.component';
 import {VoSettingsManagersComponent} from './pages/vo-detail-page/vo-settings/vo-settings-managers/vo-settings-managers.component';
+import {GroupMembersComponent} from './group-detail-page/group-members/group-members.component';
 
 const routes: Routes = [
   {
@@ -99,6 +100,10 @@ const routes: Routes = [
       {
         path: '',
         component: GroupOverviewComponent
+      },
+      {
+        path: 'members',
+        component: GroupMembersComponent
       },
       {
         path: 'subgroups',
