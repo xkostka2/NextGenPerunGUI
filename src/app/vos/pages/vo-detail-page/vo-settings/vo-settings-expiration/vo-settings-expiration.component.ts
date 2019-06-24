@@ -56,7 +56,7 @@ export class VoSettingsExpirationComponent implements OnInit {
     private notificator: NotificatorService
   ) {
     this.translate.get('VO_DETAIL.SETTINGS.EXPIRATION.SUCCESS_MESSAGE').subscribe(value => this.successMessage = value);
-    this.translate.get('VO_DETAIL.SETTINGS.EXPIRATION.ERROR_MESSAGE').subscribe(value => this.errrorMessage = value);
+    this.translate.get('VO_DETAIL.SETTINGS.EXPIRATION.ERROR_MESSAGE').subscribe(value => this.errorMessage = value);
   }
 
   initialConfiguration: ExpirationConfiguration;
@@ -67,7 +67,7 @@ export class VoSettingsExpirationComponent implements OnInit {
   dynamicAmountPattern = '^[1-9]+$';
 
   successMessage: string;
-  errrorMessage: string;
+  errorMessage: string;
 
   // TODO translation
   amountOptions = [{
@@ -125,12 +125,11 @@ export class VoSettingsExpirationComponent implements OnInit {
   saveChanges(): void {
     const expirationAttribute = this.parseExpirationRulesAttribute();
 
-    this.attributesService.setVoAttribute(this.voId, expirationAttribute).subscribe(() => {
+    this.attributesService.setVoAttribute(this.voId, expirationAttribute, false).subscribe(() => {
       this.loadSettings();
       this.notificator.showSuccess(this.successMessage);
-    }, (error: RPCError) => {
-      this.notificator.showRPCError(this.errrorMessage, error);
-    });
+    },
+      error => this.notificator.showRPCError(error, this.errorMessage));
   }
 
   parseExpirationRulesAttribute(): Attribute {

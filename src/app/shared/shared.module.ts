@@ -31,7 +31,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SideMenuComponent} from './side-menu/side-menu.component';
 import {SideMenuItemComponent} from './side-menu/side-menu-item/side-menu-item.component';
 import {MenuButtonsFieldComponent} from './components/menu-buttons-field/menu-buttons-field.component';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {CreateGroupDialogComponent} from './components/dialogs/create-group-dialog/create-group-dialog.component';
 import {InviteMemberDialogComponent} from './components/dialogs/invite-member-dialog/invite-member-dialog.component';
 import {UserFullNamePipe} from './pipes/user-full-name.pipe';
@@ -62,7 +62,7 @@ import { ApplicationRejectDialogComponent } from './components/dialogs/applicati
     MatIconModule,
     MatSidenavModule,
     MatExpansionModule,
-    TranslateModule,
+    TranslateModule.forChild({}),
     MatButtonModule,
     MatSortModule,
     MatTableModule,
@@ -160,4 +160,10 @@ import { ApplicationRejectDialogComponent } from './components/dialogs/applicati
     ApplicationRejectDialogComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+  constructor(private translate: TranslateService) {
+    translate.addLangs(['en', 'cs']);
+    translate.setDefaultLang('en');
+    translate.use('en');
+  }
+}

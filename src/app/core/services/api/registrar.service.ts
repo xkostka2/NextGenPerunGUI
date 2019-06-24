@@ -11,89 +11,89 @@ export class RegistrarService {
 
   constructor(private apiService: ApiService) { }
 
-  sendInvitation(voId: number, name: string, email: string, language: string ): Observable<void> {
+  sendInvitation(voId: number, name: string, email: string, language: string, showNotificationOnError = true): Observable<void> {
     return this.apiService.post('json/registrarManager/sendInvitation', {
       'voId': voId,
       'name': name,
       'email': email,
-      'language': language});
+      'language': language}, showNotificationOnError);
   }
 
-  getApplicationsForVo(voId: number): Observable<Application[]> {
+  getApplicationsForVo(voId: number, showNotificationOnError = true): Observable<Application[]> {
     return this.apiService.post('json/registrarManager/getApplicationsForVo', {
       'vo': voId
-    });
+    }, showNotificationOnError);
   }
 
-  getApplicationsForVoWithState(voId: number, state: string[]): Observable<Application[]> {
+  getApplicationsForVoWithState(voId: number, state: string[], showNotificationOnError = true): Observable<Application[]> {
     return this.apiService.post('json/registrarManager/getApplicationsForVo', {
       'vo': voId,
       'state': state
-    });
+    }, showNotificationOnError);
   }
 
-  getApplicationsForGroup(groupId: number): Observable<Application[]> {
+  getApplicationsForGroup(groupId: number, showNotificationOnError = true): Observable<Application[]> {
     return this.apiService.post('json/registrarManager/getApplicationsForGroup', {
       'group': groupId
-    });
+    }, showNotificationOnError);
   }
 
-  getApplicationsForGroupWithState(groupId: number, state: string[]): Observable<Application[]> {
+  getApplicationsForGroupWithState(groupId: number, state: string[], showNotificationOnError = true): Observable<Application[]> {
     return this.apiService.post('json/registrarManager/getApplicationsForGroup', {
       'group': groupId,
       'state': state
-    });
+    }, showNotificationOnError);
   }
 
-  getApplicationById(applicationId: number): Observable<Application> {
+  getApplicationById(applicationId: number, showNotificationOnError = true): Observable<Application> {
     return this.apiService.post('json/registrarManager/getApplicationById', {
       'id': applicationId
-    });
+    }, showNotificationOnError);
   }
 
-  getApplicationDataById(applicationId: number): Observable<ApplicationFormItemData[]> {
+  getApplicationDataById(applicationId: number, showNotificationOnError = true): Observable<ApplicationFormItemData[]> {
     return this.apiService.post('json/registrarManager/getApplicationDataById', {
       'id': applicationId
-    });
+    }, showNotificationOnError);
   }
 
-  verifyApplication(applicationId: number): Observable<Application> {
+  verifyApplication(applicationId: number, showNotificationOnError = true): Observable<Application> {
     return this.apiService.post('json/registrarManager/verifyApplication', {
       'id': applicationId
-    });
+    }, showNotificationOnError);
   }
 
-  approveApplication(applicationId: number): Observable<Application> {
+  approveApplication(applicationId: number, showNotificationOnError = true): Observable<Application> {
     return this.apiService.post('json/registrarManager/approveApplication', {
       'id': applicationId
-    });
+    }, showNotificationOnError);
   }
 
-  rejectApplication(applicationId: number, reason: string): Observable<Application> {
+  rejectApplication(applicationId: number, reason: string, showNotificationOnError = true): Observable<Application> {
     return this.apiService.post('json/registrarManager/rejectApplication', {
       'id': applicationId,
       'reason': reason
-    });
+    }, showNotificationOnError);
   }
 
-  deleteApplication(applicationId: number): Observable<Application> {
+  deleteApplication(applicationId: number, showNotificationOnError = true): Observable<Application> {
     return this.apiService.post('json/registrarManager/deleteApplication', {
       'id': applicationId
-    });
+    }, showNotificationOnError);
   }
 
-  sendMessage(applicationId: number, mailType: string) {
+  sendMessage(applicationId: number, mailType: string, showNotificationOnError = true) {
     return this.apiService.post('json/registrarManager/sendMessage', {
       'appId': applicationId,
       'mailType': mailType
-    });
+    }, showNotificationOnError);
   }
 
-  sendMessageWithReason(applicationId: number, mailType: string, reason: string) {
+  sendMessageWithReason(applicationId: number, mailType: string, reason: string, showNotificationOnError = true) {
     return this.apiService.post('json/registrarManager/sendMessage', {
       'appId': applicationId,
       'mailType': mailType,
       'reason': reason
-    });
+    }, showNotificationOnError);
   }
 }

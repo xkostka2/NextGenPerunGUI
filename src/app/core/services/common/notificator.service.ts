@@ -12,9 +12,11 @@ export class NotificatorService {
     private translate: TranslateService
   ) {
     this.translate.get('NOTIFICATOR.NOTIFICATION.DEFAULT_ACTION').subscribe(value => this.defaultAction = value);
+    this.translate.get('NOTIFICATOR.NOTIFICATION.DEFAULT_RPC_ERROR_MESSAGE').subscribe(value => this.defaultRpcMessage = value);
   }
 
   defaultAction: string;
+  defaultRpcMessage: string;
 
   defaultErrorDelayMs = 10_000;
   defaultSuccessDelayMs = 6_000;
@@ -25,11 +27,11 @@ export class NotificatorService {
   /**
    * Shows default RPC error
    *
-   * @param title - text that is shown on the notification
    * @param rpcError - error returned by the backend
+   * @param errorMessage - custom message that will be displayed
    */
-  showRPCError(title: string, rpcError: RPCError): void {
-    this.showError(title + '\n' + rpcError.name, rpcError.message);
+  showRPCError(rpcError: RPCError, errorMessage = this.defaultRpcMessage): void {
+    this.showError(errorMessage + '\n' + rpcError.name, rpcError.message);
   }
 
   /**

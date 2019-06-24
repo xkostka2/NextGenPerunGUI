@@ -61,7 +61,7 @@ export class ApplicationDetailComponent implements OnInit {
   }
 
   getModifiedAtName(modifiedBy: string) {
-    const index = modifiedBy.lastIndexOf('/CN=')
+    const index = modifiedBy.lastIndexOf('/CN=');
     if (index !== -1) {
       const string =  modifiedBy.slice(index + 4, modifiedBy.length).replace('/unstructuredName=', ' ');
       if (string.lastIndexOf('\\') !== -1) {

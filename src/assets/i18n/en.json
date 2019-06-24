@@ -270,7 +270,8 @@
   "NOTIFICATOR": {
     "NOTIFICATION": {
       "DEFAULT_ACTION": "Show",
-      "DIALOG_CLOSE": "Close"
+      "DIALOG_CLOSE": "Close",
+      "DEFAULT_RPC_ERROR_MESSAGE": "An operation failed."
     }
   },
   "ADMIN": {

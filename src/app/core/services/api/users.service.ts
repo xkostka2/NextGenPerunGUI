@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {RichUser} from '../../models/RichUser';
 import {parseUrnsToUrlParam} from '../../../shared/utils';
 import {User} from '../../models/User';
+import {HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,13 @@ export class UsersService {
     private apiService: ApiService
   ) { }
 
-  findRichUsersWithAttributes(searchString: string, attributes: string[]): Observable<RichUser[]> {
+  findRichUsersWithAttributes(searchString: string, attributes: string[], showNotificationOnError = true): Observable<RichUser[]> {
     const attrParam = parseUrnsToUrlParam('attrsNames', attributes);
-    return this.apiService.get(`json/usersManager/findRichUsersWithAttributes?searchString=${searchString}${attrParam}`);
+    return this.apiService.get(`json/usersManager/findRichUsersWithAttributes?searchString=${searchString}${attrParam}`,
+      new HttpParams(), showNotificationOnError);
   }
 
-  getUserById(userId: number): Observable<User> {
-    return this.apiService.get(`json/usersManager/getUserById?id=${userId}`);
+  getUserById(userId: number, showNotificationOnError = true): Observable<User> {
+    return this.apiService.get(`json/usersManager/getUserById?id=${userId}`, new HttpParams(), showNotificationOnError);
   }
 }
