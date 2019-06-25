@@ -153,7 +153,8 @@
     },
     "RESOURCES": {
       "TITLE": "Resources",
-      "DELETE": "Remove selected"
+      "DELETE": "Remove selected",
+      "NO_RESOURCES_WARNING": "Group has no resources assigned."
     }
   },
   "MEMBER_DETAIL": {

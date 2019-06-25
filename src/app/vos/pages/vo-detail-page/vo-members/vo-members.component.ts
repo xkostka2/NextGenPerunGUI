@@ -5,6 +5,7 @@ import {MembersService} from '../../../../core/services/api/members.service';
 import {SideMenuService} from '../../../../core/services/common/side-menu.service';
 import {VoService} from '../../../../core/services/api/vo.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Urns} from '../../../../shared/urns';
 
 @Component({
   selector: 'app-vo-members',
@@ -44,7 +45,14 @@ export class VoMembersComponent implements OnInit {
     this.loading = true;
     this.firstSearchDone = true;
 
-    this.membersService.findCompleteRichMembers(this.vo.id, this.searchString).subscribe(
+    const attrNames = [
+      Urns.MEMBER_DEF_ORGANIZATION,
+      Urns.MEMBER_DEF_MAIL,
+      Urns.USER_DEF_ORGANIZATION,
+      Urns.USER_DEF_PREFERRED_MAIL
+    ];
+
+    this.membersService.findCompleteRichMembers(this.vo.id, this.searchString, attrNames).subscribe(
       members => {
         this.members = members;
         this.loading = false;
@@ -57,7 +65,14 @@ export class VoMembersComponent implements OnInit {
     this.loading = true;
     this.firstSearchDone = true;
 
-    this.membersService.getCompleteRichMembers(this.vo.id).subscribe(
+    const attrNames = [
+      Urns.MEMBER_DEF_ORGANIZATION,
+      Urns.MEMBER_DEF_MAIL,
+      Urns.USER_DEF_ORGANIZATION,
+      Urns.USER_DEF_PREFERRED_MAIL
+    ];
+
+    this.membersService.getCompleteRichMembers(this.vo.id, attrNames).subscribe(
       members => {
         this.members = members;
         this.loading = false;

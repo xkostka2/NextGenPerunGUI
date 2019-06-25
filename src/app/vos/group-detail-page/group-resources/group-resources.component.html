@@ -5,8 +5,11 @@
     {{'GROUP_DETAIL.RESOURCES.DELETE' | translate}}
   </button>
 
-  <app-resources-list
+  <app-resources-list *ngIf="resources !== null && resources.length > 0"
     [resources]="resources"
     [selection]="selected">
   </app-resources-list>
+  <div *ngIf="resources !== null && resources.length === 0" class="perun-alert warn-alert">
+    {{'GROUP_DETAIL.RESOURCES.NO_RESOURCES_WARNING' | translate}}
+  </div>
 </div>

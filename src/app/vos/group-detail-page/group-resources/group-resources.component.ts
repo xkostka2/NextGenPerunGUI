@@ -19,7 +19,7 @@ export class GroupResourcesComponent implements OnInit {
   }
 
   group: Group;
-  resources: RichResource[] = [];
+  resources: RichResource[] = null;
   selected = new SelectionModel<RichResource>(true, []);
 
   ngOnInit() {

@@ -4,6 +4,7 @@ import {MembersService} from '../../../core/services/api/members.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GroupService} from '../../../core/services/api/group.service';
 import {Group} from '../../../core/models/Group';
+import {Urns} from '../../../shared/urns';
 
 @Component({
   selector: 'app-group-members',
@@ -39,8 +40,14 @@ export class GroupMembersComponent implements OnInit {
   onSearchByString() {
     this.loading = true;
     this.firstSearchDone = true;
+    const attrNames = [
+      Urns.MEMBER_DEF_ORGANIZATION,
+      Urns.MEMBER_DEF_MAIL,
+      Urns.USER_DEF_ORGANIZATION,
+      Urns.USER_DEF_PREFERRED_MAIL
+    ];
 
-    this.membersService.findCompleteRichMembersForGroup(this.group.id, this.searchString).subscribe(
+    this.membersService.findCompleteRichMembersForGroup(this.group.id, this.searchString, attrNames).subscribe(
       members => {
         this.members = members;
         this.loading = false;
@@ -53,7 +60,14 @@ export class GroupMembersComponent implements OnInit {
     this.loading = true;
     this.firstSearchDone = true;
 
-    this.membersService.getCompleteRichMembersForGroup(this.group.id).subscribe(
+    const attrNames = [
+      Urns.MEMBER_DEF_ORGANIZATION,
+      Urns.USER_DEF_ORGANIZATION,
+      Urns.USER_DEF_PREFERRED_MAIL,
+      Urns.MEMBER_DEF_MAIL
+    ];
+
+    this.membersService.getCompleteRichMembersForGroup(this.group.id, attrNames).subscribe(
       members => {
         this.members = members;
         this.loading = false;

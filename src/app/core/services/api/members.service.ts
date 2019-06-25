@@ -14,18 +14,24 @@ export class MembersService {
   ) {
   }
 
-  findCompleteRichMembers(voId: number, searchString: string, showNotificationOnError = true): Observable<RichMember[]> {
-    // TODO consider new API method
-    // tslint:disable-next-line:max-line-length
-    return this.apiService.get(`json/membersManager/findCompleteRichMembers?vo=${voId}&searchString=${searchString}&attrsNames%5B%5D=urn:perun:member:attribute-def:def:organization&attrsNames%5B%5D=urn:perun:user:attribute-def:def:organization&attrsNames%5B%5D=urn:perun:user:attribute-def:def:preferredMail&attrsNames%5B%5D=urn:perun:member:attribute-def:def:mail&allowedStatuses%5B%5D=VALID&allowedStatuses%5B%5D=INVALID&allowedStatuses%5B%5D=SUSPENDED&allowedStatuses%5B%5D=EXPIRED&allowedStatuses%5B%5D=DISABLED`,
-      new HttpParams(), showNotificationOnError);
+  findCompleteRichMembers(voId: number, searchString: string, attrsNames: string[], showNotificationOnError = true):
+    Observable<RichMember[]> {
+    return this.apiService.post('json/membersManager/findCompleteRichMembers',
+      {
+        'vo': voId,
+        'searchString': searchString,
+        'attrsNames': attrsNames,
+        'allowedStatuses': ['VALID', 'INVALID', 'EXPIRED', 'DISABLED', 'SUSPENDED']
+      }, showNotificationOnError);
   }
 
-  getCompleteRichMembers(voId: number, showNotificationOnError = true): Observable<RichMember[]> {
-    // TODO consider new API method
-    // tslint:disable-next-line:max-line-length
-    return this.apiService.get(`json/membersManager/getCompleteRichMembers?vo=${voId}&attrsNames%5B%5D=urn:perun:member:attribute-def:def:organization&attrsNames%5B%5D=urn:perun:user:attribute-def:def:organization&attrsNames%5B%5D=urn:perun:user:attribute-def:def:preferredMail&attrsNames%5B%5D=urn:perun:member:attribute-def:def:mail&allowedStatuses%5B%5D=VALID&allowedStatuses%5B%5D=INVALID&allowedStatuses%5B%5D=SUSPENDED`,
-      new HttpParams(), showNotificationOnError);
+  getCompleteRichMembers(voId: number, attrsNames: string[], showNotificationOnError = true): Observable<RichMember[]> {
+    return this.apiService.post(`json/membersManager/getCompleteRichMembers`,
+      {
+        'vo': voId,
+        'attrsNames': attrsNames,
+        'allowedStatuses': ['VALID', 'INVALID', 'SUSPENDED']
+      }, showNotificationOnError);
   }
 
   getRichMemberWithAttributes(memberId: number, showNotificationOnError = true): Observable<RichMember> {
@@ -33,22 +39,22 @@ export class MembersService {
       new HttpParams(), showNotificationOnError);
   }
 
-  findCompleteRichMembersForGroup(groupId: number, searchString: string, showNotificationOnError = true): Observable<RichMember[]> {
+  findCompleteRichMembersForGroup(groupId: number, searchString: string, attrsNames: string[], showNotificationOnError = true):
+    Observable<RichMember[]> {
+
     return this.apiService.post('json/membersManager/findCompleteRichMembers', {
       'group': groupId,
-      'attrsNames': ['urn:perun:member:attribute-def:def:organization', 'urn:perun:user:attribute-def:def:organization',
-        'urn:perun:user:attribute-def:def:preferredMail', 'urn:perun:member:attribute-def:def:mail'],
+      'attrsNames': attrsNames,
       'allowedStatuses': ['INVALID', 'SUSPENDED', 'EXPIRED', 'VALID', 'DISABLED'],
       'searchString': searchString,
       'lookingInParentGroup': false
     }, showNotificationOnError);
   }
 
-  getCompleteRichMembersForGroup(groupId: number, showNotificationOnError = true): Observable<RichMember[]> {
+  getCompleteRichMembersForGroup(groupId: number, attrNames: string[], showNotificationOnError = true): Observable<RichMember[]> {
     return this.apiService.post('json/membersManager/getCompleteRichMembers', {
       'group': groupId,
-      'attrsNames': ['urn:perun:member:attribute-def:def:organization', 'urn:perun:user:attribute-def:def:organization',
-        'urn:perun:user:attribute-def:def:preferredMail', 'urn:perun:member:attribute-def:def:mail'],
+      'attrsNames': attrNames,
       'allowedStatuses': ['INVALID', 'SUSPENDED', 'VALID'],
       'lookingInParentGroup': false
     }, showNotificationOnError);
