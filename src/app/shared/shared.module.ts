@@ -49,6 +49,11 @@ import {UsersListComponent} from './components/users-list/users-list.component';
 import { ApplicationReSendNotificationDialogComponent
 } from './components/dialogs/application-re-send-notification-dialog/application-re-send-notification-dialog.component';
 import { ApplicationRejectDialogComponent } from './components/dialogs/application-reject-dialog/application-reject-dialog.component';
+import { MemberStatusIconPipe } from './pipes/member-status-icon.pipe';
+import { MemberStatusIconColorPipe } from './pipes/member-status-icon-color.pipe';
+import { MemberEmailPipe } from './pipes/member-email.pipe';
+import { MemberLoginsPipe } from './pipes/member-logins.pipe';
+import { RemoveMembersDialogComponent } from './components/dialogs/remove-members-dialog/remove-members-dialog.component';
 
 @NgModule({
   imports: [
@@ -126,7 +131,11 @@ import { ApplicationRejectDialogComponent } from './components/dialogs/applicati
     NotificatorComponent,
     AttributeTypeCleanPipe,
     NameSpaceToDefPipe,
-    UsersListComponent
+    UsersListComponent,
+    MemberStatusIconPipe,
+    MemberStatusIconColorPipe,
+    MemberEmailPipe,
+    MemberLoginsPipe
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -134,7 +143,8 @@ import { ApplicationRejectDialogComponent } from './components/dialogs/applicati
     DeleteGroupDialogComponent,
     NotificationDialogComponent,
     ApplicationReSendNotificationDialogComponent,
-    ApplicationRejectDialogComponent
+    ApplicationRejectDialogComponent,
+    RemoveMembersDialogComponent
   ],
   declarations: [
     PerunNavComponent,
@@ -157,7 +167,12 @@ import { ApplicationRejectDialogComponent } from './components/dialogs/applicati
     UsersListComponent,
     ApplicationStatePipe,
     ApplicationReSendNotificationDialogComponent,
-    ApplicationRejectDialogComponent
+    ApplicationRejectDialogComponent,
+    MemberStatusIconPipe,
+    MemberStatusIconColorPipe,
+    MemberEmailPipe,
+    MemberLoginsPipe,
+    RemoveMembersDialogComponent
   ]
 })
 export class SharedModule {

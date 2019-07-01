@@ -1,32 +1,17 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild} from '@angular/core';
-import {MatCheckboxChange} from '@angular/material/checkbox';
+import {AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {RichMember} from '../../../core/models/RichMember';
-import {parseEmail, parseFullName, parseLogins, parseStatusColor, parseStatusIcon} from '../../../shared/utils';
-
-export declare class MemberSelectChange {
-  member: RichMember;
-  checked: boolean;
-}
-
-export interface TableMember {
-  memberId: number;
-  voId: number;
-  fullName: string;
-  status: string;
-  statusIcon: string;
-  statusColor: string;
-  email: string;
-  logins: string;
-}
+import {parseEmail, parseFullName} from '../../../shared/utils';
+import {MatPaginator} from '@angular/material';
+import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-members-list',
   templateUrl: './members-list.component.html',
   styleUrls: ['./members-list.component.scss']
 })
-export class MembersListComponent implements OnChanges {
+export class MembersListComponent implements OnChanges, AfterViewInit {
 
   constructor(
   ) { }
@@ -38,43 +23,64 @@ export class MembersListComponent implements OnChanges {
     this.setDataSource();
   }
 
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+
   @Input()
-  members: RichMember[] = [];
+  members: RichMember[];
 
   @Input()
   searchString: string;
 
-  @Output()
-  memberSelectChange: EventEmitter<MemberSelectChange> = new EventEmitter<MemberSelectChange>();
+  @Input()
+  selection: SelectionModel<RichMember>;
 
-  displayedColumns: string[] = ['checkbox', 'memberId', 'fullName', 'statusIcon', 'email', 'logins'];
-  dataSource: MatTableDataSource<TableMember>;
+  displayedColumns: string[] = ['checkbox', 'id', 'fullName', 'status', 'email'];
+  dataSource: MatTableDataSource<RichMember>;
 
   setDataSource() {
     if (!!this.dataSource) {
       this.dataSource.sort = this.sort;
+
+      this.dataSource.sortingDataAccessor = (richMember, property) => {
+        switch (property) {
+          case 'fullName':
+            return parseFullName(richMember.user);
+          case 'email':
+            return parseEmail(richMember);
+          default:
+            return richMember[property];
+        }
+      };
+
+      this.dataSource.paginator = this.paginator;
     }
   }
 
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
+
   ngOnChanges(changes: SimpleChanges) {
-    this.dataSource = new MatTableDataSource<TableMember>(this.members.map(m => this.parseTableMember(m)));
+    this.dataSource = new MatTableDataSource<RichMember>(this.members);
     this.setDataSource();
   }
 
-  private parseTableMember(richMember: RichMember) {
-    return {
-      memberId: richMember.id,
-      voId: richMember.voId,
-      fullName: parseFullName(richMember.user),
-      statusIcon: parseStatusIcon(richMember),
-      status: richMember.status,
-      statusColor: parseStatusColor(richMember),
-      email: parseEmail(richMember),
-      logins: parseLogins(richMember)
-    };
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
   }
 
-  onMemberSelected(event: MatCheckboxChange, member: RichMember) {
-    this.memberSelectChange.emit({member: member, checked: event.checked});
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  checkboxLabel(row?: RichMember): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 }

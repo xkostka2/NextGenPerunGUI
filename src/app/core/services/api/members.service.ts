@@ -59,4 +59,10 @@ export class MembersService {
       'lookingInParentGroup': false
     }, showNotificationOnError);
   }
+
+  deleteMembers(memberIds: number[], showNotificationOnError = true): Observable<void> {
+    return this.apiService.post('json/membersManager/deleteMembers', {
+      'members': memberIds
+    }, showNotificationOnError);
+  }
 }

@@ -159,7 +159,7 @@
   },
   "MEMBER_DETAIL": {
     "TITLE": "Member - ",
-    "USER_LINK": "See user detail >>",
+    "USER_LINK": "See user detail",
     "OVERVIEW": {
       "NEVER_EXPIRES": "never",
       "MEMBERSHIP": "Membership"
@@ -234,6 +234,12 @@
       "CANCEL": "Cancel",
       "DELETE": "Delete",
       "SUCCESS": "Selected groups were deleted"
+    },
+    "REMOVE_MEMBERS": {
+      "TITLE": "Confirm removal",
+      "DESCRIPTION": "Following members will be removed from VO and their settings will be lost.\n\nYou can consider changing their status to \"DISABLED\", which will prevent them from accessing VO resources.",
+      "ASK": "Do you want to proceed?",
+      "SUCCESS": "Selected members were deleted"
     },
     "RE_SEND_NOTIFICATION": {
       "TITLE": "Re-send notification",

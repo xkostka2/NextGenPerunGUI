@@ -6,6 +6,9 @@
     <a class="vo-link" [routerLink]="['/organizations/', vo.id]">
       {{vo.name}}
     </a>
+    <span class="text-muted">
+      &nbsp;#{{vo.id}}
+    </span>
   </h1>
   <router-outlet></router-outlet>
 </div>

@@ -1,10 +1,10 @@
-<div (keyup)="foo($event)">
+<div (keyup)="onKeyInput($event)">
   <h1 class="page-subtitle">{{'GROUP_DETAIL.MEMBERS.TITLE' | translate}}</h1>
 
   <button mat-flat-button color="accent" class="mr-2"(click)="onAddMember()">
     {{'GROUP_DETAIL.MEMBERS.ADD_MEMBER' | translate}}
   </button>
-  <button mat-flat-button color="warn" class="mr-2" [disabled]="true">
+  <button mat-flat-button color="warn" class="mr-2" [disabled]="selection.isEmpty()" (click)="onRemoveMembers()">
     {{'GROUP_DETAIL.MEMBERS.REMOVE_MEMBERS' | translate}}
   </button>
   <button mat-stroked-button class="mr-2 mb-2" (click)="onListAll()">
@@ -24,6 +24,7 @@
   </div>
   <div class="mt-3" *ngIf="members !== null && !loading">
     <app-members-list
+      [selection]="selection"
       [members]="members"
       *ngIf="members.length !== 0">
     </app-members-list>

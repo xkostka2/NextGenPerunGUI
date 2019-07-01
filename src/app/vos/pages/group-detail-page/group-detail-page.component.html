@@ -6,6 +6,9 @@
     <a class="group-link" [routerLink]="['/organizations', vo.id, 'groups', group.id]">
       {{group.shortName}}
     </a>
+    <span class="text-muted">
+      &nbsp;#{{group.id}}
+    </span>
   </h1>
   <router-outlet></router-outlet>
 </div>

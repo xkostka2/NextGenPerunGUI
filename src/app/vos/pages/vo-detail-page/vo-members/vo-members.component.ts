@@ -4,8 +4,13 @@ import {RichMember} from '../../../../core/models/RichMember';
 import {MembersService} from '../../../../core/services/api/members.service';
 import {SideMenuService} from '../../../../core/services/common/side-menu.service';
 import {VoService} from '../../../../core/services/api/vo.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {Urns} from '../../../../shared/urns';
+import {SelectionModel} from '@angular/cdk/collections';
+import {NotificatorService} from '../../../../core/services/common/notificator.service';
+import {TranslateService} from '@ngx-translate/core';
+import {MatDialog} from '@angular/material';
+import {RemoveMembersDialogComponent} from '../../../../shared/components/dialogs/remove-members-dialog/remove-members-dialog.component';
 
 @Component({
   selector: 'app-vo-members',
@@ -18,14 +23,17 @@ export class VoMembersComponent implements OnInit {
     private membersService: MembersService,
     private sideMenuService: SideMenuService,
     private voService: VoService,
-    protected route: ActivatedRoute,
-    protected router: Router
+    private route: ActivatedRoute,
+    private notificator: NotificatorService,
+    private translate: TranslateService,
+    private dialog: MatDialog
   ) { }
 
   vo: Vo;
 
   members: RichMember[] = null;
 
+  selection = new SelectionModel<RichMember>(true, []);
   searchString = '';
   firstSearchDone = false;
 
@@ -44,6 +52,8 @@ export class VoMembersComponent implements OnInit {
   onSearchByString() {
     this.loading = true;
     this.firstSearchDone = true;
+
+    this.selection.clear();
 
     const attrNames = [
       Urns.MEMBER_DEF_ORGANIZATION,
@@ -65,6 +75,8 @@ export class VoMembersComponent implements OnInit {
     this.loading = true;
     this.firstSearchDone = true;
 
+    this.selection.clear();
+
     const attrNames = [
       Urns.MEMBER_DEF_ORGANIZATION,
       Urns.MEMBER_DEF_MAIL,
@@ -85,9 +97,26 @@ export class VoMembersComponent implements OnInit {
 
   }
 
-  foo(event: KeyboardEvent) {
+  onKeyInput(event: KeyboardEvent) {
     if (event.key === 'Enter' && this.searchString.length > 0) {
       this.onSearchByString();
     }
+  }
+
+  onRemoveMembers() {
+    const dialogRef = this.dialog.open(RemoveMembersDialogComponent, {
+      width: '450px',
+      data: {members: this.selection.selected}
+    });
+
+    dialogRef.afterClosed().subscribe(wereMembersDeleted => {
+      if (wereMembersDeleted) {
+        if (this.searchString.trim().length > 0) {
+          this.onSearchByString();
+        } else {
+          this.onListAll();
+        }
+      }
+    });
   }
 }

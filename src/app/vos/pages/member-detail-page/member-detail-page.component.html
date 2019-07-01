@@ -6,8 +6,11 @@
     <a class="member-link" [routerLink]="['/organizations', vo.id, 'members', member.id]">
       {{fullName}}
     </a>
+    <span class="text-muted">
+      &nbsp;#{{member.id}}
+    </span>
   </h1>
-  <div class="mb-4">
+  <div class="mb-5">
     <a class="user-link" [routerLink]="['/users', member.user.id]">
       {{'MEMBER_DETAIL.USER_LINK' | translate}}
       <mat-icon></mat-icon>

@@ -116,7 +116,7 @@ export class SideMenuItemService {
         {
           label: this.translate.instant('MENU_ITEMS.VO.APPLICATIONS'),
           url: [`/organizations/${vo.id}/applications`],
-          activatedRegex: '/organizations/\\d+/applications$'
+          activatedRegex: '/organizations/\\d+/applications'
         },
         {
           label: this.translate.instant('MENU_ITEMS.VO.SETTINGS'),
