@@ -22,7 +22,7 @@ export class NotificationComponent {
       this.data.action();
     } else {
       this.dialog.open(NotificationDialogComponent, {
-        width: '400px',
+        width: '550px',
         data: this.data
       });
     }

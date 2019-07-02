@@ -29,7 +29,7 @@ $perun-theme: mat-light-theme($perun-primary, $perun-accent, $perun-warn);
 // Perun entities colors
 $vo-color: #283593;
 $facility-color: #E64A19;
-$group-color: #388E3C;
+$group-color: #33691e;
 $member-color: #BF360C;
 $admin-color: #c62828;
 $user-color: #00796b;
@@ -43,7 +43,7 @@ $user-color: #00796b;
 }
 
 .group-theme {
-  $group-primary: mat-palette($mat-green, 700);
+  $group-primary: mat-palette($mat-light-green, 900);
   $group-accent: mat-palette($mat-green, 600);
   $group-theme: mat-light-theme($group-primary, $group-accent);
 
