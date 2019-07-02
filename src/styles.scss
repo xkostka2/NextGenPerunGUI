@@ -89,8 +89,11 @@ button:focus {
 .router-component {
   position: absolute;
   width: calc(100vw - (300px + 6rem));
-  @media (max-width: 1199px) {
+  @media(min-width: 769px) and (max-width: 1199px) {
     width: calc(100vw - 330px);
+  }
+  @media(max-width: 768px) {
+    width: calc(100vw - 30px);
   }
 }
 
