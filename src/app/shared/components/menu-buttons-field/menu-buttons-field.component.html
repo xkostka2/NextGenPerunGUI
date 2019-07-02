@@ -1,4 +1,4 @@
-<div *ngIf="size === 'small'" class="row mt-5 ml-0 mr-0 menu-items-row">
+<div *ngIf="size === 'small'" class="row ml-0 mr-0 menu-items-row">
   <div *ngFor="let item of items" class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6">
     <a [routerLink]="item.url"
        class="menu-item-small box-button-small {{item.style}}">

@@ -35,27 +35,33 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: VoOverviewComponent
+        component: VoOverviewComponent,
+        data: {animation: 'OverviewPage'}
       },
       {
         path: 'groups',
-        component: VoGroupsComponent
+        component: VoGroupsComponent,
+        data: {animation: 'GroupsPage'}
       },
       {
         path: 'members',
-        component: VoMembersComponent
+        component: VoMembersComponent,
+        data: {animation: 'MembersPage'}
       },
       {
         path: 'resources',
-        component: VoResourcesComponent
+        component: VoResourcesComponent,
+        data: {animation: 'ResourcesPage'}
       },
       {
         path: 'applications',
-        component: VoApplicationsComponent
+        component: VoApplicationsComponent,
+        data: {animation: 'ApplicationsPage'}
       },
       {
         path: 'applications/:applicationId',
-        component: ApplicationDetailComponent
+        component: ApplicationDetailComponent,
+        data: {animation: 'SettingsPage'}
       },
       {
         path: 'settings',
@@ -63,19 +69,23 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            component: VoSettingsOverviewComponent
+            component: VoSettingsOverviewComponent,
+            data: {animation: 'SettingsOverviewPage'}
           },
           {
             path: 'attributes',
-            component: VoSettingsAttributesComponent
+            component: VoSettingsAttributesComponent,
+            data: {animation: 'SettingsAttributesPage'}
           },
           {
             path: 'expiration',
-            component: VoSettingsExpirationComponent
+            component: VoSettingsExpirationComponent,
+            data: {animation: 'SettingsExpirationPage'}
           },
           {
             path: 'managers',
-            component: VoSettingsManagersComponent
+            component: VoSettingsManagersComponent,
+            data: {animation: 'SettingsManagersPage'}
           }
         ]
       }

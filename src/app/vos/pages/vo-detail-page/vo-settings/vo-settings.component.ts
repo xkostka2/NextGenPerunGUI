@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import {MenuItem} from '../../../../shared/models/MenuItem';
-import {SideMenuService} from '../../../../core/services/common/side-menu.service';
-import {VoService} from '../../../../core/services/api/vo.service';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {Vo} from '../../../../core/models/Vo';
+import {Component, HostBinding, OnInit} from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {slideInAnimation} from '../../../../shared/animations/Animations';
 
 @Component({
   selector: 'app-vo-settings',
   templateUrl: './vo-settings.component.html',
-  styleUrls: ['./vo-settings.component.scss']
+  styleUrls: ['./vo-settings.component.scss'],
+  animations: [
+    slideInAnimation
+  ]
 })
 export class VoSettingsComponent implements OnInit {
+
+  @HostBinding('class.router-component') true;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,5 +40,9 @@ export class VoSettingsComponent implements OnInit {
     this.route.parent.params.subscribe(parentParams => {
       this.voId = parentParams['voId'];
     });
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 }

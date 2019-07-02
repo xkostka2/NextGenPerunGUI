@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {SideMenuService} from '../../../../../core/services/common/side-menu.service';
 import {VoService} from '../../../../../core/services/api/vo.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -11,6 +11,8 @@ import {Vo} from '../../../../../core/models/Vo';
   styleUrls: ['./vo-settings-overview.component.scss']
 })
 export class VoSettingsOverviewComponent implements OnInit {
+
+  @HostBinding('class.router-component') true;
 
   constructor(
     private sideMenuService: SideMenuService,

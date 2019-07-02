@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import {Vo} from '../../../../core/models/Vo';
 import {Group} from '../../../../core/models/Group';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,6 +16,9 @@ import {SelectionModel} from '@angular/cdk/collections';
   styleUrls: ['./vo-groups.component.scss']
 })
 export class VoGroupsComponent implements OnInit {
+
+  @HostBinding('class.router-component') true;
+
   constructor(
     private dialog: MatDialog,
     private groupService: GroupService,

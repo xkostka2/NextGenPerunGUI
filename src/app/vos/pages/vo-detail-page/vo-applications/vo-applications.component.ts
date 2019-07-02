@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {VoService} from '../../../../core/services/api/vo.service';
 import {RegistrarService} from '../../../../core/services/api/registrar.service';
 import {Vo} from '../../../../core/models/Vo';
@@ -12,8 +12,10 @@ import {Application} from '../../../../core/models/Application';
 })
 export class VoApplicationsComponent implements OnInit {
 
+  @HostBinding('class.router-component') true;
+
   constructor(private voService: VoService,
-              private registarService: RegistrarService,
+              private registrarService: RegistrarService,
               protected route: ActivatedRoute) { }
 
   state = 'pending';
@@ -35,7 +37,7 @@ export class VoApplicationsComponent implements OnInit {
 
 
   setData(state: string[]) {
-    this.registarService.getApplicationsForVoWithState(this.vo.id, state).subscribe(applications => {
+    this.registrarService.getApplicationsForVoWithState(this.vo.id, state).subscribe(applications => {
       this.applications = applications;
       this.loading = false;
     });
@@ -65,7 +67,7 @@ export class VoApplicationsComponent implements OnInit {
         break;
       }
       case 'all': {
-        this.registarService.getApplicationsForVo(this.vo.id).subscribe(applications => {
+        this.registrarService.getApplicationsForVo(this.vo.id).subscribe(applications => {
           this.applications = applications;
           this.loading = false;
         });

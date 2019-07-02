@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-vo-settings-attributes',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vo-settings-attributes.component.scss']
 })
 export class VoSettingsAttributesComponent implements OnInit {
+
+  @HostBinding('class.router-component') true;
 
   constructor() { }
 

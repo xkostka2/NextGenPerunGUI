@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {Vo} from '../../../../core/models/Vo';
 import {RichMember} from '../../../../core/models/RichMember';
 import {MembersService} from '../../../../core/services/api/members.service';
@@ -18,6 +18,8 @@ import {RemoveMembersDialogComponent} from '../../../../shared/components/dialog
   styleUrls: ['./vo-members.component.scss']
 })
 export class VoMembersComponent implements OnInit {
+
+  @HostBinding('class.router-component') true;
 
   constructor(
     private membersService: MembersService,

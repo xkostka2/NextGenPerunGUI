@@ -1,11 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {openClose} from '../../../../../shared/animations/Animations';
 import {AttributesService} from '../../../../../core/services/api/attributes.service';
 import {ActivatedRoute} from '@angular/router';
 import {Attribute} from '../../../../../core/models/Attribute';
 import {Urns} from '../../../../../shared/urns';
 import {NotificatorService} from '../../../../../core/services/common/notificator.service';
-import {RPCError} from '../../../../../core/models/RPCError';
 import {TranslateService} from '@ngx-translate/core';
 
 export class ExpirationAttrValue {
@@ -48,6 +47,8 @@ export interface ExpirationConfiguration {
   ]
 })
 export class VoSettingsExpirationComponent implements OnInit {
+
+  @HostBinding('class.router-component') true;
 
   constructor(
     private attributesService: AttributesService,

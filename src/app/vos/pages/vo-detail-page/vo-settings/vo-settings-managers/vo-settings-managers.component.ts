@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {VoService} from '../../../../../core/services/api/vo.service';
 import {ActivatedRoute} from '@angular/router';
 import {Urns} from '../../../../../shared/urns';
@@ -11,6 +11,8 @@ import {SelectionModel} from '@angular/cdk/collections';
   styleUrls: ['./vo-settings-managers.component.scss']
 })
 export class VoSettingsManagersComponent implements OnInit {
+
+  @HostBinding('class.router-component') true;
 
   constructor(
     private voService: VoService,

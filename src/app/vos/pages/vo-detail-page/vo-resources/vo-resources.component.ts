@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Vo} from '../../../../core/models/Vo';
 import {SelectionModel} from '@angular/cdk/collections';
@@ -13,6 +13,8 @@ import {VoService} from '../../../../core/services/api/vo.service';
   styleUrls: ['./vo-resources.component.scss']
 })
 export class VoResourcesComponent implements OnInit {
+
+  @HostBinding('class.router-component') true;
 
   constructor(private resourcesService: ResourcesService,
               private sideMenuService: SideMenuService,
