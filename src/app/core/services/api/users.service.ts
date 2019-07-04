@@ -24,4 +24,10 @@ export class UsersService {
   getUserById(userId: number, showNotificationOnError = true): Observable<User> {
     return this.apiService.get(`json/usersManager/getUserById?id=${userId}`, new HttpParams(), showNotificationOnError);
   }
+
+  findUsers(searchstring: string): Observable<User[]> {
+    return this.apiService.post('json/usersManager/findUsers', {
+      'searchString': searchstring
+    });
+  }
 }

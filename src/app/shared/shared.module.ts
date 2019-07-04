@@ -27,6 +27,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatCardModule } from '@angular/material/card';
+import { MatStepperModule } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SideMenuComponent} from './side-menu/side-menu.component';
 import {SideMenuItemComponent} from './side-menu/side-menu-item/side-menu-item.component';
@@ -54,6 +55,8 @@ import { MemberStatusIconColorPipe } from './pipes/member-status-icon-color.pipe
 import { MemberEmailPipe } from './pipes/member-email.pipe';
 import { MemberLoginsPipe } from './pipes/member-logins.pipe';
 import { RemoveMembersDialogComponent } from './components/dialogs/remove-members-dialog/remove-members-dialog.component';
+import { NgxGraphModule } from '@swimlane/ngx-graph';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   imports: [
@@ -88,7 +91,10 @@ import { RemoveMembersDialogComponent } from './components/dialogs/remove-member
     MatDividerModule,
     MatRippleModule,
     MatPaginatorModule,
-    MatCardModule
+    MatCardModule,
+    MatStepperModule,
+    NgxGraphModule,
+    NgxChartsModule
   ],
   exports: [
     PerunNavComponent,
@@ -123,6 +129,7 @@ import { RemoveMembersDialogComponent } from './components/dialogs/remove-member
     MatRadioModule,
     MatDividerModule,
     MatCardModule,
+    MatStepperModule,
     SettingsToggleItemComponent,
     MatRippleModule,
     ResourceTagsToStringPipe,
@@ -135,7 +142,9 @@ import { RemoveMembersDialogComponent } from './components/dialogs/remove-member
     MemberStatusIconPipe,
     MemberStatusIconColorPipe,
     MemberEmailPipe,
-    MemberLoginsPipe
+    MemberLoginsPipe,
+    NgxGraphModule,
+    NgxChartsModule
   ],
   entryComponents: [
     CreateGroupDialogComponent,

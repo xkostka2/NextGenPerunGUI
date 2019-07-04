@@ -4,4 +4,5 @@ export interface Group {
   voId: number;
   shortName: string;
   parentGroupId: number;
+  description: string;
 }

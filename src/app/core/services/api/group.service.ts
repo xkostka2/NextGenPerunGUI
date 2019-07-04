@@ -60,4 +60,10 @@ export class GroupService {
       forceDelete : 1
     }, showNotificationOnError);
   }
+
+  getAllMemberGroups(member: number): Observable<Group[]> {
+    return this.apiService.post('json/groupsManager/getAllMemberGroups', {
+      'member': member
+    });
+  }
 }

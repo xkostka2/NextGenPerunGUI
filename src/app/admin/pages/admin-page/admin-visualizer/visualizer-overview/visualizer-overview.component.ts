@@ -16,6 +16,12 @@ export class VisualizerOverviewComponent {
       url: `attrDependencies`,
       label: 'MENU_ITEMS.VISUALIZER.ATTR_DEPENDENCIES',
       style: 'admin-btn'
+    },
+    {
+      icon: 'attributes-white.svg',
+      url: `userDestinationRelationship`,
+      label: 'MENU_ITEMS.VISUALIZER.USER_DESTINATION',
+      style: 'admin-btn'
     }
   ];
 }

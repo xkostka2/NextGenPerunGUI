@@ -8,6 +8,12 @@ import {
   VisualizerAttrModulesComponent
 } from './pages/admin-page/admin-visualizer/visualizer-attr-modules/visualizer-attr-modules.component';
 import {VisualizerOverviewComponent} from './pages/admin-page/admin-visualizer/visualizer-overview/visualizer-overview.component';
+import {
+  UserDestinationRelationshipComponent
+} from './pages/admin-page/admin-visualizer/user-destination-relationship/user-destination-relationship.component';
+import {
+  UserDestinationGraphComponent
+} from './pages/admin-page/admin-visualizer/user-destination-relationship/user-destination-graph/user-destination-graph.component';
 
 const routes: Routes = [
   {
@@ -33,6 +39,14 @@ const routes: Routes = [
           {
             path: 'attrDependencies',
             component: VisualizerAttrModulesComponent
+          },
+          {
+            path: 'userDestinationRelationship',
+            component: UserDestinationRelationshipComponent
+          },
+          {
+            path: 'userDestinationRelationship/graph',
+            component: UserDestinationGraphComponent
           }
         ]
       }

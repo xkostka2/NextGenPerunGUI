@@ -3,6 +3,7 @@ import {ApiService} from './api.service';
 import {Observable} from 'rxjs';
 import {RichMember} from '../../models/RichMember';
 import {HttpParams} from '@angular/common/http';
+import {Member} from '../../models/Member';
 
 @Injectable({
   providedIn: 'root'
@@ -64,5 +65,11 @@ export class MembersService {
     return this.apiService.post('json/membersManager/deleteMembers', {
       'members': memberIds
     }, showNotificationOnError);
+  }
+
+  getMembersByUser(user: number): Observable<Member[]> {
+    return this.apiService.post('json/membersManager/getMembersByUser', {
+      'user': user
+    });
   }
 }

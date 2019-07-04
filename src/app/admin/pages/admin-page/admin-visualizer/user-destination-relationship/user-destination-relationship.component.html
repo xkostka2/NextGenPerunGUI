@@ -1,0 +1,76 @@
+<div class="p-3 card settings-card col-12 col-xl-5">
+  <h1 class="page-subtitle">
+    {{'ADMIN.VISUALIZER.USER_DESTINATION.TITLE' | translate}}
+  </h1>
+
+  <mat-vertical-stepper linear #stepper>
+
+    <mat-step completed="false">
+      <ng-template matStepLabel>{{'ADMIN.VISUALIZER.USER_DESTINATION.SELECT_USER' | translate}}</ng-template>
+      <mat-form-field class="w-100">
+        <input matInput
+               type="text"
+               placeholder="{{'ADMIN.VISUALIZER.USER_DESTINATION.USER_EXAMPLE' | translate}}"
+               [formControl]="searchField"
+               [matAutocomplete]="auto"
+               (ngModelChange)="notCompleted(stepper)"
+               (keydown.enter)="validateName(stepper)">
+        <mat-spinner *ngIf="loading" matSuffix [diameter]="20" [strokeWidth]="2"></mat-spinner>
+        <mat-hint align="start">{{'ADMIN.VISUALIZER.USER_DESTINATION.USER_HINT' | translate}}</mat-hint>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let user of users | async" [value]="user.firstName + ' ' + user.lastName">
+            {{ user.firstName }} {{ user.lastName }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div>
+        <button mat-stroked-button class="mt-2" (click)="validateName(stepper)">
+          {{'ADMIN.VISUALIZER.USER_DESTINATION.BUTTON_NEXT' | translate}}
+        </button>
+      </div>
+    </mat-step>
+
+    <mat-step completed="false">
+      <ng-template matStepLabel>{{'ADMIN.VISUALIZER.USER_DESTINATION.SELECT_DESTINATION' | translate}}</ng-template>
+      <mat-form-field class="w-100">
+        <input matInput
+               type="text"
+               placeholder="{{'ADMIN.VISUALIZER.USER_DESTINATION.DESTINATION_EXAMPLE' | translate}}"
+               [(ngModel)]="destination"
+               (ngModelChange)="notCompleted(stepper)"
+               (keydown.enter)="validateDestination(stepper)">
+      </mat-form-field>
+      <div>
+        <button mat-stroked-button class="mt-2" matStepperPrevious>
+          {{'ADMIN.VISUALIZER.USER_DESTINATION.BUTTON_BACK' | translate}}
+        </button>
+        <button mat-stroked-button class="mt-2" (click)="validateDestination(stepper)">
+          {{'ADMIN.VISUALIZER.USER_DESTINATION.BUTTON_NEXT' | translate}}
+        </button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>{{'ADMIN.VISUALIZER.USER_DESTINATION.SELECT_SERVICE' | translate}}</ng-template>
+      <mat-radio-group [(ngModel)]="chosenService" class="mb-2">
+        <mat-radio-button class="flex-column d-flex"
+                          color="primary"
+                          *ngFor="let service of availableServices"
+                          [value]="service">
+          {{service}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <div>
+        <button mat-stroked-button class="mt-2" matStepperPrevious>
+          {{'ADMIN.VISUALIZER.USER_DESTINATION.BUTTON_BACK' | translate}}
+        </button>
+        <button mat-stroked-button class="mt-2" (click)="getGraph()">
+          {{'ADMIN.VISUALIZER.USER_DESTINATION.SUBMIT_BUTTON' | translate}}
+        </button>
+      </div>
+    </mat-step>
+
+  </mat-vertical-stepper>
+
+</div>
+

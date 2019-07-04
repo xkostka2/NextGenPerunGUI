@@ -41,6 +41,11 @@ export class SideMenuItemService {
               label: this.translate.instant('MENU_ITEMS.VISUALIZER.ATTR_DEPENDENCIES'),
               url: ['/admin/visualizer/attrDependencies'],
               activatedRegex: '^/admin/visualizer/attrDependencies'
+            },
+            {
+              label: this.translate.instant('MENU_ITEMS.VISUALIZER.USER_DESTINATION'),
+              url: ['/admin/visualizer/userDestinationRelationship'],
+              activatedRegex: '^/admin/visualizer/userDestinationRelationship'
             }
           ],
           showChildrenRegex: '/admin/visualizer'

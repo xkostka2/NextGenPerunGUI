@@ -11,6 +11,12 @@ import {
   VisualizerAttrModulesComponent
 } from './pages/admin-page/admin-visualizer/visualizer-attr-modules/visualizer-attr-modules.component';
 import { VisualizerOverviewComponent } from './pages/admin-page/admin-visualizer/visualizer-overview/visualizer-overview.component';
+import {
+  UserDestinationRelationshipComponent
+} from './pages/admin-page/admin-visualizer/user-destination-relationship/user-destination-relationship.component';
+import {
+  UserDestinationGraphComponent
+} from './pages/admin-page/admin-visualizer/user-destination-relationship/user-destination-graph/user-destination-graph.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,9 @@ import { VisualizerOverviewComponent } from './pages/admin-page/admin-visualizer
     AttrDefListComponent,
     AdminVisualizerComponent,
     VisualizerAttrModulesComponent,
-    VisualizerOverviewComponent
+    VisualizerOverviewComponent,
+    UserDestinationRelationshipComponent,
+    UserDestinationGraphComponent
   ],
   imports: [
     CommonModule,

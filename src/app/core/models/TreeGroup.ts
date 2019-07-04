@@ -7,6 +7,7 @@ export class TreeGroup implements Group {
   voId: number;
   children: TreeGroup[];
   shortName: string;
+  description: string;
 
   constructor(group: Group) {
     this.id = group.id;
@@ -14,6 +15,7 @@ export class TreeGroup implements Group {
     this.parentGroupId = group.parentGroupId;
     this.voId = group.voId;
     this.shortName = group.shortName;
+    this.description = group.description;
   }
 
   addChild(group: TreeGroup) {
