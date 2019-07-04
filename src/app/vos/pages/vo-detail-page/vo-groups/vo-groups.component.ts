@@ -43,7 +43,6 @@ export class VoGroupsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(value => {
-      console.log(value);
       this.ngOnInit();
     });
   }

@@ -3,7 +3,7 @@
 }
 
 .side-entity-menu a {
-  padding: 8px 8px 8px 40px;
+  padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 1rem;
   color: #616161;
@@ -13,7 +13,7 @@
 
 .activated {
   color: #313131 !important;
-  border-right: 5px solid #313131;
+  border-left: 5px solid #313131;
 }
 
 .side-entity-menu a:hover {
@@ -22,7 +22,7 @@
 }
 
 .entity-menu-item-header {
-  padding: 5px 5px 5px 25px;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
   cursor: pointer;
   -moz-user-select: none;
   -khtml-user-select: none;

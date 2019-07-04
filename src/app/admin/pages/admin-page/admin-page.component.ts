@@ -15,9 +15,7 @@ export class AdminPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const adminItem = this.sideMenuItemService.getAdminItem();
-
-    this.sideMenuService.setMenuItems([adminItem]);
+    this.sideMenuService.setAdminItems([]);
   }
 
 }

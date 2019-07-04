@@ -43,7 +43,7 @@ export class MemberDetailPageComponent implements OnInit {
           const voSideMenuItem = this.sideMenuItemService.parseVo(this.vo);
           const memberSideMenuItem = this.sideMenuItemService.parseMember(this.member);
           this.fullName = memberSideMenuItem.label;
-          this.sideMenuService.setMenuItems([voSideMenuItem, memberSideMenuItem]);
+          this.sideMenuService.setAccessMenuItems([voSideMenuItem, memberSideMenuItem]);
         });
       });
     });

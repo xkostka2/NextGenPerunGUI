@@ -5,9 +5,10 @@ import {Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {MenuItem} from '../../../shared/models/MenuItem';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Router} from '@angular/router';
 import {SideMenuService} from '../../../core/services/common/side-menu.service';
+import {SideMenuItemService} from '../../../shared/side-menu/side-menu-item.service';
 
 @Component({
   selector: 'app-vo-select-page',
@@ -19,11 +20,12 @@ export class VoSelectPageComponent implements OnInit {
   constructor(
     private sideMenuService: SideMenuService,
     private voService: VoService,
-    private router: Router
+    private router: Router,
+    private sideMenuItemService: SideMenuItemService
   ) { }
 
   formControl = new FormControl();
-  vos: Vo[];
+  vos: Vo[] = [];
   filteredOptions: Observable<Vo[]>;
 
   items: MenuItem[] = [
@@ -36,7 +38,8 @@ export class VoSelectPageComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.sideMenuService.setMenuItems([]);
+    this.sideMenuService.setAccessMenuItems([]);
+
     this.voService.getAllVos().subscribe(vos => {
       this.vos = vos;
       this.vos = vos.sort(((vo1, vo2) => {

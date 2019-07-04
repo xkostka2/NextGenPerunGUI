@@ -24,7 +24,6 @@ export class MemberGroupsComponent implements OnInit {
 
       this.groupsService.getMemberGroups(memberId).subscribe(groups => {
         this.groups = groups;
-        console.log(groups);
       });
     });
   }

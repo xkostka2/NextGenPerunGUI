@@ -44,17 +44,12 @@ export class CreateGroupDialogComponent {
   }
 
   onSubmit(): void {
-    console.log(this.data);
     if (this.isNotSubGroup) {
       this.groupService.createGroup(this.data.voId, this.name, this.description).subscribe(group => {
-        console.log(group);
-
         this.dialogRef.close();
       });
     } else {
       this.groupService.createSubGroup(this.data.parentGroup.id, this.name, this.description).subscribe(group => {
-        console.log(group);
-
         this.dialogRef.close();
       });
     }

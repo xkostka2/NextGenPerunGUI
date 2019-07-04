@@ -6,9 +6,14 @@
     "ADMIN": "Admin"
   },
   "VO_MANAGEMENT": {
-    "TITLE": "Organizations",
+    "TITLE": "Select organization",
     "INPUT_PLACEHOLDER": "Find organization...",
-    "CREATE_VO": "New organization"
+    "CREATE_VO": "New organization",
+    "FILTER_PLACEHOLDER": "Filter by name",
+    "TABLE": {
+      "ID": "Id",
+      "NAME": "Name"
+    }
   },
   "USER_MANAGEMENT": {
     "TITLE": "Users",

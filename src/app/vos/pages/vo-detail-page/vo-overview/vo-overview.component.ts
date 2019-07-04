@@ -84,13 +84,9 @@ export class VoOverviewComponent implements OnInit {
         style: 'vo-btn',
         url: `/organizations/${this.vo.id}/invite-member`,
         clickAction: function (dialog: MatDialog, voId: number) {
-          const dialogRef = dialog.open(InviteMemberDialogComponent, {
+          dialog.open(InviteMemberDialogComponent, {
             width: '450px',
             data: {voId: voId}
-          });
-
-          dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
           });
         }
       },

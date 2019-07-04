@@ -25,7 +25,7 @@ export class UserSelectPageComponent implements OnInit {
   firstSearchDone = false;
 
   ngOnInit() {
-    this.sideMenuService.setMenuItems([]);
+    this.sideMenuService.setAccessMenuItems([]);
   }
 
   onSearchClick() {

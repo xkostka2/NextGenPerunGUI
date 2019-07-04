@@ -32,7 +32,7 @@ export class UserDetailPageComponent implements OnInit {
 
         const sideMenuItem = this.sideMenuItemService.parseUser(user);
 
-        this.sideMenuService.setMenuItems([sideMenuItem]);
+        this.sideMenuService.setAccessMenuItems([sideMenuItem]);
       });
     });
   }

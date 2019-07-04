@@ -37,7 +37,7 @@ export class GroupDetailPageComponent implements OnInit {
           const voSideMenuItem = this.sideMenuItemService.parseVo(vo);
           const groupSideMenuItem = this.sideMenuItemService.parseGroup(group);
 
-          this.sideMenuService.setMenuItems([voSideMenuItem, groupSideMenuItem]);
+          this.sideMenuService.setAccessMenuItems([voSideMenuItem, groupSideMenuItem]);
         });
       });
     });

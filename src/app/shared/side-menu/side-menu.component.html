@@ -1,22 +1,27 @@
-<!--<div *ngFor="let item of items" class="entity-menu-item {{item.colorClass}}">
-  <a [routerLink]="item.baseLink" class="entity-menu-item-link">
-
-    <div class="entity-menu-item-label">
-      <img
-        src="assets/img/PerunWebImages/{{item.icon}}"
-        class="entity-menu-item-icon"
-        alt="{{item.label}}">
-      <div class="ml-3">{{item.label}}</div>
-    </div>
-    <mat-icon>arrow_drop_down</mat-icon>
-  </a>
-</div>-->
 <div class="accordion entity-menu-accordion" id="sideMenuAccordion">
+  <app-side-menu-root-item
+    [item]="accessItem">
+  </app-side-menu-root-item>
+
   <app-side-menu-item
-    *ngFor="let item of items; let i = index"
+    *ngFor="let item of accessItems; let i = index"
     [item]="item"
     [index]="i"
     [showOpen]="true">
 <!--    [showOpen]="i === items.length-1">-->
   </app-side-menu-item>
+
+  <app-side-menu-root-item
+    [item]="facilityItem">
+  </app-side-menu-root-item>
+  <app-side-menu-item
+    *ngFor="let item of facilityItems; let i = index"
+    [item]="item"
+    [index]="i">
+  </app-side-menu-item>
+
+  <app-side-menu-root-item
+    [showOpen]="adminItemOpened"
+    [item]="adminItem">
+  </app-side-menu-root-item>
 </div>

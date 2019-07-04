@@ -35,7 +35,7 @@ export class VoDetailPageComponent implements OnInit {
 
         const sideMenuItem = this.sideMenuItemService.parseVo(vo);
 
-        this.sideMenuService.setMenuItems([sideMenuItem]);
+        this.sideMenuService.setAccessMenuItems([sideMenuItem]);
       });
     });
   }

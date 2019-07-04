@@ -16,29 +16,49 @@ export class SideMenuItemService {
     private translate: TranslateService,
   ) { }
 
+  getFacilitiesManagementItem(): SideMenuItem {
+    return {
+      label: 'Facilities management',
+      colorClass: 'base-item',
+      icon: 'facility-white.svg',
+      links: []
+    };
+  }
+
+  getAccessManagementItem(): SideMenuItem {
+    return {
+      label: 'Access management',
+      colorClass: 'base-item',
+      icon: 'vo-white.svg',
+      links: []
+    };
+  }
+
   getAdminItem(): SideMenuItem {
     return {
-      label: this.translate.instant('MENU_ITEMS.ADMIN.TITLE'),
+      baseLink: ['/admin'],
+      expandable: false,
+      label: 'MENU_ITEMS.ADMIN.TITLE',
       colorClass: 'admin-bg-color',
       icon: 'perun_admin-white.svg',
       links: [
         {
-          label: this.translate.instant('MENU_ITEMS.ADMIN.OVERVIEW'),
+          label: 'MENU_ITEMS.ADMIN.OVERVIEW',
           url: ['/admin'],
           activatedRegex: '^/admin$'
         },
         {
-          label: this.translate.instant('MENU_ITEMS.ADMIN.ATTRIBUTES'),
+          label: 'MENU_ITEMS.ADMIN.ATTRIBUTES',
           url: ['/admin/attributes'],
           activatedRegex: '^/admin/attributes$'
         },
         {
-          label: this.translate.instant('MENU_ITEMS.ADMIN.VISUALIZER'),
+          label: 'MENU_ITEMS.ADMIN.VISUALIZER',
           url: ['/admin/visualizer'],
           activatedRegex: '^/admin/visualizer$',
           children: [
             {
-              label: this.translate.instant('MENU_ITEMS.VISUALIZER.ATTR_DEPENDENCIES'),
+              label: 'MENU_ITEMS.VISUALIZER.ATTR_DEPENDENCIES',
               url: ['/admin/visualizer/attrDependencies'],
               activatedRegex: '^/admin/visualizer/attrDependencies'
             },
@@ -59,38 +79,40 @@ export class SideMenuItemService {
       label: group.name,
       links: [
         {
-          label: this.translate.instant('MENU_ITEMS.GROUP.OVERVIEW'),
+          label: 'MENU_ITEMS.GROUP.OVERVIEW',
           url: [`/organizations/${group.voId}/groups/${group.id}`],
           activatedRegex: '/organizations/\\d+/groups/\\d+$'
         },
         {
-          label: this.translate.instant('MENU_ITEMS.GROUP.MEMBERS'),
+          label: 'MENU_ITEMS.GROUP.MEMBERS',
           url: [`/organizations/${group.voId}/groups/${group.id}/members`],
           activatedRegex: '/organizations/\\d+/groups/\\d+/members$'
         },
         {
-          label: this.translate.instant('MENU_ITEMS.GROUP.SUBGROUPS'),
+          label: 'MENU_ITEMS.GROUP.SUBGROUPS',
           url: [`/organizations/${group.voId}/groups/${group.id}/subgroups`],
           activatedRegex: '/organizations/\\d+/groups/\\d+/subgroups$'
         },
         {
-          label: this.translate.instant('MENU_ITEMS.GROUP.RESOURCES'),
+          label: 'MENU_ITEMS.GROUP.RESOURCES',
           url: [`/organizations/${group.voId}/groups/${group.id}/resources`],
           activatedRegex: '/organizations/\\d+/groups/\\d+/resources$'
         },
         {
-          label: this.translate.instant('MENU_ITEMS.GROUP.APPLICATIONS'),
+          label: 'MENU_ITEMS.GROUP.APPLICATIONS',
           url: [`/organizations/${group.voId}/groups/${group.id}/applications`],
           activatedRegex: '/organizations/\\d+/groups/\\d+/applications$'
         },
         {
-          label: this.translate.instant('MENU_ITEMS.GROUP.SETTINGS'),
+          label: 'MENU_ITEMS.GROUP.SETTINGS',
           url: [`/organizations/${group.voId}/groups/${group.id}/settings`],
           activatedRegex: '/organizations/\\d+/groups/\\d+/settings$'
         }
       ],
-      colorClass: 'group-bg-color',
-      icon: 'group-white.svg'
+      colorClass: 'group-item',
+      icon: 'group-green.svg',
+      labelClass: 'group-text',
+      activatedClass: 'group-item-activated'
     };
   }
 
@@ -99,47 +121,47 @@ export class SideMenuItemService {
       label: vo.name,
       links: [
         {
-          label: this.translate.instant('MENU_ITEMS.VO.OVERVIEW'),
+          label: 'MENU_ITEMS.VO.OVERVIEW',
           url: [`/organizations/${vo.id}`],
           activatedRegex: '/organizations/\\d+$'
         },
         {
-          label: this.translate.instant('MENU_ITEMS.VO.MEMBERS'),
+          label: 'MENU_ITEMS.VO.MEMBERS',
           url: [`/organizations/${vo.id}/members`],
           activatedRegex: '/organizations/\\d+/members$'
         },
         {
-          label: this.translate.instant('MENU_ITEMS.VO.GROUPS'),
+          label: 'MENU_ITEMS.VO.GROUPS',
           url: [`/organizations/${vo.id}/groups`],
           activatedRegex: '/organizations/\\d+/groups$'
         },
         {
-          label: this.translate.instant('MENU_ITEMS.VO.RESOURCES'),
+          label: 'MENU_ITEMS.VO.RESOURCES',
           url: [`/organizations/${vo.id}/resources`],
           activatedRegex: '/organizations/\\d+/resources'
         },
         {
-          label: this.translate.instant('MENU_ITEMS.VO.APPLICATIONS'),
+          label: 'MENU_ITEMS.VO.APPLICATIONS',
           url: [`/organizations/${vo.id}/applications`],
           activatedRegex: '/organizations/\\d+/applications'
         },
         {
-          label: this.translate.instant('MENU_ITEMS.VO.SETTINGS'),
+          label: 'MENU_ITEMS.VO.SETTINGS',
           url: [`/organizations/${vo.id}/settings`],
           activatedRegex: '/organizations/\\d+/settings$',
           children: [
             {
-              label: this.translate.instant('MENU_ITEMS.VO.ATTRIBUTES'),
+              label: 'MENU_ITEMS.VO.ATTRIBUTES',
               url: [`/organizations/${vo.id}/settings/attributes`],
               activatedRegex: '/organizations/\\d+/settings/attributes$'
             },
             {
-              label: this.translate.instant('MENU_ITEMS.VO.EXPIRATION'),
+              label: 'MENU_ITEMS.VO.EXPIRATION',
               url: [`/organizations/${vo.id}/settings/expiration`],
               activatedRegex: '/organizations/\\d+/settings/expiration$'
             },
             {
-              label: this.translate.instant('MENU_ITEMS.VO.MANAGERS'),
+              label: 'MENU_ITEMS.VO.MANAGERS',
               url: [`/organizations/${vo.id}/settings/managers`],
               activatedRegex: '/organizations/\\d+/settings/managers$'
             }
@@ -147,8 +169,10 @@ export class SideMenuItemService {
           showChildrenRegex: '/organizations/\\d+/settings'
         }
       ],
-      colorClass: 'vo-bg-color',
-      icon: 'vo-white.svg'
+      colorClass: 'vo-item',
+      icon: 'vo-blue.svg',
+      labelClass: 'vo-text',
+      activatedClass: 'vo-item-activated'
     };
   }
 
@@ -157,18 +181,20 @@ export class SideMenuItemService {
       label: parseFullName(member.user),
       links: [
         {
-          label: this.translate.instant('MENU_ITEMS.MEMBER.OVERVIEW'),
+          label: 'MENU_ITEMS.MEMBER.OVERVIEW',
           url: [`/organizations/${member.voId}/members/${member.id}`],
           activatedRegex: '/organizations/\\d+/members/\\d+$'
         },
         {
-          label: this.translate.instant('MENU_ITEMS.MEMBER.GROUPS'),
+          label: 'MENU_ITEMS.MEMBER.GROUPS',
           url: [`//organizations/${member.voId}/members/${member.id}/groups`],
           activatedRegex: '/organizations/\\d+/members/\\d+/groups'
         }
       ],
-      colorClass: 'member-bg-color',
-      icon: 'user-white.svg'
+      colorClass: 'member-item',
+      icon: 'user-pink.svg',
+      labelClass: 'member-text',
+      activatedClass: 'member-item-activated'
     };
   }
 
@@ -177,7 +203,7 @@ export class SideMenuItemService {
       label: parseFullName(user),
       links: [
         {
-          label: this.translate.instant('MENU_ITEMS.USER.OVERVIEW'),
+          label: 'MENU_ITEMS.USER.OVERVIEW',
           url: [`/users/${user.id}`],
           activatedRegex: '^/users/\\d+$'
         }

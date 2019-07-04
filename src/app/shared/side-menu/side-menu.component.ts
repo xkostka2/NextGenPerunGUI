@@ -1,8 +1,8 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+import {MatSidenav} from '@angular/material/sidenav';
 import {SideMenuService} from '../../core/services/common/side-menu.service';
-import {Router} from '@angular/router';
 import {AppComponent} from '../../app.component';
+import {SideMenuItemService} from './side-menu-item.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -12,15 +12,36 @@ import {AppComponent} from '../../app.component';
 export class SideMenuComponent implements OnInit {
 
   constructor(
-    private sideMenuService: SideMenuService
+    private sideMenuService: SideMenuService,
+    private sideMenuItemService: SideMenuItemService
   ) { }
 
-  items: SideMenuItem[] = [];
+  accessItems: SideMenuItem[] = [];
+  facilityItems: SideMenuItem[] = [];
+  adminItems: SideMenuItem[] = [];
+
+  accessItem = {
+    label: 'Access management',
+    colorClass: 'vo-bg-color',
+    icon: 'vo-white.svg',
+    links: [],
+    baseLink: ['/organizations']
+  };
+
+  facilityItem = {
+    label: 'Facilities management',
+    colorClass: 'facility-bg-color',
+    icon: 'facility-white.svg',
+    links: []
+  };
+
+  adminItem = this.sideMenuItemService.getAdminItem();
 
   @Input()
   sideNav: MatSidenav;
 
   mobileView = false;
+  adminItemOpened = false;
 
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
@@ -28,26 +49,46 @@ export class SideMenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getScreenSize(null);
+    this.sideNav.open();
 
-    this.sideMenuService.sideMenuItemsChange.subscribe(items => {
-      if (!this.mobileView) {
-        if (items.length > 0) {
-          this.sideNav.open();
-        } else {
-          this.sideNav.close();
-        }
-      }
-      this.items = items;
+    this.getScreenSize(null);
+    this.sideMenuService.facilityItemsChange.subscribe(items => {
+      this.reset();
+      this.facilityItems = items;
+      this.adminItemOpened = false;
     });
+    this.sideMenuService.accessItemsChange.subscribe(items => {
+      this.reset();
+      this.accessItems = items;
+      this.adminItemOpened = false;
+    });
+    this.sideMenuService.adminItemsChange.subscribe(items => {
+      this.reset();
+      this.adminItems = items;
+      this.adminItemOpened = true;
+    });
+    this.sideMenuService.resetChange.subscribe(() => {
+      this.reset();
+    });
+  }
+
+  private reset(): void {
+      this.adminItemOpened = false;
+      this.adminItems = [];
+      this.accessItems = [];
+      this.facilityItems = [];
   }
 }
 
 export interface SideMenuItem {
   label: string;
-  links: EntityMenuLink[];
+  labelClass?: string;
   colorClass: string;
+  activatedClass?: string;
+  links: EntityMenuLink[];
   icon: string;
+  baseLink?: any[];
+  expandable?: boolean;
 }
 
 export interface EntityMenuLink {

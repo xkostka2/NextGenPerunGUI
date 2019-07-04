@@ -30,7 +30,7 @@ $perun-theme: mat-light-theme($perun-primary, $perun-accent, $perun-warn);
 $vo-color: #283593;
 $facility-color: #E64A19;
 $group-color: #33691e;
-$member-color: #BF360C;
+$member-color: #ad1457;
 $admin-color: #c62828;
 $user-color: #00796b;
 
@@ -84,6 +84,41 @@ button {
 
 button:focus {
   outline: none !important;
+}
+
+.vo-item {
+  background-color: rgba(63, 76, 255, 0.15);
+}
+
+.group-item {
+  background-color: rgba(123, 255, 71, 0.15);
+}
+
+.member-item {
+  background-color: rgba(255, 28, 133, 0.15);
+}
+
+.vo-item-activated {
+  border-right: 5px solid $vo-color;
+  color: $vo-color !important;
+}
+.group-item-activated {
+  border-right: 5px solid $group-color;
+  color: $group-color !important;
+}
+.member-item-activated {
+  border-right: 5px solid $member-color;
+  color: $member-color !important;
+}
+
+.vo-text {
+  color: $vo-color !important;
+}
+.group-text {
+  color: $group-color !important;
+}
+.member-text {
+  color: $member-color !important;
 }
 
 .router-component {
@@ -157,6 +192,10 @@ button:focus {
   display: flex;
   justify-content: space-between;
   //display: table;
+}
+
+.base-item {
+  background-color: #d7d7d7;
 }
 
 .white-color-input {

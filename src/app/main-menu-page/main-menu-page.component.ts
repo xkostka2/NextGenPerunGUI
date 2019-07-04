@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuItem } from '../shared/models/MenuItem';
+import {Component, OnInit} from '@angular/core';
+import {MenuItem} from '../shared/models/MenuItem';
 import {SideMenuService} from '../core/services/common/side-menu.service';
 
 @Component({
@@ -41,6 +41,6 @@ export class MainMenuPageComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.sideMenuService.setMenuItems([]);
+    this.sideMenuService.reset();
   }
 }

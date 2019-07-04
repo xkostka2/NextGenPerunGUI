@@ -82,8 +82,6 @@ export function parseLogins(richMember: RichMember|RichUser): string {
   if (logins.endsWith(' ')) {
     logins = logins.substring(0, logins.length - 1);
   }
-  console.log(logins);
-
   return logins;
 }
 
