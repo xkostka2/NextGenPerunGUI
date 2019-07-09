@@ -31,7 +31,7 @@ $vo-color: #283593;
 $facility-color: #E64A19;
 $group-color: #33691e;
 $member-color: #ad1457;
-$admin-color: #c62828;
+$admin-color: #455a64;
 $user-color: #00796b;
 
 .vo-theme {
@@ -59,7 +59,7 @@ $user-color: #00796b;
 }
 
 .admin-theme {
-  $admin-primary: mat-palette($mat-red, 800);
+  $admin-primary: mat-palette($mat-blue-gray, 700);
   $admin-accent: mat-palette($mat-green, 600);
   $admin-theme: mat-light-theme($admin-primary, $admin-accent);
 

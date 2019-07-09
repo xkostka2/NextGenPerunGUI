@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-back-button',
@@ -9,12 +9,10 @@ import {Router} from '@angular/router';
 export class BackButtonComponent {
 
   constructor(
-    private router: Router
+    private location: Location,
   ) { }
 
   goBack() {
-    const currentUrl = this.router.url;
-
-    this.router.navigateByUrl(currentUrl.substring(0, currentUrl.lastIndexOf('/')));
+    this.location.back();
   }
 }

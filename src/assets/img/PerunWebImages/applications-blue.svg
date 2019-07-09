@@ -11,14 +11,15 @@
   ]>
 <svg enable-background="new 0 0 128 128" version="1.1" viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
 <style type="text/css">
-	.st0{fill:#455a64;}
+	.st0{fill:#283593;}
 </style>
   <switch>
 	<foreignObject width="1" height="1" requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/">
 	</foreignObject>
     <g>
-			<polygon class="st0" points="57.6 79.2 44.7 81.4 59.1 47.3 46.7 49.4 59.8 15.1 41.5 15.1 14.5 50.2 25.1 94.1 47.6 105"/>
-      <polygon class="st0" points="87.6 17.3 70.5 45.3 89.2 42.3 67.5 77.7 85.5 74.4 52.9 107.6 65.4 113.7 105 94.2 114.1 50.4"/>
+			<rect class="st0" x="39.37" y="42.15" width="34.78" height="8.01"/>
+      <rect class="st0" x="39.37" y="57.23" width="34.78" height="8.01"/>
+      <path class="st0" d="m103.67 76.45v-63.35h-65.44v8.01h57.42v55.34h-5.75v-49.38h-65.78v49.38h-3.18v38.26h85.77v-38.26h-3.04zm-71.54-41.37h49.76v41.37h-7.74v-4.14h-34.78v4.14h-7.24v-41.37z"/>
 	</g>
 </switch>
 </svg>

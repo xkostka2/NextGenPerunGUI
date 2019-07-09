@@ -1,57 +1,6 @@
-<div *ngIf="size === 'small'" class="row ml-0 mr-0 menu-items-row">
-  <div *ngFor="let item of items" class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6">
-    <a [routerLink]="item.url"
-       class="menu-item-small box-button-small {{item.style}}">
-      <!--suppress HtmlUnknownTarget -->
-      <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.label}}">
-      <div>
-        {{item.label | translate}}
-      </div>
-    </a>
-  </div>
+<div *ngIf="size === 'small'" class="items-container">
+  <a *ngFor="let item of items" class="item-itself {{item.style}}" [routerLink]="item.url">
+    <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.label}}">
+    {{item.label | translate}}
+  </a>
 </div>
-
-<div *ngIf="size === 'large'" class="row ml-0 mr-0 menu-items-row">
-  <div *ngFor="let item of items" class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-    <a [routerLink]="item.url"
-       class="menu-item-large box-button-large {{item.style}}">
-      <!--suppress HtmlUnknownTarget -->
-      <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.label}}">
-      <div>
-        {{item.label | translate}}
-      </div>
-    </a>
-  </div>
-</div>
-
-<!--<div *ngIf="size === 'medium'" class="row mt-5 ml-0 mr-0 menu-items-row">-->
-<!--  <div *ngFor="let item of items" class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">-->
-<!--    <a [routerLink]="item.url"-->
-<!--       class="menu-item-medium box-button-medium {{item.style}}">-->
-<!--      &lt;!&ndash;suppress HtmlUnknownTarget &ndash;&gt;-->
-<!--      <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.label}}">-->
-<!--      <div>-->
-<!--        {{item.label | translate}}-->
-<!--      </div>-->
-<!--    </a>-->
-<!--  </div>-->
-<!--</div>-->
-
-<ul class="list" *ngIf="size === 'medium'">
-  <li class="list-item" *ngFor="let item of items" (click)="item.clickAction !== undefined && item.clickAction(dialog, voId)">
-    <div class="list-content {{item.style}}" >
-      <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.label}}">
-        {{item.label | translate}}
-    </div>
-  </li>
-</ul>
-<!--<ul *ngIf="size === 'medium'" class="qa-buttons">-->
-<!--  <li *ngFor="let item of items">-->
-<!--    <button-->
-<!--            class="qa-button vo-bg-color text-white"-->
-<!--      mat-flat-button>-->
-<!--      <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.label}}">-->
-<!--      {{item.label | translate}}-->
-<!--    </button>-->
-<!--  </li>-->
-<!--</ul>-->

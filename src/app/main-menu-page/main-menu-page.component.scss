@@ -6,6 +6,7 @@
 }
 
 .main-menu-button {
+  color: #000000;
   background-color: #ffffff;
   margin: 20px;
   display: flex;
@@ -16,6 +17,10 @@
   border: 1px solid #b8b8b8;
   border-radius: 5px;
   padding: 30px;
+
+  &:hover {
+    text-decoration: none;
+  }
   & img {
     height: 160px
   }

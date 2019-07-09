@@ -1,21 +1,19 @@
 <div class="container-fluid">
   <div class="buttons-container">
-    <div class="main-menu-button" [routerLink]="['organizations']">
+    <a class="main-menu-button" [routerLink]="['organizations']">
       <img src="assets/img/PerunWebImages/vo.svg">
       <h1>Access management</h1>
       <p>Manage organizations, groups and members.</p>
-    </div>
-    <div class="main-menu-button">
-      <img src="assets/img/PerunWebImages/facility.svg">
+    </a>
+    <a class="main-menu-button">
+      <img src="assets/img/PerunWebImages/manage_facility_orange.svg">
       <h1>Facilities management</h1>
       <p>Manage facilities and resources.</p>
-    </div>
-    <div class="main-menu-button" [routerLink]="['admin']">
-      <img src="assets/img/PerunWebImages/perun_admin-red.svg">
+    </a>
+    <a class="main-menu-button" [routerLink]="['admin']">
+      <img src="assets/img/PerunWebImages/perun_admin-grey.svg">
       <h1>Administration tools</h1>
       <p>Manage attributes, users and do diagnostics.</p>
-    </div>
+    </a>
   </div>
-<!--  <app-menu-buttons-field [items]="items" [size]="'large'">-->
-<!--  </app-menu-buttons-field>-->
 </div>
