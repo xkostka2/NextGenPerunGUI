@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {RichMember} from '../../../core/models/RichMember';
-import {MembersService} from '../../../core/services/api/members.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {GroupService} from '../../../core/services/api/group.service';
-import {Group} from '../../../core/models/Group';
-import {Urns} from '../../../shared/urns';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MatDialog} from '@angular/material';
+import {MembersService} from '../../../../core/services/api/members.service';
+import {GroupService} from '../../../../core/services/api/group.service';
+import {Group} from '../../../../core/models/Group';
+import {RichMember} from '../../../../core/models/RichMember';
+import {Urns} from '../../../../shared/urns';
 
 @Component({
   selector: 'app-group-members',
@@ -18,8 +17,7 @@ export class GroupMembersComponent implements OnInit {
   constructor(private membersService: MembersService,
               private groupService: GroupService,
               protected route: ActivatedRoute,
-              protected router: Router,
-              private dialog: MatDialog) { }
+              protected router: Router) { }
 
   group: Group;
 

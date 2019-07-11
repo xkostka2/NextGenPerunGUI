@@ -1,30 +1,21 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import {PerunPrincipal} from '../../core/models/PerunPrincipal';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-perun-nav-menu',
   templateUrl: './perun-nav.component.html',
   styleUrls: ['./perun-nav.component.scss']
 })
-export class PerunNavComponent implements OnInit {
+export class PerunNavComponent {
 
   constructor() { }
 
   @Input()
   sideNav: MatSidenav;
 
-  items: any[] = [
-    {
-      icon: 'perun_logo-white.svg',
-      url: '/',
-      alt: 'Home'
-    }
-  ];
-
   @Input()
   principal: PerunPrincipal;
-
-  ngOnInit() {
-  }
+  isProduction = environment.production;
 }

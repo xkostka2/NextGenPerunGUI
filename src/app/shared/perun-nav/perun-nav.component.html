@@ -6,15 +6,11 @@
       menu
     </mat-icon>
   </button>
-  <a *ngFor="let item of items" class="nav-menu-icon" [routerLink]="item.url">
-    <img src="assets/img/PerunWebImages/{{item.icon}}" alt="{{item.alt}}">
+  <a class="nav-menu-icon" [routerLink]="['/']">
+    <img src="assets/img/PerunWebImages/perun_logo-white.svg" alt="Home">
   </a>
 </div>
-<!--<div id="nav-link-items">-->
-<!--  <a>Access management</a>-->
-<!--  <a>Facilities management</a>-->
-<!--</div>-->
-<div id="nav-menu-user-info">
+<div *ngIf="principal !== undefined" id="nav-menu-user-info" [routerLink]="['/debug']">
   <mat-icon>
     person
   </mat-icon>

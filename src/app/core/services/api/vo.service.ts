@@ -19,6 +19,10 @@ export class VoService {
     return this.apiService.get('json/vosManager/getAllVos', new HttpParams(), showNotificationOnError);
   }
 
+  getVos(showNotificationOnError = true): Observable<Vo[]> {
+    return this.apiService.get('json/vosManager/getVos', new HttpParams(), showNotificationOnError);
+  }
+
   getVoById(id: number, showNotificationOnError = true): Observable<Vo> {
     return this.apiService.get(`json/vosManager/getVoById?id=${id}`, new HttpParams(), showNotificationOnError);
   }

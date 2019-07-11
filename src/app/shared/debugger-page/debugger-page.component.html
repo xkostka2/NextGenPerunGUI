@@ -1,0 +1,9 @@
+<div *ngIf="principal !== undefined" class="p-3">
+  <div *ngFor="let role of principal.roles | keyvalue">
+    <h1 class="page-subtitle pb-0 pt-3">{{role.key}}</h1>
+    <div *ngFor="let entity of role.value | keyvalue">
+      {{entity.key}}
+      {{entity.value}}
+    </div>
+  </div>
+</div>

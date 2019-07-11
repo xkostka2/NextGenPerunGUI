@@ -24,7 +24,7 @@ export const flyInOut = trigger('flyInOut', [
   ])
 ]);
 
-export const slideInAnimation =
+export const fadeIn =
   trigger('routeAnimations', [
 
     transition( '* => *', [

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SideMenuService} from '../core/services/common/side-menu.service';
+import {AuthResolverService} from '../core/services/common/auth-resolver.service';
 
 @Component({
   selector: 'app-main-menu-page',
@@ -9,7 +10,8 @@ import {SideMenuService} from '../core/services/common/side-menu.service';
 export class MainMenuPageComponent implements OnInit {
 
   constructor(
-    private sideMenuService: SideMenuService
+    private sideMenuService: SideMenuService,
+    public authResolver: AuthResolverService
   ) { }
 
   ngOnInit() {

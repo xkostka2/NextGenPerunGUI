@@ -3,6 +3,7 @@ import {MatSidenav} from '@angular/material/sidenav';
 import {SideMenuService} from '../../core/services/common/side-menu.service';
 import {AppComponent} from '../../app.component';
 import {SideMenuItemService} from './side-menu-item.service';
+import {AuthResolverService} from '../../core/services/common/auth-resolver.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -13,7 +14,8 @@ export class SideMenuComponent implements OnInit {
 
   constructor(
     private sideMenuService: SideMenuService,
-    private sideMenuItemService: SideMenuItemService
+    private sideMenuItemService: SideMenuItemService,
+    public authResolver: AuthResolverService
   ) { }
 
   accessItems: SideMenuItem[] = [];

@@ -1,13 +1,13 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
-import {slideInAnimation} from '../../../../shared/animations/Animations';
+import {fadeIn} from '../../../../shared/animations/Animations';
 
 @Component({
   selector: 'app-vo-settings',
   templateUrl: './vo-settings.component.html',
   styleUrls: ['./vo-settings.component.scss'],
   animations: [
-    slideInAnimation
+    fadeIn
   ]
 })
 export class VoSettingsComponent implements OnInit {

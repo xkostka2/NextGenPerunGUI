@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 import { MainMenuPageComponent } from './main-menu-page/main-menu-page.component';
+import {DebuggerPageComponent} from './shared/debugger-page/debugger-page.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+  },
+  {
+    path: 'debug',
+    component: DebuggerPageComponent
   }
 ];
 

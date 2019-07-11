@@ -29,8 +29,8 @@ import { MemberGroupsDetailComponent } from './pages/member-detail-page/member-g
 import { MemberGroupListComponent } from './components/member-group-list/member-group-list.component';
 import { VoSettingsManagersComponent } from './pages/vo-detail-page/vo-settings/vo-settings-managers/vo-settings-managers.component';
 import { ApplicationDetailComponent } from './components/application-detail/application-detail.component';
-import { GroupMembersComponent } from './group-detail-page/group-members/group-members.component';
-import {GroupResourcesComponent} from './group-detail-page/group-resources/group-resources.component';
+import { GroupMembersComponent } from './pages/group-detail-page/group-members/group-members.component';
+import {GroupResourcesComponent} from './pages/group-detail-page/group-resources/group-resources.component';
 import { VoSelectTableComponent } from './components/vo-select-table/vo-select-table.component';
 
 @NgModule({

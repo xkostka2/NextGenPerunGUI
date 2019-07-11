@@ -2,6 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {AuthzService} from './core/services/api/authz.service';
 import {PerunPrincipal} from './core/models/PerunPrincipal';
+import {AuthResolverService} from './core/services/common/auth-resolver.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     translate: TranslateService,
-    private authzService: AuthzService
+    private authzService: AuthzService,
+    private authResolver: AuthResolverService
   ) {
     translate.setDefaultLang('en');
     translate.use('en');
@@ -22,7 +24,7 @@ export class AppComponent implements OnInit {
 
   public static minWidth = 768;
 
-  sidebarMode = 'side';
+  sidebarMode: 'over' | 'push' | 'side' = 'side';
   lastScreenWidth: number;
 
   principal: PerunPrincipal;
@@ -42,6 +44,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authzService.getPerunPrincipal().subscribe(perunPrincipal => this.principal = perunPrincipal);
+    this.authzService.getPerunPrincipal().subscribe(perunPrincipal => {
+      this.authResolver.setPerunPrincipal(perunPrincipal);
+      this.principal = perunPrincipal;
+    });
   }
 }

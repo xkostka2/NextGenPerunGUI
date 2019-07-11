@@ -4,14 +4,14 @@ import {VoService} from '../../../core/services/api/vo.service';
 import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import {Vo} from '../../../core/models/Vo';
 import {SideMenuItemService} from '../../../shared/side-menu/side-menu-item.service';
-import {slideInAnimation} from '../../../shared/animations/Animations';
+import {fadeIn} from '../../../shared/animations/Animations';
 
 @Component({
   selector: 'app-vo-detail-page',
   templateUrl: './vo-detail-page.component.html',
   styleUrls: ['./vo-detail-page.component.scss'],
   animations: [
-    slideInAnimation
+    fadeIn
   ]
 })
 export class VoDetailPageComponent implements OnInit {

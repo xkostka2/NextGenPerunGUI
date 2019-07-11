@@ -58,6 +58,7 @@ import { RemoveMembersDialogComponent } from './components/dialogs/remove-member
 import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { SideMenuRootItemComponent } from './side-menu/side-menu-root-item/side-menu-root-item.component';
+import { DebuggerPageComponent } from './debugger-page/debugger-page.component';
 
 @NgModule({
   imports: [
@@ -183,7 +184,8 @@ import { SideMenuRootItemComponent } from './side-menu/side-menu-root-item/side-
     MemberEmailPipe,
     MemberLoginsPipe,
     RemoveMembersDialogComponent,
-    SideMenuRootItemComponent
+    SideMenuRootItemComponent,
+    DebuggerPageComponent
   ]
 })
 export class SharedModule {

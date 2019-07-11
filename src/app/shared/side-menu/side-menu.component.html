@@ -12,15 +12,18 @@
   </app-side-menu-item>
 
   <app-side-menu-root-item
+    *ngIf="authResolver.canManageFacilities()"
     [item]="facilityItem">
   </app-side-menu-root-item>
-  <app-side-menu-item
-    *ngFor="let item of facilityItems; let i = index"
-    [item]="item"
-    [index]="i">
-  </app-side-menu-item>
-
+  <div *ngIf="authResolver.canManageFacilities()">
+    <app-side-menu-item
+      *ngFor="let item of facilityItems; let i = index"
+      [item]="item"
+      [index]="i">
+    </app-side-menu-item>
+  </div>
   <app-side-menu-root-item
+    *ngIf="authResolver.isPerunAdmin()"
     [showOpen]="adminItemOpened"
     [item]="adminItem">
   </app-side-menu-root-item>

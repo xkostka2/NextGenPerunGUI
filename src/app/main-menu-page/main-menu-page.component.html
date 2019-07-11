@@ -5,7 +5,7 @@
       <h1>Access management</h1>
       <p>Manage organizations, groups and members.</p>
     </a>
-    <a class="main-menu-button">
+    <a class="main-menu-button" *ngIf="authResolver.canManageFacilities()">
       <img src="assets/img/PerunWebImages/manage_facility_orange.svg">
       <h1>Facilities management</h1>
       <p>Manage facilities and resources.</p>
