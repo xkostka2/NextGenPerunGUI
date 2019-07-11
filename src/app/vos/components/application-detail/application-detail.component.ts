@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {RegistrarService} from '../../../core/services/api/registrar.service';
 import {MatDialog, MatTableDataSource} from '@angular/material';
 import {TranslateService} from '@ngx-translate/core';
@@ -18,6 +18,9 @@ import {NotificatorService} from '../../../core/services/common/notificator.serv
   styleUrls: ['./application-detail.component.scss']
 })
 export class ApplicationDetailComponent implements OnInit {
+
+  // used for router animation
+  @HostBinding('class.router-component') true;
 
   constructor(private registrarService: RegistrarService,
               private dialog: MatDialog,

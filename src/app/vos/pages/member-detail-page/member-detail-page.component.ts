@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, RouterOutlet} from '@angular/router';
 import {VoService} from '../../../core/services/api/vo.service';
 import {Vo} from '../../../core/models/Vo';
 import {RichMember} from '../../../core/models/RichMember';
@@ -8,11 +8,15 @@ import {SideMenuItemService} from '../../../shared/side-menu/side-menu-item.serv
 import {SideMenuService} from '../../../core/services/common/side-menu.service';
 import {AttributesService} from '../../../core/services/api/attributes.service';
 import {TranslateService} from '@ngx-translate/core';
+import {fadeIn} from '../../../shared/animations/Animations';
 
 @Component({
   selector: 'app-member-detail-page',
   templateUrl: './member-detail-page.component.html',
-  styleUrls: ['./member-detail-page.component.scss']
+  styleUrls: ['./member-detail-page.component.scss'],
+  animations: [
+    fadeIn
+  ]
 })
 export class MemberDetailPageComponent implements OnInit {
 
@@ -47,5 +51,9 @@ export class MemberDetailPageComponent implements OnInit {
         });
       });
     });
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 }

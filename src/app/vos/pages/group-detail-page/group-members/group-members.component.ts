@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MembersService} from '../../../../core/services/api/members.service';
@@ -13,6 +13,9 @@ import {Urns} from '../../../../shared/urns';
   styleUrls: ['./group-members.component.scss']
 })
 export class GroupMembersComponent implements OnInit {
+
+  // used for router animation
+  @HostBinding('class.router-component') true;
 
   constructor(private membersService: MembersService,
               private groupService: GroupService,

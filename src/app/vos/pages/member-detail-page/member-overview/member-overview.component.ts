@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {RichMember} from '../../../../core/models/RichMember';
 import {parseFullName, parseStatusColor, parseStatusIcon} from '../../../../shared/utils';
 import {Urns} from '../../../../shared/urns';
@@ -14,6 +14,9 @@ import {MenuItem} from '../../../../shared/models/MenuItem';
   styleUrls: ['./member-overview.component.scss']
 })
 export class MemberOverviewComponent implements OnInit {
+
+  // used for router animation
+  @HostBinding('class.router-component') true;
 
   constructor(
     private attributeService: AttributesService,

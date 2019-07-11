@@ -25,7 +25,6 @@ import { ResourcesListComponent } from './components/resources-list/resources-li
 import { VoSettingsExpirationComponent } from './pages/vo-detail-page/vo-settings/vo-settings-expiration/vo-settings-expiration.component';
 import { ApplicationsListComponent } from './components/applications-list/applications-list.component';
 import { GroupApplicationsComponent } from './pages/group-detail-page/group-applications/group-applications.component';
-import { MemberGroupsDetailComponent } from './pages/member-detail-page/member-groups/member-groups-detail/member-groups-detail.component';
 import { MemberGroupListComponent } from './components/member-group-list/member-group-list.component';
 import { VoSettingsManagersComponent } from './pages/vo-detail-page/vo-settings/vo-settings-managers/vo-settings-managers.component';
 import { ApplicationDetailComponent } from './components/application-detail/application-detail.component';
@@ -65,7 +64,6 @@ import { VoSelectTableComponent } from './components/vo-select-table/vo-select-t
     VoSettingsExpirationComponent,
     ApplicationsListComponent,
     GroupApplicationsComponent,
-    MemberGroupsDetailComponent,
     MemberGroupListComponent,
     VoSettingsManagersComponent,
     ApplicationDetailComponent,

@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {RichMember} from '../../../../core/models/RichMember';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {GroupService} from '../../../../core/services/api/group.service';
 import {Group} from '../../../../core/models/Group';
 import {ActivatedRoute} from '@angular/router';
@@ -10,6 +9,9 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./member-groups.component.scss']
 })
 export class MemberGroupsComponent implements OnInit {
+
+  // used for router animation
+  @HostBinding('class.router-component') true;
 
   constructor(
     private groupsService: GroupService,

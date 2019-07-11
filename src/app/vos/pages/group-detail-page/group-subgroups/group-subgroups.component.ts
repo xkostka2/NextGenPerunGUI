@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import {GroupService} from '../../../../core/services/api/group.service';
 import {Group} from '../../../../core/models/Group';
@@ -13,6 +13,9 @@ import {DeleteGroupDialogComponent} from '../../../../shared/components/dialogs/
   styleUrls: ['./group-subgroups.component.scss']
 })
 export class GroupSubgroupsComponent implements OnInit {
+
+  // used for router animation
+  @HostBinding('class.router-component') true;
 
   constructor(
     private dialog: MatDialog,

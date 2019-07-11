@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {RegistrarService} from '../../../../core/services/api/registrar.service';
 import {ActivatedRoute} from '@angular/router';
 import {Application} from '../../../../core/models/Application';
@@ -11,6 +11,9 @@ import {Group} from '../../../../core/models/Group';
   styleUrls: ['./group-applications.component.scss']
 })
 export class GroupApplicationsComponent implements OnInit {
+
+  // used for router animation
+  @HostBinding('class.router-component') true;
 
   constructor(private groupService: GroupService,
               private registarService: RegistrarService,

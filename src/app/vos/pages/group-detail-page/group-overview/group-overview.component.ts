@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {MenuItem} from '../../../../shared/models/MenuItem';
 import {ActivatedRoute} from '@angular/router';
 import {Group} from '../../../../core/models/Group';
@@ -10,6 +10,9 @@ import {GroupService} from '../../../../core/services/api/group.service';
   styleUrls: ['./group-overview.component.scss']
 })
 export class GroupOverviewComponent implements OnInit {
+
+  // used for router animation
+  @HostBinding('class.router-component') true;
 
   constructor(
     private route: ActivatedRoute,

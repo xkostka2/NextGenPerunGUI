@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {RichResource} from '../../../../core/models/RichResource';
 import {SelectionModel} from '@angular/cdk/collections';
@@ -12,6 +12,9 @@ import {ResourcesService} from '../../../../core/services/api/resources.service'
   styleUrls: ['./group-resources.component.scss']
 })
 export class GroupResourcesComponent implements OnInit {
+
+  // used for router animation
+  @HostBinding('class.router-component') true;
 
   constructor(private resourcesService: ResourcesService,
               private groupService: GroupService,

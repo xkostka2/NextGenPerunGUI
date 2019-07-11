@@ -18,7 +18,6 @@ import {VoSettingsAttributesComponent} from './pages/vo-detail-page/vo-settings/
 import {VoSettingsOverviewComponent} from './pages/vo-detail-page/vo-settings/vo-settings-overview/vo-settings-overview.component';
 import {VoSettingsExpirationComponent} from './pages/vo-detail-page/vo-settings/vo-settings-expiration/vo-settings-expiration.component';
 import {GroupApplicationsComponent} from './pages/group-detail-page/group-applications/group-applications.component';
-import {MemberGroupsDetailComponent} from './pages/member-detail-page/member-groups/member-groups-detail/member-groups-detail.component';
 import {VoSettingsManagersComponent} from './pages/vo-detail-page/vo-settings/vo-settings-managers/vo-settings-managers.component';
 import {ApplicationDetailComponent} from './components/application-detail/application-detail.component';
 import {GroupMembersComponent} from './pages/group-detail-page/group-members/group-members.component';
@@ -36,32 +35,32 @@ const routes: Routes = [
       {
         path: '',
         component: VoOverviewComponent,
-        data: {animation: 'OverviewPage'}
+        data: {animation: 'VoOverviewPage'}
       },
       {
         path: 'groups',
         component: VoGroupsComponent,
-        data: {animation: 'GroupsPage'}
+        data: {animation: 'VoGroupsPage'}
       },
       {
         path: 'members',
         component: VoMembersComponent,
-        data: {animation: 'MembersPage'}
+        data: {animation: 'VoMembersPage'}
       },
       {
         path: 'resources',
         component: VoResourcesComponent,
-        data: {animation: 'ResourcesPage'}
+        data: {animation: 'VoResourcesPage'}
       },
       {
         path: 'applications',
         component: VoApplicationsComponent,
-        data: {animation: 'ApplicationsPage'}
+        data: {animation: 'VoApplicationsPage'}
       },
       {
         path: 'applications/:applicationId',
         component: ApplicationDetailComponent,
-        data: {animation: 'SettingsPage'}
+        data: {animation: 'VoApplicationDetailPage'}
       },
       {
         path: 'settings',
@@ -70,22 +69,22 @@ const routes: Routes = [
           {
             path: '',
             component: VoSettingsOverviewComponent,
-            data: {animation: 'SettingsOverviewPage'}
+            data: {animation: 'VoSettingsOverviewPage'}
           },
           {
             path: 'attributes',
             component: VoSettingsAttributesComponent,
-            data: {animation: 'SettingsAttributesPage'}
+            data: {animation: 'VoSettingsAttributesPage'}
           },
           {
             path: 'expiration',
             component: VoSettingsExpirationComponent,
-            data: {animation: 'SettingsExpirationPage'}
+            data: {animation: 'VoSettingsExpirationPage'}
           },
           {
             path: 'managers',
             component: VoSettingsManagersComponent,
-            data: {animation: 'SettingsManagersPage'}
+            data: {animation: 'VoSettingsManagersPage'}
           }
         ]
       }
@@ -97,16 +96,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: MemberOverviewComponent
+        component: MemberOverviewComponent,
+        data: {animation: 'MemberOverviewPage'}
       },
       {
         path: 'groups',
-        component: MemberGroupsComponent
+        component: MemberGroupsComponent,
+        data: {animation: 'MemberGroupsPage'}
       },
-      {
-        path: 'groups/:memberGroupId',
-        component: MemberGroupsDetailComponent
-      }
     ]
   },
   {
@@ -115,27 +112,33 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: GroupOverviewComponent
+        component: GroupOverviewComponent,
+        data: {animation: 'GroupOverviewPage'}
       },
       {
         path: 'members',
-        component: GroupMembersComponent
+        component: GroupMembersComponent,
+        data: {animation: 'GroupMembersPage'}
       },
       {
         path: 'subgroups',
-        component: GroupSubgroupsComponent
+        component: GroupSubgroupsComponent,
+        data: {animation: 'GroupSubgroupsPage'}
       },
       {
         path: 'applications',
-        component: GroupApplicationsComponent
+        component: GroupApplicationsComponent,
+        data: {animation: 'GroupApplicationsPage'}
       },
       {
         path: 'resources',
-        component: GroupResourcesComponent
+        component: GroupResourcesComponent,
+        data: {animation: 'GroupResourcesPage'}
       },
       {
         path: 'applications/:applicationId',
-        component: ApplicationDetailComponent
+        component: ApplicationDetailComponent,
+        data: {animation: 'GroupApplicationDetailPage'}
       }
     ]
   }
