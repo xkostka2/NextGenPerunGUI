@@ -15,7 +15,13 @@ export class FacilityService {
     private apiService: ApiService
   ) { }
 
-  getFacilitiesByDestination (destination: string): Observable<Facility[]> {
+  getFacilityById(id: number): Observable<Facility> {
+    return this.apiService.post('json/facilitiesManager/getFacilityById', {
+      'id': id
+    });
+  }
+
+  getFacilitiesByDestination(destination: string): Observable<Facility[]> {
     return this.apiService.post('json/facilitiesManager/getFacilitiesByDestination', {
       'destination': destination
     });

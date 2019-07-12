@@ -42,6 +42,14 @@ $user-color: #00796b;
   @include angular-material-theme($vo-theme);
 }
 
+.facility-theme {
+  $vo-primary: mat-palette($mat-deep-orange, 700);
+  $vo-accent: mat-palette($mat-green, 600);
+  $vo-theme: mat-light-theme($vo-primary, $vo-accent);
+
+  @include angular-material-theme($vo-theme);
+}
+
 .group-theme {
   $group-primary: mat-palette($mat-light-green, 900);
   $group-accent: mat-palette($mat-green, 600);
@@ -90,6 +98,10 @@ button:focus {
   background-color: rgba(63, 76, 255, 0.15);
 }
 
+.facility-item {
+  background-color: rgba(255, 82, 28, 0.15);
+}
+
 .group-item {
   background-color: rgba(123, 255, 71, 0.15);
 }
@@ -100,19 +112,26 @@ button:focus {
 
 .vo-item-activated {
   border-right: 5px solid $vo-color;
-  color: $vo-color !important;
+  background-color: #eaeaea !important;
+}
+.facility-item-activated {
+  border-right: 5px solid $facility-color;
+  background-color: #eaeaea !important;
 }
 .group-item-activated {
   border-right: 5px solid $group-color;
-  color: $group-color !important;
+  background-color: #eaeaea !important;
 }
 .member-item-activated {
   border-right: 5px solid $member-color;
-  color: $member-color !important;
+  background-color: #eaeaea !important;
 }
 
 .vo-text {
   color: $vo-color !important;
+}
+.facility-text {
+  color: $facility-color !important;
 }
 .group-text {
   color: $group-color !important;
@@ -542,9 +561,19 @@ button:focus {
   &:active {
     background-color: darken($vo-color, 5%);
   }
+}
+
+.facility-btn {
+  background-color: $facility-color;
+  color: #ffffff;
+  border-radius: 0;
 
   &:hover {
-    color: #ffffff;
+    background-color: lighten($facility-color, 5%);
+  }
+
+  &:active {
+    background-color: darken($facility-color, 5%);
   }
 }
 
@@ -560,10 +589,6 @@ button:focus {
   &:active {
     background-color: darken($facility-color, 5%);
   }
-
-  &:hover {
-    color: #ffffff;
-  }
 }
 
 .group-btn {
@@ -578,10 +603,6 @@ button:focus {
   &:active {
     background-color: darken($group-color, 5%);
   }
-
-  &:hover {
-    color: #ffffff;
-  }
 }
 
 .member-btn {
@@ -595,10 +616,6 @@ button:focus {
 
   &:active {
     background-color: darken($member-color, 5%);
-  }
-
-  &:hover {
-    color: #ffffff;
   }
 }
 
@@ -653,6 +670,15 @@ button:focus {
 
   &:hover {
     color: lighten($vo-color, 10%);
+  }
+}
+
+.facility-link {
+  color: $facility-color;
+  text-decoration: underline;
+
+  &:hover {
+    color: lighten($facility-color, 10%);
   }
 }
 

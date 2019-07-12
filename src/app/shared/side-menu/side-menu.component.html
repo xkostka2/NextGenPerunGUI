@@ -3,24 +3,32 @@
     [item]="accessItem">
   </app-side-menu-root-item>
 
-  <app-side-menu-item
+  <div
     *ngFor="let item of accessItems; let i = index"
-    [item]="item"
-    [index]="i"
-    [showOpen]="true">
-<!--    [showOpen]="i === items.length-1">-->
-  </app-side-menu-item>
+    @rollInOut
+    class="overflow-hidden">
+    <app-side-menu-item
+      [item]="item"
+      [index]="i"
+      [showOpen]="true">
+    </app-side-menu-item>
+  </div>
 
   <app-side-menu-root-item
     *ngIf="authResolver.canManageFacilities()"
     [item]="facilityItem">
   </app-side-menu-root-item>
   <div *ngIf="authResolver.canManageFacilities()">
-    <app-side-menu-item
+    <div
       *ngFor="let item of facilityItems; let i = index"
-      [item]="item"
-      [index]="i">
-    </app-side-menu-item>
+      @rollInOut
+      class="overflow-hidden">
+      <app-side-menu-item
+        [item]="item"
+        [index]="i">
+      </app-side-menu-item>
+    </div>
+
   </div>
   <app-side-menu-root-item
     *ngIf="authResolver.isPerunAdmin()"

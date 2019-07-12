@@ -2,14 +2,14 @@ import {Component} from '@angular/core';
 import {NotificationData} from '../../models/NotificationData';
 import {NotificatorService} from '../../../core/services/common/notificator.service';
 import {doAfterDelay} from '../../utils';
-import {flyInOut} from '../../animations/Animations';
+import {rollInOut} from '../../animations/Animations';
 
 @Component({
   selector: 'app-notificator',
   templateUrl: './notificator.component.html',
   styleUrls: ['./notificator.component.scss'],
   animations: [
-    flyInOut
+    rollInOut
   ]
 })
 export class NotificatorComponent {

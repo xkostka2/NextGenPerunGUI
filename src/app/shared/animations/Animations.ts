@@ -14,13 +14,13 @@ export const openClose =
   ]),
 ]);
 
-export const flyInOut = trigger('flyInOut', [
+export const rollInOut = trigger('rollInOut', [
   transition(':enter', [
-    style({transform: 'translateX(100%)'}),
-    animate('.25s')
+    style({height: '0px'}),
+    animate('.5s')
   ]),
   transition(':leave', [
-    animate('.5s', style({transform: 'translateX(100%)'}))
+    animate('.5s', style({height: '0px'}))
   ])
 ]);
 
@@ -51,7 +51,5 @@ export const fadeIn =
         ],
         { optional: true }
       )
-
     ])
-
   ]);

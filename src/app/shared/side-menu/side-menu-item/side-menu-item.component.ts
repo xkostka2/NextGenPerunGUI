@@ -1,15 +1,15 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {SideMenuItem} from '../side-menu.component';
 import {NavigationEnd, Router} from '@angular/router';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-import {openClose} from '../../animations/Animations';
+import {openClose, rollInOut} from '../../animations/Animations';
 
 @Component({
   selector: 'app-side-menu-item',
   templateUrl: './side-menu-item.component.html',
   styleUrls: ['./side-menu-item.component.scss'],
   animations: [
-    openClose
+    openClose,
+    rollInOut
   ]
 })
 export class SideMenuItemComponent implements OnInit, OnChanges {
@@ -39,21 +39,21 @@ export class SideMenuItemComponent implements OnInit, OnChanges {
 
   @ViewChild('collapse', { static: false }) collapseDiv: ElementRef;
 
-  expanded = false;
+  expanded = true;
 
   ngOnInit() {
-    this.expanded = this.showOpen;
+    // this.expanded = this.showOpen;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.expanded = this.showOpen;
+    // this.expanded = this.showOpen;
   }
 
   toggle() {
     if (this.item.baseLink !== undefined) {
       this.router.navigate(this.item.baseLink);
     } else {
-      this.expanded = !this.expanded;
+      // this.expanded = !this.expanded;
     }
   }
 

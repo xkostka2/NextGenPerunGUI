@@ -29,6 +29,9 @@
     "INPUT_PLACEHOLDER": "Enter user's name, login or email...",
     "NO_USERS_FOUND": "No users found."
   },
+  "FACILITY_DETAIL": {
+    "TITLE": "Facility - "
+  },
   "VO_DETAIL": {
     "TITLE": "Organization - ",
     "BACK": "Back",
@@ -193,6 +196,10 @@
       "ATTRIBUTES": "Attributes",
       "EXPIRATION": "Membership",
       "MANAGERS": "Managers"
+    },
+    "FACILITY": {
+      "OVERVIEW": "Overview",
+      "RESOURCES": "Resources"
     },
     "GROUP": {
       "OVERVIEW": "Overview",

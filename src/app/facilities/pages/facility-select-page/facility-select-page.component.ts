@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FacilityService} from '../../../core/services/api/facility.service';
 import {RichFacility} from '../../../core/models/RichFacility';
+import {SideMenuService} from '../../../core/services/common/side-menu.service';
 
 @Component({
   selector: 'app-facility-select-page',
@@ -10,12 +11,15 @@ import {RichFacility} from '../../../core/models/RichFacility';
 export class FacilitySelectPageComponent implements OnInit {
 
   constructor(
-    private facilityService: FacilityService
+    private facilityService: FacilityService,
+    private sideMenuService: SideMenuService,
   ) { }
 
   facilities: RichFacility[] = [];
 
   ngOnInit() {
+    this.sideMenuService.setFacilityMenuItems([]);
+
     this.facilityService.getRichFacilities().subscribe(facilities => this.facilities = facilities);
   }
 }

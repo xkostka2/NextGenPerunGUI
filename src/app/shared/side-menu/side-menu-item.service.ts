@@ -6,6 +6,7 @@ import {Group} from '../../core/models/Group';
 import {RichMember} from '../../core/models/RichMember';
 import {User} from '../../core/models/User';
 import {parseFullName} from '../utils';
+import {Facility} from '../../core/models/Facility';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,9 @@ export class SideMenuItemService {
   getFacilitiesManagementItem(): SideMenuItem {
     return {
       label: 'Facilities management',
-      colorClass: 'base-item',
-      icon: 'facility-white.svg',
+      colorClass: 'facility-bg-color',
+      icon: 'manage_facility_white.svg',
+      baseLink: ['/facilities'],
       links: []
     };
   }
@@ -28,9 +30,10 @@ export class SideMenuItemService {
   getAccessManagementItem(): SideMenuItem {
     return {
       label: 'Access management',
-      colorClass: 'base-item',
+      colorClass: 'vo-bg-color',
       icon: 'vo-white.svg',
-      links: []
+      links: [],
+      baseLink: ['/organizations']
     };
   }
 
@@ -74,9 +77,33 @@ export class SideMenuItemService {
     };
   }
 
+  parseFacility(facility: Facility): SideMenuItem {
+    return {
+      label: facility.name,
+      baseLink: [`/facilities/${facility.id}`],
+      links: [
+        {
+          label: 'MENU_ITEMS.FACILITY.OVERVIEW',
+          url: [`/facilities/${facility.id}`],
+          activatedRegex: '/facilities/\\d+$'
+        },
+        {
+          label: 'MENU_ITEMS.FACILITY.RESOURCES',
+          url: [`/facilities/${facility.id}/resources`],
+          activatedRegex: '/facilities/\\d+/resources$'
+        }
+      ],
+      colorClass: 'facility-item',
+      icon: 'manage_facility_orange.svg',
+      labelClass: 'facility-text',
+      activatedClass: 'facility-item-activated'
+    };
+  }
+
   parseGroup(group: Group): SideMenuItem {
     return {
       label: group.name,
+      baseLink: [`/organizations/${group.voId}/groups/${group.id}`],
       links: [
         {
           label: 'MENU_ITEMS.GROUP.OVERVIEW',
@@ -119,6 +146,7 @@ export class SideMenuItemService {
   parseVo(vo: Vo): SideMenuItem {
     return {
       label: vo.name,
+      baseLink: [`/organizations/${vo.id}`],
       links: [
         {
           label: 'MENU_ITEMS.VO.OVERVIEW',
@@ -179,6 +207,7 @@ export class SideMenuItemService {
   parseMember(member: RichMember): SideMenuItem {
     return {
       label: parseFullName(member.user),
+      baseLink: [`/organizations/${member.voId}/members/${member.id}`],
       links: [
         {
           label: 'MENU_ITEMS.MEMBER.OVERVIEW',
