@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Facility} from '../../models/Facility';
 import {Resource} from '../../models/Resource';
 import {Group} from '../../models/Group';
+import {RichFacility} from '../../models/RichFacility';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,13 @@ export class FacilityService {
       'facility': facility,
       'vo': vo
     });
+  }
+
+  getFacilities(): Observable<Facility[]> {
+    return this.apiService.get('json/facilitiesManager/getFacilities');
+  }
+
+  getRichFacilities(): Observable<RichFacility[]> {
+    return this.apiService.get('json/facilitiesManager/getRichFacilities');
   }
 }

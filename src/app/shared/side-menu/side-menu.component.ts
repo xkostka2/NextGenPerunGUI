@@ -34,6 +34,7 @@ export class SideMenuComponent implements OnInit {
     label: 'Facilities management',
     colorClass: 'facility-bg-color',
     icon: 'manage_facility_white.svg',
+    baseLink: ['/facilities'],
     links: []
   };
 

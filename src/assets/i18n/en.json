@@ -7,12 +7,21 @@
   },
   "VO_MANAGEMENT": {
     "TITLE": "Select organization",
-    "INPUT_PLACEHOLDER": "Find organization...",
     "CREATE_VO": "New organization",
     "FILTER_PLACEHOLDER": "Filter by name",
     "TABLE": {
       "ID": "Id",
       "NAME": "Name"
+    }
+  },
+  "FACILITY_MANAGEMENT": {
+    "TITLE": "Select facility",
+    "FILTER_PLACEHOLDER": "Filter by name, id, description or owner",
+    "TABLE": {
+      "ID": "Id",
+      "NAME": "Name",
+      "DESCRIPTION": "Description",
+      "TECHNICAL_OWNERS": "Technical owners"
     }
   },
   "USER_MANAGEMENT": {

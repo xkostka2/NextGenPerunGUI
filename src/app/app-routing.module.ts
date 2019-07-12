@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
   },
   {
+    path: 'facilities',
+    loadChildren: () => import('./facilities/facilities.module').then(m => m.FacilitiesModule)
+  },
+  {
     path: 'debug',
     component: DebuggerPageComponent
   }

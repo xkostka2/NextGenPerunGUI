@@ -59,6 +59,7 @@ import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { SideMenuRootItemComponent } from './side-menu/side-menu-root-item/side-menu-root-item.component';
 import { DebuggerPageComponent } from './debugger-page/debugger-page.component';
+import { TechnicalOwnersPipe } from './pipes/technical-owners.pipe';
 
 @NgModule({
   imports: [
@@ -146,7 +147,8 @@ import { DebuggerPageComponent } from './debugger-page/debugger-page.component';
     MemberEmailPipe,
     MemberLoginsPipe,
     NgxGraphModule,
-    NgxChartsModule
+    NgxChartsModule,
+    TechnicalOwnersPipe
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -185,7 +187,8 @@ import { DebuggerPageComponent } from './debugger-page/debugger-page.component';
     MemberLoginsPipe,
     RemoveMembersDialogComponent,
     SideMenuRootItemComponent,
-    DebuggerPageComponent
+    DebuggerPageComponent,
+    TechnicalOwnersPipe
   ]
 })
 export class SharedModule {
