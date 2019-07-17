@@ -22,6 +22,12 @@ import {VoSettingsManagersComponent} from './pages/vo-detail-page/vo-settings/vo
 import {ApplicationDetailComponent} from './components/application-detail/application-detail.component';
 import {GroupMembersComponent} from './pages/group-detail-page/group-members/group-members.component';
 import {GroupResourcesComponent} from './pages/group-detail-page/group-resources/group-resources.component';
+import {GroupSettingsComponent} from './pages/group-detail-page/group-settings/group-settings.component';
+import {
+  GroupSettingsAttributesComponent
+} from './pages/group-detail-page/group-settings/group-settings-attributes/group-settings-attributes.component';
+import {GroupSettingsOverviewComponent
+} from './pages/group-detail-page/group-settings/group-settings-overview/group-settings-overview.component';
 
 const routes: Routes = [
   {
@@ -134,6 +140,22 @@ const routes: Routes = [
         path: 'resources',
         component: GroupResourcesComponent,
         data: {animation: 'GroupResourcesPage'}
+      },
+      {
+        path: 'settings',
+        component: GroupSettingsComponent,
+        children: [
+          {
+            path: '',
+            component: GroupSettingsOverviewComponent,
+            data: {animation: 'GroupSettingsOverviewPage'}
+          },
+          {
+            path: 'attributes',
+            component: GroupSettingsAttributesComponent,
+            data: {animation: 'GroupSettingsAttributesPage'}
+          }
+        ]
       },
       {
         path: 'applications/:applicationId',

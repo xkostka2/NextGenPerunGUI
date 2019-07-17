@@ -207,7 +207,8 @@
       "SUBGROUPS": "Subgroups",
       "RESOURCES": "Resources",
       "APPLICATIONS": "Applications",
-      "SETTINGS": "Settings"
+      "SETTINGS": "Settings",
+      "ATTRIBUTES": "Attributes"
     },
     "MEMBER": {
       "OVERVIEW": "Overview",

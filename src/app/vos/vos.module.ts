@@ -31,6 +31,11 @@ import { ApplicationDetailComponent } from './components/application-detail/appl
 import { GroupMembersComponent } from './pages/group-detail-page/group-members/group-members.component';
 import {GroupResourcesComponent} from './pages/group-detail-page/group-resources/group-resources.component';
 import { VoSelectTableComponent } from './components/vo-select-table/vo-select-table.component';
+import { GroupSettingsComponent } from './pages/group-detail-page/group-settings/group-settings.component';
+import { GroupSettingsAttributesComponent
+} from './pages/group-detail-page/group-settings/group-settings-attributes/group-settings-attributes.component';
+import { GroupSettingsOverviewComponent
+} from './pages/group-detail-page/group-settings/group-settings-overview/group-settings-overview.component';
 
 @NgModule({
   imports: [
@@ -71,7 +76,10 @@ import { VoSelectTableComponent } from './components/vo-select-table/vo-select-t
     GroupMembersComponent,
     GroupApplicationsComponent,
     GroupResourcesComponent,
-    VoSelectTableComponent
+    VoSelectTableComponent,
+    GroupSettingsComponent,
+    GroupSettingsAttributesComponent,
+    GroupSettingsOverviewComponent
   ]
 })
 export class VosModule {

@@ -133,7 +133,15 @@ export class SideMenuItemService {
         {
           label: 'MENU_ITEMS.GROUP.SETTINGS',
           url: [`/organizations/${group.voId}/groups/${group.id}/settings`],
-          activatedRegex: '/organizations/\\d+/groups/\\d+/settings$'
+          activatedRegex: '/organizations/\\d+/groups/\\d+/settings$',
+          children: [
+            {
+              label: 'MENU_ITEMS.GROUP.ATTRIBUTES',
+              url: [`/organizations/${group.voId}/groups/${group.id}/settings/attributes`],
+              activatedRegex: '/organizations/\\d+/groups/\\d+/settings/attributes$'
+            }
+          ],
+          showChildrenRegex: '/organizations/\\d+/groups/\\d+/settings'
         }
       ],
       colorClass: 'group-item',
