@@ -14,6 +14,16 @@ export const openClose =
   ]),
 ]);
 
+export const flyInOut = trigger('flyInOut', [
+  transition(':enter', [
+    style({transform: 'translateX(100%)'}),
+    animate('.25s')
+  ]),
+  transition(':leave', [
+    animate('.5s', style({transform: 'translateX(100%)'}))
+  ])
+]);
+
 export const rollInOut = trigger('rollInOut', [
   transition(':enter', [
     style({height: '0px'}),
