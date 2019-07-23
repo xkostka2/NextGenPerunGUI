@@ -15,7 +15,7 @@ import { FacilityResourcesComponent } from './pages/facility-detail-page/facilit
     FacilitySelectTableComponent,
     FacilityDetailPageComponent,
     FacilityOverviewComponent,
-    FacilityResourcesComponent
+    FacilityResourcesComponent,
   ],
   imports: [
     CommonModule,

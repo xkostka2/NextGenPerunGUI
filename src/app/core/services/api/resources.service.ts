@@ -35,4 +35,16 @@ export class ResourcesService {
       'resource': resource
     });
   }
+
+  getAllResources(facilityId: number, showNotificationOnError = true): Observable<RichResource[]> {
+    return this.apiService
+      .get(`json/facilitiesManager/getAssignedRichResources?facility=${facilityId}`, new HttpParams(), showNotificationOnError);
+  }
+
+  removeResource(resourceId: number, showNotificationOnError = true) {
+    return this.apiService.post('json/resourcesManager/deleteResource', {
+      resource : resourceId,
+      forceDelete : 1
+    }, showNotificationOnError);
+  }
 }

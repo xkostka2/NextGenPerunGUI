@@ -60,6 +60,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { SideMenuRootItemComponent } from './side-menu/side-menu-root-item/side-menu-root-item.component';
 import { DebuggerPageComponent } from './debugger-page/debugger-page.component';
 import { TechnicalOwnersPipe } from './pipes/technical-owners.pipe';
+import { RemoveResourceDialogComponent } from './components/dialogs/remove-resource-dialog/remove-resource-dialog.component';
+import {ResourcesListComponent} from './components/resources-list/resources-list.component';
 
 @NgModule({
   imports: [
@@ -148,7 +150,8 @@ import { TechnicalOwnersPipe } from './pipes/technical-owners.pipe';
     MemberLoginsPipe,
     NgxGraphModule,
     NgxChartsModule,
-    TechnicalOwnersPipe
+    TechnicalOwnersPipe,
+    ResourcesListComponent
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -157,7 +160,8 @@ import { TechnicalOwnersPipe } from './pipes/technical-owners.pipe';
     NotificationDialogComponent,
     ApplicationReSendNotificationDialogComponent,
     ApplicationRejectDialogComponent,
-    RemoveMembersDialogComponent
+    RemoveMembersDialogComponent,
+    RemoveResourceDialogComponent
   ],
   declarations: [
     PerunNavComponent,
@@ -188,7 +192,9 @@ import { TechnicalOwnersPipe } from './pipes/technical-owners.pipe';
     RemoveMembersDialogComponent,
     SideMenuRootItemComponent,
     DebuggerPageComponent,
-    TechnicalOwnersPipe
+    TechnicalOwnersPipe,
+    RemoveResourceDialogComponent,
+    ResourcesListComponent
   ]
 })
 export class SharedModule {

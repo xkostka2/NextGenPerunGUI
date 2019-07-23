@@ -1,18 +1,15 @@
-import {Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {RichResource} from '../../../core/models/RichResource';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-resources-list',
   templateUrl: './resources-list.component.html',
   styleUrls: ['./resources-list.component.scss']
 })
-export class ResourcesListComponent implements OnChanges {
+export class ResourcesListComponent implements AfterViewInit, OnChanges {
 
-  constructor() {
-  }
+  constructor() { }
 
   @ViewChild(MatSort, { static: true }) set matSort(ms: MatSort) {
     this.sort = ms;
@@ -31,7 +28,9 @@ export class ResourcesListComponent implements OnChanges {
   dataSource: MatTableDataSource<RichResource>;
 
   @Input()
-  selection = new SelectionModel<RichResource>(true, []);
+  selection;
+
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   ngOnChanges(changes: SimpleChanges) {
     this.displayedColumns = this.displayedColumns.filter(x => !this.hideColumns.includes(x));
@@ -42,6 +41,7 @@ export class ResourcesListComponent implements OnChanges {
   setDataSource() {
     if (!!this.dataSource) {
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     }
   }
 
@@ -73,4 +73,7 @@ export class ResourcesListComponent implements OnChanges {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
 }

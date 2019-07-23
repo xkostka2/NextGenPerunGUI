@@ -21,7 +21,6 @@ import { VoApplicationsComponent } from './pages/vo-detail-page/vo-applications/
 import { VoSettingsComponent } from './pages/vo-detail-page/vo-settings/vo-settings.component';
 import { VoSettingsAttributesComponent } from './pages/vo-detail-page/vo-settings/vo-settings-attributes/vo-settings-attributes.component';
 import { VoSettingsOverviewComponent } from './pages/vo-detail-page/vo-settings/vo-settings-overview/vo-settings-overview.component';
-import { ResourcesListComponent } from './components/resources-list/resources-list.component';
 import { VoSettingsExpirationComponent } from './pages/vo-detail-page/vo-settings/vo-settings-expiration/vo-settings-expiration.component';
 import { ApplicationsListComponent } from './components/applications-list/applications-list.component';
 import { GroupApplicationsComponent } from './pages/group-detail-page/group-applications/group-applications.component';
@@ -65,7 +64,6 @@ import { GroupSettingsOverviewComponent
     VoSettingsComponent,
     VoSettingsAttributesComponent,
     VoSettingsOverviewComponent,
-    ResourcesListComponent,
     VoSettingsExpirationComponent,
     ApplicationsListComponent,
     GroupApplicationsComponent,

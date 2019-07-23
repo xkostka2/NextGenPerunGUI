@@ -30,11 +30,20 @@
     "NO_USERS_FOUND": "No users found."
   },
   "FACILITY_DETAIL": {
-    "TITLE": "Facility - "
+    "TITLE": "Facility - ",
+    "BACK": "Back",
+    "RESOURCES": {
+      "TITLE": "Resources",
+      "DELETE": "Remove selected"
+    }
   },
   "VO_DETAIL": {
     "TITLE": "Organization - ",
     "BACK": "Back",
+    "RESOURCES": {
+      "TITLE": "Resources",
+      "DELETE": "Remove selected"
+    },
     "GROUPS": {
       "TITLE": "Groups",
       "CREATE_GROUP": "Create...",
@@ -59,16 +68,6 @@
       "ADD_MANAGER": "Add manager",
       "CREATE_GROUP": "Create group",
       "ADD_MEMBER": "Add member"
-    },
-    "RESOURCES": {
-      "TITLE": "Resources",
-      "DELETE": "Remove selected",
-      "TABLE_RESOURCE_ID": "id",
-      "TABLE_RESOURCE_NAME": "Name",
-      "TABLE_FACILITY_NAME": "Facility name",
-      "TABLE_RESOURCE_TAGS": "Tags",
-      "TABLE_RESOURCE_DESCRIPTION": "Description",
-      "TABLE_SEARCH": "Filter by name, description or ID"
     },
     "SETTINGS": {
       "EXPIRATION": {
@@ -264,6 +263,14 @@
       "ASK": "Do you want to proceed?",
       "SUCCESS": "Selected members were deleted"
     },
+    "REMOVE_RESOURCES": {
+      "TITLE": "Confirm removal",
+      "DESCRIPTION": "Following resources will be removed from facility.",
+      "ASK": "Do you want to proceed?",
+      "CANCEL": "Cancel",
+      "DELETE": "Delete",
+      "SUCCESS": "Selected resources were deleted"
+    },
     "RE_SEND_NOTIFICATION": {
       "TITLE": "Re-send notification",
       "SEND": "Send",
@@ -369,6 +376,20 @@
       "USER_ID": "User ID",
       "USER_TYPE": "User type",
       "EDIT_NAME": "Edit name"
+    }
+  },
+  "SHARED": {
+    "COMPONENTS": {
+      "RESOURCES_LIST": {
+        "TITLE": "Resources",
+        "DELETE": "Remove selected",
+        "TABLE_RESOURCE_ID": "id",
+        "TABLE_RESOURCE_NAME": "Name",
+        "TABLE_FACILITY_NAME": "Facility name",
+        "TABLE_RESOURCE_TAGS": "Tags",
+        "TABLE_RESOURCE_DESCRIPTION": "Description",
+        "TABLE_SEARCH": "Filter by name, description or ID"
+      }
     }
   }
 }
