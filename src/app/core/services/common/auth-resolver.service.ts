@@ -46,7 +46,6 @@ export class AuthResolverService {
         this.principalRoles.add(<Role><unknown>p);
       }
     }
-    console.log(this.principalRoles);
   }
 
   /**

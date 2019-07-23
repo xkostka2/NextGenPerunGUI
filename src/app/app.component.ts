@@ -3,6 +3,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {AuthzService} from './core/services/api/authz.service';
 import {PerunPrincipal} from './core/models/PerunPrincipal';
 import {AuthResolverService} from './core/services/common/auth-resolver.service';
+import {AuthService} from './core/services/common/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit {
   constructor(
     translate: TranslateService,
     private authzService: AuthzService,
-    private authResolver: AuthResolverService
+    private authResolver: AuthResolverService,
+    private authService: AuthService
   ) {
     translate.setDefaultLang('en');
     translate.use('en');
@@ -44,6 +46,18 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.getUserManager().getUser().then(user => {
+      if (user) {
+        this.loadPrincipal();
+      } else {
+        this.authService.userSet.subscribe(() => {
+          this.loadPrincipal();
+        });
+      }
+    });
+  }
+
+  private loadPrincipal(): void {
     this.authzService.getPerunPrincipal().subscribe(perunPrincipal => {
       this.authResolver.setPerunPrincipal(perunPrincipal);
       this.principal = perunPrincipal;
