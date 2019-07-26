@@ -32,7 +32,7 @@ $facility-color: #E64A19;
 $resource-color: #6a1b9a;
 $group-color: #33691e;
 $member-color: #ad1457;
-$admin-color: #455a64;
+$admin-color: #c62828;
 $user-color: #00796b;
 
 .vo-theme {
@@ -76,7 +76,7 @@ $user-color: #00796b;
 }
 
 .admin-theme {
-  $admin-primary: mat-palette($mat-blue-gray, 700);
+  $admin-primary: mat-palette($mat-red, 800);
   $admin-accent: mat-palette($mat-green, 600);
   $admin-theme: mat-light-theme($admin-primary, $admin-accent);
 
@@ -125,23 +125,39 @@ button:focus {
 
 .vo-item-activated {
   border-right: 5px solid $vo-color;
-  background-color: #eaeaea !important;
+  color: #202124 !important;
+  font-weight: 500;
+  //background-color: #eaeaea !important;
+}
+.admin-item-activated {
+  border-right: 5px solid $admin-color;
+  color: #202124 !important;
+  font-weight: 500;
+  //background-color: #eaeaea !important;
 }
 .facility-item-activated {
   border-right: 5px solid $facility-color;
-  background-color: #eaeaea !important;
+  color: #202124 !important;
+  font-weight: 500;
+  //background-color: #eaeaea !important;
 }
 .resource-item-activated {
   border-right: 5px solid $resource-color;
-  background-color: #eaeaea !important;
+  color: #202124 !important;
+  font-weight: 500;
+  //background-color: #eaeaea !important;
 }
 .group-item-activated {
   border-right: 5px solid $group-color;
-  background-color: #eaeaea !important;
+  color: #202124 !important;
+  font-weight: 500;
+  //background-color: #eaeaea !important;
 }
 .member-item-activated {
   border-right: 5px solid $member-color;
-  background-color: #eaeaea !important;
+  color: #202124 !important;
+  font-weight: 500;
+  //background-color: #eaeaea !important;
 }
 
 .vo-text {
@@ -224,7 +240,7 @@ button:focus {
   }
 }
 #nav-menu {
-  background: #131313;
+  background: #102027;
   position: fixed;
   width: 100%;
   z-index: 99999;
@@ -234,8 +250,11 @@ button:focus {
   //display: table;
 }
 
-.base-item {
-  background-color: #d7d7d7;
+.base-item-color {
+  background-color: mat-color($mat-blue-grey, 800);
+}
+.base-item-color-activated {
+  background-color: #62727b;
 }
 
 .white-color-input {

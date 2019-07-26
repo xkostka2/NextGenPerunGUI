@@ -22,6 +22,7 @@
 }
 
 .entity-menu-item-header {
+  transition: .5s;
   padding: 0.5rem 0.5rem 0.5rem 1rem;
   cursor: pointer;
   -moz-user-select: none;

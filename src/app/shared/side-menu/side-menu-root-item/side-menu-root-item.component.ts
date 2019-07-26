@@ -61,4 +61,12 @@ export class SideMenuRootItemComponent implements OnInit, OnChanges {
 
     return regexp.test(currentUrl);
   }
+
+  getBgClass() {
+    if (this.item.baseColorClass) {
+      return this.isActive(this.currentUrl, this.item.baseColorClassRegex) ? this.item.colorClass : this.item.baseColorClass;
+    } else {
+      return this.item.colorClass;
+    }
+  }
 }

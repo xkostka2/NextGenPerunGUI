@@ -142,6 +142,8 @@ export interface SideMenuItem {
   icon: string;
   baseLink?: any[];
   expandable?: boolean;
+  baseColorClass?: string;
+  baseColorClassRegex?: string;
 }
 
 export interface EntityMenuLink {

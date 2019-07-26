@@ -1,7 +1,6 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+import {Component, Input} from '@angular/core';
+import {MatSidenav} from '@angular/material/sidenav';
 import {PerunPrincipal} from '../../core/models/PerunPrincipal';
-import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-perun-nav-menu',
@@ -17,5 +16,4 @@ export class PerunNavComponent {
 
   @Input()
   principal: PerunPrincipal;
-  isProduction = environment.production;
 }
