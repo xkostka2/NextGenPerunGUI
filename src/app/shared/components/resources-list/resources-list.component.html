@@ -56,7 +56,7 @@
       <tr
         mat-row
         *matRowDef="let resource; columns: displayedColumns;"
-        [routerLink]="['/organizations', resource.voId, 'resource', resource.id]"
+        [routerLink]="['/facilities', resource.facilityId, 'resources', resource.id]"
         class="dark-hover-list-item">
       </tr>
     </table>

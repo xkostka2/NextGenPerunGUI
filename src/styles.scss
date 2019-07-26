@@ -29,6 +29,7 @@ $perun-theme: mat-light-theme($perun-primary, $perun-accent, $perun-warn);
 // Perun entities colors
 $vo-color: #283593;
 $facility-color: #E64A19;
+$resource-color: #6a1b9a;
 $group-color: #33691e;
 $member-color: #ad1457;
 $admin-color: #455a64;
@@ -44,6 +45,14 @@ $user-color: #00796b;
 
 .facility-theme {
   $vo-primary: mat-palette($mat-deep-orange, 700);
+  $vo-accent: mat-palette($mat-green, 600);
+  $vo-theme: mat-light-theme($vo-primary, $vo-accent);
+
+  @include angular-material-theme($vo-theme);
+}
+
+.resource-theme {
+  $vo-primary: mat-palette($mat-purple, 800);
   $vo-accent: mat-palette($mat-green, 600);
   $vo-theme: mat-light-theme($vo-primary, $vo-accent);
 
@@ -102,6 +111,10 @@ button:focus {
   background-color: rgba(255, 82, 28, 0.15);
 }
 
+.resource-item {
+  background-color: rgba(176, 44, 255, 0.15);
+}
+
 .group-item {
   background-color: rgba(123, 255, 71, 0.15);
 }
@@ -116,6 +129,10 @@ button:focus {
 }
 .facility-item-activated {
   border-right: 5px solid $facility-color;
+  background-color: #eaeaea !important;
+}
+.resource-item-activated {
+  border-right: 5px solid $resource-color;
   background-color: #eaeaea !important;
 }
 .group-item-activated {
@@ -133,6 +150,9 @@ button:focus {
 .facility-text {
   color: $facility-color !important;
 }
+.resource-text {
+  color: $resource-color !important;
+}
 .group-text {
   color: $group-color !important;
 }
@@ -142,6 +162,7 @@ button:focus {
 
 .router-component {
   position: absolute;
+  padding-bottom: 5rem;
   width: calc(100vw - (300px + 6rem));
   @media(min-width: 769px) and (max-width: 1199px) {
     width: calc(100vw - 330px);
@@ -679,6 +700,15 @@ button:focus {
 
   &:hover {
     color: lighten($facility-color, 10%);
+  }
+}
+
+.resource-link {
+  color: $resource-color;
+  text-decoration: underline;
+
+  &:hover {
+    color: lighten($resource-color, 10%);
   }
 }
 

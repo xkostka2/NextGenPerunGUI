@@ -37,6 +37,9 @@
       "DELETE": "Remove selected"
     }
   },
+  "RESOURCE_DETAIL": {
+    "TITLE": "Resource - "
+  },
   "VO_DETAIL": {
     "TITLE": "Organization - ",
     "BACK": "Back",
@@ -199,6 +202,9 @@
     "FACILITY": {
       "OVERVIEW": "Overview",
       "RESOURCES": "Resources"
+    },
+    "RESOURCE": {
+      "OVERVIEW": "Overview"
     },
     "GROUP": {
       "OVERVIEW": "Overview",

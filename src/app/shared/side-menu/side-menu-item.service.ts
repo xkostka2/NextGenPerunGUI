@@ -7,6 +7,7 @@ import {RichMember} from '../../core/models/RichMember';
 import {User} from '../../core/models/User';
 import {parseFullName} from '../utils';
 import {Facility} from '../../core/models/Facility';
+import {Resource} from '../../core/models/Resource';
 
 @Injectable({
   providedIn: 'root'
@@ -97,6 +98,24 @@ export class SideMenuItemService {
       icon: 'manage_facility_orange.svg',
       labelClass: 'facility-text',
       activatedClass: 'facility-item-activated'
+    };
+  }
+
+  parseResource(resource: Resource): SideMenuItem {
+    return {
+      label: resource.name,
+      baseLink: ['/facilities', resource.facilityId, 'resources', resource.id],
+      links: [
+        {
+          label: 'MENU_ITEMS.RESOURCE.OVERVIEW',
+          url: ['/facilities', resource.facilityId, 'resources', resource.id],
+          activatedRegex: '/facilities/\\d+/resources/\\d+$'
+        }
+      ],
+      colorClass: 'resource-item',
+      icon: 'manage_facility_purple.svg',
+      labelClass: 'resource-text',
+      activatedClass: 'resource-item-activated'
     };
   }
 

@@ -4,6 +4,8 @@ import {FacilitySelectPageComponent} from './pages/facility-select-page/facility
 import {FacilityDetailPageComponent} from './pages/facility-detail-page/facility-detail-page.component';
 import {FacilityOverviewComponent} from './pages/facility-detail-page/facility-overview/facility-overview.component';
 import {FacilityResourcesComponent} from './pages/facility-detail-page/facility-resources/facility-resources.component';
+import {ResourceDetailPageComponent} from './pages/resource-detail-page/resource-detail-page.component';
+import {ResourceOverviewComponent} from './pages/resource-detail-page/resource-overview/resource-overview.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,17 @@ const routes: Routes = [
         path: 'resources',
         component: FacilityResourcesComponent,
         data: {animation: 'FacilityResourcesPage'}
+      }
+    ]
+  },
+  {
+    path: ':facilityId/resources/:resourceId',
+    component: ResourceDetailPageComponent,
+    children: [
+      {
+        path: '',
+        component: ResourceOverviewComponent,
+        data: {animation: 'ResourceOverviewPage'}
       }
     ]
   }

@@ -16,6 +16,12 @@ export class ResourcesService {
   ) {
   }
 
+  getResourceById(id: number, showNotificationOnError = true): Observable<Resource> {
+    return this.apiService.post('json/resourcesManager/getResourceById', {
+      id: id
+    });
+  }
+
   getResourcesByVo(id: number, showNotificationOnError = true): Observable<RichResource[]> {
     return this.apiService.get(`json/resourcesManager/getRichResources?vo=${id}`, new HttpParams(), showNotificationOnError);
   }

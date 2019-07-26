@@ -80,5 +80,4 @@ import { GroupSettingsOverviewComponent
     GroupSettingsOverviewComponent
   ]
 })
-export class VosModule {
-}
+export class VosModule { }
