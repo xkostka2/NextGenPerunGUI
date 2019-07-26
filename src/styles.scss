@@ -125,37 +125,37 @@ button:focus {
 
 .vo-item-activated {
   border-right: 5px solid $vo-color;
-  color: #202124 !important;
+  color: $vo-color !important;
   font-weight: 500;
   //background-color: #eaeaea !important;
 }
 .admin-item-activated {
   border-right: 5px solid $admin-color;
-  color: #202124 !important;
+  color: $admin-color !important;
   font-weight: 500;
   //background-color: #eaeaea !important;
 }
 .facility-item-activated {
   border-right: 5px solid $facility-color;
-  color: #202124 !important;
+  color: $facility-color !important;
   font-weight: 500;
   //background-color: #eaeaea !important;
 }
 .resource-item-activated {
   border-right: 5px solid $resource-color;
-  color: #202124 !important;
+  color: $resource-color !important;
   font-weight: 500;
   //background-color: #eaeaea !important;
 }
 .group-item-activated {
   border-right: 5px solid $group-color;
-  color: #202124 !important;
+  color: $group-color !important;
   font-weight: 500;
   //background-color: #eaeaea !important;
 }
 .member-item-activated {
   border-right: 5px solid $member-color;
-  color: #202124 !important;
+  color: $member-color !important;
   font-weight: 500;
   //background-color: #eaeaea !important;
 }
