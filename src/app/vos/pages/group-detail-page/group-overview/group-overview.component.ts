@@ -64,7 +64,7 @@ export class GroupOverviewComponent implements OnInit {
         style: 'group-btn'
       },
       {
-        icon: 'resource-white.svg',
+        icon: 'manage_facility_white.svg',
         url: `/organizations/${this.group.voId}/groups/${this.groupId}/resources`,
         label: 'MENU_ITEMS.GROUP.RESOURCES',
         style: 'group-btn'

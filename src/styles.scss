@@ -104,60 +104,118 @@ button:focus {
 }
 
 .vo-item {
-  background-color: rgba(63, 76, 255, 0.15);
+  background-color: $vo-color;
 }
 
 .facility-item {
-  background-color: rgba(255, 82, 28, 0.15);
+  background-color: $facility-color;
 }
 
 .resource-item {
-  background-color: rgba(176, 44, 255, 0.15);
+  background-color: $resource-color;
 }
 
 .group-item {
-  background-color: rgba(123, 255, 71, 0.15);
+  background-color: $group-color;
 }
 
 .member-item {
-  background-color: rgba(255, 28, 133, 0.15);
+  background-color: $member-color;
 }
 
 .vo-item-activated {
   border-right: 5px solid $vo-color;
   color: $vo-color !important;
   font-weight: 500;
-  //background-color: #eaeaea !important;
+  background-color: rgba(63, 76, 255, 0.10) !important;
+
+  &:hover {
+    background-color: rgba(63, 76, 255, 0.15) !important;
+  }
 }
+  //background-color: #eaeaea !important;
 .admin-item-activated {
   border-right: 5px solid $admin-color;
   color: $admin-color !important;
   font-weight: 500;
-  //background-color: #eaeaea !important;
+  background-color: rgba(255, 50, 50, 0.10);
+
+  &:hover {
+    background-color: rgba(255, 50, 50, 0.15) !important;
+  }
 }
 .facility-item-activated {
   border-right: 5px solid $facility-color;
   color: $facility-color !important;
   font-weight: 500;
+  background-color: rgba(255, 82, 28, 0.10);
+
+  &:hover {
+    background-color: rgba(255, 82, 28, 0.15) !important;
+  }
   //background-color: #eaeaea !important;
 }
 .resource-item-activated {
   border-right: 5px solid $resource-color;
   color: $resource-color !important;
   font-weight: 500;
+  background-color: rgba(176, 44, 255, 0.10);
+
+  &:hover {
+    background-color: rgba(176, 44, 255, 0.15) !important;
+  }
   //background-color: #eaeaea !important;
 }
 .group-item-activated {
   border-right: 5px solid $group-color;
   color: $group-color !important;
   font-weight: 500;
-  //background-color: #eaeaea !important;
+  background-color: rgba(123, 255, 71, 0.10);
+
+  &:hover {
+    background-color: rgba(123, 255, 71, 0.15) !important;
+  }
 }
 .member-item-activated {
   border-right: 5px solid $member-color;
   color: $member-color !important;
   font-weight: 500;
+  background-color: rgba(255, 28, 133, 0.10);
+
+  &:hover {
+    background-color: rgba(255, 28, 133, 0.15) !important;
+  }
   //background-color: #eaeaea !important;
+}
+
+.vo-item-links a:hover {
+  color: $vo-color !important;
+  background-color: rgba(63, 76, 255, 0.15) !important;
+}
+
+.group-item-links a:hover {
+  color: $group-color !important;
+  background-color: rgba(123, 255, 71, 0.15) !important;
+}
+
+.admin-item-links a:hover {
+  color: $admin-color !important;
+  background-color: rgba(255, 50, 50, 0.15) !important;
+}
+
+.facility-item-links a:hover {
+  color: $facility-color !important;
+  background-color: rgba(255, 82, 28, 0.15) !important;
+}
+
+.resource-item-links a:hover {
+  color: $resource-color !important;
+  background-color: rgba(176, 44, 255, 0.15) !important;
+}
+
+.member-item-links a:hover {
+  color: $member-color !important;
+  background-color: rgba(255, 28, 133, 0.15) !important;
 }
 
 .vo-text {
@@ -805,6 +863,10 @@ button:focus {
 //specific style for dialog without any border
 .noBorderDialog .mat-dialog-container {
   padding: 0px !important;
+}
+
+.mat-drawer-inner-container {
+  background-color: mat-color($mat-blue-grey, 800);
 }
 
 

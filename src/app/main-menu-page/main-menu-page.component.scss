@@ -1,21 +1,19 @@
 .buttons-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  padding-top: 24px;
+  grid-gap: 0;
+  grid-template-columns: repeat(auto-fill,minmax(310px,1fr));
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
 }
 
 .main-menu-button {
-  color: #000000;
-  background-color: #ffffff;
-  margin: 20px;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 350px;
-  height: 350px;
-  border: 1px solid #b8b8b8;
-  border-radius: 5px;
+  min-width: 310px;
+  min-height: 310px;
   padding: 30px;
 
   &:hover {

@@ -26,7 +26,7 @@ export class SideMenuItemService {
       baseLink: ['/facilities'],
       links: [],
       baseColorClass: 'base-item-color',
-      baseColorClassRegex: '^/facilities',
+      baseColorClassRegex: '^/facilities$',
     };
   }
 
@@ -38,7 +38,7 @@ export class SideMenuItemService {
       links: [],
       baseLink: ['/organizations'],
       baseColorClass: 'base-item-color',
-      baseColorClassRegex: '^/organizations',
+      baseColorClassRegex: '^/organizations$',
     };
   }
 
@@ -50,8 +50,9 @@ export class SideMenuItemService {
       colorClass: 'base-item-color-activated',
       icon: 'perun_admin-white.svg',
       baseColorClass: 'base-item-color',
-      baseColorClassRegex: '^/admin',
+      baseColorClassRegex: '^/admin$',
       activatedClass: 'admin-item-activated',
+      linksClass: 'admin-item-links',
       links: [
         {
           label: 'MENU_ITEMS.ADMIN.OVERVIEW',
@@ -102,9 +103,10 @@ export class SideMenuItemService {
         }
       ],
       colorClass: 'facility-item',
-      icon: 'manage_facility_orange.svg',
-      labelClass: 'facility-text',
-      activatedClass: 'facility-item-activated'
+      icon: 'manage_facility_white.svg',
+      // labelClass: 'facility-text',
+      activatedClass: 'facility-item-activated',
+      linksClass: 'facility-item-links'
     };
   }
 
@@ -120,9 +122,10 @@ export class SideMenuItemService {
         }
       ],
       colorClass: 'resource-item',
-      icon: 'manage_facility_purple.svg',
-      labelClass: 'resource-text',
-      activatedClass: 'resource-item-activated'
+      icon: 'manage_facility_white.svg',
+      // labelClass: 'resource-text',
+      activatedClass: 'resource-item-activated',
+      linksClass: 'resource-item-links'
     };
   }
 
@@ -171,9 +174,10 @@ export class SideMenuItemService {
         }
       ],
       colorClass: 'group-item',
-      icon: 'group-green.svg',
-      labelClass: 'group-text',
-      activatedClass: 'group-item-activated'
+      icon: 'group-white.svg',
+      // labelClass: 'group-text',
+      activatedClass: 'group-item-activated',
+      linksClass: 'group-item-links'
     };
   }
 
@@ -232,9 +236,10 @@ export class SideMenuItemService {
         }
       ],
       colorClass: 'vo-item',
-      icon: 'vo-blue.svg',
-      labelClass: 'vo-text',
-      activatedClass: 'vo-item-activated'
+      icon: 'vo-white.svg',
+      // labelClass: 'vo-text',
+      activatedClass: 'vo-item-activated',
+      linksClass: 'vo-item-links'
     };
   }
 
@@ -255,9 +260,10 @@ export class SideMenuItemService {
         }
       ],
       colorClass: 'member-item',
-      icon: 'user-pink.svg',
-      labelClass: 'member-text',
-      activatedClass: 'member-item-activated'
+      icon: 'user-white.svg',
+      // labelClass: 'member-text',
+      activatedClass: 'member-item-activated',
+      linksClass: 'member-item-links'
     };
   }
 

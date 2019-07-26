@@ -1,19 +1,17 @@
-<div class="container-fluid">
-  <div class="buttons-container">
-    <a class="main-menu-button" [routerLink]="['organizations']">
-      <img src="assets/img/PerunWebImages/vo.svg">
-      <h1>Access management</h1>
-      <p>Manage organizations, groups and members.</p>
-    </a>
-    <a class="main-menu-button" [routerLink]="['facilities']" *ngIf="authResolver.canManageFacilities()">
-      <img src="assets/img/PerunWebImages/manage_facility_orange.svg">
-      <h1>Facilities management</h1>
-      <p>Manage facilities and resources.</p>
-    </a>
-    <a class="main-menu-button" [routerLink]="['admin']">
-      <img src="assets/img/PerunWebImages/perun_admin-red.svg">
-      <h1>Administration tools</h1>
-      <p>Manage attributes, users and do diagnostics.</p>
-    </a>
-  </div>
+<div class="buttons-container pl-xl-5 pr-xl-5">
+  <a class="main-menu-button vo-btn" [routerLink]="['organizations']">
+    <img src="assets/img/PerunWebImages/vo-white.svg">
+    <h1>Access management</h1>
+    <p>Manage organizations, groups and members.</p>
+  </a>
+  <a class="main-menu-button facility-btn" [routerLink]="['facilities']" *ngIf="authResolver.canManageFacilities()">
+    <img src="assets/img/PerunWebImages/manage_facility_white.svg">
+    <h1>Facilities management</h1>
+    <p>Manage facilities and resources.</p>
+  </a>
+  <a class="main-menu-button admin-btn" [routerLink]="['admin']">
+    <img src="assets/img/PerunWebImages/perun_admin-white.svg">
+    <h1>Administration tools</h1>
+    <p>Manage attributes, users and do diagnostics.</p>
+  </a>
 </div>

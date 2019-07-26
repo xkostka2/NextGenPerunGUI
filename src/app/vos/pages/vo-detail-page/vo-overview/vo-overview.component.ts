@@ -56,7 +56,7 @@ export class VoOverviewComponent implements OnInit {
         style: 'vo-btn'
       },
       {
-        icon: 'resource-white.svg',
+        icon: 'manage_facility_white.svg',
         url: `/organizations/${this.vo.id}/resources`,
         label: 'MENU_ITEMS.VO.RESOURCES',
         style: 'vo-btn'
