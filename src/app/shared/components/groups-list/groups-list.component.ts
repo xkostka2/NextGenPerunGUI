@@ -1,15 +1,16 @@
-import {Component,  Input, OnChanges,  SimpleChanges, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {Group} from '../../../core/models/Group';
 import {SelectionModel} from '@angular/cdk/collections';
+import {MatPaginator} from '@angular/material';
 
 @Component({
   selector: 'app-groups-list',
   templateUrl: './groups-list.component.html',
   styleUrls: ['./groups-list.component.scss']
 })
-export class GroupsListComponent implements OnChanges {
+export class GroupsListComponent implements AfterViewInit, OnChanges {
 
   constructor() { }
 
@@ -29,6 +30,8 @@ export class GroupsListComponent implements OnChanges {
   displayedColumns: string[] = ['select', 'id', 'name', 'description'];
   dataSource: MatTableDataSource<Group>;
 
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<Group>(this.groups);
     this.setDataSource();
@@ -37,7 +40,14 @@ export class GroupsListComponent implements OnChanges {
   setDataSource() {
     if (!!this.dataSource) {
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     }
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 
   isAllSelected() {
@@ -57,6 +67,10 @@ export class GroupsListComponent implements OnChanges {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
 }
 
