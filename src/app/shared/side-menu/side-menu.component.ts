@@ -39,10 +39,19 @@ export class SideMenuComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
     this.mobileView = window.innerWidth <= AppComponent.minWidth;
+    if (this.mobileView) {
+      this.sideNav.close();
+    } else {
+      this.sideNav.open();
+    }
   }
 
   ngOnInit(): void {
-    this.sideNav.open();
+    if (this.mobileView) {
+      this.sideNav.close();
+    } else {
+      this.sideNav.open();
+    }
 
     this.getScreenSize(null);
     this.sideMenuService.facilityItemsChange.subscribe(items => {

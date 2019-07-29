@@ -10,6 +10,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CoreModule} from './core/core.module';
+import {AuthService} from './core/services/common/auth.service';
+import {Router} from '@angular/router';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -38,4 +40,52 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
+    const currentPathname = window.location.pathname;
+
+    if (currentPathname === '/api-callback') {
+      this.handleAuthCallback();
+    } else {
+      this.verifyAuthentication(currentPathname);
+    }
+  }
+
+  /**
+   * Check if the user is logged in and if not,
+   * save current path and start authentication;
+   *
+   * @param path current url path
+   */
+  private verifyAuthentication(path: string): void {
+    this.authService.isLoggedInPromise().subscribe(isLoggedIn => {
+      if (!isLoggedIn) {
+        sessionStorage.setItem('auth:redirect', path);
+        this.authService.startAuthentication().then(r => console.log('R:' + r));
+      }
+    });
+  }
+
+  /**
+   * This method is used to handle oauth callbacks.
+   *
+   * First, it finishes the authentication and then redirects user to the url
+   * he wanted to visit.
+   *
+   */
+  private handleAuthCallback(): void {
+      this.authService.completeAuthentication().then(() => {
+        const redirectUrl = sessionStorage.getItem('auth:redirect');
+        if (redirectUrl) {
+          sessionStorage.removeItem('auth:redirect');
+          this.router.navigate([redirectUrl]);
+        } else {
+          this.router.navigate(['/']);
+        }
+      });
+  }
+}

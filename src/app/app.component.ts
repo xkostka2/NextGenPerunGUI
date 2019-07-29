@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
 
   sidebarMode: 'over' | 'push' | 'side' = 'side';
   lastScreenWidth: number;
+  loading = true;
 
   principal: PerunPrincipal;
 
@@ -49,9 +50,11 @@ export class AppComponent implements OnInit {
     this.authService.getUserManager().getUser().then(user => {
       if (user) {
         this.loadPrincipal();
+        this.loading = false;
       } else {
         this.authService.userSet.subscribe(() => {
           this.loadPrincipal();
+          this.loading = false;
         });
       }
     });

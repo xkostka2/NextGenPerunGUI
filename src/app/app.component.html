@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!loading">
   <app-perun-nav-menu
     id="nav-menu"
     class="mat-elevation-z3"
@@ -9,7 +9,7 @@
   <mat-sidenav-container id="content">
     <mat-sidenav #sidenav
                  [mode]="sidebarMode"
-                 [opened]="false"
+                 [opened]="true"
                  [fixedInViewport]="true"
                  [fixedTopGap]="64">
 
