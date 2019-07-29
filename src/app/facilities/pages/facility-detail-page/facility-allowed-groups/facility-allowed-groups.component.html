@@ -1,0 +1,19 @@
+<div>
+  <h1 class="page-subtitle">{{'MENU_ITEMS.FACILITY.ALLOWED_GROUPS' | translate}}</h1>
+
+  <mat-form-field>
+    <mat-label>{{'FACILITY_DETAIL.ALLOWED_GROUPS.SHOW_VOS_GROUPS' | translate}}</mat-label>
+    <mat-select  [(value)]="selected" (selectionChange)="showGroup()">
+      <mat-option value="all">{{'FACILITY_DETAIL.ALLOWED_GROUPS.ALL' | translate}}</mat-option>
+      <mat-option *ngFor="let vo of vos" [value]="vo.id">
+        {{vo.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <app-groups-list
+    [groups] = "groupsToShow">
+  </app-groups-list>
+
+</div>
+

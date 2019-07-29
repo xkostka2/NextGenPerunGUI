@@ -62,6 +62,7 @@ import { DebuggerPageComponent } from './debugger-page/debugger-page.component';
 import { TechnicalOwnersPipe } from './pipes/technical-owners.pipe';
 import { RemoveResourceDialogComponent } from './components/dialogs/remove-resource-dialog/remove-resource-dialog.component';
 import {ResourcesListComponent} from './components/resources-list/resources-list.component';
+import {GroupsListComponent} from './components/groups-list/groups-list.component';
 
 @NgModule({
   imports: [
@@ -151,7 +152,8 @@ import {ResourcesListComponent} from './components/resources-list/resources-list
     NgxGraphModule,
     NgxChartsModule,
     TechnicalOwnersPipe,
-    ResourcesListComponent
+    ResourcesListComponent,
+    GroupsListComponent
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -194,7 +196,8 @@ import {ResourcesListComponent} from './components/resources-list/resources-list
     DebuggerPageComponent,
     TechnicalOwnersPipe,
     RemoveResourceDialogComponent,
-    ResourcesListComponent
+    ResourcesListComponent,
+    GroupsListComponent
   ]
 })
 export class SharedModule {

@@ -26,9 +26,8 @@ export class GroupsListComponent implements OnChanges {
 
   private sort: MatSort;
 
-  displayedColumns: string[] = ['select', 'id', 'name'];
+  displayedColumns: string[] = ['select', 'id', 'name', 'description'];
   dataSource: MatTableDataSource<Group>;
-
 
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<Group>(this.groups);

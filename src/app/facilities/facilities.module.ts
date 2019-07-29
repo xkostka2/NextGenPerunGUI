@@ -8,6 +8,7 @@ import { FacilitySelectTableComponent } from './components/facility-select-table
 import { FacilityDetailPageComponent } from './pages/facility-detail-page/facility-detail-page.component';
 import { FacilityOverviewComponent } from './pages/facility-detail-page/facility-overview/facility-overview.component';
 import { FacilityResourcesComponent } from './pages/facility-detail-page/facility-resources/facility-resources.component';
+import {FacilityAllowedGroupsComponent} from './pages/facility-detail-page/facility-allowed-groups/facility-allowed-groups.component';
 import { ResourceDetailPageComponent } from './pages/resource-detail-page/resource-detail-page.component';
 import { ResourceOverviewComponent } from './pages/resource-detail-page/resource-overview/resource-overview.component';
 
@@ -18,6 +19,7 @@ import { ResourceOverviewComponent } from './pages/resource-detail-page/resource
     FacilityDetailPageComponent,
     FacilityOverviewComponent,
     FacilityResourcesComponent,
+    FacilityAllowedGroupsComponent,
     ResourceDetailPageComponent,
     ResourceOverviewComponent
   ],

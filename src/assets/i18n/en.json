@@ -35,6 +35,12 @@
     "RESOURCES": {
       "TITLE": "Resources",
       "DELETE": "Remove selected"
+    },
+    "ALLOWED_GROUPS": {
+      "SHOW_VOS_GROUPS": "Select organization",
+      "TABLE_GROUP_ID": "Id",
+      "TABLE_GROUP_NAME": "Name",
+      "ALL": "All"
     }
   },
   "RESOURCE_DETAIL": {
@@ -51,8 +57,6 @@
       "TITLE": "Groups",
       "CREATE_GROUP": "Create...",
       "DELETE_GROUP": "Delete...",
-      "TABLE_GROUP_ID": "Id",
-      "TABLE_GROUP_NAME": "Name",
       "TITLE_SUBGROUPS": "Subgroups",
       "LIST_VIEW": "List view"
     },
@@ -201,7 +205,8 @@
     },
     "FACILITY": {
       "OVERVIEW": "Overview",
-      "RESOURCES": "Resources"
+      "RESOURCES": "Resources",
+      "ALLOWED_GROUPS": "Allowed groups"
     },
     "RESOURCE": {
       "OVERVIEW": "Overview"
@@ -395,6 +400,11 @@
         "TABLE_RESOURCE_TAGS": "Tags",
         "TABLE_RESOURCE_DESCRIPTION": "Description",
         "TABLE_SEARCH": "Filter by name, description or ID"
+      },
+      "GROUPS_LIST": {
+        "TABLE_GROUP_ID": "Id",
+        "TABLE_GROUP_NAME": "Name",
+        "TABLE_GROUP_DESCRIPTION": "Description"
       }
     }
   }

@@ -5,6 +5,7 @@ import {Facility} from '../../models/Facility';
 import {Resource} from '../../models/Resource';
 import {Group} from '../../models/Group';
 import {RichFacility} from '../../models/RichFacility';
+import {Vo} from '../../models/Vo';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +47,11 @@ export class FacilityService {
 
   getRichFacilities(): Observable<RichFacility[]> {
     return this.apiService.get('json/facilitiesManager/getRichFacilities');
+  }
+
+  getAllowedVos(facility: number): Observable<Vo[]> {
+    return this.apiService.post('json/facilitiesManager/getAllowedVos', {
+      'facility': facility
+    });
   }
 }

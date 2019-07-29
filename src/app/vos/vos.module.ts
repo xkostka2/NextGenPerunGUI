@@ -6,7 +6,6 @@ import {SharedModule} from '../shared/shared.module';
 import {VoDetailPageComponent} from './pages/vo-detail-page/vo-detail-page.component';
 import {GroupDetailPageComponent} from './pages/group-detail-page/group-detail-page.component';
 import {GroupsTreeComponent} from './components/groups-tree/groups-tree.component';
-import {GroupsListComponent} from './components/groups-list/groups-list.component';
 import {VoOverviewComponent} from './pages/vo-detail-page/vo-overview/vo-overview.component';
 import {VoGroupsComponent} from './pages/vo-detail-page/vo-groups/vo-groups.component';
 import {VoMembersComponent} from './pages/vo-detail-page/vo-members/vo-members.component';
@@ -49,7 +48,6 @@ import { GroupSettingsOverviewComponent
     VoDetailPageComponent,
     GroupDetailPageComponent,
     GroupsTreeComponent,
-    GroupsListComponent,
     VoOverviewComponent,
     VoGroupsComponent,
     VoMembersComponent,

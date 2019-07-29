@@ -100,6 +100,11 @@ export class SideMenuItemService {
           label: 'MENU_ITEMS.FACILITY.RESOURCES',
           url: [`/facilities/${facility.id}/resources`],
           activatedRegex: '/facilities/\\d+/resources$'
+        },
+        {
+          label: 'MENU_ITEMS.FACILITY.ALLOWED_GROUPS',
+          url: [`/facilities/${facility.id}/allowed-groups`],
+          activatedRegex: '/facilities/\\d+/allowed-groups'
         }
       ],
       colorClass: 'facility-item',
