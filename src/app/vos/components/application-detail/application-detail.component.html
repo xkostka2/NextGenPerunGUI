@@ -1,4 +1,9 @@
-<h4>{{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.TITLE' | translate}}</h4>
+<h2 class="page-subtitle">
+  {{'VO_DETAIL.APPLICATION.APPLICATION_DETAIL.TITLE' | translate}}
+  <span class="text-muted">
+    #{{application.id}}
+  </span>
+</h2>
 <mat-divider class="mb-4"></mat-divider>
 
 <mat-spinner *ngIf="loading" class="ml-auto mr-auto">
