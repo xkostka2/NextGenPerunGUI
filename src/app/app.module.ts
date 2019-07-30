@@ -12,6 +12,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CoreModule} from './core/core.module';
 import {AuthService} from './core/services/common/auth.service';
 import {Router} from '@angular/router';
+import {RouteReuseStrategy} from '@angular/router';
+import {CacheRouteReuseStrategy} from './core/services/common/cache-route-reuse-strategy';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -37,7 +39,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
   ],
-  providers: [],
+  providers: [{
+    provide: RouteReuseStrategy,
+    useClass: CacheRouteReuseStrategy
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
