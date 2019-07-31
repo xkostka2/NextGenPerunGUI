@@ -21,32 +21,32 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
     {
       type: 'vo',
       components: [
-        VoMembersComponent.name,
-        VoGroupsComponent.name,
-        VoResourcesComponent.name,
-        VoApplicationsComponent.name
+        VoMembersComponent.id,
+        VoGroupsComponent.id,
+        VoResourcesComponent.id,
+        VoApplicationsComponent.id
       ]
     },
     {
       type: 'group',
       components: [
-        GroupMembersComponent.name,
-        GroupSubgroupsComponent.name,
-        GroupResourcesComponent.name,
-        GroupApplicationsComponent.name
+        GroupMembersComponent.id,
+        GroupSubgroupsComponent.id,
+        GroupResourcesComponent.id,
+        GroupApplicationsComponent.id
       ]
     },
     {
       type: 'facility',
       components: [
-        FacilityAllowedGroupsComponent.name,
-        FacilityResourcesComponent.name
+        FacilityAllowedGroupsComponent.id,
+        FacilityResourcesComponent.id
       ]
     },
     {
       type: 'member',
       components: [
-        MemberGroupsComponent.name
+        MemberGroupsComponent.id
       ]
     }
   ];
@@ -142,7 +142,6 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
   shouldAttach(route: ActivatedRouteSnapshot): boolean {
     if (route.component) {
       const componentName = this.getComponentName(route.component);
-
       for (const pages of this.allowCachePages) {
         if (this.typeToComponentToHandlers.get(pages.type).has(componentName)) {
           return true;
@@ -191,7 +190,7 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
    * @param component in string format
    */
   private getComponentName(component: any) {
-    return component.name;
+    return component.id;
   }
 
   /**

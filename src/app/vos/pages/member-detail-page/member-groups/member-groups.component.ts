@@ -10,6 +10,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class MemberGroupsComponent implements OnInit {
 
+  static id = 'MemberGroupsComponent';
+
   // used for router animation
   @HostBinding('class.router-component') true;
 

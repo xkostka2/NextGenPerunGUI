@@ -12,6 +12,8 @@ import {Application} from '../../../../core/models/Application';
 })
 export class VoApplicationsComponent implements OnInit {
 
+  static id = 'VoApplicationsComponent';
+
   @HostBinding('class.router-component') true;
 
   constructor(private voService: VoService,

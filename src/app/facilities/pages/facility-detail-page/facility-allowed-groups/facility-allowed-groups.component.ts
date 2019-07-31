@@ -13,6 +13,8 @@ import {VoService} from '../../../../core/services/api/vo.service';
 })
 export class FacilityAllowedGroupsComponent implements OnInit {
 
+  static id = 'FacilityAllowedGroupsComponent';
+
   @HostBinding('class.router-component') true;
 
   constructor(

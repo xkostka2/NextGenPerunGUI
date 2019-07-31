@@ -17,6 +17,8 @@ import {SelectionModel} from '@angular/cdk/collections';
 })
 export class VoGroupsComponent implements OnInit {
 
+  static id = 'VoGroupsComponent';
+
   @HostBinding('class.router-component') true;
 
   constructor(

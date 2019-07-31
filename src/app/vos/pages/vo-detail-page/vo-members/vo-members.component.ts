@@ -19,6 +19,8 @@ import {RemoveMembersDialogComponent} from '../../../../shared/components/dialog
 })
 export class VoMembersComponent implements OnInit {
 
+  static id = 'VoMembersComponent';
+
   @HostBinding('class.router-component') true;
 
   constructor(

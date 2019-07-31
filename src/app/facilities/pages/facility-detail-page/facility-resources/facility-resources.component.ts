@@ -17,6 +17,8 @@ import {
 })
 export class FacilityResourcesComponent implements OnInit {
 
+  static id = 'FacilityResourcesComponent';
+
   // class used for animation
   @HostBinding('class.router-component') true;
 

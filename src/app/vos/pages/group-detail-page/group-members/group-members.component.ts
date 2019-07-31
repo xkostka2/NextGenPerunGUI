@@ -14,6 +14,8 @@ import {Urns} from '../../../../shared/urns';
 })
 export class GroupMembersComponent implements OnInit {
 
+  static id = 'GroupMembersComponent';
+
   // used for router animation
   @HostBinding('class.router-component') true;
 

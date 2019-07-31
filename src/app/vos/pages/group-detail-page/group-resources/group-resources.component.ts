@@ -13,6 +13,8 @@ import {ResourcesService} from '../../../../core/services/api/resources.service'
 })
 export class GroupResourcesComponent implements OnInit {
 
+  static id = 'GroupResourcesComponent';
+
   // used for router animation
   @HostBinding('class.router-component') true;
 

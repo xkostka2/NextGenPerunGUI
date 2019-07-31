@@ -12,6 +12,8 @@ import {Group} from '../../../../core/models/Group';
 })
 export class GroupApplicationsComponent implements OnInit {
 
+  static id = 'GroupApplicationsComponent';
+
   // used for router animation
   @HostBinding('class.router-component') true;
 

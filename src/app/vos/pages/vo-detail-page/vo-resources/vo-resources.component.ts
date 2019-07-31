@@ -14,6 +14,8 @@ import {VoService} from '../../../../core/services/api/vo.service';
 })
 export class VoResourcesComponent implements OnInit {
 
+  static id = 'VoResourcesComponent';
+
   @HostBinding('class.router-component') true;
 
   constructor(private resourcesService: ResourcesService,

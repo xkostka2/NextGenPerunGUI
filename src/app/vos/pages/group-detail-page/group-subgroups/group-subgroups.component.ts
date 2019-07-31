@@ -14,6 +14,8 @@ import {DeleteGroupDialogComponent} from '../../../../shared/components/dialogs/
 })
 export class GroupSubgroupsComponent implements OnInit {
 
+  static id = 'GroupSubgroupsComponent';
+
   // used for router animation
   @HostBinding('class.router-component') true;
 
