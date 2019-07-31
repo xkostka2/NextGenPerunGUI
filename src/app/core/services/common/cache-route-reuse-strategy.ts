@@ -1,6 +1,18 @@
 import {RouteReuseStrategy} from '@angular/router/';
 import {ActivatedRouteSnapshot, DetachedRouteHandle} from '@angular/router';
 import {VoMembersComponent} from '../../../vos/pages/vo-detail-page/vo-members/vo-members.component';
+import {VoGroupsComponent} from '../../../vos/pages/vo-detail-page/vo-groups/vo-groups.component';
+import {VoResourcesComponent} from '../../../vos/pages/vo-detail-page/vo-resources/vo-resources.component';
+import {VoApplicationsComponent} from '../../../vos/pages/vo-detail-page/vo-applications/vo-applications.component';
+import {GroupApplicationsComponent} from '../../../vos/pages/group-detail-page/group-applications/group-applications.component';
+import {GroupResourcesComponent} from '../../../vos/pages/group-detail-page/group-resources/group-resources.component';
+import {GroupSubgroupsComponent} from '../../../vos/pages/group-detail-page/group-subgroups/group-subgroups.component';
+import {GroupMembersComponent} from '../../../vos/pages/group-detail-page/group-members/group-members.component';
+import {
+  FacilityAllowedGroupsComponent
+} from '../../../facilities/pages/facility-detail-page/facility-allowed-groups/facility-allowed-groups.component';
+import {FacilityResourcesComponent} from '../../../facilities/pages/facility-detail-page/facility-resources/facility-resources.component';
+import {MemberGroupsComponent} from '../../../vos/pages/member-detail-page/member-groups/member-groups.component';
 
 export class CacheRouteReuseStrategy implements RouteReuseStrategy {
   typeToComponentToHandlers: Map<string, Map<string, DetachedRouteHandle>>;
@@ -9,32 +21,32 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
     {
       type: 'vo',
       components: [
-        'VoMembersComponent',
-        'VoGroupsComponent',
-        'VoResourcesComponent',
-        'VoApplicationsComponent'
+        VoMembersComponent.name,
+        VoGroupsComponent.name,
+        VoResourcesComponent.name,
+        VoApplicationsComponent.name
       ]
     },
     {
       type: 'group',
       components: [
-        'GroupMembersComponent',
-        'GroupSubgroupsComponent',
-        'GroupResourcesComponent',
-        'GroupApplicationsComponent'
+        GroupMembersComponent.name,
+        GroupSubgroupsComponent.name,
+        GroupResourcesComponent.name,
+        GroupApplicationsComponent.name
       ]
     },
     {
       type: 'facility',
       components: [
-        'FacilityAllowedGroupsComponent',
-        'FacilityResourcesComponent'
+        FacilityAllowedGroupsComponent.name,
+        FacilityResourcesComponent.name
       ]
     },
     {
       type: 'member',
       components: [
-        'MemberGroupsComponent'
+        MemberGroupsComponent.name
       ]
     }
   ];
@@ -111,7 +123,7 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
    */
   retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle | null {
     if (route.component) {
-      const componentName = this.getComponentName(route.component.toString());
+      const componentName = this.getComponentName(route.component);
       for (const pages of this.allowCachePages) {
         if (pages.components.indexOf(componentName) !== -1) {
           return this.typeToComponentToHandlers.get(pages.type).get(componentName) as DetachedRouteHandle;
@@ -129,7 +141,7 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
    */
   shouldAttach(route: ActivatedRouteSnapshot): boolean {
     if (route.component) {
-      const componentName = this.getComponentName(route.component.toString());
+      const componentName = this.getComponentName(route.component);
 
       for (const pages of this.allowCachePages) {
         if (this.typeToComponentToHandlers.get(pages.type).has(componentName)) {
@@ -147,8 +159,7 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
    */
   shouldDetach(route: ActivatedRouteSnapshot): boolean {
     if (route.component) {
-      const componentName = this.getComponentName(route.component.toString());
-
+      const componentName = this.getComponentName(route.component);
       for (let i = 0; i < this.allowCachePages.length; ++i) {
         const pages = this.allowCachePages[i];
         if (pages.components.indexOf(componentName) !== -1) {
@@ -170,7 +181,7 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
       const type = this.getComponentType(route);
       this.typeToComponentToHandlers
         .get(type)
-        .set(this.getComponentName(route.component.toString()), detachedTree);
+        .set(this.getComponentName(route.component), detachedTree);
     }
   }
 
@@ -179,8 +190,8 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
    *
    * @param component in string format
    */
-  private getComponentName(component: string) {
-    return component.substring(0, component.indexOf('{')).split(' ')[1];
+  private getComponentName(component: any) {
+    return component.name;
   }
 
   /**
@@ -189,7 +200,7 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
    * @param route route
    */
   private getComponentType(route: ActivatedRouteSnapshot): string {
-    const componentName = this.getComponentName(route.component.toString());
+    const componentName = this.getComponentName(route.component);
     for (const pages of this.allowCachePages) {
       if (pages.components.indexOf(componentName) !== -1) {
         return pages.type;
