@@ -63,6 +63,27 @@ import { TechnicalOwnersPipe } from './pipes/technical-owners.pipe';
 import { RemoveResourceDialogComponent } from './components/dialogs/remove-resource-dialog/remove-resource-dialog.component';
 import {ResourcesListComponent} from './components/resources-list/resources-list.component';
 import {GroupsListComponent} from './components/groups-list/groups-list.component';
+import { ApplicationFormItemTypePipe } from './pipes/application-form-item-type.pipe';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {
+  UpdateApplicationFormDialogComponent
+} from './components/dialogs/update-application-form-dialog/update-application-form-dialog.component';
+import {
+  DeleteApplicationFormItemDialogComponent
+} from './components/dialogs/delete-application-form-item-dialog/delete-application-form-item-dialog.component';
+import {
+  ApplicationFormCopyItemsDialogComponent
+} from './components/dialogs/application-form-copy-items-dialog/application-form-copy-items-dialog.component';
+import {
+  AddApplicationFormItemDialogComponent
+} from './components/dialogs/add-application-form-item-dialog/add-application-form-item-dialog.component';
+import {
+  EditApplicationFormItemDialogComponent
+} from './components/dialogs/edit-application-form-item-dialog/edit-application-form-item-dialog.component';
+import { ApplicationFormWidgetDescriptionPipe } from './pipes/application-form-widget-description.pipe';
+import {
+  DeleteApplicationFormMailDialogComponent
+} from './components/dialogs/delete-application-form-mail-dialog/delete-application-form-mail-dialog.component';
 
 @NgModule({
   imports: [
@@ -100,7 +121,8 @@ import {GroupsListComponent} from './components/groups-list/groups-list.componen
     MatCardModule,
     MatStepperModule,
     NgxGraphModule,
-    NgxChartsModule
+    NgxChartsModule,
+    DragDropModule
   ],
   exports: [
     PerunNavComponent,
@@ -153,7 +175,10 @@ import {GroupsListComponent} from './components/groups-list/groups-list.componen
     NgxChartsModule,
     TechnicalOwnersPipe,
     ResourcesListComponent,
-    GroupsListComponent
+    GroupsListComponent,
+    ApplicationFormItemTypePipe,
+    DragDropModule,
+    ApplicationFormWidgetDescriptionPipe
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -163,7 +188,13 @@ import {GroupsListComponent} from './components/groups-list/groups-list.componen
     ApplicationReSendNotificationDialogComponent,
     ApplicationRejectDialogComponent,
     RemoveMembersDialogComponent,
-    RemoveResourceDialogComponent
+    RemoveResourceDialogComponent,
+    UpdateApplicationFormDialogComponent,
+    DeleteApplicationFormItemDialogComponent,
+    ApplicationFormCopyItemsDialogComponent,
+    AddApplicationFormItemDialogComponent,
+    EditApplicationFormItemDialogComponent,
+    DeleteApplicationFormMailDialogComponent
   ],
   declarations: [
     PerunNavComponent,
@@ -197,7 +228,15 @@ import {GroupsListComponent} from './components/groups-list/groups-list.componen
     TechnicalOwnersPipe,
     RemoveResourceDialogComponent,
     ResourcesListComponent,
-    GroupsListComponent
+    GroupsListComponent,
+    ApplicationFormItemTypePipe,
+    UpdateApplicationFormDialogComponent,
+    DeleteApplicationFormItemDialogComponent,
+    ApplicationFormCopyItemsDialogComponent,
+    AddApplicationFormItemDialogComponent,
+    EditApplicationFormItemDialogComponent,
+    ApplicationFormWidgetDescriptionPipe,
+    DeleteApplicationFormMailDialogComponent
   ]
 })
 export class SharedModule {

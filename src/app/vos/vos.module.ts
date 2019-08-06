@@ -34,6 +34,14 @@ import { GroupSettingsAttributesComponent
 } from './pages/group-detail-page/group-settings/group-settings-attributes/group-settings-attributes.component';
 import { GroupSettingsOverviewComponent
 } from './pages/group-detail-page/group-settings/group-settings-overview/group-settings-overview.component';
+import {
+  VoSettingsApplicationFormComponent
+} from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form.component';
+import { ApplicationFormListComponent } from './components/application-form-list/application-form-list.component';
+// tslint:disable-next-line:max-line-length
+import { VoSettingsApplicationFormPreviewComponent } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-preview/vo-settings-application-form-preview.component';
+// tslint:disable-next-line:max-line-length
+import { VoSettingsApplicationFormNotificationsComponent } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-notifications/vo-settings-application-form-notifications.component';
 
 @NgModule({
   imports: [
@@ -75,7 +83,11 @@ import { GroupSettingsOverviewComponent
     VoSelectTableComponent,
     GroupSettingsComponent,
     GroupSettingsAttributesComponent,
-    GroupSettingsOverviewComponent
+    GroupSettingsOverviewComponent,
+    VoSettingsApplicationFormComponent,
+    ApplicationFormListComponent,
+    VoSettingsApplicationFormPreviewComponent,
+    VoSettingsApplicationFormNotificationsComponent
   ]
 })
 export class VosModule { }

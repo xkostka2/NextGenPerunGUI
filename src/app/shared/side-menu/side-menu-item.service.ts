@@ -235,6 +235,11 @@ export class SideMenuItemService {
               label: 'MENU_ITEMS.VO.MANAGERS',
               url: [`/organizations/${vo.id}/settings/managers`],
               activatedRegex: '/organizations/\\d+/settings/managers$'
+            },
+            {
+              label: this.translate.instant('MENU_ITEMS.VO.APPLICATION_FORM'),
+              url: [`/organizations/${vo.id}/settings/applicationForm`],
+              activatedRegex: '/organizations/\\d+/settings/applicationForm$'
             }
           ],
           showChildrenRegex: '/organizations/\\d+/settings'

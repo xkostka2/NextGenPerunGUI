@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>{{'DIALOGS.APPLICATION_FORM_DELETE_MAIL.TITLE' | translate}}</h1>
+<div mat-dialog-content>
+  <p>
+    {{'DIALOGS.APPLICATION_FORM_DELETE_MAIL.DESCRIPTION' | translate}}
+  </p>
+
+  <div class="font-weight-bold">
+    {{'DIALOGS.APPLICATION_FORM_DELETE_MAIL.CONFIRMATION' | translate}}
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="w-100">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let mail"> {{getMailType(mail)}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="font-weight-bolder"></tr>
+    <tr mat-row *matRowDef="let mail; columns: displayedColumns;"></tr>
+  </table>
+
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-flat-button
+    class="ml-auto"
+    (click)="onCancel()">
+    {{'DIALOGS.APPLICATION_FORM_DELETE_MAIL.CANCEL' | translate}}
+  </button>
+  <button
+    mat-flat-button
+    class="ml-2"
+    color="warn"
+    (click)="onSubmit()">
+    {{'DIALOGS.APPLICATION_FORM_DELETE_MAIL.SUBMIT' | translate}}
+  </button>
+</div>

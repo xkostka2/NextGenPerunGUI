@@ -55,6 +55,12 @@ export class VoSettingsOverviewComponent implements OnInit {
         url: `/organizations/${this.vo.id}/settings/managers`,
         label: 'MENU_ITEMS.VO.MANAGERS',
         style: 'vo-btn'
+      },
+      {
+        icon: 'application_form-white.svg',
+        url: `/organizations/${this.vo.id}/settings/applicationForm`,
+        label: 'MENU_ITEMS.VO.APPLICATION_FORM',
+        style: 'vo-btn'
       }
     ];
   }

@@ -28,6 +28,13 @@ import {
 } from './pages/group-detail-page/group-settings/group-settings-attributes/group-settings-attributes.component';
 import {GroupSettingsOverviewComponent
 } from './pages/group-detail-page/group-settings/group-settings-overview/group-settings-overview.component';
+import {
+  VoSettingsApplicationFormComponent
+} from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form.component';
+// tslint:disable-next-line:max-line-length
+import { VoSettingsApplicationFormPreviewComponent } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-preview/vo-settings-application-form-preview.component';
+// tslint:disable-next-line:max-line-length
+import { VoSettingsApplicationFormNotificationsComponent } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-notifications/vo-settings-application-form-notifications.component';
 
 const routes: Routes = [
   {
@@ -91,6 +98,21 @@ const routes: Routes = [
             path: 'managers',
             component: VoSettingsManagersComponent,
             data: {animation: 'VoSettingsManagersPage'}
+          },
+          {
+            path: 'applicationForm',
+            component: VoSettingsApplicationFormComponent,
+            data: {animation: 'SettingsApplicationFormPage'}
+          },
+          {
+            path: 'applicationForm/preview',
+            component: VoSettingsApplicationFormPreviewComponent,
+            data: {animation: 'SettingsApplicationFormPreviewPage'}
+          },
+          {
+            path: 'applicationForm/notification',
+            component: VoSettingsApplicationFormNotificationsComponent,
+            data: {animation: 'SettingsApplicationFormNotificationsPage'}
           }
         ]
       }

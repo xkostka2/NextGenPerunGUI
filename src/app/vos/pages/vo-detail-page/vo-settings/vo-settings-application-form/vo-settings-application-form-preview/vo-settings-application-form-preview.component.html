@@ -1,0 +1,244 @@
+<h1 class="page-subtitle">
+  {{'VO_DETAIL.SETTINGS.APPLICATION_FORM.PREVIEW_PAGE.TITLE' | translate}}
+</h1>
+<mat-spinner *ngIf="loading" class="ml-auto mr-auto">
+</mat-spinner>
+<div *ngIf="!loading">
+
+  <div class="w-100 d-flex mb-2">
+    <button
+      mat-stroked-button
+      *ngIf="!initialPage"
+      class="mr-2"
+      (click)="switchToInitial()">
+      <i class="material-icons">arrow_right_alt</i>
+      {{'VO_DETAIL.SETTINGS.APPLICATION_FORM.PREVIEW_PAGE.SWITCH_INITIAL' | translate}}
+    </button>
+    <button
+      mat-stroked-button
+      *ngIf="initialPage"
+      class="mr-2"
+      (click)="switchToExtension()">
+      <i class="material-icons">cached</i>
+      {{'VO_DETAIL.SETTINGS.APPLICATION_FORM.PREVIEW_PAGE.SWITCH_EXTENSION' | translate}}
+    </button>
+
+    <button
+      mat-stroked-button
+      *ngIf="language === 'cs'"
+      class="mr-2"
+      (click)="switchToEnglish()">
+      <i class="material-icons">public</i>
+      {{'VO_DETAIL.SETTINGS.APPLICATION_FORM.PREVIEW_PAGE.SWITCH_ENGLISH' | translate}}
+    </button>
+    <button
+      mat-stroked-button
+      *ngIf="language === 'en'"
+      class="mr-2"
+      (click)="switchToCzech()">
+      <i class="material-icons">public</i>
+      {{'VO_DETAIL.SETTINGS.APPLICATION_FORM.PREVIEW_PAGE.SWITCH_CZECH' | translate}}
+    </button>
+  </div>
+  <div class="card mb-4 p-5">
+    <div *ngFor="let applicationFormItem of applicationFormItems">
+      <div *ngIf="isChoosenType(applicationFormItem)" class="mb-2">
+
+        <div class="d-flex" *ngIf="applicationFormItem.type === 'TEXTFIELD' ||
+                                   applicationFormItem.type === 'VALIDATED_EMAIL' ||
+                                   applicationFormItem.type === 'USERNAME'">
+          <div class="w-50 d-flex">
+            <span class="w-50">{{getLocalizedLabel(applicationFormItem)}}</span>
+            <div class="w-50">
+              <input type="text" class="w-100">
+            </div>
+          </div>
+          <div class="w-50 d-flex">
+            <span class="ml-2">{{getLocalizedHint(applicationFormItem)}}</span>
+          </div>
+        </div>
+
+
+        <div class="d-flex" *ngIf="applicationFormItem.type === 'FROM_FEDERATION_SHOW'">
+          <div class="w-50 d-flex">
+            <span class="w-50">{{getLocalizedLabel(applicationFormItem)}}</span>
+            <div class="w-50">
+              <input type="text" class="w-100" disabled>
+            </div>
+          </div>
+          <div class="w-50 d-flex">
+            <span class="ml-2">{{getLocalizedHint(applicationFormItem)}}</span>
+          </div>
+        </div>
+
+
+        <div class="d-flex" *ngIf="applicationFormItem.type === 'PASSWORD'">
+          <div class="w-50 d-flex">
+            <span class="w-50">{{getLocalizedLabel(applicationFormItem)}}</span>
+            <div class="w-50">
+              <input class="mb-1 w-100" type="text"><br/>
+              <input class="w-100" type="text">
+            </div>
+          </div>
+          <div class="w-50 d-flex">
+            <span class="ml-2">{{getLocalizedHint(applicationFormItem)}}</span>
+          </div>
+        </div>
+
+
+        <div class="d-flex" *ngIf="applicationFormItem.type === 'RADIO'">
+          <div class="w-50 d-flex">
+            <span class="w-50">{{getLocalizedLabel(applicationFormItem)}}</span>
+            <form class="w-50">
+              <div *ngFor="let item of getLocalizedOptions(applicationFormItem)">
+                <input type="radio" name="temp"> {{item}}<br>
+              </div>
+              <input type="reset" value="{{'VO_DETAIL.SETTINGS.APPLICATION_FORM.CLEAR_SELECTION' | translate}}"><!--tlacitko-->
+            </form>
+          </div>
+          <div class="w-50 d-flex">
+            <span class="ml-2">{{getLocalizedHint(applicationFormItem)}}</span>
+          </div>
+        </div>
+
+
+        <div *ngIf="applicationFormItem.type ==='HEADING' ||
+                    applicationFormItem.type === 'HTML_COMMENT'">
+          <span [innerHTML]="getLocalizedLabel(applicationFormItem)"></span>
+        </div>
+
+
+        <div class="d-flex" *ngIf="applicationFormItem.type === 'SELECTIONBOX'">
+          <div class="w-50 d-flex">
+            <span class="w-50">{{getLocalizedLabel(applicationFormItem)}}</span>
+            <div class="w-50">
+              <select class="w-100">
+                <option *ngFor="let item of getLocalizedOptions(applicationFormItem)">{{item}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="w-50 d-flex">
+            <span class="ml-2">{{getLocalizedHint(applicationFormItem)}}</span>
+          </div>
+        </div>
+
+
+        <div class="d-flex" *ngIf="applicationFormItem.type === 'TEXTAREA'">
+          <div class="w-50 d-flex">
+            <span class="w-50">{{getLocalizedLabel(applicationFormItem)}}</span>
+            <textarea class="w-50"></textarea>
+          </div>
+          <div class="w-50 d-flex">
+            <span class="ml-2">{{getLocalizedHint(applicationFormItem)}}</span>
+          </div>
+        </div>
+
+
+        <div class="d-flex" *ngIf="applicationFormItem.type === 'COMBOBOX'">
+          <div class="w-50 d-flex">
+            <span class="w-50">{{getLocalizedLabel(applicationFormItem)}}</span>
+            <div class="w-50">
+              <select [(ngModel)]="mapForCombobox[applicationFormItem.id]" class="w-100">
+                <option value="true" selected>{{'VO_DETAIL.SETTINGS.APPLICATION_FORM.OTHER_VALUE' | translate}}</option>
+                <option value="false" *ngFor="let item of getLocalizedOptions(applicationFormItem)">{{item}}</option>
+              </select>
+              <div *ngIf="mapForCombobox[applicationFormItem.id] === 'true'" class="w-100">
+                <form>
+                  <input type="text">
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="w-50 d-flex">
+            <span class="ml-2">{{getLocalizedHint(applicationFormItem)}}</span>
+          </div>
+        </div>
+
+
+        <div class="d-flex" *ngIf="applicationFormItem.type === 'CHECKBOX'">
+          <div class="w-50 d-flex">
+            <span class="w-50">{{getLocalizedLabel(applicationFormItem)}}</span>
+            <div class="w-50">
+              <form class="w-100">
+                <div *ngFor="let item of getLocalizedOptions(applicationFormItem)">
+                  <input type="checkbox"> {{item}}
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="w-50 d-flex">
+            <span class="ml-2">{{getLocalizedHint(applicationFormItem)}}</span>
+          </div>
+        </div>
+
+
+        <div class="d-flex" *ngIf="applicationFormItem.type === 'SUBMIT_BUTTON'">
+          <button mat-flat-button color="accent">{{getLocalizedLabel(applicationFormItem)}}</button>
+        </div>
+
+
+        <div *ngIf="applicationFormItem.type === 'AUTO_SUBMIT_BUTTON'">
+          <button mat-flat-button color="accent">{{getLocalizedLabel(applicationFormItem)}}</button>
+        </div>
+
+
+        <div class="d-flex" *ngIf="applicationFormItem.type === 'TIMEZONE'">
+          <div class="w-50 d-flex">
+            <span class="w-50">{{getLocalizedLabel(applicationFormItem)}}</span>
+            <div class="w-50">
+              <select name="timezone_offset" id="timezone-offset" class="w-100">
+                <option value="-12:00" selected="selected">
+                  {{'VO_DETAIL.SETTINGS.APPLICATION_FORM.NOT_SELECTED' | translate}}
+                </option>
+                <option value="-12:00">(GMT -12:00) Eniwetok, Kwajalein</option>
+                <option value="-11:00">(GMT -11:00) Midway Island, Samoa</option>
+                <option value="-10:00">(GMT -10:00) Hawaii</option>
+                <option value="-09:50">(GMT -9:30) Taiohae</option>
+                <option value="-09:00">(GMT -9:00) Alaska</option>
+                <option value="-08:00">(GMT -8:00) Pacific Time (US &amp; Canada)</option>
+                <option value="-07:00">(GMT -7:00) Mountain Time (US &amp; Canada)</option>
+                <option value="-06:00">(GMT -6:00) Central Time (US &amp; Canada), Mexico City</option>
+                <option value="-05:00">(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+                <option value="-04:50">(GMT -4:30) Caracas</option>
+                <option value="-04:00">(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz</option>
+                <option value="-03:50">(GMT -3:30) Newfoundland</option>
+                <option value="-03:00">(GMT -3:00) Brazil, Buenos Aires, Georgetown</option>
+                <option value="-02:00">(GMT -2:00) Mid-Atlantic</option>
+                <option value="-01:00">(GMT -1:00) Azores, Cape Verde Islands</option>
+                <option value="+00:00">(GMT) Western Europe Time, London, Lisbon, Casablanca</option>
+                <option value="+01:00">(GMT +1:00) Brussels, Copenhagen, Madrid, Paris</option>
+                <option value="+02:00">(GMT +2:00) Kaliningrad, South Africa</option>
+                <option value="+03:00">(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
+                <option value="+03:50">(GMT +3:30) Tehran</option>
+                <option value="+04:00">(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi</option>
+                <option value="+04:50">(GMT +4:30) Kabul</option>
+                <option value="+05:00">(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+                <option value="+05:50">(GMT +5:30) Bombay, Calcutta, Madras, New Delhi</option>
+                <option value="+05:75">(GMT +5:45) Kathmandu, Pokhara</option>
+                <option value="+06:00">(GMT +6:00) Almaty, Dhaka, Colombo</option>
+                <option value="+06:50">(GMT +6:30) Yangon, Mandalay</option>
+                <option value="+07:00">(GMT +7:00) Bangkok, Hanoi, Jakarta</option>
+                <option value="+08:00">(GMT +8:00) Beijing, Perth, Singapore, Hong Kong</option>
+                <option value="+08:75">(GMT +8:45) Eucla</option>
+                <option value="+09:00">(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</option>
+                <option value="+09:50">(GMT +9:30) Adelaide, Darwin</option>
+                <option value="+10:00">(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
+                <option value="+10:50">(GMT +10:30) Lord Howe Island</option>
+                <option value="+11:00">(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
+                <option value="+11:50">(GMT +11:30) Norfolk Island</option>
+                <option value="+12:00">(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
+                <option value="+12:75">(GMT +12:45) Chatham Islands</option>
+                <option value="+13:00">(GMT +13:00) Apia, Nukualofa</option>
+                <option value="+14:00">(GMT +14:00) Line Islands, Tokelau</option>
+              </select>
+            </div>
+
+          </div>
+          <div class="w-50 d-flex">
+            <span class="ml-2">{{getLocalizedHint(applicationFormItem)}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
