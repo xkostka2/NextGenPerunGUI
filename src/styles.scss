@@ -28,7 +28,7 @@ $perun-theme: mat-light-theme($perun-primary, $perun-accent, $perun-warn);
 
 // Perun entities colors
 $vo-color: #283593;
-$facility-color: #E64A19;
+$facility-color: #bf360c;
 $resource-color: #6a1b9a;
 $group-color: #33691e;
 $member-color: #ad1457;
@@ -44,7 +44,7 @@ $user-color: #00796b;
 }
 
 .facility-theme {
-  $vo-primary: mat-palette($mat-deep-orange, 700);
+  $vo-primary: mat-palette($mat-deep-orange, 900);
   $vo-accent: mat-palette($mat-green, 600);
   $vo-theme: mat-light-theme($vo-primary, $vo-accent);
 
@@ -148,10 +148,10 @@ button:focus {
   border-right: 5px solid $facility-color;
   color: $facility-color !important;
   font-weight: 500;
-  background-color: rgba(255, 82, 28, 0.10);
+  background-color: rgba(255, 71, 14, 0.1);
 
   &:hover {
-    background-color: rgba(255, 82, 28, 0.15) !important;
+    background-color: rgba(255, 71, 14, 0.15) !important;
   }
   //background-color: #eaeaea !important;
 }
