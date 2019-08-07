@@ -5,6 +5,7 @@ import {ActivatedRoute, RouterOutlet} from '@angular/router';
 import {fadeIn} from '../../../shared/animations/Animations';
 import {SideMenuService} from '../../../core/services/common/side-menu.service';
 import {SideMenuItemService} from '../../../shared/side-menu/side-menu-item.service';
+import {addRecentlyVisited} from '../../../shared/utils';
 
 @Component({
   selector: 'app-facility-detail-page',
@@ -34,6 +35,8 @@ export class FacilityDetailPageComponent implements OnInit {
         const facilityItem = this.sideMenuItemService.parseFacility(facility);
 
         this.sideMenuService.setFacilityMenuItems([facilityItem]);
+
+        addRecentlyVisited('facilities', this.facility);
       });
     });
   }

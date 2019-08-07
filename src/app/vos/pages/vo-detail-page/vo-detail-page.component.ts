@@ -5,6 +5,7 @@ import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import {Vo} from '../../../core/models/Vo';
 import {SideMenuItemService} from '../../../shared/side-menu/side-menu-item.service';
 import {fadeIn} from '../../../shared/animations/Animations';
+import {addRecentlyVisited} from '../../../shared/utils';
 
 @Component({
   selector: 'app-vo-detail-page',
@@ -36,6 +37,8 @@ export class VoDetailPageComponent implements OnInit {
         const sideMenuItem = this.sideMenuItemService.parseVo(vo);
 
         this.sideMenuService.setAccessMenuItems([sideMenuItem]);
+
+        addRecentlyVisited('vos', this.vo);
       });
     });
   }
