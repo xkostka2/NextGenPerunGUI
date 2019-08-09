@@ -4,6 +4,7 @@ import {AuthzService} from './core/services/api/authz.service';
 import {PerunPrincipal} from './core/models/PerunPrincipal';
 import {AuthResolverService} from './core/services/common/auth-resolver.service';
 import {AuthService} from './core/services/common/auth.service';
+import {CacheHelperService} from './core/services/common/cache-helper.service';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +17,13 @@ export class AppComponent implements OnInit {
     translate: TranslateService,
     private authzService: AuthzService,
     private authResolver: AuthResolverService,
-    private authService: AuthService
+    private authService: AuthService,
+    private cache: CacheHelperService
   ) {
     translate.setDefaultLang('en');
     translate.use('en');
 
+    this.cache.init();
     this.getScreenSize(null);
   }
 

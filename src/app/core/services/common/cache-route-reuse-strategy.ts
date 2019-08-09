@@ -14,8 +14,15 @@ import {
 import {FacilityResourcesComponent} from '../../../facilities/pages/facility-detail-page/facility-resources/facility-resources.component';
 import {MemberGroupsComponent} from '../../../vos/pages/member-detail-page/member-groups/member-groups.component';
 
+export class CachedRoute {
+  routeHandle: DetachedRouteHandle;
+  saveTimeStamp: number;
+}
+
 export class CacheRouteReuseStrategy implements RouteReuseStrategy {
-  typeToComponentToHandlers: Map<string, Map<string, DetachedRouteHandle>>;
+
+  // typeToComponentToHandlers: Map<string, Map<string, DetachedRouteHandle>>;
+  typeToComponentToHandlers: Map<string, Map<string, CachedRoute>>;
 
   allowCachePages = [
     {
@@ -51,6 +58,8 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
     }
   ];
 
+  private cacheTimeMs = 300_000;
+
   resets = [
     {
       lastValue: null,
@@ -78,11 +87,18 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
     },
   ];
 
-  constructor() {
-    this.typeToComponentToHandlers = new Map<string, Map<string, DetachedRouteHandle>>();
+  private isUserNavigatingBack = false;
+
+  constructor(
+  ) {
+    this.typeToComponentToHandlers = new Map<string, Map<string, CachedRoute>>();
     for (const pages of this.allowCachePages) {
-      this.typeToComponentToHandlers.set(pages.type, new Map<string, DetachedRouteHandle>());
+      this.typeToComponentToHandlers.set(pages.type, new Map<string, CachedRoute>());
     }
+  }
+
+  setLastNavigationType(type: 'back' | 'direct'): void {
+    this.isUserNavigatingBack = type === 'back';
   }
 
   /**
@@ -102,7 +118,7 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
         const newParamValue = newRoute.params[reset.param];
 
         // remove all cached pages for given type
-        if (reset.lastValue !== newParamValue) {
+        if (reset.lastValue !== null && reset.lastValue !== newParamValue) {
           this.typeToComponentToHandlers.get(reset.resetType).clear();
         }
 
@@ -126,7 +142,9 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
       const componentName = this.getComponentName(route.component);
       for (const pages of this.allowCachePages) {
         if (pages.components.indexOf(componentName) !== -1) {
-          return this.typeToComponentToHandlers.get(pages.type).get(componentName) as DetachedRouteHandle;
+          const cachedData =  this.typeToComponentToHandlers.get(pages.type).get(componentName);
+
+          return cachedData === undefined ? null : cachedData.routeHandle;
         }
       }
     }
@@ -135,15 +153,20 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
   }
 
   /**
-   * Returns true if the route used from cache.
+   * Returns true if the route should be used from cache.
    *
    * @param route route
    */
   shouldAttach(route: ActivatedRouteSnapshot): boolean {
+    if (!this.isUserNavigatingBack) {
+      return false;
+    }
+
     if (route.component) {
       const componentName = this.getComponentName(route.component);
       for (const pages of this.allowCachePages) {
-        if (this.typeToComponentToHandlers.get(pages.type).has(componentName)) {
+        const cachedData = this.typeToComponentToHandlers.get(pages.type).get(componentName);
+        if (cachedData !== undefined && (this.getCurrentTimestamp() - cachedData.saveTimeStamp) < this.cacheTimeMs) {
           return true;
         }
       }
@@ -166,6 +189,7 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
         }
       }
     }
+    console.log('shouldDetach - FALSE');
     return false;
   }
 
@@ -180,8 +204,15 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
       const type = this.getComponentType(route);
       this.typeToComponentToHandlers
         .get(type)
-        .set(this.getComponentName(route.component), detachedTree);
+        .set(this.getComponentName(route.component), {
+          routeHandle: detachedTree,
+          saveTimeStamp: this.getCurrentTimestamp()
+        });
     }
+  }
+
+  private getCurrentTimestamp(): number {
+    return + Date.now();
   }
 
   /**
