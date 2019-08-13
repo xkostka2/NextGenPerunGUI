@@ -66,7 +66,8 @@ import {MatChipsModule} from '@angular/material';
     MatChipsModule
   ],
   exports: [
-    AttributesListComponent
+    AttributesListComponent,
+    MembersListComponent
   ],
   declarations: [
     VoSelectPageComponent,

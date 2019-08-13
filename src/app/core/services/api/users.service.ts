@@ -30,4 +30,10 @@ export class UsersService {
       'searchString': searchstring
     }, showNotificationOnError);
   }
+
+  findRichUsers(searchString: string, showNotificationOnError = true): Observable<RichUser[]> {
+    return this.apiService.post('json/usersManager/findRichUsers', {
+      searchString: searchString
+    }, showNotificationOnError);
+  }
 }

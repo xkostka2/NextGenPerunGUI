@@ -105,6 +105,22 @@
       "MANAGERS": {
         "TITLE": "Managers",
         "ADD": "Add...",
+        "REMOVE": "Remove",
+        "SELECT_MODE": "Select mode",
+        "SELECT_ROLE": "Select role",
+        "USER": "User",
+        "GROUP": "Group",
+        "NO_MANAGERS": "This role has no managers.",
+        "NO_GROUP_MANAGERS": "This role has no group managers."
+      },
+      "ROLES": {
+        "VO_ADMIN": "Vo admin",
+        "VO_OBSERVER": "Vo observer",
+        "TOP_GROUP_CREATOR": "Top group creator",
+        "PERUN_ADMIN": "Perun admin",
+        "SELF": "Self",
+        "FACILITY_ADMIN": "Facility admin",
+        "GROUP_ADMIN": "Group admin",
         "REMOVE": "Remove"
       },
       "APPLICATION_FORM":{
@@ -393,6 +409,42 @@
       "DELETE": "Delete",
       "SUCCESS": "Selected resources were deleted"
     },
+    "REMOVE_MANAGERS": {
+      "TITLE": "Confirm removal",
+      "DESCRIPTION": "Following managers will be removed.",
+      "ASK": "Do you want to proceed?",
+      "CANCEL": "Cancel",
+      "DELETE": "Remove",
+      "SUCCESS": "Selected managers were removed"
+    },
+    "ADD_MANAGERS": {
+      "TITLE": "Add manager",
+      "DESCRIPTION": "Search user by name, login or email",
+      "SEARCH": "Search",
+      "CANCEL": "Cancel",
+      "CREATE": "Add",
+      "SUCCESS": "Selected managers were added",
+      "COUNT": "Count",
+      "NO_USERS_FOUND": "No users found"
+    },
+    "ADD_GROUPS": {
+      "TITLE": "Add group",
+      "SEARCH": "Search",
+      "CANCEL": "Cancel",
+      "CREATE": "Add",
+      "SUCCESS": "Selected groups were added",
+      "COUNT": "Count",
+      "NO_GROUPS_FOUND": "No groups found",
+      "SELECT_VO": "Select organization"
+    },
+    "REMOVE_GROUPS": {
+      "TITLE": "Confirm removal",
+      "DESCRIPTION": "Following groups will be removed.",
+      "ASK": "Do you want to proceed?",
+      "CANCEL": "Cancel",
+      "DELETE": "Remove",
+      "SUCCESS": "Selected groups were removed"
+    },
     "RE_SEND_NOTIFICATION": {
       "TITLE": "Re-send notification",
       "SEND": "Send",
@@ -618,6 +670,9 @@
         "NAME": "Name",
         "VALUE": "Value",
         "DESCRIPTION": "Description"
+      },
+      "USERS_LIST": {
+        "TABLE_SEARCH": "Filter by name or ID"
       }
     }
   }

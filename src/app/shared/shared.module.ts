@@ -65,6 +65,10 @@ import { TechnicalOwnersPipe } from './pipes/technical-owners.pipe';
 import { RemoveResourceDialogComponent } from './components/dialogs/remove-resource-dialog/remove-resource-dialog.component';
 import {ResourcesListComponent} from './components/resources-list/resources-list.component';
 import {GroupsListComponent} from './components/groups-list/groups-list.component';
+import { AddManagerDialogComponent } from './components/dialogs/add-manager-dialog/add-manager-dialog.component';
+import { RemoveManagerDialogComponent } from './components/dialogs/remove-manager-dialog/remove-manager-dialog.component';
+import {AddGroupManagerDialogComponent } from './components/dialogs/add-group-manager-dialog/add-group-manager-dialog.component';
+import { RemoveGroupManagerDialogComponent } from './components/dialogs/remove-group-manager-dialog/remove-group-manager-dialog.component';
 import { ApplicationFormItemTypePipe } from './pipes/application-form-item-type.pipe';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {
@@ -126,6 +130,8 @@ import {
     NgxChartsModule,
     DragDropModule,
     NgxChartsModule,
+    DragDropModule,
+    NgxChartsModule,
     MatCardModule,
   ],
   exports: [
@@ -184,6 +190,12 @@ import {
     DragDropModule,
     ApplicationFormWidgetDescriptionPipe,
     GroupsListComponent,
+    RemoveManagerDialogComponent,
+    AddManagerDialogComponent,
+    AddGroupManagerDialogComponent,
+    RemoveGroupManagerDialogComponent,
+    ApplicationFormWidgetDescriptionPipe,
+    GroupsListComponent,
     ResourcesListComponent,
     TechnicalOwnersPipe,
     UsersListComponent,
@@ -203,6 +215,12 @@ import {
     ApplicationFormCopyItemsDialogComponent,
     AddApplicationFormItemDialogComponent,
     EditApplicationFormItemDialogComponent,
+    DeleteApplicationFormMailDialogComponent,
+    RemoveResourceDialogComponent,
+    RemoveManagerDialogComponent,
+    AddManagerDialogComponent,
+    AddGroupManagerDialogComponent,
+    RemoveGroupManagerDialogComponent,
     DeleteApplicationFormMailDialogComponent,
     RemoveResourceDialogComponent,
     RemoveMembersDialogComponent,
@@ -241,6 +259,12 @@ import {
     TechnicalOwnersPipe,
     RemoveResourceDialogComponent,
     ResourcesListComponent,
+    GroupsListComponent,
+    AddManagerDialogComponent,
+    RemoveManagerDialogComponent,
+    AddManagerDialogComponent,
+    AddGroupManagerDialogComponent,
+    RemoveGroupManagerDialogComponent,
     GroupsListComponent,
     ApplicationFormItemTypePipe,
     UpdateApplicationFormDialogComponent,

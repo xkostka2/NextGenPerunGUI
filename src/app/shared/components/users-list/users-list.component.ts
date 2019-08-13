@@ -70,7 +70,8 @@ export class UsersListComponent implements OnChanges {
   }
 
   getUserOrganization(user: RichUser): string {
-    return getRichUserAttribute(user, Urns.USER_DEF_ORGANIZATION).value;
+    const res = getRichUserAttribute(user, Urns.USER_DEF_ORGANIZATION);
+    return res === null ? '' : res.value;
   }
 
   getPreferredMail(user: RichUser) {

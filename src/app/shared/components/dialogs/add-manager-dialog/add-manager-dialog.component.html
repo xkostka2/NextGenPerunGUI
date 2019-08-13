@@ -1,0 +1,65 @@
+<div class="{{theme}}">
+  <h1 mat-dialog-title>{{'DIALOGS.ADD_MANAGERS.TITLE' | translate}}</h1>
+
+  <div mat-dialog-content>
+    <div class="inline-dialog-items">
+      <mat-form-field class="mr-2">
+        <mat-label>{{'VO_DETAIL.SETTINGS.MANAGERS.SELECT_ROLE' | translate}}</mat-label>
+        <mat-select [(value)]="selectedRole">
+          <mat-option value="VOADMIN">{{'VO_DETAIL.SETTINGS.ROLES.VO_ADMIN' | translate}}</mat-option>
+          <mat-option value="VOOBSERVER">{{'VO_DETAIL.SETTINGS.ROLES.VO_OBSERVER' | translate}} </mat-option>
+          <mat-option value="TOPGROUPCREATOR">{{'VO_DETAIL.SETTINGS.ROLES.TOP_GROUP_CREATOR' | translate}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mr-2 search-field">
+        <label>
+          <input matInput autocomplete="false" placeholder="{{'DIALOGS.ADD_MANAGERS.DESCRIPTION' | translate}}"
+                 [(ngModel)]="searchString">
+        </label>
+      </mat-form-field>
+    </div>
+
+    <button
+      mat-flat-button
+      class="ml-auto"
+      color="accent"
+      [disabled]="searchString.length === 0"
+      (click)="onSearchByString()">
+      {{'DIALOGS.ADD_MANAGERS.SEARCH' | translate}}
+    </button>
+
+    <div style="overflow: hidden">
+      <mat-spinner *ngIf="loading" class="mr-auto ml-auto"></mat-spinner>
+    </div>
+    <div class="mt-3" *ngIf="users !== null && !loading">
+      <div *ngIf="users.length === 0 && firstSearchDone" class="perun-alert warn-alert">
+        {{'DIALOGS.ADD_MANAGERS.NO_USERS_FOUND' | translate}}
+      </div>
+      <app-users-list
+        [selection]="selection"
+        [users]="users"
+        *ngIf="users.length !== 0">
+      </app-users-list>
+    </div>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button
+      mat-flat-button
+      class="ml-auto"
+      color="warn"
+      (click)="onCancel()">
+      {{'DIALOGS.ADD_MANAGERS.CANCEL' | translate}}
+    </button>
+    <button
+      mat-flat-button
+      class="ml-2"
+      color="accent"
+      (click)="onSubmit()"
+      [disabled]="selection.selected.length === 0 || selectedRole === undefined">
+      {{'DIALOGS.ADD_MANAGERS.CREATE' | translate}}
+    </button>
+  </div>
+</div>
