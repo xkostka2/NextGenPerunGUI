@@ -3,10 +3,11 @@ import {MAT_DIALOG_DATA, MatDialogRef, MatTableDataSource} from '@angular/materi
 import {NotificatorService} from '../../../../core/services/common/notificator.service';
 import {TranslateService} from '@ngx-translate/core';
 import {Attribute} from '../../../../core/models/Attribute';
-import {AttributesService} from '../../../../core/services/api/attributes.service';
+import {AttributesService, Entity} from '../../../../core/services/api/attributes.service';
 
 export interface DeleteAttributeDialogData {
-  voId: number;
+  entityId: number;
+  entity: Entity;
   attributes: Attribute[];
 }
 
@@ -40,7 +41,7 @@ export class DeleteAttributeDialogComponent implements OnInit {
     for (const attr of this.data.attributes) {
       ids.push(attr.id);
     }
-    this.attributeService.deleteVoAttributes(this.data.voId, ids).subscribe(() => {
+    this.attributeService.deleteAttributes(this.data.entityId, this.data.entity, ids).subscribe(() => {
       this.translate.get('DIALOGS.DELETE_ATTRIBUTES.SUCCESS').subscribe(successMessage => {
         this.notificator.showSuccess(successMessage);
         this.dialogRef.close(true);

@@ -4,15 +4,18 @@ import {ActivatedRoute} from '@angular/router';
 import {SelectionModel} from '@angular/cdk/collections';
 import {Attribute} from '../../../../../core/models/Attribute';
 import {AttributesService} from '../../../../../core/services/api/attributes.service';
-// tslint:disable-next-line:max-line-length
-import {DeleteAttributeDialogComponent} from '../../../../../shared/components/dialogs/delete-attribute-dialog/delete-attribute-dialog.component';
+import {
+  DeleteAttributeDialogComponent
+} from '../../../../../shared/components/dialogs/delete-attribute-dialog/delete-attribute-dialog.component';
 import {MatDialog} from '@angular/material';
-// tslint:disable-next-line:max-line-length
-import {CreateAttributeDialogComponent} from '../../../../../shared/components/dialogs/create-attribute-dialog/create-attribute-dialog.component';
+import {
+  CreateAttributeDialogComponent
+} from '../../../../../shared/components/dialogs/create-attribute-dialog/create-attribute-dialog.component';
 import {Component, HostBinding, OnInit, ViewChild} from '@angular/core';
 import {AttributesListComponent} from '../../../../../shared/components/attributes-list/attributes-list.component';
 import {NotificatorService} from '../../../../../core/services/common/notificator.service';
 import {TranslateService} from '@ngx-translate/core';
+import {filterCoreAttributes} from '../../../../../shared/utils';
 
 @Component({
   selector: 'app-vo-settings-attributes',
@@ -38,7 +41,7 @@ export class VoSettingsAttributesComponent implements OnInit {
   list: AttributesListComponent;
 
   attributes: Attribute[] = [];
-  selected = new SelectionModel<Attribute>(true, []);
+  selection = new SelectionModel<Attribute>(true, []);
   voId: number;
   saveSuccessMessage: string;
   deleteSuccessMessage: string;
@@ -46,10 +49,8 @@ export class VoSettingsAttributesComponent implements OnInit {
   ngOnInit() {
     this.route.parent.parent.params.subscribe(parentParams => {
       this.voId = parentParams['voId'];
-      this.attributesService.getAllVoAttributes(this.voId).subscribe(attributes => {
-        this.attributes = attributes.filter(attribute =>
-          !attribute.namespace.includes('def:core')
-        );
+      this.attributesService.getAllAttributes(this.voId, 'vo').subscribe(attributes => {
+        this.attributes = filterCoreAttributes(attributes);
       });
     });
   }
@@ -57,16 +58,18 @@ export class VoSettingsAttributesComponent implements OnInit {
   onDelete() {
     const dialogRef = this.dialog.open(DeleteAttributeDialogComponent, {
       width: '450px',
-      data: {voId: this.voId, attributes: this.selected.selected}
+      data: {
+        entityId: this.voId,
+        entity: 'vo',
+        attributes: this.selection.selected
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.attributesService.getAllVoAttributes(this.voId).subscribe(attributes => {
-          this.attributes = attributes.filter(attribute =>
-            !attribute.namespace.includes('def:core')
-          );
-          this.selected.clear();
+        this.attributesService.getAllAttributes(this.voId, 'vo').subscribe(attributes => {
+          this.attributes = filterCoreAttributes(attributes);
+          this.selection.clear();
         });
       }
     });
@@ -75,11 +78,19 @@ export class VoSettingsAttributesComponent implements OnInit {
   onCreate() {
     const dialogRef = this.dialog.open(CreateAttributeDialogComponent, {
       width: '1050px',
-      data: {voId: this.voId, notEmptyAttributes: this.attributes, style: 'vo-theme'}
+      data: {
+        entityId: this.voId,
+        entity: 'vo',
+        notEmptyAttributes: this.attributes,
+        style: 'vo-theme'
+      }
     });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'saved') {
-        this.ngOnInit();
+        this.attributesService.getAllAttributes(this.voId, 'vo').subscribe(attributes => {
+          this.attributes = filterCoreAttributes(attributes);
+        });
       }
     });
   }
@@ -87,13 +98,11 @@ export class VoSettingsAttributesComponent implements OnInit {
   onSave() {
     // have to use this to update attribute with map in it, before saving it
     this.list.updateMapAttributes();
-    this.attributesService.setVoAttributes(this.voId, this.selected.selected).subscribe(() => {
-      this.attributesService.getAllVoAttributes(this.voId).subscribe(attributes => {
-        this.attributes = attributes.filter(attribute =>
-          !attribute.namespace.includes('def:core')
-        );
+    this.attributesService.setAttributes(this.voId, 'vo', this.selection.selected).subscribe(() => {
+      this.attributesService.getAllAttributes(this.voId, 'vo').subscribe(attributes => {
+        this.attributes = filterCoreAttributes(attributes);
         this.notificator.showSuccess(this.saveSuccessMessage);
-        this.selected.clear();
+        this.selection.clear();
       });
     });
   }

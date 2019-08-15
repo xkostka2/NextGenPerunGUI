@@ -47,6 +47,12 @@ export class FacilityOverviewComponent implements OnInit {
         url: `/facilities/${this.facility.id}/allowed-groups`,
         label: 'MENU_ITEMS.FACILITY.ALLOWED_GROUPS',
         style: 'facility-btn'
+      },
+      {
+        icon: 'settings2-white.svg',
+        url: `/facilities/${this.facility.id}/settings`,
+        label: 'MENU_ITEMS.FACILITY.SETTINGS',
+        style: 'facility-btn'
       }
     ];
   }

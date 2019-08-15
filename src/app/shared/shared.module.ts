@@ -27,7 +27,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatCardModule } from '@angular/material/card';
-import { MatStepperModule } from '@angular/material';
+import {MatChipsModule, MatStepperModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SideMenuComponent} from './side-menu/side-menu.component';
 import {SideMenuItemComponent} from './side-menu/side-menu-item/side-menu-item.component';
@@ -90,6 +90,19 @@ import { ApplicationFormWidgetDescriptionPipe } from './pipes/application-form-w
 import {
   DeleteApplicationFormMailDialogComponent
 } from './components/dialogs/delete-application-form-mail-dialog/delete-application-form-mail-dialog.component';
+import {AttributesListComponent} from './components/attributes-list/attributes-list.component';
+import {CreateAttributeDialogComponent} from './components/dialogs/create-attribute-dialog/create-attribute-dialog.component';
+import {AttributeValueComponent} from './components/attributes-list/attribute-value/attribute-value.component';
+import {
+  AttributeValueBooleanComponent
+} from './components/attributes-list/attribute-value/attribute-value-boolean/attribute-value-boolean.component';
+import {
+  AttributeValueListComponent
+} from './components/attributes-list/attribute-value/attribute-value-list/attribute-value-list.component';
+import {AttributeValueMapComponent} from './components/attributes-list/attribute-value/attribute-value-map/attribute-value-map.component';
+import {
+  AttributeValueStringComponent
+} from './components/attributes-list/attribute-value/attribute-value-string/attribute-value-string.component';
 
 @NgModule({
   imports: [
@@ -133,6 +146,7 @@ import {
     DragDropModule,
     NgxChartsModule,
     MatCardModule,
+    MatChipsModule
   ],
   exports: [
     PerunNavComponent,
@@ -200,6 +214,8 @@ import {
     TechnicalOwnersPipe,
     UsersListComponent,
     AnyToStringPipe,
+    AttributesListComponent,
+    MatChipsModule
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -226,8 +242,10 @@ import {
     RemoveMembersDialogComponent,
     ApplicationRejectDialogComponent,
     DeleteAttributeDialogComponent,
+    CreateAttributeDialogComponent
   ],
   declarations: [
+    AttributesListComponent,
     PerunNavComponent,
     SideMenuComponent,
     SideMenuItemComponent,
@@ -281,6 +299,12 @@ import {
     ApplicationRejectDialogComponent,
     AnyToStringPipe,
     DeleteAttributeDialogComponent,
+    CreateAttributeDialogComponent,
+    AttributeValueComponent,
+    AttributeValueBooleanComponent,
+    AttributeValueListComponent,
+    AttributeValueMapComponent,
+    AttributeValueStringComponent,
   ],
   providers: [
     AnyToStringPipe,

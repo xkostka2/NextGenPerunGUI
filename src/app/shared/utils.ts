@@ -228,3 +228,11 @@ export function indexOfVo(recent: number[], id: number) {
   return -1;
 }
 
+/**
+ * From given attributes array removes all core attributes.
+ *
+ * @param attributes non core attributes
+ */
+export function filterCoreAttributes(attributes: Attribute[]): Attribute[] {
+  return attributes.filter(attribute => !attribute.namespace.includes('def:core'));
+}

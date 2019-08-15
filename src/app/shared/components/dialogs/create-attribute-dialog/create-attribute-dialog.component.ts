@@ -1,16 +1,18 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
-import {AttributesService} from '../../../../core/services/api/attributes.service';
+import {AttributesService, Entity} from '../../../../core/services/api/attributes.service';
 import {Attribute} from '../../../../core/models/Attribute';
 import {AttributesListComponent} from '../../attributes-list/attributes-list.component';
 import {NotificatorService} from '../../../../core/services/common/notificator.service';
 import {TranslateService} from '@ngx-translate/core';
+import {filterCoreAttributes} from '../../../utils';
 
 export interface CreateAttributeDialogData {
-  voId: number;
+  entityId: number;
   notEmptyAttributes: Attribute[];
   style?: string;
+  entity: Entity;
 }
 
 @Component({
@@ -42,14 +44,12 @@ export class CreateAttributeDialogComponent implements OnInit {
     this.data.notEmptyAttributes.forEach(attribute => {
       unWanted.push(attribute.id);
     });
-    this.attributesService.getAttributeDefinitions(this.data.voId).subscribe(attributes => {
+    this.attributesService.getAttributeDefinitions(this.data.entityId, this.data.entity).subscribe(attributes => {
       this.attributes = attributes as Attribute[];
       this.attributes = this.attributes.filter(attribute => {
         return !unWanted.includes(attribute.id);
       });
-      this.attributes = this.attributes.filter(attribute =>
-        !attribute.namespace.includes('def:core')
-      );
+      this.attributes = filterCoreAttributes(this.attributes);
     });
   }
 
@@ -75,7 +75,7 @@ export class CreateAttributeDialogComponent implements OnInit {
       }, 5000);
       return;
     }
-    this.attributesService.setVoAttributes(this.data.voId, this.selected.selected).subscribe(() => {
+    this.attributesService.setAttributes(this.data.entityId, this.data.entity, this.selected.selected).subscribe(() => {
       this.notificator.showSuccess(this.saveSuccessMessage);
       this.selected.clear();
       this.dialogRef.close('saved');

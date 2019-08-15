@@ -35,6 +35,13 @@ import {
 import { VoSettingsApplicationFormPreviewComponent } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-preview/vo-settings-application-form-preview.component';
 // tslint:disable-next-line:max-line-length
 import { VoSettingsApplicationFormNotificationsComponent } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-notifications/vo-settings-application-form-notifications.component';
+import {MemberSettingsComponent} from './pages/member-detail-page/member-settings/member-settings.component';
+import {
+  MemberSettingsOverviewComponent
+} from './pages/member-detail-page/member-settings/member-settings-overview/member-settings-overview.component';
+import {
+  MemberSettingsAttributesComponent
+} from './pages/member-detail-page/member-settings/member-settings-attributes/member-settings-attributes.component';
 
 const routes: Routes = [
   {
@@ -132,6 +139,22 @@ const routes: Routes = [
         component: MemberGroupsComponent,
         data: {animation: 'MemberGroupsPage'}
       },
+      {
+        path: 'settings',
+        component: MemberSettingsComponent,
+        children: [
+          {
+            path: '',
+            component: MemberSettingsOverviewComponent,
+            data: {animation: 'MemberSettingsOverviewPage'}
+          },
+          {
+            path: 'attributes',
+            component: MemberSettingsAttributesComponent,
+            data: {animation: 'MemberSettingsAttributesPage'}
+          }
+        ]
+      }
     ]
   },
   {

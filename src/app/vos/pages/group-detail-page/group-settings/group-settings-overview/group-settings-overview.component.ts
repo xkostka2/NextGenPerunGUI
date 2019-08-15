@@ -13,6 +13,7 @@ import {GroupService} from '../../../../../core/services/api/group.service';
   styleUrls: ['./group-settings-overview.component.scss']
 })
 export class GroupSettingsOverviewComponent implements OnInit {
+
   @HostBinding('class.router-component') true;
 
   constructor(
@@ -53,6 +54,5 @@ export class GroupSettingsOverviewComponent implements OnInit {
         style: 'group-btn'
       }
     ];
-
   }
 }

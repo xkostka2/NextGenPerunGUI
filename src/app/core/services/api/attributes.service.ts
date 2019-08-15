@@ -6,6 +6,8 @@ import {AttributeDefinition} from '../../models/AttributeDefinition';
 import {Graph} from '../../models/Graph';
 import {HttpParams} from '@angular/common/http';
 
+export type Entity = 'vo' | 'group' | 'user' | 'member' | 'facility' | 'resource';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -43,27 +45,29 @@ export class AttributesService {
       new HttpParams(), showNotificationOnError);
   }
 
-  getAllVoAttributes(voId: number, showNotificationOnError = true): Observable<Attribute[]> {
-    return this.apiService.get(`json/attributesManager/getAttributes?vo=${voId}`, new HttpParams(), showNotificationOnError);
+  getAllAttributes(entityId: number, entity: Entity, showNotificationOnError = true): Observable<Attribute[]> {
+    return this.apiService.get(`json/attributesManager/getAttributes?${entity}=${entityId}`, new HttpParams(), showNotificationOnError);
   }
 
-  deleteVoAttributes(voId: number, attributeIDs: number[], showNotificationOnError = true) {
-    return this.apiService.post('json/attributesManager/removeAttributes', {
-      vo: voId,
-      attributes: attributeIDs
-    }, showNotificationOnError);
+  deleteAttributes(entityId: number, entity: Entity, attributeIDs: number[], showNotificationOnError = true) {
+    const payload = {};
+    payload[entity] = entityId;
+    payload['attributes'] = attributeIDs;
+
+    return this.apiService.post('json/attributesManager/removeAttributes', payload, showNotificationOnError);
   }
 
-  getAttributeDefinitions(voId: number, showNotificationOnError = true): Observable<AttributeDefinition[]> {
-    return this.apiService.get(`json/attributesManager/getAttributesDefinitionWithRights?vo=${voId}`,
+  getAttributeDefinitions(voId: number, entity: string, showNotificationOnError = true): Observable<AttributeDefinition[]> {
+    return this.apiService.get(`json/attributesManager/getAttributesDefinitionWithRights?${entity}=${voId}`,
       new HttpParams(), showNotificationOnError);
   }
 
-  setVoAttributes(voId: number, attributes: Attribute[], showNotificationOnError = true): Observable<void> {
-    return this.apiService.post(`json/attributesManager/setAttributes`, {
-      vo: voId,
-      attributes: attributes
-    }, showNotificationOnError);
+  setAttributes(entityId: number, entity: Entity, attributes: Attribute[], showNotificationOnError = true): Observable<number> {
+    const payload = {};
+    payload[entity] = entityId;
+    payload['attributes'] = attributes;
+
+    return this.apiService.post('json/attributesManager/setAttributes', payload);
   }
 }
 

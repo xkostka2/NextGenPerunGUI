@@ -29,9 +29,7 @@ import {ApplicationDetailComponent} from './components/application-detail/applic
 import {GroupMembersComponent} from './pages/group-detail-page/group-members/group-members.component';
 import {GroupResourcesComponent} from './pages/group-detail-page/group-resources/group-resources.component';
 import {VoSelectTableComponent} from './components/vo-select-table/vo-select-table.component';
-import {AttributesListComponent} from '../shared/components/attributes-list/attributes-list.component';
 // tslint:disable-next-line:max-line-length
-import {CreateAttributeDialogComponent} from '../shared/components/dialogs/create-attribute-dialog/create-attribute-dialog.component';
 import {GroupSettingsComponent} from './pages/group-detail-page/group-settings/group-settings.component';
 import {
   GroupSettingsAttributesComponent
@@ -42,11 +40,11 @@ import {
 import {
   VoSettingsApplicationFormComponent
 } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form.component';
-import { ApplicationFormListComponent } from './components/application-form-list/application-form-list.component';
+import {ApplicationFormListComponent} from './components/application-form-list/application-form-list.component';
 // tslint:disable-next-line:max-line-length
-import { VoSettingsApplicationFormPreviewComponent } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-preview/vo-settings-application-form-preview.component';
+import {VoSettingsApplicationFormPreviewComponent} from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-preview/vo-settings-application-form-preview.component';
 // tslint:disable-next-line:max-line-length
-import { VoSettingsApplicationFormNotificationsComponent } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-notifications/vo-settings-application-form-notifications.component';
+import {VoSettingsApplicationFormNotificationsComponent} from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-notifications/vo-settings-application-form-notifications.component';
 import {AttributeValueComponent} from '../shared/components/attributes-list/attribute-value/attribute-value.component';
 // tslint:disable-next-line:max-line-length
 import {AttributeValueBooleanComponent} from '../shared/components/attributes-list/attribute-value/attribute-value-boolean/attribute-value-boolean.component';
@@ -56,17 +54,21 @@ import {AttributeValueListComponent} from '../shared/components/attributes-list/
 import {AttributeValueMapComponent} from '../shared/components/attributes-list/attribute-value/attribute-value-map/attribute-value-map.component';
 // tslint:disable-next-line:max-line-length
 import {AttributeValueStringComponent} from '../shared/components/attributes-list/attribute-value/attribute-value-string/attribute-value-string.component';
-import {MatChipsModule} from '@angular/material';
+import { MemberSettingsComponent } from './pages/member-detail-page/member-settings/member-settings.component';
+import {
+  MemberSettingsAttributesComponent
+} from './pages/member-detail-page/member-settings/member-settings-attributes/member-settings-attributes.component';
+import {
+  MemberSettingsOverviewComponent
+} from './pages/member-detail-page/member-settings/member-settings-overview/member-settings-overview.component';
 
 @NgModule({
   imports: [
     CommonModule,
     VosRoutingModule,
     SharedModule,
-    MatChipsModule
   ],
   exports: [
-    AttributesListComponent,
     MembersListComponent
   ],
   declarations: [
@@ -95,7 +97,6 @@ import {MatChipsModule} from '@angular/material';
     VoSettingsManagersComponent,
     ApplicationDetailComponent,
     GroupMembersComponent,
-    AttributesListComponent,
     GroupMembersComponent,
     GroupApplicationsComponent,
     GroupResourcesComponent,
@@ -109,15 +110,11 @@ import {MatChipsModule} from '@angular/material';
     VoSettingsApplicationFormNotificationsComponent,
     GroupSettingsOverviewComponent,
     VoSelectTableComponent,
-    CreateAttributeDialogComponent,
-    AttributeValueComponent,
-    AttributeValueBooleanComponent,
-    AttributeValueListComponent,
-    AttributeValueMapComponent,
-    AttributeValueStringComponent,
+    MemberSettingsComponent,
+    MemberSettingsAttributesComponent,
+    MemberSettingsOverviewComponent,
   ],
   entryComponents: [
-    CreateAttributeDialogComponent
   ],
 })
 export class VosModule {

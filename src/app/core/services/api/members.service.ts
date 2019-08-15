@@ -15,6 +15,10 @@ export class MembersService {
   ) {
   }
 
+  getMemberById(memberId: number, showNotificationOnError = true): Observable<Member> {
+    return this.apiService.get(`json/membersManager/getMemberById?id=${memberId}`, new HttpParams(), showNotificationOnError);
+  }
+
   findCompleteRichMembers(voId: number, searchString: string, attrsNames: string[], showNotificationOnError = true):
     Observable<RichMember[]> {
     return this.apiService.post('json/membersManager/findCompleteRichMembers',

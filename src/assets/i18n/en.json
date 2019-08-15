@@ -41,10 +41,34 @@
       "TABLE_GROUP_ID": "Id",
       "TABLE_GROUP_NAME": "Name",
       "ALL": "All"
+    },
+    "SETTINGS": {
+      "ATTRIBUTES": {
+        "TITLE": "Attributes",
+        "DELETE": "Remove selected",
+        "FILTER": "Filter by id, name, value or description",
+        "SAVE": "Save selected",
+        "CREATE": "Add...",
+        "CANCEL": "Cancel",
+        "SUCCESS_DELETE": "Attributes deleted successfully",
+        "SUCCESS_SAVE": "Attributes saved successfully"
+      }
     }
   },
   "RESOURCE_DETAIL": {
-    "TITLE": "Resource - "
+    "TITLE": "Resource - ",
+    "SETTINGS": {
+      "ATTRIBUTES": {
+        "TITLE": "Attributes",
+        "DELETE": "Remove selected",
+        "FILTER": "Filter by id, name, value or description",
+        "SAVE": "Save selected",
+        "CREATE": "Add...",
+        "CANCEL": "Cancel",
+        "SUCCESS_DELETE": "Attributes deleted successfully",
+        "SUCCESS_SAVE": "Attributes saved successfully"
+      }
+    }
   },
   "VO_DETAIL": {
     "TITLE": "Organization - ",
@@ -294,6 +318,18 @@
       "TITLE": "Resources",
       "DELETE": "Remove selected",
       "NO_RESOURCES_WARNING": "Group has no resources assigned."
+    },
+    "SETTINGS": {
+      "ATTRIBUTES": {
+        "TITLE": "Attributes",
+        "DELETE": "Remove selected",
+        "FILTER": "Filter by id, name, value or description",
+        "SAVE": "Save selected",
+        "CREATE": "Add...",
+        "CANCEL": "Cancel",
+        "SUCCESS_DELETE": "Attributes deleted successfully",
+        "SUCCESS_SAVE": "Attributes saved successfully"
+      }
     }
   },
   "MEMBER_DETAIL": {
@@ -305,6 +341,18 @@
     },
     "GROUPS": {
       "TITLE": "Member groups"
+    },
+    "SETTINGS": {
+      "ATTRIBUTES": {
+        "TITLE": "Attributes",
+        "DELETE": "Remove selected",
+        "FILTER": "Filter by id, name, value or description",
+        "SAVE": "Save selected",
+        "CREATE": "Add...",
+        "CANCEL": "Cancel",
+        "SUCCESS_DELETE": "Attributes deleted successfully",
+        "SUCCESS_SAVE": "Attributes saved successfully"
+      }
     }
   },
   "MENU_ITEMS": {
@@ -323,10 +371,14 @@
     "FACILITY": {
       "OVERVIEW": "Overview",
       "RESOURCES": "Resources",
-      "ALLOWED_GROUPS": "Allowed groups"
+      "ALLOWED_GROUPS": "Allowed groups",
+      "SETTINGS": "Settings",
+      "ATTRIBUTES": "Attributes"
     },
     "RESOURCE": {
-      "OVERVIEW": "Overview"
+      "OVERVIEW": "Overview",
+      "SETTINGS": "Settings",
+      "ATTRIBUTES": "Attributes"
     },
     "GROUP": {
       "OVERVIEW": "Overview",
@@ -339,7 +391,9 @@
     },
     "MEMBER": {
       "OVERVIEW": "Overview",
-      "GROUPS": "Groups"
+      "GROUPS": "Groups",
+      "SETTINGS": "Settings",
+      "ATTRIBUTES": "Attributes"
     },
     "ADMIN": {
       "TITLE": "Perun admin",

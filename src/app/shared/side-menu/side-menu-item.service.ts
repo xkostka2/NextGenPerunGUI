@@ -105,6 +105,19 @@ export class SideMenuItemService {
           label: 'MENU_ITEMS.FACILITY.ALLOWED_GROUPS',
           url: [`/facilities/${facility.id}/allowed-groups`],
           activatedRegex: '/facilities/\\d+/allowed-groups'
+        },
+        {
+          label: 'MENU_ITEMS.FACILITY.SETTINGS',
+          url: ['/facilities', facility.id, 'settings'],
+          activatedRegex: '/facilities/\\d+/settings$',
+          children: [
+            {
+              label: 'MENU_ITEMS.FACILITY.ATTRIBUTES',
+              url: ['/facilities', facility.id, 'settings', 'attributes'],
+              activatedRegex: '/facilities/\\d+/settings/attributes$'
+            }
+          ],
+          showChildrenRegex: '/facilities/\\d+/settings'
         }
       ],
       colorClass: 'facility-item',
@@ -124,13 +137,26 @@ export class SideMenuItemService {
           label: 'MENU_ITEMS.RESOURCE.OVERVIEW',
           url: ['/facilities', resource.facilityId, 'resources', resource.id],
           activatedRegex: '/facilities/\\d+/resources/\\d+$'
+        },
+        {
+          label: 'MENU_ITEMS.RESOURCE.SETTINGS',
+          url: [`/facilities/${resource.facilityId}/resources/${resource.id}/settings`],
+          activatedRegex: '/facilities/\\d+/resources/\\d+/settings$',
+          children: [
+            {
+              label: 'MENU_ITEMS.RESOURCE.ATTRIBUTES',
+              url: [`/facilities/${resource.facilityId}/resources/${resource.id}/settings/attributes`],
+              activatedRegex: '/facilities/\\d+/resources/\\d+/settings/attributes$'
+            }
+          ],
+          showChildrenRegex: '/facilities/\\d+/resources/\\d+/settings'
         }
       ],
       colorClass: 'resource-item',
       icon: 'manage_facility_white.svg',
       // labelClass: 'resource-text',
       activatedClass: 'resource-item-activated',
-      linksClass: 'resource-item-links'
+      linksClass: 'resource-item-links',
     };
   }
 
@@ -267,6 +293,19 @@ export class SideMenuItemService {
           label: 'MENU_ITEMS.MEMBER.GROUPS',
           url: [`//organizations/${member.voId}/members/${member.id}/groups`],
           activatedRegex: '/organizations/\\d+/members/\\d+/groups'
+        },
+        {
+          label: 'MENU_ITEMS.MEMBER.SETTINGS',
+          url: [`/organizations/${member.voId}/members/${member.id}/settings`],
+          activatedRegex: '/organizations/\\d+/members/\\d+/settings$',
+          children: [
+            {
+              label: 'MENU_ITEMS.MEMBER.ATTRIBUTES',
+              url: [`/organizations/${member.voId}/members/${member.id}/settings/attributes`],
+              activatedRegex: '/organizations/\\d+/members/\\d+/settings/attributes$'
+            }
+          ],
+          showChildrenRegex: '/organizations/\\d+/members/\\d+/settings'
         }
       ],
       colorClass: 'member-item',
