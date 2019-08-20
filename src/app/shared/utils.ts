@@ -169,12 +169,12 @@ export function delay(ms: number) {
  * @param array of all entities
  */
 export function getRecentlyVisited(key: string, array: any[]): any[] {
-  const recentId: number[] = JSON.parse(localStorage.getItem(key));
-  if (recentId) {
+  const recentIds: number[] = JSON.parse(localStorage.getItem(key));
+  if (recentIds) {
     const recentlyVisited: any[] = [];
-    for (let i = 0; i < recentId.length; i ++) {
+    for (let i = 0; i < recentIds.length; i ++) {
       array.forEach((item, index) => {
-        if (item.id === recentId[i]) {
+        if (item.id === recentIds[i]) {
           recentlyVisited.push(item);
           array.splice(index, 1);
         }
@@ -185,6 +185,19 @@ export function getRecentlyVisited(key: string, array: any[]): any[] {
     }
   }
   return array;
+}
+
+/**
+ * Returns saved ids for given key.
+ *
+ * @param key of local storage
+ */
+export function getRecentlyVisitedIds(key: string): number[] {
+  const recentIds: number[] = JSON.parse(localStorage.getItem(key));
+  if (recentIds) {
+    return recentIds;
+  }
+  return [];
 }
 
 

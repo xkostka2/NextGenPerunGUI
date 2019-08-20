@@ -14,6 +14,9 @@ export class VoSelectTableComponent implements OnChanges, AfterViewInit {
   @Input()
   vos: Vo[] = [];
 
+  @Input()
+  recentIds: number[];
+
   @ViewChild(MatSort, { static: true }) set matSort(ms: MatSort) {
     this.sort = ms;
     this.setDataSource();
@@ -23,7 +26,7 @@ export class VoSelectTableComponent implements OnChanges, AfterViewInit {
 
   private sort: MatSort;
 
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['id', 'recent', 'name'];
   dataSource: MatTableDataSource<Vo>;
 
   ngOnChanges(changes: SimpleChanges) {

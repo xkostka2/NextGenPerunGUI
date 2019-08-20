@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {VoService} from '../../../core/services/api/vo.service';
 import {Vo} from '../../../core/models/Vo';
 import {SideMenuService} from '../../../core/services/common/side-menu.service';
-import {getRecentlyVisited} from '../../../shared/utils';
+import {getRecentlyVisitedIds, getRecentlyVisited} from '../../../shared/utils';
 
 @Component({
   selector: 'app-vo-select-page',
@@ -17,11 +17,13 @@ export class VoSelectPageComponent implements OnInit {
   ) { }
 
   vos: Vo[] = [];
+  recentIds = [];
 
   ngOnInit() {
     this.sideMenuService.setAccessMenuItems([]);
     this.voService.getVos().subscribe(vos => {
       this.vos = getRecentlyVisited('vos', vos);
+      this.recentIds = getRecentlyVisitedIds('vos');
     });
   }
 }

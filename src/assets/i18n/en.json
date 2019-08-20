@@ -11,7 +11,8 @@
     "FILTER_PLACEHOLDER": "Filter by name",
     "TABLE": {
       "ID": "Id",
-      "NAME": "Name"
+      "NAME": "Name",
+      "RECENT": "Recently viewed"
     }
   },
   "FACILITY_MANAGEMENT": {
@@ -21,7 +22,8 @@
       "ID": "Id",
       "NAME": "Name",
       "DESCRIPTION": "Description",
-      "TECHNICAL_OWNERS": "Technical owners"
+      "TECHNICAL_OWNERS": "Technical owners",
+      "RECENT": "Recently viewed"
     }
   },
   "USER_MANAGEMENT": {
@@ -340,7 +342,9 @@
       "MEMBERSHIP": "Membership"
     },
     "GROUPS": {
-      "TITLE": "Member groups"
+      "TITLE": "Member groups",
+      "TABLE_GROUP_ID": "Id",
+      "TABLE_GROUP_NAME": "Name"
     },
     "SETTINGS": {
       "ATTRIBUTES": {
@@ -621,6 +625,7 @@
     "ID": "Id",
     "NAME": "Name",
     "STATUS": "Status",
+    "GROUP_STATUS": "Group status",
     "EMAIL": "Email",
     "LOGINS": "Logins"
   },

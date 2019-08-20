@@ -26,6 +26,7 @@
     <app-members-list
       [selection]="selection"
       [members]="members"
+      [hideColumns]="['groupStatus']"
       *ngIf="members.length !== 0">
     </app-members-list>
 

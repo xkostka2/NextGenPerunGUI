@@ -12,13 +12,13 @@ export class VisualizerOverviewComponent {
 
   items: MenuItem[] = [
     {
-      icon: 'attributes-white.svg',
+      icon: 'module_dependencies.svg',
       url: `attrDependencies`,
       label: 'MENU_ITEMS.VISUALIZER.ATTR_DEPENDENCIES',
       style: 'admin-btn'
     },
     {
-      icon: 'attributes-white.svg',
+      icon: 'user_destination_relationship.svg',
       url: `userDestinationRelationship`,
       label: 'MENU_ITEMS.VISUALIZER.USER_DESTINATION',
       style: 'admin-btn'

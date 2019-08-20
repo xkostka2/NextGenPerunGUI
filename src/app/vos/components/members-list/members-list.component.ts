@@ -34,10 +34,14 @@ export class MembersListComponent implements OnChanges, AfterViewInit {
   @Input()
   selection: SelectionModel<RichMember>;
 
-  displayedColumns: string[] = ['checkbox', 'id', 'fullName', 'status', 'email'];
+  @Input()
+  hideColumns: string[] = [];
+
+  displayedColumns: string[] = ['checkbox', 'id', 'fullName', 'status', 'groupStatus', 'email'];
   dataSource: MatTableDataSource<RichMember>;
 
   setDataSource() {
+    this.displayedColumns = this.displayedColumns.filter(x => !this.hideColumns.includes(x));
     if (!!this.dataSource) {
       this.dataSource.sort = this.sort;
 
@@ -61,6 +65,7 @@ export class MembersListComponent implements OnChanges, AfterViewInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    this.displayedColumns = this.displayedColumns.filter(x => !this.hideColumns.includes(x));
     this.dataSource = new MatTableDataSource<RichMember>(this.members);
     this.setDataSource();
   }

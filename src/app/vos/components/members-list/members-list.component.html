@@ -42,6 +42,14 @@
           </i>
         </td>
       </ng-container>
+      <ng-container matColumnDef="groupStatus">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'MEMBERS_LIST.GROUP_STATUS' | translate}}</th>
+        <td mat-cell *matCellDef="let member">
+          <i class="material-icons {{member.groupStatus | memberStatusIconColor}}" matTooltip="{{member.groupStatus}}" matTooltipPosition="left">
+            {{member.groupStatus | memberStatusIcon}}
+          </i>
+        </td>
+      </ng-container>
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'MEMBERS_LIST.EMAIL' | translate}}</th>
         <td mat-cell *matCellDef="let member">{{member | memberEmail}}</td>

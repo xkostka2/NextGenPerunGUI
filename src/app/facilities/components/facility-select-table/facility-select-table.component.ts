@@ -14,6 +14,9 @@ export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
   @Input()
   facilities: RichFacility[];
 
+  @Input()
+  recentIds: number[];
+
   @ViewChild(MatSort, { static: true }) set matSort(ms: MatSort) {
     this.sort = ms;
     this.setDataSource();
@@ -23,7 +26,7 @@ export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
 
   private sort: MatSort;
 
-  displayedColumns: string[] = ['id', 'name', 'description', 'technicalOwners'];
+  displayedColumns: string[] = ['id', 'recent', 'name', 'description', 'technicalOwners'];
   dataSource: MatTableDataSource<RichFacility>;
 
   ngOnChanges(changes: SimpleChanges) {
