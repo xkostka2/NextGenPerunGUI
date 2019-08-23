@@ -1,0 +1,18 @@
+.redBackground {
+  background-color: #FFC4C4;
+}
+
+.greenBackground {
+  background-color: #c4ffcb;
+}
+
+.headers-align .mat-expansion-panel-header-title,
+.headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.headers-align .mat-expansion-panel-header-description {
+  margin-left: 15%;
+  justify-content: space-between;
+  align-items: center;
+}

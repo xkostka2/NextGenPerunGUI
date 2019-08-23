@@ -42,6 +42,10 @@ import {
 import {
   MemberSettingsAttributesComponent
 } from './pages/member-detail-page/member-settings/member-settings-attributes/member-settings-attributes.component';
+import {VoResourcesOverviewComponent} from './pages/vo-detail-page/vo-resources/vo-resources-overview/vo-resources-overview.component';
+import {VoResourcesPreviewComponent} from './pages/vo-detail-page/vo-resources/vo-resources-preview/vo-resources-preview.component';
+import {VoResourcesStatesComponent} from './pages/vo-detail-page/vo-resources/vo-resources-states/vo-resources-states.component';
+import {VoResourcesTagsComponent} from './pages/vo-detail-page/vo-resources/vo-resources-tags/vo-resources-tags.component';
 
 const routes: Routes = [
   {
@@ -70,7 +74,28 @@ const routes: Routes = [
       {
         path: 'resources',
         component: VoResourcesComponent,
-        data: {animation: 'VoResourcesPage'}
+        children: [
+          {
+            path: '',
+            component: VoResourcesOverviewComponent,
+            data: {animation: 'VoResourcesOverviewPage'}
+          },
+          {
+            path: 'preview',
+            component: VoResourcesPreviewComponent,
+            data: {animation: 'VoResourcesPreviewPage'}
+          },
+          {
+            path: 'states',
+            component: VoResourcesStatesComponent,
+            data: {animation: 'VoResourcesStatesPage'}
+          },
+          {
+            path: 'tags',
+            component: VoResourcesTagsComponent,
+            data: {animation: 'VoResourcesTagsPage'}
+          }
+        ]
       },
       {
         path: 'applications',

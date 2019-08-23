@@ -103,6 +103,8 @@ import {AttributeValueMapComponent} from './components/attributes-list/attribute
 import {
   AttributeValueStringComponent
 } from './components/attributes-list/attribute-value/attribute-value-string/attribute-value-string.component';
+import { CreateResourceTagDialogComponent } from './components/dialogs/create-resource-tag-dialog/create-resource-tag-dialog.component';
+import { DeleteResourceTagDialogComponent } from './components/dialogs/delete-resource-tag-dialog/delete-resource-tag-dialog.component';
 
 @NgModule({
   imports: [
@@ -215,7 +217,8 @@ import {
     UsersListComponent,
     AnyToStringPipe,
     AttributesListComponent,
-    MatChipsModule
+    MatChipsModule,
+    MatExpansionModule
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -242,7 +245,9 @@ import {
     RemoveMembersDialogComponent,
     ApplicationRejectDialogComponent,
     DeleteAttributeDialogComponent,
-    CreateAttributeDialogComponent
+    CreateAttributeDialogComponent,
+    CreateResourceTagDialogComponent,
+    DeleteResourceTagDialogComponent
   ],
   declarations: [
     AttributesListComponent,
@@ -305,6 +310,8 @@ import {
     AttributeValueListComponent,
     AttributeValueMapComponent,
     AttributeValueStringComponent,
+    CreateResourceTagDialogComponent,
+    DeleteResourceTagDialogComponent
   ],
   providers: [
     AnyToStringPipe,

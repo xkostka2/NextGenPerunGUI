@@ -25,7 +25,7 @@
            [ngClass]="isActive(currentUrl, link.activatedRegex) && item.activatedClass !== undefined ? item.activatedClass : ''">
           {{link.label | translate}}
         </a>
-        <div @rollInOut *ngIf="isActive(currentUrl, link.showChildrenRegex)">
+        <div class="entity-menu-item-sub-menu" @rollInOut *ngIf="isActive(currentUrl, link.showChildrenRegex)">
           <a class="pl-5" *ngFor="let child of link?.children"
              [routerLink]="child.url"
              [class.activated]="isActive(currentUrl, child.activatedRegex) && item.activatedClass === undefined"

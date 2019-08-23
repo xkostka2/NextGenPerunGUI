@@ -1,0 +1,41 @@
+<h1 class="page-subtitle">{{'VO_DETAIL.RESOURCES.STATES.TITLE' | translate}}</h1>
+
+<mat-spinner *ngIf="loading" class="ml-auto mr-auto">
+</mat-spinner>
+
+<div *ngIf="!loading">
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        {{'VO_DETAIL.RESOURCES.STATES.ERROR_RESOURCES' | translate}}
+        <span class="badge badge-danger ml-1">{{errorPropagation.length}}</span>
+      </ng-template>
+      <ng-template matTabContent>
+        <div *ngIf="errorPropagation.length === 0" class="perun-alert info-alert">
+          {{'VO_DETAIL.RESOURCES.STATES.NO_RESOURCES_IN_ERROR' | translate}}
+        </div>
+
+        <app-state-tab
+        [propagation]="errorPropagation">
+        </app-state-tab>
+      </ng-template>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        {{'VO_DETAIL.RESOURCES.STATES.OK_RESOURCES' | translate}}
+        <span class="badge badge-success ml-1">{{okPropagation.length}}</span>
+      </ng-template>
+
+      <ng-template matTabContent>
+
+        <div *ngIf="okPropagation.length === 0" class="perun-alert info-alert">
+          {{'VO_DETAIL.RESOURCES.STATES.NO_RESOURCES_IN_OK' | translate}}
+        </div>
+
+        <app-state-tab
+        [propagation]="okPropagation">
+        </app-state-tab>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>

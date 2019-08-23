@@ -61,6 +61,11 @@ import {
 import {
   MemberSettingsOverviewComponent
 } from './pages/member-detail-page/member-settings/member-settings-overview/member-settings-overview.component';
+import { VoResourcesPreviewComponent } from './pages/vo-detail-page/vo-resources/vo-resources-preview/vo-resources-preview.component';
+import { VoResourcesTagsComponent } from './pages/vo-detail-page/vo-resources/vo-resources-tags/vo-resources-tags.component';
+import { VoResourcesStatesComponent } from './pages/vo-detail-page/vo-resources/vo-resources-states/vo-resources-states.component';
+import { VoResourcesOverviewComponent } from './pages/vo-detail-page/vo-resources/vo-resources-overview/vo-resources-overview.component';
+import { StateTabComponent } from './pages/vo-detail-page/vo-resources/vo-resources-states/state-tab/state-tab.component';
 
 @NgModule({
   imports: [
@@ -113,6 +118,11 @@ import {
     MemberSettingsComponent,
     MemberSettingsAttributesComponent,
     MemberSettingsOverviewComponent,
+    VoResourcesPreviewComponent,
+    VoResourcesTagsComponent,
+    VoResourcesStatesComponent,
+    VoResourcesOverviewComponent,
+    StateTabComponent
   ],
   entryComponents: [
   ],

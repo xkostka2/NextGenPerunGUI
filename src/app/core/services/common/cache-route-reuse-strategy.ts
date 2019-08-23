@@ -2,7 +2,6 @@ import {RouteReuseStrategy} from '@angular/router/';
 import {ActivatedRouteSnapshot, DetachedRouteHandle} from '@angular/router';
 import {VoMembersComponent} from '../../../vos/pages/vo-detail-page/vo-members/vo-members.component';
 import {VoGroupsComponent} from '../../../vos/pages/vo-detail-page/vo-groups/vo-groups.component';
-import {VoResourcesComponent} from '../../../vos/pages/vo-detail-page/vo-resources/vo-resources.component';
 import {VoApplicationsComponent} from '../../../vos/pages/vo-detail-page/vo-applications/vo-applications.component';
 import {GroupApplicationsComponent} from '../../../vos/pages/group-detail-page/group-applications/group-applications.component';
 import {GroupResourcesComponent} from '../../../vos/pages/group-detail-page/group-resources/group-resources.component';
@@ -13,6 +12,10 @@ import {
 } from '../../../facilities/pages/facility-detail-page/facility-allowed-groups/facility-allowed-groups.component';
 import {FacilityResourcesComponent} from '../../../facilities/pages/facility-detail-page/facility-resources/facility-resources.component';
 import {MemberGroupsComponent} from '../../../vos/pages/member-detail-page/member-groups/member-groups.component';
+import {
+  VoResourcesPreviewComponent
+} from '../../../vos/pages/vo-detail-page/vo-resources/vo-resources-preview/vo-resources-preview.component';
+import {VoResourcesStatesComponent} from '../../../vos/pages/vo-detail-page/vo-resources/vo-resources-states/vo-resources-states.component';
 
 export class CachedRoute {
   routeHandle: DetachedRouteHandle;
@@ -30,8 +33,9 @@ export class CacheRouteReuseStrategy implements RouteReuseStrategy {
       components: [
         VoMembersComponent.id,
         VoGroupsComponent.id,
-        VoResourcesComponent.id,
-        VoApplicationsComponent.id
+        VoApplicationsComponent.id,
+        VoResourcesPreviewComponent.id,
+        VoResourcesStatesComponent.id
       ]
     },
     {

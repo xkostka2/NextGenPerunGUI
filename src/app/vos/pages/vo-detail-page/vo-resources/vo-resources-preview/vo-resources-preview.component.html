@@ -1,0 +1,13 @@
+<div>
+  <h1 class="page-subtitle">{{'VO_DETAIL.RESOURCES.LIST.TITLE' | translate}}</h1>
+
+  <button mat-flat-button color="warn" [disabled]="selected.selected.length === 0">
+    {{'VO_DETAIL.RESOURCES.LIST.DELETE' | translate}}
+  </button>
+
+  <app-resources-list
+    [resources]="resources"
+    [selection]="selected">
+  </app-resources-list>
+</div>
+

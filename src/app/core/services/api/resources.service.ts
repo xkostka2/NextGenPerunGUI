@@ -5,6 +5,7 @@ import {ApiService} from './api.service';
 import {HttpParams} from '@angular/common/http';
 import {Resource} from '../../models/Resource';
 import {Service} from '../../models/Service';
+import {ResourceTag} from '../../models/ResourceTag';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +52,31 @@ export class ResourcesService {
     return this.apiService.post('json/resourcesManager/deleteResource', {
       resource : resourceId,
       forceDelete : 1
+    }, showNotificationOnError);
+  }
+
+  getAllResourcesTagsForVo(voId: number, showNotificationOnError = true): Observable<ResourceTag[]> {
+    return this.apiService.post('json/resourcesManager/getAllResourcesTagsForVo', {
+      'vo': voId
+    }, showNotificationOnError);
+  }
+
+  updateResourceTag(resourceTag: ResourceTag, showNotificationOnError = true): Observable<ResourceTag> {
+    return this.apiService.post('json/resourcesManager/updateResourceTag', {
+      'resourceTag': resourceTag
+    }, showNotificationOnError);
+  }
+
+  createResourceTag(tagName: string, vo: number, showNotificationOnError = true): Observable<ResourceTag> {
+    return this.apiService.post('json/resourcesManager/createResourceTag', {
+      'tagName': tagName,
+      'vo': vo
+    }, showNotificationOnError);
+  }
+
+  deleteResourceTag(resourceTag: ResourceTag, showNotificationOnError = true) {
+    return this.apiService.post('json/resourcesManager/deleteResourceTag', {
+      'resourceTag': resourceTag
     }, showNotificationOnError);
   }
 }

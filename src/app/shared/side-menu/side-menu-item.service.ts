@@ -235,7 +235,25 @@ export class SideMenuItemService {
         {
           label: 'MENU_ITEMS.VO.RESOURCES',
           url: [`/organizations/${vo.id}/resources`],
-          activatedRegex: '/organizations/\\d+/resources'
+          activatedRegex: '/organizations/\\d+/resources$',
+          children: [
+            {
+              label: 'MENU_ITEMS.VO.RESOURCE_PREVIEW',
+              url: [`/organizations/${vo.id}/resources/preview`],
+              activatedRegex: '/organizations/\\d+/resources/preview$'
+            },
+            {
+              label: 'MENU_ITEMS.VO.RESOURCE_TAGS',
+              url: [`/organizations/${vo.id}/resources/tags`],
+              activatedRegex: '/organizations/\\d+/resources/tags$'
+            },
+            {
+              label: 'MENU_ITEMS.VO.RESOURCE_STATES',
+              url: [`/organizations/${vo.id}/resources/states`],
+              activatedRegex: '/organizations/\\d+/resources/states$'
+            }
+          ],
+          showChildrenRegex: '/organizations/\\d+/resources'
         },
         {
           label: 'MENU_ITEMS.VO.APPLICATIONS',

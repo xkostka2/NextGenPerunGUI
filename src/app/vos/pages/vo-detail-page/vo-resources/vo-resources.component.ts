@@ -1,45 +1,48 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Vo} from '../../../../core/models/Vo';
-import {SelectionModel} from '@angular/cdk/collections';
-import {ResourcesService} from '../../../../core/services/api/resources.service';
-import {RichResource} from '../../../../core/models/RichResource';
-import {SideMenuService} from '../../../../core/services/common/side-menu.service';
-import {VoService} from '../../../../core/services/api/vo.service';
+import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {fadeIn} from '../../../../shared/animations/Animations';
 
 @Component({
   selector: 'app-vo-resources',
   templateUrl: './vo-resources.component.html',
-  styleUrls: ['./vo-resources.component.scss']
+  styleUrls: ['./vo-resources.component.scss'],
+  animations: [
+    fadeIn
+  ]
 })
 export class VoResourcesComponent implements OnInit {
 
-  static id = 'VoResourcesComponent';
-
   @HostBinding('class.router-component') true;
 
-  constructor(private resourcesService: ResourcesService,
-              private sideMenuService: SideMenuService,
-              private voService: VoService,
-              private route: ActivatedRoute) {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.currentUrl = router.url;
+    this.backButtonDisplayed = this.backButtonRegex.test(this.currentUrl);
 
-  vo: Vo;
-  resources: RichResource[] = [];
-  selected = new SelectionModel<RichResource>(true, []);
+    router.events.subscribe((_: NavigationEnd) => {
+      if (_ instanceof NavigationEnd) {
+        this.currentUrl = _.url;
 
-  ngOnInit() {
-    this.route.parent.params.subscribe(parentParams => {
-      const voId = parentParams['voId'];
-
-      this.voService.getVoById(voId).subscribe(vo => {
-        this.vo = vo;
-
-        this.resourcesService.getResourcesByVo(this.vo.id).subscribe(resources => {
-          this.resources = resources;
-        });
-      });
+        this.backButtonDisplayed = this.backButtonRegex.test(this.currentUrl);
+      }
     });
   }
 
+  backButtonRegex = new RegExp('/organizations/\\d+/resources/\\w+$');
+  currentUrl;
+  backButtonDisplayed = false;
+
+  voId: number;
+
+  ngOnInit(): void {
+    this.route.parent.params.subscribe(parentParams => {
+      this.voId = parentParams['voId'];
+    });
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
 }

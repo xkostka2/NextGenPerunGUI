@@ -76,8 +76,40 @@
     "TITLE": "Organization - ",
     "BACK": "Back",
     "RESOURCES": {
-      "TITLE": "Resources",
-      "DELETE": "Remove selected"
+      "LIST": {
+        "TITLE": "Resources",
+        "DELETE": "Remove selected"
+      },
+      "STATES": {
+        "TITLE": "Resources state",
+        "ERROR_RESOURCES": "Resources with tasks in error state",
+        "FROM": "from",
+        "TASKS_WITH_ERROR_STATE": "tasks with error state",
+        "OK_RESOURCES": "Resources with tasks in Ok state",
+        "NO_TASKS": "No service configuration was propagated to this resource.",
+        "NOT_YET": "Not yet",
+        "NO_RESOURCES_IN_ERROR": "No resources with task in error state",
+        "NO_RESOURCES_IN_OK": "No resources with task in success state",
+        "TABLE_ID": "Task Id",
+        "TABLE_SERVICE": "Service",
+        "TABLE_STATUS": "Status",
+        "TABLE_SCHEDULED": "Scheduled",
+        "TABLE_STARTED": "Started",
+        "TABLE_ENDED": "Ended"
+      },
+      "TAGS": {
+        "TITLE": "Resource tags",
+        "TAG_ID": "Tag ID",
+        "TAG_NAME": "Tag name",
+        "CREATE_BUTTON": "Create",
+        "DELETE_BUTTON": "Delete",
+        "EDIT_BUTTON": "Edit",
+        "SAVE_BUTTON": "Save",
+        "DELETE_SUCCESS": "Resource tags were successfully deleted.",
+        "CREATE_SUCCESS": "Resource tag was successfully created.",
+        "NO_TAGS": "VO has no resource tags defined.",
+        "EDIT_SUCCESS": "Resource tag was successfully edited."
+      }
     },
     "GROUPS": {
       "TITLE": "Groups",
@@ -365,7 +397,10 @@
       "MEMBERS": "Members",
       "GROUPS": "Groups",
       "APPLICATIONS": "Applications",
-      "RESOURCES": "Resources",
+      "RESOURCES": "Resources management",
+      "RESOURCE_PREVIEW": "Resource list",
+      "RESOURCE_STATES": "Resource states",
+      "RESOURCE_TAGS": "Resource tags",
       "SETTINGS": "Settings",
       "ATTRIBUTES": "Attributes",
       "EXPIRATION": "Membership",
@@ -619,6 +654,20 @@
       "CANCEL": "Cancel",
       "SUCCESS_SAVE": "Attributes saved successfully",
       "ERROR_EMPTY_VALUE": "You can't save attribute with empty value"
+    },
+    "CREATE_RESOURCE_TAG": {
+      "TITLE": "Create resource tag",
+      "NAME": "Tag name",
+      "CREATE": "Create",
+      "CANCEL": "Cancel",
+      "EMPTY_NAME": "Please fill name"
+    },
+    "DELETE_RESOURCE_TAG": {
+      "TITLE": "Confirm delete action",
+      "DESCRIPTION": "Following tags will be deleted and won't be used to tag VO resources.",
+      "ASK": "Do you want to proceed?",
+      "SUBMIT": "Delete",
+      "CANCEL": "Cancel"
     }
   },
   "MEMBERS_LIST": {

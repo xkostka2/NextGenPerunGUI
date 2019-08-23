@@ -1,0 +1,100 @@
+<h1 class="page-subtitle">{{'VO_DETAIL.RESOURCES.TAGS.TITLE' | translate}}</h1>
+
+<button
+  mat-flat-button
+  class="mr-2"
+  color="accent"
+  (click)="create()">
+  {{'VO_DETAIL.RESOURCES.TAGS.CREATE_BUTTON' | translate}}
+</button>
+
+<button
+  mat-flat-button
+  color="warn"
+  [disabled]="selection.selected.length === 0"
+  (click)="deleteTag()">
+  {{'VO_DETAIL.RESOURCES.TAGS.DELETE_BUTTON' | translate}}
+</button>
+
+<mat-spinner *ngIf="loading" class="ml-auto mr-auto">
+</mat-spinner>
+
+<div class="card mt-2" *ngIf="!loading && resourceTag.length !== 0">
+  <div class="card-body">
+    <table mat-table [dataSource]="dataSource" class="w-100">
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox color="primary"
+                        (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox color="primary"
+                        (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>{{'VO_DETAIL.RESOURCES.TAGS.TAG_ID' | translate}}</th>
+        <td mat-cell *matCellDef="let tag">{{tag.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>{{'VO_DETAIL.RESOURCES.TAGS.TAG_NAME' | translate}}</th>
+        <td mat-cell *matCellDef="let tag">
+          <div *ngIf="!isChanging.isSelected(tag)">
+            {{tag.tagName}}
+          </div>
+          <div *ngIf="isChanging.isSelected(tag)">
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="tag.tagName">
+            </mat-form-field>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let tag">
+          <button
+            *ngIf="!isChanging.isSelected(tag)"
+            mat-stroked-button
+            (click)="edit(tag)">
+            <i class="material-icons">
+              edit
+            </i>
+            {{'VO_DETAIL.RESOURCES.TAGS.EDIT_BUTTON' | translate}}
+          </button>
+          <button
+            *ngIf="isChanging.isSelected(tag)"
+            mat-stroked-button
+            (click)="save(tag)">
+            <i class="material-icons">
+              save
+            </i>
+            {{'VO_DETAIL.RESOURCES.TAGS.SAVE_BUTTON' | translate}}
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row
+        *matRowDef="let group; columns: displayedColumns;"
+        class="dark-hover-list-item">
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="!loading && resourceTag.length === 0" class="perun-alert info-alert">
+  {{'VO_DETAIL.RESOURCES.TAGS.NO_TAGS' | translate}}
+</div>
