@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild} from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {Group} from '../../../core/models/Group';
@@ -19,6 +19,9 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
     this.setDataSource();
   }
 
+  @Output()
+  moveGroup = new EventEmitter<Group>();
+
   @Input()
   groups: Group[] = [];
 
@@ -27,7 +30,7 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
 
   private sort: MatSort;
 
-  displayedColumns: string[] = ['select', 'id', 'name', 'description'];
+  displayedColumns: string[] = ['select', 'id', 'name', 'description', 'menu'];
   dataSource: MatTableDataSource<Group>;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -65,6 +68,10 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+  }
+
+  onMoveGroup(group: Group) {
+    this.moveGroup.emit(group);
   }
 }
 

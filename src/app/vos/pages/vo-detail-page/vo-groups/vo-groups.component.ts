@@ -9,6 +9,8 @@ import {VoService} from '../../../../core/services/api/vo.service';
 import {ActivatedRoute} from '@angular/router';
 import {DeleteGroupDialogComponent} from '../../../../shared/components/dialogs/delete-group-dialog/delete-group-dialog.component';
 import {SelectionModel} from '@angular/cdk/collections';
+import {GroupFlatNode} from '../../../components/groups-tree/groups-tree.component';
+import {MoveGroupDialogComponent} from '../../../../shared/components/dialogs/move-group-dialog/move-group-dialog.component';
 
 @Component({
   selector: 'app-vo-groups',
@@ -56,9 +58,7 @@ export class VoGroupsComponent implements OnInit {
       this.voService.getVoById(voId).subscribe(vo => {
         this.vo = vo;
 
-        this.groupService.getAllGroups(this.vo.id).subscribe(groups => {
-          this.groups = groups;
-        });
+        this.loadAllGroups();
       });
     });
   }
@@ -81,5 +81,27 @@ export class VoGroupsComponent implements OnInit {
 
   removeAllGroups() {
     this.selected.clear();
+  }
+
+  onMoveGroup(group: GroupFlatNode | Group) {
+    console.log('Vo - ' + group);
+    const dialogRef = this.dialog.open(MoveGroupDialogComponent, {
+      width: '550px',
+      data: {
+        group: group,
+        theme: 'vo-theme'
+      },
+    });
+    dialogRef.afterClosed().subscribe(groupMoved => {
+      if (groupMoved) {
+        this.loadAllGroups();
+      }
+    });
+  }
+
+  private loadAllGroups() {
+    this.groupService.getAllGroups(this.vo.id).subscribe(groups => {
+      this.groups = groups;
+    });
   }
 }

@@ -12,11 +12,13 @@
   </mat-checkbox>
   <div class="mt-3">
     <app-groups-tree
+      (moveGroup)="onMoveGroup($event)"
       *ngIf="!showGroupList"
       [groups]="groups"
       [selection]="selected" >
     </app-groups-tree>
     <app-groups-list
+      (moveGroup)="onMoveGroup($event)"
       [groups]="groups"
       [selection]="selected"
       *ngIf="showGroupList">

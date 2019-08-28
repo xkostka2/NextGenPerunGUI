@@ -1,23 +1,29 @@
 <div class="card mt-2">
   <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-    <mat-tree-node class="group-tree-node" [routerLink]="['/organizations', group.voId, 'groups', group.id]"
+    <mat-tree-node class="group-tree-node"
                    *matTreeNodeDef="let group" matTreeNodePadding>            <!--leaf-->
-      <!-- use a disabled button to provide padding for tree leaf -->
-      <mat-checkbox color="primary"
-                    class="no-label-margin-bottom ml-4"
-                    [checked]="selection.isSelected(group)"
-                    (change)="leafItemSelectionToggle(group)"
-                    matTreeNodeToggle></mat-checkbox>
-      <button mat-icon-button disabled></button>
-      <div class="mr-2">
-        {{group.name}}
+      <div class="group-item-content" [routerLink]="['/organizations', group.voId, 'groups', group.id]">
+        <mat-checkbox color="primary"
+                      class="no-label-margin-bottom ml-4"
+                      [checked]="selection.isSelected(group)"
+                      (change)="leafItemSelectionToggle(group)"
+                      matTreeNodeToggle></mat-checkbox>
+        <!-- use a disabled button to provide padding for tree leaf -->
+        <button mat-icon-button disabled></button>
+        <div class="mr-2">
+          {{group.name}}
+        </div>
+        <div class="text-muted">
+          #{{group.id}}
+        </div>
       </div>
-      <div class="text-muted">
-        #{{group.id}}
-      </div>
+      <app-group-menu
+        (moveGroup)="onMoveGroup(group)"
+        [group]="group">
+      </app-group-menu>
     </mat-tree-node>
 
-    <mat-tree-node [routerLink]="['/organizations', group.voId, 'groups', group.id]"
+    <mat-tree-node
       class="group-tree-node"
       *matTreeNodeDef="let group;when: hasChild" matTreeNodePadding> <!--parent-->
       <mat-checkbox color="primary" class="no-label-margin-bottom ml-4"
@@ -25,18 +31,24 @@
                     [indeterminate]="descendantsPartiallySelected(group)"
                     (change)="itemSelectionToggle(group)"
                     matTreeNodeToggle></mat-checkbox>
-      <button mat-icon-button matTreeNodeToggle
-              [attr.aria-label]="'toggle ' + group.name">
-        <mat-icon class="mat-icon-rtl-mirror">
-          {{treeControl.isExpanded(group) ? 'expand_more' : 'chevron_right'}}
-        </mat-icon>
-      </button>
-      <div class="mr-2" >
-        {{group.name}}
+      <div class="group-item-content" [routerLink]="['/organizations', group.voId, 'groups', group.id]">
+        <button mat-icon-button matTreeNodeToggle
+                [attr.aria-label]="'toggle ' + group.name">
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{treeControl.isExpanded(group) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </button>
+        <div class="mr-2" >
+          {{group.name}}
+        </div>
+        <div class="text-muted">
+          #{{group.id}}
+        </div>
       </div>
-      <div class="text-muted">
-        #{{group.id}}
-      </div>
+      <app-group-menu
+        (moveGroup)="onMoveGroup(group)"
+        [group]="group">
+      </app-group-menu>
     </mat-tree-node>
   </mat-tree>
 </div>

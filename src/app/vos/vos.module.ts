@@ -45,27 +45,22 @@ import {ApplicationFormListComponent} from './components/application-form-list/a
 import {VoSettingsApplicationFormPreviewComponent} from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-preview/vo-settings-application-form-preview.component';
 // tslint:disable-next-line:max-line-length
 import {VoSettingsApplicationFormNotificationsComponent} from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-notifications/vo-settings-application-form-notifications.component';
-import {AttributeValueComponent} from '../shared/components/attributes-list/attribute-value/attribute-value.component';
 // tslint:disable-next-line:max-line-length
-import {AttributeValueBooleanComponent} from '../shared/components/attributes-list/attribute-value/attribute-value-boolean/attribute-value-boolean.component';
 // tslint:disable-next-line:max-line-length
-import {AttributeValueListComponent} from '../shared/components/attributes-list/attribute-value/attribute-value-list/attribute-value-list.component';
 // tslint:disable-next-line:max-line-length
-import {AttributeValueMapComponent} from '../shared/components/attributes-list/attribute-value/attribute-value-map/attribute-value-map.component';
 // tslint:disable-next-line:max-line-length
-import {AttributeValueStringComponent} from '../shared/components/attributes-list/attribute-value/attribute-value-string/attribute-value-string.component';
-import { MemberSettingsComponent } from './pages/member-detail-page/member-settings/member-settings.component';
+import {MemberSettingsComponent} from './pages/member-detail-page/member-settings/member-settings.component';
 import {
   MemberSettingsAttributesComponent
 } from './pages/member-detail-page/member-settings/member-settings-attributes/member-settings-attributes.component';
 import {
   MemberSettingsOverviewComponent
 } from './pages/member-detail-page/member-settings/member-settings-overview/member-settings-overview.component';
-import { VoResourcesPreviewComponent } from './pages/vo-detail-page/vo-resources/vo-resources-preview/vo-resources-preview.component';
-import { VoResourcesTagsComponent } from './pages/vo-detail-page/vo-resources/vo-resources-tags/vo-resources-tags.component';
-import { VoResourcesStatesComponent } from './pages/vo-detail-page/vo-resources/vo-resources-states/vo-resources-states.component';
-import { VoResourcesOverviewComponent } from './pages/vo-detail-page/vo-resources/vo-resources-overview/vo-resources-overview.component';
-import { StateTabComponent } from './pages/vo-detail-page/vo-resources/vo-resources-states/state-tab/state-tab.component';
+import {VoResourcesPreviewComponent} from './pages/vo-detail-page/vo-resources/vo-resources-preview/vo-resources-preview.component';
+import {VoResourcesTagsComponent} from './pages/vo-detail-page/vo-resources/vo-resources-tags/vo-resources-tags.component';
+import {VoResourcesStatesComponent} from './pages/vo-detail-page/vo-resources/vo-resources-states/vo-resources-states.component';
+import {VoResourcesOverviewComponent} from './pages/vo-detail-page/vo-resources/vo-resources-overview/vo-resources-overview.component';
+import {StateTabComponent} from './pages/vo-detail-page/vo-resources/vo-resources-states/state-tab/state-tab.component';
 
 @NgModule({
   imports: [
@@ -74,7 +69,7 @@ import { StateTabComponent } from './pages/vo-detail-page/vo-resources/vo-resour
     SharedModule,
   ],
   exports: [
-    MembersListComponent
+    MembersListComponent,
   ],
   declarations: [
     VoSelectPageComponent,
@@ -122,7 +117,7 @@ import { StateTabComponent } from './pages/vo-detail-page/vo-resources/vo-resour
     VoResourcesTagsComponent,
     VoResourcesStatesComponent,
     VoResourcesOverviewComponent,
-    StateTabComponent
+    StateTabComponent,
   ],
   entryComponents: [
   ],

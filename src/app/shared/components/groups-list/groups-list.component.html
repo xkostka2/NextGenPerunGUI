@@ -25,18 +25,27 @@
       </ng-container>
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'SHARED.COMPONENTS.GROUPS_LIST.TABLE_GROUP_NAME' | translate}}</th>
-        <td mat-cell *matCellDef="let group">{{group.name}}</td>
+        <td mat-cell *matCellDef="let group" [routerLink]="['/organizations', group.voId, 'groups', group.id]">{{group.name}}</td>
       </ng-container>
       <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'SHARED.COMPONENTS.GROUPS_LIST.TABLE_GROUP_DESCRIPTION' | translate}}</th>
-        <td mat-cell *matCellDef="let group">{{group.description}}</td>
+        <td mat-cell *matCellDef="let group" [routerLink]="['/organizations', group.voId, 'groups', group.id]">{{group.description}}</td>
       </ng-container>
+      <ng-container matColumnDef="menu">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let group">
+          <app-group-menu
+            (moveGroup)="onMoveGroup(group)"
+            [group]="group">
+          </app-group-menu>
+        </td>
+      </ng-container>
+
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr
         mat-row
         *matRowDef="let group; columns: displayedColumns;"
-        [routerLink]="['/organizations', group.voId, 'groups', group.id]"
         class="dark-hover-list-item">
       </tr>
     </table>

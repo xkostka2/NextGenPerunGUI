@@ -116,7 +116,9 @@
       "CREATE_GROUP": "Create...",
       "DELETE_GROUP": "Delete...",
       "TITLE_SUBGROUPS": "Subgroups",
-      "LIST_VIEW": "List view"
+      "LIST_VIEW": "List view",
+      "MENU_MOVE": "Move group",
+      "MENU_RENAME": "Update name/description"
     },
     "MEMBERS": {
       "TITLE": "Members",
@@ -449,6 +451,17 @@
     }
   },
   "DIALOGS": {
+    "MOVE_GROUP": {
+      "TITLE": "Move group - ",
+      "INFO": "Selected group will be moved (including all its sub-groups).",
+      "GROUP_SELECT": "Select a new parent group",
+      "CANCEL": "Cancel",
+      "CONFIRM": "Move",
+      "NO_GROUP": "Move to the root",
+      "TO_GROUP": "Move under a group",
+      "ERROR": "Failed to move group",
+      "SUCCESS": "Group successfully moved"
+    },
     "CREATE_GROUP": {
       "TITLE": "Create group",
       "TITLE_SUB_GROUP": "Create subgroup for ",

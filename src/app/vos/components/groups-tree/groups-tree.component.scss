@@ -3,3 +3,12 @@
     background-color: rgba(0, 0, 0, .05);
   }
 }
+
+.group-item-content {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  flex: 1;
+  overflow: hidden;
+  word-wrap: break-word;
+}

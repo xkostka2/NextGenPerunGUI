@@ -66,4 +66,11 @@ export class GroupService {
       'member': member
     }, showNotificationOnError);
   }
+
+  moveGroup(movingGroupId: number, destinationGroupId?: number, showNotificationOnError = true): Observable<void> {
+    return this.apiService.post('json/groupsManager/moveGroup', {
+      'movingGroup' : movingGroupId,
+      'destinationGroup' : destinationGroupId
+    }, showNotificationOnError);
+  }
 }

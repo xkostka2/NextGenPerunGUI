@@ -27,7 +27,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatCardModule } from '@angular/material/card';
-import {MatChipsModule, MatStepperModule} from '@angular/material';
+import {MatChipsModule, MatMenuModule, MatStepperModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SideMenuComponent} from './side-menu/side-menu.component';
 import {SideMenuItemComponent} from './side-menu/side-menu-item/side-menu-item.component';
@@ -105,6 +105,9 @@ import {
 } from './components/attributes-list/attribute-value/attribute-value-string/attribute-value-string.component';
 import { CreateResourceTagDialogComponent } from './components/dialogs/create-resource-tag-dialog/create-resource-tag-dialog.component';
 import { DeleteResourceTagDialogComponent } from './components/dialogs/delete-resource-tag-dialog/delete-resource-tag-dialog.component';
+import { MoveGroupDialogComponent } from './components/dialogs/move-group-dialog/move-group-dialog.component';
+import {VosModule} from '../vos/vos.module';
+import {GroupMenuComponent} from './components/group-menu/group-menu.component';
 
 @NgModule({
   imports: [
@@ -148,7 +151,8 @@ import { DeleteResourceTagDialogComponent } from './components/dialogs/delete-re
     DragDropModule,
     NgxChartsModule,
     MatCardModule,
-    MatChipsModule
+    MatChipsModule,
+    MatMenuModule,
   ],
   exports: [
     PerunNavComponent,
@@ -218,7 +222,9 @@ import { DeleteResourceTagDialogComponent } from './components/dialogs/delete-re
     AnyToStringPipe,
     AttributesListComponent,
     MatChipsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule,
+    GroupMenuComponent
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -247,7 +253,8 @@ import { DeleteResourceTagDialogComponent } from './components/dialogs/delete-re
     DeleteAttributeDialogComponent,
     CreateAttributeDialogComponent,
     CreateResourceTagDialogComponent,
-    DeleteResourceTagDialogComponent
+    DeleteResourceTagDialogComponent,
+    MoveGroupDialogComponent
   ],
   declarations: [
     AttributesListComponent,
@@ -311,7 +318,9 @@ import { DeleteResourceTagDialogComponent } from './components/dialogs/delete-re
     AttributeValueMapComponent,
     AttributeValueStringComponent,
     CreateResourceTagDialogComponent,
-    DeleteResourceTagDialogComponent
+    DeleteResourceTagDialogComponent,
+    MoveGroupDialogComponent,
+    GroupMenuComponent
   ],
   providers: [
     AnyToStringPipe,

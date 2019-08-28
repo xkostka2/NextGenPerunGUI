@@ -1,0 +1,56 @@
+<div class="{{data.theme}}">
+  <h1 mat-dialog-title>{{'DIALOGS.MOVE_GROUP.TITLE' | translate}}{{this.data.group.name}}</h1>
+  <div mat-dialog-content>
+    <p>
+      {{'DIALOGS.MOVE_GROUP.INFO' | translate}}
+    </p>
+    <mat-radio-group [(ngModel)]="moveOption">
+      <mat-radio-button
+        color="primary"
+        value="toRoot"
+        class="move-options"
+        [disabled]="toRootOptionDisabled">
+        {{'DIALOGS.MOVE_GROUP.NO_GROUP' | translate}}
+      </mat-radio-button>
+      <mat-radio-button
+        value="toGroup"
+        color="primary"
+        [disabled]="toGroupOptionDisabled">
+        {{'DIALOGS.MOVE_GROUP.TO_GROUP' | translate}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field [@openClose]="moveOption === 'toGroup' ? 'open' : 'closed'" class="w-100 mt-2">
+      <input
+        matInput
+        placeholder="{{'DIALOGS.MOVE_GROUP.GROUP_SELECT' | translate}}"
+        [matAutocomplete]="groupSelectAutocomplete"
+        [formControl]="otherGroupsCtrl">
+      <!--suppress AngularInvalidExpressionResultType -->
+      <mat-autocomplete
+        #groupSelectAutocomplete="matAutocomplete"
+        [displayWith]="displayFn">
+        <mat-option *ngFor="let group of filteredGroups | async" [value]="group">
+          <span>{{group.name}}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <mat-spinner *ngIf="loading" class="ml-auto mr-auto">
+  </mat-spinner>
+  <div mat-dialog-actions>
+    <button
+      mat-flat-button
+      (click)="close()"
+      class="ml-auto">
+      {{'DIALOGS.MOVE_GROUP.CANCEL' | translate}}
+    </button>
+    <button
+      [disabled]="!this.otherGroupsCtrl.value && moveOption !== 'toRoot' && !loading"
+      mat-flat-button
+      class="ml-2"
+      (click)="confirm()"
+      color="accent">
+      {{'DIALOGS.MOVE_GROUP.CONFIRM' | translate}}
+    </button>
+  </div>
+</div>

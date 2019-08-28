@@ -1,5 +1,5 @@
 /* tslint:disable:member-ordering */
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {Group} from '../../../core/models/Group';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import {TreeGroup} from '../../../core/models/TreeGroup';
@@ -8,8 +8,9 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {debug} from 'util';
 
 
-interface GroupFlatNode {
+export interface GroupFlatNode {
   expandable: boolean;
+  parentGroupId: number;
   name: string;
   level: number;
   id: number;
@@ -30,12 +31,17 @@ export class GroupsTreeComponent implements OnChanges {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.shortName,
+      parentGroupId: node.parentGroupId,
       level: level,
       id: node.id,
       voId: node.voId
     };
     // tslint:disable-next-line
   };
+
+
+  @Output()
+  moveGroup = new EventEmitter<GroupFlatNode>();
 
   @Input()
   groups: Group[];
@@ -153,5 +159,9 @@ export class GroupsTreeComponent implements OnChanges {
       this.selection.isSelected(child)
     );
     this.checkAllParentsSelection(node);
+  }
+
+  onMoveGroup(group: GroupFlatNode) {
+    this.moveGroup.emit(group);
   }
 }
