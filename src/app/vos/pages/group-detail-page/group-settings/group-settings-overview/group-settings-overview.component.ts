@@ -52,7 +52,13 @@ export class GroupSettingsOverviewComponent implements OnInit {
         url: `/organizations/${this.vo.id}/groups/${this.group.id}/settings/attributes`,
         label: 'MENU_ITEMS.GROUP.ATTRIBUTES',
         style: 'group-btn'
-      }
+      },
+      {
+        icon: 'group-white.svg',
+        url: `/organizations/${this.vo.id}/groups/${this.group.id}/settings/expiration`,
+        label: 'MENU_ITEMS.GROUP.EXPIRATION',
+        style: 'group-btn'
+      },
     ];
   }
 }

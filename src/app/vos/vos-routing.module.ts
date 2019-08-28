@@ -46,6 +46,9 @@ import {VoResourcesOverviewComponent} from './pages/vo-detail-page/vo-resources/
 import {VoResourcesPreviewComponent} from './pages/vo-detail-page/vo-resources/vo-resources-preview/vo-resources-preview.component';
 import {VoResourcesStatesComponent} from './pages/vo-detail-page/vo-resources/vo-resources-states/vo-resources-states.component';
 import {VoResourcesTagsComponent} from './pages/vo-detail-page/vo-resources/vo-resources-tags/vo-resources-tags.component';
+import {
+  GroupSettingsExpirationComponent
+} from './pages/group-detail-page/group-settings/group-settings-expiration/group-settings-expiration.component';
 
 const routes: Routes = [
   {
@@ -224,6 +227,11 @@ const routes: Routes = [
             path: 'attributes',
             component: GroupSettingsAttributesComponent,
             data: {animation: 'GroupSettingsAttributesPage'}
+          },
+          {
+            path: 'expiration',
+            component: GroupSettingsExpirationComponent,
+            data: {animation: 'GroupSettingsExpirationPage'}
           }
         ]
       },

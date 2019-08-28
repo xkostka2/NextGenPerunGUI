@@ -23,16 +23,17 @@ export class AttributesService {
       new HttpParams(), showNotificationOnError);
   }
 
-  getVoAttribute(voId: number, urn: string, showNotificationOnError = true): Observable<Attribute> {
-    return this.apiService.get(`json/attributesManager/getAttribute?vo=${voId}&attributeName=${urn}`,
+  getAttribute(entityId: number, entity: Entity, urn: string, showNotificationOnError = true): Observable<Attribute> {
+    return this.apiService.get(`json/attributesManager/getAttribute?${entity}=${entityId}&attributeName=${urn}`,
       new HttpParams(), showNotificationOnError);
   }
 
-  setVoAttribute(voId: number, attribute: Attribute, showNotificationOnError = true): Observable<void> {
-    return this.apiService.post(`json/attributesManager/setAttribute`, {
-      vo: voId,
-      attribute: attribute
-    }, showNotificationOnError);
+  setAttribute(entityId: number, entity: Entity, attribute: Attribute, showNotificationOnError = true): Observable<void> {
+    const payload = {};
+    payload[entity] = entityId;
+    payload['attribute'] = attribute;
+
+    return this.apiService.post(`json/attributesManager/setAttribute`, payload, showNotificationOnError);
   }
 
   getAttributeModulesDependenciesGraphText(format: string, showNotificationOnError = true): Observable<Graph> {

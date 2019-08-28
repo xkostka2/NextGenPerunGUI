@@ -199,7 +199,12 @@ export class SideMenuItemService {
               label: 'MENU_ITEMS.GROUP.ATTRIBUTES',
               url: [`/organizations/${group.voId}/groups/${group.id}/settings/attributes`],
               activatedRegex: '/organizations/\\d+/groups/\\d+/settings/attributes$'
-            }
+            },
+            {
+              label: 'MENU_ITEMS.GROUP.EXPIRATION',
+              url: [`/organizations/${group.voId}/groups/${group.id}/settings/expiration`],
+              activatedRegex: '/organizations/\\d+/groups/\\d+/settings/expiration$'
+            },
           ],
           showChildrenRegex: '/organizations/\\d+/groups/\\d+/settings'
         }
@@ -281,7 +286,7 @@ export class SideMenuItemService {
               activatedRegex: '/organizations/\\d+/settings/managers$'
             },
             {
-              label: this.translate.instant('MENU_ITEMS.VO.APPLICATION_FORM'),
+              label: 'MENU_ITEMS.VO.APPLICATION_FORM',
               url: [`/organizations/${vo.id}/settings/applicationForm`],
               activatedRegex: '/organizations/\\d+/settings/applicationForm$'
             }

@@ -61,6 +61,10 @@ import {VoResourcesTagsComponent} from './pages/vo-detail-page/vo-resources/vo-r
 import {VoResourcesStatesComponent} from './pages/vo-detail-page/vo-resources/vo-resources-states/vo-resources-states.component';
 import {VoResourcesOverviewComponent} from './pages/vo-detail-page/vo-resources/vo-resources-overview/vo-resources-overview.component';
 import {StateTabComponent} from './pages/vo-detail-page/vo-resources/vo-resources-states/state-tab/state-tab.component';
+import {
+  GroupSettingsExpirationComponent
+} from './pages/group-detail-page/group-settings/group-settings-expiration/group-settings-expiration.component';
+import { ExpirationSettingsComponent } from './components/expiration-settings/expiration-settings.component';
 
 @NgModule({
   imports: [
@@ -118,6 +122,8 @@ import {StateTabComponent} from './pages/vo-detail-page/vo-resources/vo-resource
     VoResourcesStatesComponent,
     VoResourcesOverviewComponent,
     StateTabComponent,
+    GroupSettingsExpirationComponent,
+    ExpirationSettingsComponent,
   ],
   entryComponents: [
   ],
