@@ -16,6 +16,7 @@ import {
   AddGroupManagerDialogComponent
 } from '../../../../../shared/components/dialogs/add-group-manager-dialog/add-group-manager-dialog.component';
 import {AuthzService} from '../../../../../core/services/api/authz.service';
+import {Role} from '../../../../../core/models/PerunPrincipal';
 
 @Component({
   selector: 'app-vo-settings-managers',
@@ -38,11 +39,11 @@ export class VoSettingsManagersComponent implements OnInit {
 
   vo: Vo;
 
-  selectionUsers = new SelectionModel<RichUser>(false, []);
-  selectionGroups = new SelectionModel<Group>(false, []);
+  selectionUsers = new SelectionModel<RichUser>(true, []);
+  selectionGroups = new SelectionModel<Group>(true, []);
 
   selected = 'user';
-  selectedRole = 'VOADMIN';
+  selectedRole: Role = Role.VOADMIN;
 
   loading = false;
 

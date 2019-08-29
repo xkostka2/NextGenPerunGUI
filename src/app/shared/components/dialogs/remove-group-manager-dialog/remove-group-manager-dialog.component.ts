@@ -5,11 +5,12 @@ import {TranslateService} from '@ngx-translate/core';
 import {AuthzService} from '../../../../core/services/api/authz.service';
 import {Vo} from '../../../../core/models/Vo';
 import {Group} from '../../../../core/models/Group';
+import {Role} from '../../../../core/models/PerunPrincipal';
 
 export interface RemoveGroupDialogData {
   vo: Vo;
   groups: Group[];
-  role: string;
+  role: Role;
   theme: string;
 }
 
@@ -42,8 +43,7 @@ export class RemoveGroupManagerDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    // TODO works for one manager at the time. In future there may be need to remove more at once.
-    this.authzService.removeGroup(this.data.role, this.data.groups[0].id, this.data.vo).subscribe(() => {
+    this.authzService.unsetRoleForGroups(this.data.role, this.data.groups.map(group => group.id), this.data.vo).subscribe(() => {
       this.translate.get('DIALOGS.REMOVE_GROUPS.SUCCESS').subscribe(successMessage => {
         this.notificator.showSuccess(successMessage);
         this.dialogRef.close(true);

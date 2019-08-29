@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ApiService} from './api.service';
 import {Observable} from 'rxjs';
-import {PerunPrincipal} from '../../models/PerunPrincipal';
+import {PerunPrincipal, Role} from '../../models/PerunPrincipal';
 import {HttpParams} from '@angular/common/http';
 import {RichUser} from '../../models/RichUser';
 import {Group} from '../../models/Group';
@@ -42,34 +42,34 @@ export class AuthzService {
     }, showNotificationOnError);
   }
 
-  removeManager(role: string, userId: number, complementaryObject: Object, showNotificationOnError = true): Observable<RichUser[]> {
+  removeManagers(role: Role, userIds: number[], complementaryObject: Object, showNotificationOnError = true): Observable<RichUser[]> {
     return this.apiService.post('json/authzResolver/unsetRole', {
       role: role,
-      user: userId,
+      users: userIds,
       complementaryObject: complementaryObject
     }, showNotificationOnError);
   }
 
-  addManager(role: string, userId: number, complementaryObject: Object, showNotificationOnError = true): Observable<RichUser> {
+  setRole(role: Role, userIds: number[], complementaryObject: Object, showNotificationOnError = true): Observable<RichUser> {
     return this.apiService.post('json/authzResolver/setRole', {
       role: role,
-      user: userId,
+      users: userIds,
       complementaryObject: complementaryObject
     }, showNotificationOnError);
   }
 
-  removeGroup(role: string, groupId: number, complementaryObject: Object, showNotificationOnError = true): Observable<RichUser[]> {
+  unsetRoleForGroups(role: Role, groupIds: number[], complementaryObject: Object, showNotificationOnError = true): Observable<RichUser[]> {
     return this.apiService.post('json/authzResolver/unsetRole', {
       role: role,
-      authorizedGroup: groupId,
+      authorizedGroups: groupIds,
       complementaryObject: complementaryObject
     }, showNotificationOnError);
   }
 
-  addGroup(role: string, groupId: number, complementaryObject: Object, showNotificationOnError = true): Observable<RichUser> {
+  setRoleForGroups(role: Role, groupIds: number[], complementaryObject: Object, showNotificationOnError = true): Observable<RichUser> {
     return this.apiService.post('json/authzResolver/setRole', {
       role: role,
-      authorizedGroup: groupId,
+      authorizedGroups: groupIds,
       complementaryObject: complementaryObject
     }, showNotificationOnError);
   }

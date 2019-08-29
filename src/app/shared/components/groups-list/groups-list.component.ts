@@ -30,6 +30,9 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
 
   private sort: MatSort;
 
+  @Input()
+  hideColumns: string[] = [];
+
   displayedColumns: string[] = ['select', 'id', 'name', 'description', 'menu'];
   dataSource: MatTableDataSource<Group>;
 
@@ -41,6 +44,7 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
   }
 
   setDataSource() {
+    this.displayedColumns = this.displayedColumns.filter(x => !this.hideColumns.includes(x));
     if (!!this.dataSource) {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;

@@ -2,7 +2,7 @@
   <h1 mat-dialog-title>{{'DIALOGS.ADD_GROUPS.TITLE' | translate}}</h1>
 
   <div mat-dialog-content>
-    <mat-form-field>
+    <mat-form-field class="w-100">
       <mat-label>{{'DIALOGS.ADD_GROUPS.SELECT_VO' | translate}}</mat-label>
       <input type="text" placeholder="{{'DIALOGS.ADD_GROUPS.SELECT_VO' | translate}}" aria-label="Assignee" matInput [formControl]="myControl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="showVoGroups()">
@@ -20,6 +20,7 @@
         {{'DIALOGS.ADD_GROUPS.NO_GROUPS_FOUND' | translate}}
       </div>
       <app-groups-list
+        [hideColumns]="['menu']"
         [selection]="selection"
         [groups]="groups"
         *ngIf="groups.length !== 0">

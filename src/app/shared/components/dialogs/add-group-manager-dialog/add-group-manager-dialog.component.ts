@@ -12,11 +12,12 @@ import {Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {AuthzService} from '../../../../core/services/api/authz.service';
+import {Role} from '../../../../core/models/PerunPrincipal';
 
 export interface AddGroupManagerDialogData {
   groups: Group[];
   vo: Vo;
-  role: string;
+  role: Role;
   theme: string;
 }
 
@@ -46,7 +47,7 @@ export class AddGroupManagerDialogComponent implements OnInit {
   searchString = '';
   successMessage: string;
 
-  selection = new SelectionModel<Group>(false, []);
+  selection = new SelectionModel<Group>(true, []);
   loading: boolean;
   groups: Group[] = [];
   selected: number;
@@ -67,8 +68,7 @@ export class AddGroupManagerDialogComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // TODO Adds only one group at the time. In the future there would be need to add more
-    this.authzService.addGroup( this.data.role, this.selection.selected[0].id, this.data.vo).subscribe(() => {
+    this.authzService.setRoleForGroups( this.data.role, this.selection.selected.map(group => group.id), this.data.vo).subscribe(() => {
       this.notificator.showSuccess(this.successMessage);
       this.dialogRef.close();
     });

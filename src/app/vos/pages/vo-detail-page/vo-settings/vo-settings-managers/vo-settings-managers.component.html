@@ -39,7 +39,11 @@
     <div *ngIf="groups.length == 0 && selected === 'group'" class="perun-alert warn-alert">
       {{'VO_DETAIL.SETTINGS.MANAGERS.NO_GROUP_MANAGERS' | translate}}
     </div>
-    <app-groups-list *ngIf="groups !== null && groups.length > 0 && selected === 'group'" [groups]="groups" [selection]="selectionGroups">
+    <app-groups-list
+      *ngIf="groups !== null && groups.length > 0 && selected === 'group'"
+      [hideColumns]="['menu']"
+      [groups]="groups"
+      [selection]="selectionGroups">
     </app-groups-list>
   </div>
 

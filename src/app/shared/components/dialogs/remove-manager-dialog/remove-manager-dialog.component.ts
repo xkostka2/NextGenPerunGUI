@@ -5,11 +5,12 @@ import {NotificatorService} from '../../../../core/services/common/notificator.s
 import {TranslateService} from '@ngx-translate/core';
 import {AuthzService} from '../../../../core/services/api/authz.service';
 import {Vo} from '../../../../core/models/Vo';
+import {Role} from '../../../../core/models/PerunPrincipal';
 
 export interface RemoveManagerDialogData {
   vo: Vo;
   managers: RichUser[];
-  role: string;
+  role: Role;
   theme: string;
 }
 
@@ -42,8 +43,7 @@ export class RemoveManagerDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    // TODO works for one manager at the time. In future there may be need to remove more at once.
-    this.authzService.removeManager(this.data.role, this.data.managers[0].id, this.data.vo).subscribe(() => {
+    this.authzService.removeManagers(this.data.role, this.data.managers.map(manager => manager.id), this.data.vo).subscribe(() => {
       this.translate.get('DIALOGS.REMOVE_MANAGERS.SUCCESS').subscribe(successMessage => {
         this.notificator.showSuccess(successMessage);
         this.dialogRef.close(true);

@@ -12,14 +12,13 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="mr-2 search-field">
+      <mat-form-field class="mr-2 w-100">
         <label>
           <input matInput autocomplete="false" placeholder="{{'DIALOGS.ADD_MANAGERS.DESCRIPTION' | translate}}"
                  [(ngModel)]="searchString">
         </label>
       </mat-form-field>
     </div>
-
     <button
       mat-flat-button
       class="ml-auto"
@@ -28,6 +27,7 @@
       (click)="onSearchByString()">
       {{'DIALOGS.ADD_MANAGERS.SEARCH' | translate}}
     </button>
+
 
     <div class="overflow-hidden">
       <mat-spinner *ngIf="loading" class="mr-auto ml-auto"></mat-spinner>

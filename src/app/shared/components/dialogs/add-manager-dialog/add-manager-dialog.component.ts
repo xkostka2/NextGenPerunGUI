@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UsersService} from '../../../../core/services/api/users.service';
 import {AuthzService} from '../../../../core/services/api/authz.service';
 import {Vo} from '../../../../core/models/Vo';
+import {Role} from '../../../../core/models/PerunPrincipal';
 
 export interface AddManagerDialogData {
   vo: Vo;
@@ -39,11 +40,11 @@ export class AddManagerDialogComponent implements OnInit {
   searchString = '';
   successMessage: string;
 
-  selection = new SelectionModel<RichUser>(false, []);
+  selection = new SelectionModel<RichUser>(true, []);
   loading: boolean;
   users: RichUser[] = [];
 
-  selectedRole: string;
+  selectedRole: Role;
   firstSearchDone = false;
 
   theme: string;
@@ -53,8 +54,7 @@ export class AddManagerDialogComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // TODO Adds only one manager at the time. In the future there would be need to add more
-    this.authzService.addManager(this.selectedRole, this.selection.selected[0].id, this.data.vo).subscribe(() => {
+    this.authzService.setRole(this.selectedRole, this.selection.selected.map(u => u.id), this.data.vo).subscribe(() => {
       this.notificator.showSuccess(this.successMessage);
       this.dialogRef.close();
     });
