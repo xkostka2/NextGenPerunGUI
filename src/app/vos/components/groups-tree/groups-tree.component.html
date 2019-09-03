@@ -4,6 +4,7 @@
                    *matTreeNodeDef="let group" matTreeNodePadding>            <!--leaf-->
       <div class="group-item-content" [routerLink]="['/organizations', group.voId, 'groups', group.id]">
         <mat-checkbox color="primary"
+                      [disabled]="group.fullName === 'members'"
                       class="no-label-margin-bottom ml-4"
                       [checked]="selection.isSelected(group)"
                       (change)="leafItemSelectionToggle(group)"
@@ -18,6 +19,7 @@
         </div>
       </div>
       <app-group-menu
+        [disabled]="group.fullName === 'members'"
         (moveGroup)="onMoveGroup(group)"
         [group]="group">
       </app-group-menu>
@@ -27,6 +29,7 @@
       class="group-tree-node"
       *matTreeNodeDef="let group;when: hasChild" matTreeNodePadding> <!--parent-->
       <mat-checkbox color="primary" class="no-label-margin-bottom ml-4"
+                    [disabled]="group.fullName === 'members'"
                     [checked]="selection.isSelected(group)"
                     [indeterminate]="descendantsPartiallySelected(group)"
                     (change)="itemSelectionToggle(group)"
@@ -46,6 +49,7 @@
         </div>
       </div>
       <app-group-menu
+        [disabled]="group.fullName === 'members'"
         (moveGroup)="onMoveGroup(group)"
         [group]="group">
       </app-group-menu>

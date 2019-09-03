@@ -29,6 +29,7 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
   selection = new SelectionModel<Group>(true, []);
 
   private sort: MatSort;
+  private hasMembersGroup = false;
 
   @Input()
   hideColumns: string[] = [];
@@ -39,8 +40,18 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   ngOnChanges(changes: SimpleChanges) {
+    this.hasMembersGroup = this.checkIfHasMembersGroup();
     this.dataSource = new MatTableDataSource<Group>(this.groups);
     this.setDataSource();
+  }
+
+  checkIfHasMembersGroup(): boolean {
+    for (const group of this.groups) {
+      if (group.name === 'members') {
+        return true;
+      }
+    }
+    return false;
   }
 
   setDataSource() {
@@ -52,7 +63,12 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
   }
 
   isAllSelected() {
-    const numSelected = this.selection.selected.length;
+    let numSelected = this.selection.selected.length;
+
+    if (numSelected > 0 && this.hasMembersGroup) {
+      numSelected++;
+    }
+
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
@@ -60,7 +76,11 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
   masterToggle() {
     this.isAllSelected() ?
       this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
+      this.dataSource.data.forEach(row => {
+        if (row.name !== 'members') {
+          this.selection.select(row);
+        }
+      });
   }
 
   checkboxLabel(row?: Group): string {

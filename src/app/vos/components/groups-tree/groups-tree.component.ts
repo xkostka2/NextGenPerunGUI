@@ -5,7 +5,6 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import {TreeGroup} from '../../../core/models/TreeGroup';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {SelectionModel} from '@angular/cdk/collections';
-import {debug} from 'util';
 
 
 export interface GroupFlatNode {
@@ -31,6 +30,7 @@ export class GroupsTreeComponent implements OnChanges {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.shortName,
+      fullName: node.name,
       parentGroupId: node.parentGroupId,
       level: level,
       id: node.id,

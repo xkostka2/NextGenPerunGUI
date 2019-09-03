@@ -12,6 +12,8 @@ export class GroupMenuComponent implements OnInit {
 
   @Input() group: GroupFlatNode;
 
+  @Input() disabled = false;
+
   @Output() moveGroup: EventEmitter<void> = new EventEmitter<void>();
 
   ngOnInit() {
