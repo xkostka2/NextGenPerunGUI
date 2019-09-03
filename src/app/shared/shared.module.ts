@@ -103,6 +103,10 @@ import {AttributeValueMapComponent} from './components/attributes-list/attribute
 import {
   AttributeValueStringComponent
 } from './components/attributes-list/attribute-value/attribute-value-string/attribute-value-string.component';
+import { AddMemberDialogComponent } from './components/dialogs/add-member-dialog/add-member-dialog.component';
+import {MembersCandidatesListComponent} from './components/members-candidates-list/members-candidates-list.component';
+import {MemberCandidateEmailPipe} from './pipes/member-candidate-email.pipe';
+import {VoOrExtSourcePipe} from './pipes/vo-or-ext-source.pipe';
 import { CreateResourceTagDialogComponent } from './components/dialogs/create-resource-tag-dialog/create-resource-tag-dialog.component';
 import { DeleteResourceTagDialogComponent } from './components/dialogs/delete-resource-tag-dialog/delete-resource-tag-dialog.component';
 import { MoveGroupDialogComponent } from './components/dialogs/move-group-dialog/move-group-dialog.component';
@@ -220,6 +224,10 @@ import {GroupMenuComponent} from './components/group-menu/group-menu.component';
     TechnicalOwnersPipe,
     UsersListComponent,
     AnyToStringPipe,
+    AddMemberDialogComponent,
+    MembersCandidatesListComponent,
+    MemberCandidateEmailPipe,
+    VoOrExtSourcePipe,
     AttributesListComponent,
     MatChipsModule,
     MatExpansionModule,
@@ -251,6 +259,8 @@ import {GroupMenuComponent} from './components/group-menu/group-menu.component';
     RemoveMembersDialogComponent,
     ApplicationRejectDialogComponent,
     DeleteAttributeDialogComponent,
+    AddMemberDialogComponent,
+    MembersCandidatesListComponent,
     CreateAttributeDialogComponent,
     CreateResourceTagDialogComponent,
     DeleteResourceTagDialogComponent,
@@ -311,6 +321,10 @@ import {GroupMenuComponent} from './components/group-menu/group-menu.component';
     ApplicationRejectDialogComponent,
     AnyToStringPipe,
     DeleteAttributeDialogComponent,
+    AddMemberDialogComponent,
+    MembersCandidatesListComponent,
+    MemberCandidateEmailPipe,
+    VoOrExtSourcePipe,
     CreateAttributeDialogComponent,
     AttributeValueComponent,
     AttributeValueBooleanComponent,

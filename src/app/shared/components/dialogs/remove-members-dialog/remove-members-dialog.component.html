@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>{{'DIALOGS.REMOVE_MEMBERS.TITLE' | translate}}</h1>
-<div mat-dialog-content>
+<div mat-dialog-content *ngIf="!loading">
   <p>
     {{'DIALOGS.REMOVE_MEMBERS.DESCRIPTION' | translate}}
   </p>
@@ -23,7 +23,8 @@
   </table>
 
 </div>
-<div mat-dialog-actions>
+<mat-spinner class="mr-auto ml-auto" *ngIf="loading"></mat-spinner>
+<div mat-dialog-actions *ngIf="!loading">
   <button
     mat-flat-button
     class="ml-auto"

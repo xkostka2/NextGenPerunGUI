@@ -45,24 +45,42 @@ export function parseStatusColor(richMember: RichMember): string {
  * Gets email of given member. The vo-email has top priority, the preferred email
  * has lower priority. If there are no emails, an empty string is returned.
  *
- * @param richMember member
+ * @param richMember RichMember
  */
 export function parseEmail(richMember: RichMember): string {
   let email = '';
-  richMember.memberAttributes.forEach(attr => {
-    if (attr.friendlyName === 'mail' && attr.value !== null) {
-      email = attr.value;
-    }
-  });
-
-  if (email.length === 0) {
-    richMember.userAttributes.forEach(attr => {
-      if (attr.friendlyName === 'preferredMail') {
+  if (richMember) {
+    richMember.memberAttributes.forEach(attr => {
+      if (attr.friendlyName === 'mail' && attr.value !== null) {
         email = attr.value;
       }
     });
-  }
 
+    if (email.length === 0) {
+      richMember.userAttributes.forEach(attr => {
+        if (attr.friendlyName === 'preferredMail') {
+          email = attr.value;
+        }
+      });
+    }
+  }
+  return email;
+}
+
+/**
+ * Gets email of given user. If there are no emails, an empty string is returned.
+ *
+ * @param richUser RichUser
+ */
+export function parseUserEmail(richUser: RichUser): string {
+  let email = '';
+  if (richUser) {
+      richUser.userAttributes.forEach(attr => {
+        if (attr.friendlyName === 'preferredMail') {
+          email = attr.value;
+        }
+      });
+    }
   return email;
 }
 
@@ -241,6 +259,24 @@ export function indexOfVo(recent: number[], id: number) {
   return -1;
 }
 
+/**
+ * Gets Vo or External source of given user. Vo has priority over External source.
+ *
+ * @param richUser RichUser
+ */
+export function parseVoOrExtSource(richUser: RichUser): string {
+  let result = '';
+  if (richUser) {
+    richUser.userAttributes.forEach(attr => {
+      if (attr.friendlyName === 'organization') {
+        result = attr.value;
+      }
+    });
+
+    // TODO For now works only for organization.
+  }
+  return result;
+}
 /**
  * From given attributes array removes all core attributes.
  *

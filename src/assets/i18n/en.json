@@ -542,6 +542,17 @@
       "COUNT": "Count",
       "NO_USERS_FOUND": "No users found"
     },
+    "ADD_MEMBERS": {
+      "TITLE": "Add member",
+      "DESCRIPTION": "Search user by name, login or email",
+      "SEARCH": "Search",
+      "CANCEL": "Cancel",
+      "CREATE": "Add",
+      "INVITE": "Invite",
+      "SUCCESS": "Selected members were added",
+      "SUCCESS_INVITE": "Invite was send to given user",
+      "NO_USERS_FOUND": "No users found"
+    },
     "ADD_GROUPS": {
       "TITLE": "Add group",
       "SEARCH": "Search",
@@ -699,6 +710,11 @@
     "GROUP_STATUS": "Group status",
     "EMAIL": "Email",
     "LOGINS": "Logins"
+  },
+  "MEMBERS_CANDIDATES_LIST": {
+    "NAME": "Name",
+    "ORGANIZATION": "Organization or Ext source",
+    "EMAIL": "Email"
   },
   "MANAGERS_LIST": {
     "ID": "User ID",

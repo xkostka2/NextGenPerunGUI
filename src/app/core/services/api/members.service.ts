@@ -76,4 +76,11 @@ export class MembersService {
       'user': user
     }, showNotificationOnError);
   }
+
+  addMember(voId: number, userId: number, showNotificationOnError = true): Observable<RichMember> {
+    return this.apiService.post('json/membersManager/createMember', {
+      vo: voId,
+      user: userId
+    }, showNotificationOnError);
+  }
 }

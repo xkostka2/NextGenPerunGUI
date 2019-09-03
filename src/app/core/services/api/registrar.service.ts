@@ -22,6 +22,13 @@ export class RegistrarService {
       'language': language}, showNotificationOnError);
   }
 
+  sendInvitationToExistingUser(userId: number, voId: number, showNotificationOnError = true): Observable<void> {
+    return this.apiService.post('json/registrarManager/sendInvitation', {
+      voId: voId,
+      userId: userId
+    }, showNotificationOnError);
+  }
+
   getApplicationsForVo(voId: number, showNotificationOnError = true): Observable<Application[]> {
     return this.apiService.post('json/registrarManager/getApplicationsForVo', {
       'vo': voId

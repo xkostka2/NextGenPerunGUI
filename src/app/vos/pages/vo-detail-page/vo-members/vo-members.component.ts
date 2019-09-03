@@ -11,6 +11,7 @@ import {NotificatorService} from '../../../../core/services/common/notificator.s
 import {TranslateService} from '@ngx-translate/core';
 import {MatDialog} from '@angular/material';
 import {RemoveMembersDialogComponent} from '../../../../shared/components/dialogs/remove-members-dialog/remove-members-dialog.component';
+import {AddMemberDialogComponent} from '../../../../shared/components/dialogs/add-member-dialog/add-member-dialog.component';
 
 @Component({
   selector: 'app-vo-members',
@@ -98,7 +99,16 @@ export class VoMembersComponent implements OnInit {
   }
 
   onAddMember() {
+    const dialogRef = this.dialog.open(AddMemberDialogComponent, {
+      width: '1000px',
+      data: {voId: this.vo.id, theme: 'vo-theme'}
+    });
 
+    dialogRef.afterClosed().subscribe(() => {
+      if (this.firstSearchDone) {
+        this.refreshTable();
+      }
+    });
   }
 
   onKeyInput(event: KeyboardEvent) {
@@ -115,12 +125,16 @@ export class VoMembersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(wereMembersDeleted => {
       if (wereMembersDeleted) {
-        if (this.searchString.trim().length > 0) {
-          this.onSearchByString();
-        } else {
-          this.onListAll();
-        }
+        this.refreshTable();
       }
     });
+  }
+
+  refreshTable() {
+    if (this.searchString.trim().length > 0) {
+      this.onSearchByString();
+    } else {
+      this.onListAll();
+    }
   }
 }

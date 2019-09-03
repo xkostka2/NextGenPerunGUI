@@ -45,17 +45,14 @@ import {ApplicationFormListComponent} from './components/application-form-list/a
 import {VoSettingsApplicationFormPreviewComponent} from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-preview/vo-settings-application-form-preview.component';
 // tslint:disable-next-line:max-line-length
 import {VoSettingsApplicationFormNotificationsComponent} from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-notifications/vo-settings-application-form-notifications.component';
-// tslint:disable-next-line:max-line-length
-// tslint:disable-next-line:max-line-length
-// tslint:disable-next-line:max-line-length
-// tslint:disable-next-line:max-line-length
-import {MemberSettingsComponent} from './pages/member-detail-page/member-settings/member-settings.component';
+import { MemberSettingsComponent } from './pages/member-detail-page/member-settings/member-settings.component';
 import {
   MemberSettingsAttributesComponent
 } from './pages/member-detail-page/member-settings/member-settings-attributes/member-settings-attributes.component';
 import {
   MemberSettingsOverviewComponent
 } from './pages/member-detail-page/member-settings/member-settings-overview/member-settings-overview.component';
+import {AttributesListComponent} from '../shared/components/attributes-list/attributes-list.component';
 import {VoResourcesPreviewComponent} from './pages/vo-detail-page/vo-resources/vo-resources-preview/vo-resources-preview.component';
 import {VoResourcesTagsComponent} from './pages/vo-detail-page/vo-resources/vo-resources-tags/vo-resources-tags.component';
 import {VoResourcesStatesComponent} from './pages/vo-detail-page/vo-resources/vo-resources-states/vo-resources-states.component';
@@ -70,10 +67,11 @@ import { ExpirationSettingsComponent } from './components/expiration-settings/ex
   imports: [
     CommonModule,
     VosRoutingModule,
-    SharedModule,
+    SharedModule
   ],
   exports: [
-    MembersListComponent,
+    AttributesListComponent,
+    MembersListComponent
   ],
   declarations: [
     VoSelectPageComponent,
@@ -123,7 +121,7 @@ import { ExpirationSettingsComponent } from './components/expiration-settings/ex
     VoResourcesOverviewComponent,
     StateTabComponent,
     GroupSettingsExpirationComponent,
-    ExpirationSettingsComponent,
+    ExpirationSettingsComponent
   ],
   entryComponents: [
   ],

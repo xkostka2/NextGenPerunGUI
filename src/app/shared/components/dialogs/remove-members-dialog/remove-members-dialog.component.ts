@@ -26,6 +26,8 @@ export class RemoveMembersDialogComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name'];
   dataSource: MatTableDataSource<RichMember>;
 
+  loading: boolean;
+
   ngOnInit() {
     this.dataSource = new MatTableDataSource<RichMember>(this.data.members);
   }
@@ -35,11 +37,15 @@ export class RemoveMembersDialogComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
     this.membersService.deleteMembers(this.data.members.map(m => m.id)).subscribe(() => {
       this.translate.get('DIALOGS.REMOVE_MEMBERS.SUCCESS').subscribe(successMessage => {
         this.notificator.showSuccess(successMessage);
         this.dialogRef.close(true);
+        this.loading = false;
       });
+    }, () => {
+      this.loading = false;
     });
   }
 }
