@@ -18,11 +18,6 @@ export class AttributesService {
   ) {
   }
 
-  getMemberAttribute(memberId: number, urn: string, showNotificationOnError = true): Observable<Attribute> {
-    return this.apiService.get(`json/attributesManager/getAttribute?member=${memberId}&attributeName=${urn}`,
-      new HttpParams(), showNotificationOnError);
-  }
-
   getAttribute(entityId: number, entity: Entity, urn: string, showNotificationOnError = true): Observable<Attribute> {
     return this.apiService.get(`json/attributesManager/getAttribute?${entity}=${entityId}&attributeName=${urn}`,
       new HttpParams(), showNotificationOnError);

@@ -39,10 +39,11 @@ export class ApplicationFormListComponent implements OnChanges {
   applicationFormItemsChange = new EventEmitter<ApplicationFormItem[]>();
 
   dataSource = this.applicationFormItems;
-  displayedColumns: string[] = ['shortname', 'type', 'preview', 'edit', 'delete'];
+  displayedColumns: string[] = ['drag', 'shortname', 'type', 'preview', 'edit', 'delete'];
   @ViewChild('table', { static: false }) table: MatTable<ApplicationFormItem>;
 
   mapForCombobox: Map<number, string> = new Map();
+  dragDisabled = true;
 
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = this.applicationFormItems;
@@ -89,6 +90,8 @@ export class ApplicationFormListComponent implements OnChanges {
   }
 
   drop(event: CdkDragDrop<ApplicationFormItem[]>) {
+    this.dragDisabled = true;
+
     const prevIndex = this.applicationFormItems.findIndex((d) => d === event.item.data);
     moveItemInArray(this.applicationFormItems, prevIndex, event.currentIndex);
     for (let i = 0; i < this.applicationFormItems.length; i++) {

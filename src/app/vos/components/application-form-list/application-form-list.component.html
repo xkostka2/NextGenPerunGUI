@@ -4,12 +4,21 @@
 <div class="card mt-2" *ngIf="this.applicationFormItems.length !== 0 && !loading">
   <div class="card-body table-theme">
     <table mat-table
+           [cdkDropListDisabled]="dragDisabled"
            #table
            [dataSource]="dataSource"
            class="w-100"
            cdkDropList
            cdkDropListData="dataSource"
            (cdkDropListDropped)="drop($event)">
+      <ng-container matColumnDef="drag">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let applicationFormItem">
+          <button mat-icon-button (mousedown)="dragDisabled = false;">
+            <mat-icon>drag_indicator</mat-icon>
+          </button>
+        </td>
+      </ng-container>
       <ng-container matColumnDef="shortname">
         <th mat-header-cell *matHeaderCellDef>{{'VO_DETAIL.SETTINGS.APPLICATION_FORM.SHORTNAME' | translate}}</th>
         <td mat-cell *matCellDef="let applicationFormItem">{{applicationFormItem.shortname}}</td>
@@ -138,11 +147,11 @@
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let applicationFormItem">
           <button
-            mat-stroked-button
-            class="mr-2"
+            matTooltip="{{'VO_DETAIL.SETTINGS.APPLICATION_FORM.EDIT' | translate}}"
+            mat-icon-button
+            class="hideable-button"
             (click)="edit(applicationFormItem)">
-            <i class="material-icons">edit</i>
-            {{'VO_DETAIL.SETTINGS.APPLICATION_FORM.EDIT' | translate}}
+            <mat-icon>edit</mat-icon>
           </button>
         </td>
       </ng-container>
@@ -150,10 +159,11 @@
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let applicationFormItem">
           <button
-            mat-flat-button
+            matTooltip="{{'VO_DETAIL.SETTINGS.APPLICATION_FORM.DELETE' | translate}}"
+            mat-icon-button
             color="warn"
             (click)="delete(applicationFormItem)">
-            {{'VO_DETAIL.SETTINGS.APPLICATION_FORM.DELETE' | translate}}
+            <mat-icon>delete</mat-icon>
           </button>
         </td>
       </ng-container>
@@ -161,7 +171,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr
         mat-row
-        class="movable-row"
+
         *matRowDef="let applicationFormItem; columns: displayedColumns;"
         cdkDrag
         [cdkDragData]="applicationFormItem">

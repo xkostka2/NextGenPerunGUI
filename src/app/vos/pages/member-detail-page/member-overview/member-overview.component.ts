@@ -45,7 +45,7 @@ export class MemberOverviewComponent implements OnInit {
 
         this.initNavItems();
 
-        this.attributeService.getMemberAttribute(this.member.id, Urns.MEMBER_DEF_EXPIRATION).subscribe(attr => {
+        this.attributeService.getAttribute(this.member.id, 'member', Urns.MEMBER_DEF_EXPIRATION).subscribe(attr => {
           this.expiration = attr.value === null ? this.translate.instant('MEMBER_DETAIL.OVERVIEW.NEVER_EXPIRES') : attr.value;
         });
       });

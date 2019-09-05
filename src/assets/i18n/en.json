@@ -189,7 +189,7 @@
       },
       "APPLICATION_FORM":{
         "TITLE": "Application form",
-        "DRAG_AND_DROP_INFO": "You can move with table items by dragging and dropping",
+        "DRAG_AND_DROP_INFO": "You can move the table items by dragging them with the handle on the left side.",
         "ADD_BUTTON": "Add",
         "COPY_VO_BUTTON": "Copy from VO",
         "PREVIEW_BUTTON": "Preview",
@@ -291,7 +291,7 @@
     },
     "APPLICATION": {
       "TITLE": "Application",
-      "SEARCH": "Search",
+      "FILTER": "Filter",
       "SELECTION_ALL": "All",
       "SELECTION_WFMV": "Waiting for mail verification",
       "SELECTION_SUBMITTED": "Submitted",
