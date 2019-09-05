@@ -179,4 +179,45 @@ export class RegistrarService {
       'id': id
     }, showNotificationOnError);
   }
+
+  updateApplicationMail(mail: ApplicationMail, showNotificationOnError = true) {
+    return this.apiService.post( 'json/registrarManager/updateApplicationMail', {
+      'mail': mail
+    }, showNotificationOnError);
+  }
+
+  addApplicationMail(vo: number, mail: ApplicationMail, showNotificationOnError = true): Observable<ApplicationMail> {
+    return this.apiService.post('json/registrarManager/addApplicationMail', {
+      'vo': vo,
+      'mail': mail
+    }, showNotificationOnError);
+  }
+
+  copyFormFromGroupToGroup(fromGroup: number, toGroup: number, showNotificationOnError = true) {
+    return this.apiService.post('json/registrarManager/copyForm', {
+      'fromGroup': fromGroup,
+      'toGroup': toGroup
+    }, showNotificationOnError);
+  }
+
+  copyFormFromVoToGroup(fromVo: number, toGroup: number, showNotificationOnError = true) {
+    return this.apiService.post('json/registrarManager/copyForm', {
+      'fromVo': fromVo,
+      'toGroup': toGroup
+    }, showNotificationOnError);
+  }
+
+  copyMailsFromGroupToGroup(fromGroup: number, toGroup: number, showNotificationOnError = true) {
+    return this.apiService.post('json/registrarManager/copyMails', {
+      'fromGroup': fromGroup,
+      'toGroup': toGroup
+    }, showNotificationOnError);
+  }
+
+  copyMailsFromVoToGroup(fromVo: number, toGroup: number, showNotificationOnError = true) {
+    return this.apiService.post('json/registrarManager/copyMails', {
+      'fromVo': fromVo,
+      'toGroup': toGroup
+    }, showNotificationOnError);
+  }
 }

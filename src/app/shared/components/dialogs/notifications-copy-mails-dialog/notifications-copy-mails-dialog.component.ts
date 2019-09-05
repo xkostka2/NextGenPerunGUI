@@ -2,32 +2,36 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {VoService} from '../../../../core/services/api/vo.service';
 import {GroupService} from '../../../../core/services/api/group.service';
-import {Vo} from '../../../../core/models/Vo';
-import {Group} from '../../../../core/models/Group';
 import {TranslateService} from '@ngx-translate/core';
 import {RegistrarService} from '../../../../core/services/api/registrar.service';
+import {Vo} from '../../../../core/models/Vo';
+import {Group} from '../../../../core/models/Group';
 import {AbstractControl, FormControl, ValidatorFn, Validators} from '@angular/forms';
-import {map, startWith} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {openClose} from '../../../animations/Animations';
 
-export interface ApplicationFormCopyItemsDialogData {
+export interface NotificationsCopyMailsDialogData {
   voId: number;
   groupId: number;
 }
 
 @Component({
-  selector: 'app-application-form-copy-items-dialog',
-  templateUrl: './application-form-copy-items-dialog.component.html',
-  styleUrls: ['./application-form-copy-items-dialog.component.scss']
+  selector: 'app-notifications-copy-mails-dialog',
+  templateUrl: './notifications-copy-mails-dialog.component.html',
+  styleUrls: ['./notifications-copy-mails-dialog.component.scss'],
+  animations: [
+    openClose
+  ]
 })
-export class ApplicationFormCopyItemsDialogComponent implements OnInit {
+export class NotificationsCopyMailsDialogComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<ApplicationFormCopyItemsDialogComponent>,
+  constructor(private dialogRef: MatDialogRef<NotificationsCopyMailsDialogComponent>,
               private voService: VoService,
               private groupService: GroupService,
               private translateService: TranslateService,
               private registrarService: RegistrarService,
-              @Inject(MAT_DIALOG_DATA) public data: ApplicationFormCopyItemsDialogData) { }
+              @Inject(MAT_DIALOG_DATA) public data: NotificationsCopyMailsDialogData) { }
 
   vos: Vo[] = [];
   groups: Group[] = [];
@@ -38,7 +42,7 @@ export class ApplicationFormCopyItemsDialogComponent implements OnInit {
   filteredGroups: Observable<Group[]>;
 
   ngOnInit() {
-    this.translateService.get('DIALOGS.APPLICATION_FORM_COPY_ITEMS.NO_GROUP_SELECTED').subscribe( text => {
+    this.translateService.get('DIALOGS.NOTIFICATIONS_COPY_MAILS.NO_GROUP_SELECTED').subscribe( text => {
       this.fakeGroup = {
         id: -1,
         name: text,
@@ -60,7 +64,6 @@ export class ApplicationFormCopyItemsDialogComponent implements OnInit {
             map(value => typeof value === 'string' ? value : value.name),
             map(name => name ? this._filterVo(name) : this.vos.slice())
           );
-
         this.vos = vos.sort(((vo1, vo2) => {
           if (vo1.name > vo2.name) {
             return 1;
@@ -98,22 +101,22 @@ export class ApplicationFormCopyItemsDialogComponent implements OnInit {
 
   submit() {
     if (this.data.groupId) {      // checking if the dialog is for group or Vo
-      if (this.groupControl.value === this.fakeGroup) {   // no group selected
-        this.registrarService.copyFormFromVoToGroup(this.voControl.value.id, this.data.groupId).subscribe( () => {
+      if (this.groupControl.value === this.fakeGroup) {
+        this.registrarService.copyMailsFromVoToGroup(this.voControl.value.id, this.data.groupId).subscribe(() => {
           this.dialogRef.close(true);
         });
       } else {
-        this.registrarService.copyFormFromGroupToGroup(this.groupControl.value.id, this.data.groupId).subscribe( () => {
+        this.registrarService.copyMailsFromGroupToGroup(this.groupControl.value.id, this.data.groupId).subscribe(() => {
           this.dialogRef.close(true);
         });
       }
     } else {
-      if (this.groupControl.value === this.fakeGroup) {       // no group selected
-        this.registrarService.copyFormFromVoToVo(this.voControl.value.id, this.data.voId).subscribe( () => {
+      if (this.groupControl.value === this.fakeGroup) {
+        this.registrarService.copyMailsFromVoToVo(this.voControl.value.id, this.data.voId).subscribe(() => {
           this.dialogRef.close(true);
         });
       } else {
-        this.registrarService.copyFormFromGroupToVo(this.groupControl.value.id, this.data.voId).subscribe( () => {
+        this.registrarService.copyMailsFromGroupToVo(this.groupControl.value.id, this.data.voId).subscribe(() => {
           this.dialogRef.close(true);
         });
       }
@@ -181,3 +184,4 @@ export class ApplicationFormCopyItemsDialogComponent implements OnInit {
     };
   }
 }
+

@@ -1,26 +1,33 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {VoService} from '../../../../../../core/services/api/vo.service';
-import {Vo} from '../../../../../../core/models/Vo';
-import {RegistrarService} from '../../../../../../core/services/api/registrar.service';
-import {ApplicationForm} from '../../../../../../core/models/ApplicationForm';
-import {ApplicationMail} from '../../../../../../core/models/ApplicationMail';
+import {VoService} from '../../../../../core/services/api/vo.service';
+import {Vo} from '../../../../../core/models/Vo';
+import {RegistrarService} from '../../../../../core/services/api/registrar.service';
+import {ApplicationForm} from '../../../../../core/models/ApplicationForm';
+import {ApplicationMail} from '../../../../../core/models/ApplicationMail';
 import {MatDialog, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {TranslateService} from '@ngx-translate/core';
 import {
-  ApplicationFormCopyItemsDialogComponent
-} from '../../../../../../shared/components/dialogs/application-form-copy-items-dialog/application-form-copy-items-dialog.component';
+  DeleteNotificationDialogComponent
+} from '../../../../../shared/components/dialogs/delete-notification-dialog/delete-notification-dialog.component';
+import {NotificatorService} from '../../../../../core/services/common/notificator.service';
 import {
-  DeleteApplicationFormMailDialogComponent
-} from '../../../../../../shared/components/dialogs/delete-application-form-mail-dialog/delete-application-form-mail-dialog.component';
-import {NotificatorService} from '../../../../../../core/services/common/notificator.service';
+  EditEmailFooterDialogComponent
+} from '../../../../../shared/components/dialogs/edit-email-footer-dialog/edit-email-footer-dialog.component';
+import {
+  AddEditNotificationDialogComponent
+} from '../../../../../shared/components/dialogs/add-edit-notification-dialog/add-edit-notification-dialog.component';
+import {
+  NotificationsCopyMailsDialogComponent
+} from '../../../../../shared/components/dialogs/notifications-copy-mails-dialog/notifications-copy-mails-dialog.component';
+
 @Component({
-  selector: 'app-vo-settings-application-form-notifications',
-  templateUrl: './vo-settings-application-form-notifications.component.html',
-  styleUrls: ['./vo-settings-application-form-notifications.component.scss']
+  selector: 'app-vo-settings-notifications',
+  templateUrl: './vo-settings-notifications.component.html',
+  styleUrls: ['./vo-settings-notifications.component.scss']
 })
-export class VoSettingsApplicationFormNotificationsComponent implements OnInit {
+export class VoSettingsNotificationsComponent implements OnInit {
 
   @HostBinding('class.router-component') true;
 
@@ -78,21 +85,14 @@ export class VoSettingsApplicationFormNotificationsComponent implements OnInit {
   }
 
   openApplicationMailDetail(applicationMail: ApplicationMail) {
-
-  }
-
-  add() {
-
-  }
-
-  remove() {
-    const dialog = this.dialog.open(DeleteApplicationFormMailDialogComponent, {
-      width: '500px',
-      data: {voId: this.vo.id, mails: this.selection.selected}
+    const dialog = this.dialog.open(AddEditNotificationDialogComponent, {
+      width: '1400px',
+      height: '700px',
+      data: {voId: this.vo.id, createMailNotification: false, applicationMail: applicationMail}
     });
     dialog.afterClosed().subscribe( success => {
       if (success) {
-        this.translate.get('VO_DETAIL.SETTINGS.APPLICATION_FORM.NOTIFICATIONS.DELETE_SUCCESS').subscribe( text => {
+        this.translate.get('VO_DETAIL.SETTINGS.NOTIFICATIONS.EDIT_SUCCESS').subscribe( text => {
           this.notificator.showSuccess(text);
         });
         this.selection.clear();
@@ -101,12 +101,43 @@ export class VoSettingsApplicationFormNotificationsComponent implements OnInit {
     });
   }
 
-  preview() {
+  add() {
+    const applicationMail: ApplicationMail = new ApplicationMail();
+    applicationMail.formId = this.applicationForm.id;
+    const dialog = this.dialog.open(AddEditNotificationDialogComponent, {
+      width: '1400px',
+      height: '700px',
+      data: {voId: this.vo.id, createMailNotification: true, applicationMail: applicationMail, applicationMails: this.applicationMails}
+    });
+    dialog.afterClosed().subscribe( success => {
+      if (success) {
+        this.translate.get('VO_DETAIL.SETTINGS.NOTIFICATIONS.ADD_SUCCESS').subscribe( text => {
+          this.notificator.showSuccess(text);
+        });
+        this.selection.clear();
+        this.updateTable();
+      }
+    });
+  }
 
+  remove() {
+    const dialog = this.dialog.open(DeleteNotificationDialogComponent, {
+      width: '500px',
+      data: {voId: this.vo.id, mails: this.selection.selected}
+    });
+    dialog.afterClosed().subscribe( success => {
+      if (success) {
+        this.translate.get('VO_DETAIL.SETTINGS.NOTIFICATIONS.DELETE_SUCCESS').subscribe( text => {
+          this.notificator.showSuccess(text);
+        });
+        this.selection.clear();
+        this.updateTable();
+      }
+    });
   }
 
   copy() {
-    const dialog = this.dialog.open(ApplicationFormCopyItemsDialogComponent, {
+    const dialog = this.dialog.open(NotificationsCopyMailsDialogComponent, {
       width: '500px',
       data: {voId: this.vo.id}
     });
@@ -134,7 +165,7 @@ export class VoSettingsApplicationFormNotificationsComponent implements OnInit {
     if (applicationMail.mailType === undefined || applicationMail.mailType === null || applicationMail.mailType === '') {
       value = '';
     } else {
-      this.translate.get('VO_DETAIL.SETTINGS.APPLICATION_FORM.NOTIFICATIONS.MAIL_TYPE_' + applicationMail.mailType).subscribe( text => {
+      this.translate.get('VO_DETAIL.SETTINGS.NOTIFICATIONS.MAIL_TYPE_' + applicationMail.mailType).subscribe( text => {
         value = text;
       });
     }
@@ -147,6 +178,13 @@ export class VoSettingsApplicationFormNotificationsComponent implements OnInit {
       this.applicationMails = mails;
       this.dataSource = new MatTableDataSource<ApplicationMail>(this.applicationMails);
       this.loading = false;
+    });
+  }
+
+  changeEmailFooter() {
+    this.dialog.open(EditEmailFooterDialogComponent, {
+      width: '500px',
+      data: {voId: this.vo.id}
     });
   }
 }

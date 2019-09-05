@@ -63,3 +63,16 @@ export const fadeIn =
       )
     ])
   ]);
+
+export const tagsOpenClose =
+  trigger('tagsOpenClose', [
+    state('open', style({
+
+    })),
+    state('closed', style({
+      width: '0px'
+    })),
+    transition('open <=> closed', [
+      animate('.3s ease-in')
+    ]),
+  ]);

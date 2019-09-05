@@ -1,18 +1,19 @@
-<h1 mat-dialog-title>{{'DIALOGS.APPLICATION_FORM_COPY_ITEMS.TITLE' | translate}}</h1>
+<h1 mat-dialog-title>{{'DIALOGS.NOTIFICATIONS_COPY_MAILS.TITLE' | translate}}</h1>
 <div mat-dialog-content class="dialog-container">
 
-  <div class="mb-2 font-italic">{{'DIALOGS.APPLICATION_FORM_COPY_ITEMS.DESCRIPTION' | translate}}</div>
-  {{'DIALOGS.APPLICATION_FORM_COPY_ITEMS.SOURCE_VO' | translate}}:
+  <div class="mb-2 font-italic">{{'DIALOGS.NOTIFICATIONS_COPY_MAILS.DESCRIPTION' | translate}}</div>
+  {{'DIALOGS.NOTIFICATIONS_COPY_MAILS.SOURCE_VO' | translate}}:
 
   <mat-form-field>
-    <input matInput type="text"
+    <input matInput
+           type="text"
            [formControl]="voControl"
            [matAutocomplete]="auto">
     <mat-error *ngIf="voControl.hasError('invalidVo')">
-      {{'DIALOGS.APPLICATION_FORM_COPY_ITEMS.ERROR_INVALID_VO' | translate}}
+      {{'DIALOGS.NOTIFICATIONS_COPY_MAILS.ERROR_INVALID_VO' | translate}}
     </mat-error>
     <mat-error *ngIf="voControl.hasError('required')">
-      {{'DIALOGS.APPLICATION_FORM_COPY_ITEMS.ERROR_NO_VO' | translate}}
+      {{'DIALOGS.NOTIFICATIONS_COPY_MAILS.ERROR_NO_VO' | translate}}
     </mat-error>
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
       <mat-option *ngFor="let vo of filteredVos | async" [value]="vo">
@@ -21,7 +22,7 @@
     </mat-autocomplete>
   </mat-form-field>
 
-  {{'DIALOGS.APPLICATION_FORM_COPY_ITEMS.SOURCE_GROUP' | translate}}:
+  {{'DIALOGS.NOTIFICATIONS_COPY_MAILS.SOURCE_GROUP' | translate}}:
 
   <mat-form-field>
     <input matInput
@@ -29,11 +30,11 @@
            [formControl]="groupControl"
            [matAutocomplete]="group"
            (focus)="getGroups()">
-    <mat-error *ngIf="groupControl.hasError('required')">
-      {{'DIALOGS.APPLICATION_FORM_COPY_ITEMS.ERROR_NO_GROUP' | translate}}
-    </mat-error>
     <mat-error *ngIf="groupControl.hasError('invalidGroup')">
-      {{'DIALOGS.APPLICATION_FORM_COPY_ITEMS.ERROR_INVALID_GROUP' | translate}}
+      {{'DIALOGS.NOTIFICATIONS_COPY_MAILS.ERROR_INVALID_GROUP' | translate}}
+    </mat-error>
+    <mat-error *ngIf="groupControl.hasError('required')">
+      {{'DIALOGS.NOTIFICATIONS_COPY_MAILS.ERROR_NO_GROUP' | translate}}
     </mat-error>
     <mat-autocomplete #group="matAutocomplete" [displayWith]="displayFn">
       <mat-option *ngFor="let group of filteredGroups | async" [value]="group">
@@ -49,7 +50,7 @@
     mat-flat-button
     class="ml-auto"
     (click)="cancel()">
-    {{'DIALOGS.APPLICATION_FORM_COPY_ITEMS.CANCEL_BUTTON' | translate}}
+    {{'DIALOGS.NOTIFICATIONS_COPY_MAILS.CANCEL_BUTTON' | translate}}
   </button>
   <button
     mat-flat-button
@@ -57,6 +58,6 @@
     color="accent"
     [disabled]="voControl.invalid || groupControl.invalid"
     (click)="submit()">
-    {{'DIALOGS.APPLICATION_FORM_COPY_ITEMS.SUBMIT_BUTTON' | translate}}
+    {{'DIALOGS.NOTIFICATIONS_COPY_MAILS.SUBMIT_BUTTON' | translate}}
   </button>
 </div>

@@ -70,5 +70,19 @@ export class AttributesService {
 
     return this.apiService.post('json/attributesManager/setAttributes', payload);
   }
+
+  getAttributes(vo: number, attrNames: string[], showNotificationOnError = true): Observable<Attribute[]> {
+    return this.apiService.post('json/attributesManager/getAttributes', {
+      'vo': vo,
+      'attrNames': attrNames
+    }, showNotificationOnError);
+  }
+
+  setAttributesToVo(vo: number, attributes: Attribute[], showNotificationOnError = true) {
+    return this.apiService.post('json/attributesManager/setAttributes', {
+      'vo': vo,
+      'attributes': attributes
+    }, showNotificationOnError);
+  }
 }
 

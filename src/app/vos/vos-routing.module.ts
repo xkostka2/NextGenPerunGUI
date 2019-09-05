@@ -33,8 +33,6 @@ import {
 } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form.component';
 // tslint:disable-next-line:max-line-length
 import { VoSettingsApplicationFormPreviewComponent } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-preview/vo-settings-application-form-preview.component';
-// tslint:disable-next-line:max-line-length
-import { VoSettingsApplicationFormNotificationsComponent } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-notifications/vo-settings-application-form-notifications.component';
 import {MemberSettingsComponent} from './pages/member-detail-page/member-settings/member-settings.component';
 import {
   MemberSettingsOverviewComponent
@@ -49,6 +47,9 @@ import {VoResourcesTagsComponent} from './pages/vo-detail-page/vo-resources/vo-r
 import {
   GroupSettingsExpirationComponent
 } from './pages/group-detail-page/group-settings/group-settings-expiration/group-settings-expiration.component';
+import {
+  VoSettingsNotificationsComponent
+} from './pages/vo-detail-page/vo-settings/vo-settings-notifications/vo-settings-notifications.component';
 
 const routes: Routes = [
   {
@@ -145,8 +146,8 @@ const routes: Routes = [
             data: {animation: 'SettingsApplicationFormPreviewPage'}
           },
           {
-            path: 'applicationForm/notification',
-            component: VoSettingsApplicationFormNotificationsComponent,
+            path: 'notifications',
+            component: VoSettingsNotificationsComponent,
             data: {animation: 'SettingsApplicationFormNotificationsPage'}
           }
         ]

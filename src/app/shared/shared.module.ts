@@ -87,9 +87,6 @@ import {
   EditApplicationFormItemDialogComponent
 } from './components/dialogs/edit-application-form-item-dialog/edit-application-form-item-dialog.component';
 import { ApplicationFormWidgetDescriptionPipe } from './pipes/application-form-widget-description.pipe';
-import {
-  DeleteApplicationFormMailDialogComponent
-} from './components/dialogs/delete-application-form-mail-dialog/delete-application-form-mail-dialog.component';
 import {AttributesListComponent} from './components/attributes-list/attributes-list.component';
 import {CreateAttributeDialogComponent} from './components/dialogs/create-attribute-dialog/create-attribute-dialog.component';
 import {AttributeValueComponent} from './components/attributes-list/attribute-value/attribute-value.component';
@@ -112,6 +109,21 @@ import { CreateResourceTagDialogComponent } from './components/dialogs/create-re
 import { DeleteResourceTagDialogComponent } from './components/dialogs/delete-resource-tag-dialog/delete-resource-tag-dialog.component';
 import { MoveGroupDialogComponent } from './components/dialogs/move-group-dialog/move-group-dialog.component';
 import {GroupMenuComponent} from './components/group-menu/group-menu.component';
+import {
+  DeleteNotificationDialogComponent
+} from './components/dialogs/delete-notification-dialog/delete-notification-dialog.component';
+import {
+  EditEmailFooterDialogComponent
+} from './components/dialogs/edit-email-footer-dialog/edit-email-footer-dialog.component';
+import {
+  AddEditNotificationDialogComponent
+} from './components/dialogs/add-edit-notification-dialog/add-edit-notification-dialog.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { TagSectionComponent } from './components/dialogs/add-edit-notification-dialog/tag-section/tag-section.component';
+import { TagBarComponent } from './components/dialogs/add-edit-notification-dialog/tag-bar/tag-bar.component';
+import {
+  NotificationsCopyMailsDialogComponent
+} from './components/dialogs/notifications-copy-mails-dialog/notifications-copy-mails-dialog.component';
 
 @NgModule({
   imports: [
@@ -157,6 +169,7 @@ import {GroupMenuComponent} from './components/group-menu/group-menu.component';
     MatCardModule,
     MatChipsModule,
     MatMenuModule,
+    ScrollingModule
   ],
   exports: [
     PerunNavComponent,
@@ -234,7 +247,8 @@ import {GroupMenuComponent} from './components/group-menu/group-menu.component';
     MatChipsModule,
     MatExpansionModule,
     MatMenuModule,
-    GroupMenuComponent
+    GroupMenuComponent,
+    ScrollingModule
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -250,13 +264,11 @@ import {GroupMenuComponent} from './components/group-menu/group-menu.component';
     ApplicationFormCopyItemsDialogComponent,
     AddApplicationFormItemDialogComponent,
     EditApplicationFormItemDialogComponent,
-    DeleteApplicationFormMailDialogComponent,
     RemoveResourceDialogComponent,
     RemoveManagerDialogComponent,
     AddManagerDialogComponent,
     AddGroupManagerDialogComponent,
     RemoveGroupManagerDialogComponent,
-    DeleteApplicationFormMailDialogComponent,
     RemoveResourceDialogComponent,
     RemoveMembersDialogComponent,
     ApplicationRejectDialogComponent,
@@ -266,7 +278,11 @@ import {GroupMenuComponent} from './components/group-menu/group-menu.component';
     CreateAttributeDialogComponent,
     CreateResourceTagDialogComponent,
     DeleteResourceTagDialogComponent,
-    MoveGroupDialogComponent
+    MoveGroupDialogComponent,
+    DeleteNotificationDialogComponent,
+    EditEmailFooterDialogComponent,
+    AddEditNotificationDialogComponent,
+    NotificationsCopyMailsDialogComponent
   ],
   declarations: [
     AttributesListComponent,
@@ -315,7 +331,6 @@ import {GroupMenuComponent} from './components/group-menu/group-menu.component';
     AddApplicationFormItemDialogComponent,
     EditApplicationFormItemDialogComponent,
     ApplicationFormWidgetDescriptionPipe,
-    DeleteApplicationFormMailDialogComponent,
     GroupsListComponent,
     ResourcesListComponent,
     TechnicalOwnersPipe,
@@ -337,7 +352,13 @@ import {GroupMenuComponent} from './components/group-menu/group-menu.component';
     CreateResourceTagDialogComponent,
     DeleteResourceTagDialogComponent,
     MoveGroupDialogComponent,
-    GroupMenuComponent
+    GroupMenuComponent,
+    DeleteNotificationDialogComponent,
+    EditEmailFooterDialogComponent,
+    AddEditNotificationDialogComponent,
+    TagSectionComponent,
+    TagBarComponent,
+    NotificationsCopyMailsDialogComponent
   ],
   providers: [
     AnyToStringPipe,

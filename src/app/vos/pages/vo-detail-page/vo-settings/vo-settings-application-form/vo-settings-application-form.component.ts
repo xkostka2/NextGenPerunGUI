@@ -108,10 +108,6 @@ export class VoSettingsApplicationFormComponent implements OnInit {
     this.router.navigate(['/organizations', this.voId, 'settings', 'applicationForm', 'preview']);
   }
 
-  notifications() {
-    this.router.navigate(['/organizations', this.voId, 'settings', 'applicationForm', 'notification']);
-  }
-
   updateFormItems() {
     this.loading = true;
     this.registrarService.getFormItems(this.voId).subscribe( formItems => {

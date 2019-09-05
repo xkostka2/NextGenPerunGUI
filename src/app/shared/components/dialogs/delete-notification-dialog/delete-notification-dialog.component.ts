@@ -11,13 +11,13 @@ export interface DeleteApplicationFormMailDialogData {
 }
 
 @Component({
-  selector: 'app-delete-application-form-mail-dialog',
-  templateUrl: './delete-application-form-mail-dialog.component.html',
-  styleUrls: ['./delete-application-form-mail-dialog.component.scss']
+  selector: 'app-delete-notification-dialog',
+  templateUrl: './delete-notification-dialog.component.html',
+  styleUrls: ['./delete-notification-dialog.component.scss']
 })
-export class DeleteApplicationFormMailDialogComponent implements OnInit {
+export class DeleteNotificationDialogComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<DeleteApplicationFormMailDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<DeleteNotificationDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DeleteApplicationFormMailDialogData,
               private notificator: NotificatorService,
               private translate: TranslateService,
@@ -47,7 +47,7 @@ export class DeleteApplicationFormMailDialogComponent implements OnInit {
     if (applicationMail.mailType === undefined || applicationMail.mailType === null || applicationMail.mailType === '') {
       value = '';
     } else {
-      this.translate.get('VO_DETAIL.SETTINGS.APPLICATION_FORM.NOTIFICATIONS.MAIL_TYPE_' + applicationMail.mailType).subscribe( text => {
+      this.translate.get('VO_DETAIL.SETTINGS.NOTIFICATIONS.MAIL_TYPE_' + applicationMail.mailType).subscribe( text => {
         value = text;
       });
     }

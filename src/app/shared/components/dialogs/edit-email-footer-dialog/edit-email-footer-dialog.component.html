@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>{{'DIALOGS.NOTIFICATIONS_EDIT_FOOTER.TITLE' | translate}}</h1>
+<div mat-dialog-content class="dialog-container">
+  <div>
+    {{'DIALOGS.NOTIFICATIONS_EDIT_FOOTER.LABEL' | translate}}:
+  </div>
+
+  <mat-form-field>
+    <textarea matInput [cdkTextareaAutosize]="true" [(ngModel)]="mailFooter"></textarea>
+  </mat-form-field>
+
+  <div class="mt-2 font-italic text-muted">{{'DIALOGS.NOTIFICATIONS_EDIT_FOOTER.DESCRIPTION' | translate}}</div>
+</div>
+
+<div mat-dialog-actions>
+  <button
+    mat-flat-button
+    class="ml-auto"
+    (click)="cancel()">
+    {{'DIALOGS.NOTIFICATIONS_EDIT_FOOTER.CANCEL_BUTTON' | translate}}
+  </button>
+  <button
+    mat-flat-button
+    class="ml-2"
+    color="accent"
+    (click)="submit()">
+    {{'DIALOGS.NOTIFICATIONS_EDIT_FOOTER.SUBMIT_BUTTON' | translate}}
+  </button>
+</div>
