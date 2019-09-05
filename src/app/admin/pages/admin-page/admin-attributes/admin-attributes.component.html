@@ -1,6 +1,6 @@
 <div>
   <h1 class="page-subtitle">{{'ADMIN.ATTRIBUTES.TITLE' | translate}}</h1>
-
+  <app-refresh-button (refresh)="refreshTable()"></app-refresh-button>
   <button mat-flat-button color="accent" class="mr-2">
     {{'ADMIN.ATTRIBUTES.CREATE' | translate}}
   </button>
@@ -8,10 +8,13 @@
     {{'ADMIN.ATTRIBUTES.DELETE' | translate}}
   </button>
   <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="{{'ADMIN.ATTRIBUTES.SEARCH' | translate}}">
+    <label>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="{{'ADMIN.ATTRIBUTES.SEARCH' | translate}}">
+    </label>
   </mat-form-field>
-
+  <mat-spinner class="ml-auto mr-auto" *ngIf="loading"></mat-spinner>
   <app-attr-def-list
+    *ngIf="!loading"
     [definitions]="attrDefinitions"
     [selection]="selected"
     [filterValue]="filterValue">

@@ -14,6 +14,8 @@ import {AuthService} from './core/services/common/auth.service';
 import {Router} from '@angular/router';
 import {RouteReuseStrategy} from '@angular/router';
 import {CacheRouteReuseStrategy} from './core/services/common/cache-route-reuse-strategy';
+import {MatIconModule} from '@angular/material';
+import {CustomIconService} from './core/services/api/custom-icon.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,6 +33,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SharedModule,
     CoreModule,
     AppRoutingModule,
+    MatIconModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -42,15 +45,18 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [{
     provide: RouteReuseStrategy,
     useClass: CacheRouteReuseStrategy
-  }],
+    },
+    CustomIconService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private customIconService: CustomIconService
   ) {
+    this.customIconService.registerPerunRefreshIcon();
     const currentPathname = window.location.pathname;
 
     if (currentPathname === '/api-callback') {

@@ -81,5 +81,4 @@ export class CreateAttributeDialogComponent implements OnInit {
       this.dialogRef.close('saved');
     });
   }
-
 }

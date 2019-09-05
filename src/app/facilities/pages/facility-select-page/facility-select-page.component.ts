@@ -13,18 +13,25 @@ export class FacilitySelectPageComponent implements OnInit {
 
   constructor(
     private facilityService: FacilityService,
-    private sideMenuService: SideMenuService,
+    private sideMenuService: SideMenuService
   ) { }
 
   facilities: RichFacility[] = [];
   recentIds: number[] = [];
+  loading: boolean;
 
   ngOnInit() {
     this.sideMenuService.setFacilityMenuItems([]);
 
+    this.refreshTable();
+  }
+
+  refreshTable() {
+    this.loading = true;
     this.facilityService.getRichFacilities().subscribe(facilities => {
       this.facilities = getRecentlyVisited('facilities', facilities);
       this.recentIds = getRecentlyVisitedIds('facilities');
+      this.loading = false;
     });
   }
 }

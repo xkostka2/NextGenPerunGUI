@@ -1,16 +1,17 @@
 <div>
   <h1 class="page-subtitle">{{'GROUP_DETAIL.SUBGROUPS.TITLE' | translate}}</h1>
-
+  <app-refresh-button (refresh)="refreshTable()"></app-refresh-button>
   <button mat-flat-button color="accent" (click)="onCreateGroup()">
     {{'GROUP_DETAIL.SUBGROUPS.CREATE_GROUP' | translate}}
   </button>
   <button mat-flat-button color="warn" class="ml-2" [disabled]="selected.selected.length === 0" (click)="deleteGroup()">
     {{'GROUP_DETAIL.SUBGROUPS.DELETE_GROUP' | translate}}
   </button>
-  <mat-checkbox color="primary" class="ml-3" [(ngModel)]="showGroupList">
+  <mat-checkbox color="primary" class="ml-3" [(ngModel)]="showGroupList" #checkbox>
     {{'GROUP_DETAIL.SUBGROUPS.SHOW_LIST' | translate}}
   </mat-checkbox>
-  <div class="mt-3" *ngIf="groups.length > 0">
+  <mat-spinner class="ml-auto mr-auto" *ngIf="loading"></mat-spinner>
+  <div class="mt-3" *ngIf="groups.length > 0 && !loading">
     <app-groups-tree
       *ngIf="!showGroupList"
       [groups]="groups"

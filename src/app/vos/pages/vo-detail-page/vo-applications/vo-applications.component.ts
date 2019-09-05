@@ -25,6 +25,7 @@ export class VoApplicationsComponent implements OnInit {
   applications: Application[] = [];
   vo: Vo;
   displayedColumns: string[] = ['id', 'createdAt', 'type', 'state', 'user', 'extSourceLoa', 'group', 'modifiedBy'];
+  firstSearchDone: boolean;
 
   ngOnInit() {
     this.loading = true;

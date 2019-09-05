@@ -2,7 +2,9 @@
   <app-back-button>
   </app-back-button>
   <h1 class="page-title">{{'VO_MANAGEMENT.TITLE' | translate}}</h1>
-  <app-vo-select-table
+  <app-refresh-button (refresh)="refreshTable()" *ngIf="!loading"></app-refresh-button>
+  <mat-spinner *ngIf="loading" class="ml-auto mr-auto"></mat-spinner>
+  <app-vo-select-table *ngIf="!loading"
     [vos]="vos"
     [recentIds]="recentIds">
   </app-vo-select-table>

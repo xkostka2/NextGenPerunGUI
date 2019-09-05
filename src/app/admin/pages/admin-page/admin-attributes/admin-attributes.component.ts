@@ -19,11 +19,21 @@ export class AdminAttributesComponent implements OnInit {
   selected = new SelectionModel<AttributeDefinition>(true, []);
   filterValue = '';
 
+  loading: boolean;
+
   ngOnInit() {
-    this.attrService.getAttributesDefinition().subscribe(attrDefs => this.attrDefinitions = attrDefs);
+    this.refreshTable();
   }
 
   applyFilter(value: string) {
     this.filterValue = value.trim().toLowerCase();
+  }
+
+  refreshTable() {
+    this.loading = true;
+    this.attrService.getAttributesDefinition().subscribe(attrDefs => {
+      this.attrDefinitions = attrDefs;
+      this.loading = false;
+    });
   }
 }

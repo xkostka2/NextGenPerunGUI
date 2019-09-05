@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit, ViewChild} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import {GroupService} from '../../../../core/services/api/group.service';
 import {Group} from '../../../../core/models/Group';
@@ -6,6 +6,7 @@ import {CreateGroupDialogComponent} from '../../../../shared/components/dialogs/
 import {ActivatedRoute} from '@angular/router';
 import {SelectionModel} from '@angular/cdk/collections';
 import {DeleteGroupDialogComponent} from '../../../../shared/components/dialogs/delete-group-dialog/delete-group-dialog.component';
+import {MatCheckbox} from '@angular/material';
 
 @Component({
   selector: 'app-group-subgroups',
@@ -33,6 +34,11 @@ export class GroupSubgroupsComponent implements OnInit {
 
   showGroupList = false;
 
+  loading: boolean;
+
+  @ViewChild('checkbox', {static: true})
+  checkbox: MatCheckbox;
+
   onCreateGroup() {
     const dialogRef = this.dialog.open(CreateGroupDialogComponent, {
       width: '350px',
@@ -45,13 +51,22 @@ export class GroupSubgroupsComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('preferedValue') === 'list') {
+      this.checkbox.toggle();
+      this.selected.clear();
+      this.showGroupList = true;
+    }
+    this.checkbox.change.subscribe(() => {
+      const value = this.checkbox.checked ? 'list' : 'tree';
+      localStorage.setItem('preferedValue', value);
+    });
+
     this.route.parent.params.subscribe(parentParams => {
       const groupId = parentParams['groupId'];
       this.groupService.getGroupById(groupId).subscribe(group => {
         this.group = group;
-      });
-      this.groupService.getAllRichSubGroupsWithAttributesByNames(groupId).subscribe(groups => {
-        this.groups = groups;
+
+        this.refreshTable();
       });
     });
   }
@@ -64,11 +79,17 @@ export class GroupSubgroupsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.groupService.getAllSubGroups(this.group.id).subscribe(groups => {
-          this.groups = groups;
-          this.selected.clear();
-        });
+        this.refreshTable();
       }
+    });
+  }
+
+  refreshTable() {
+    this.loading = true;
+    this.groupService.getAllRichSubGroupsWithAttributesByNames(this.group.id).subscribe(groups => {
+      this.groups = groups;
+      this.selected.clear();
+      this.loading = false;
     });
   }
 }

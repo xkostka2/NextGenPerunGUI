@@ -1,5 +1,5 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {ActivatedRoute, RouterOutlet} from '@angular/router';
 import {fadeIn} from '../../../../shared/animations/Animations';
 
 @Component({
@@ -16,23 +16,7 @@ export class VoResourcesComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
-  ) {
-    this.currentUrl = router.url;
-    this.backButtonDisplayed = this.backButtonRegex.test(this.currentUrl);
-
-    router.events.subscribe((_: NavigationEnd) => {
-      if (_ instanceof NavigationEnd) {
-        this.currentUrl = _.url;
-
-        this.backButtonDisplayed = this.backButtonRegex.test(this.currentUrl);
-      }
-    });
-  }
-
-  backButtonRegex = new RegExp('/organizations/\\d+/resources/\\w+$');
-  currentUrl;
-  backButtonDisplayed = false;
+  ) { }
 
   voId: number;
 

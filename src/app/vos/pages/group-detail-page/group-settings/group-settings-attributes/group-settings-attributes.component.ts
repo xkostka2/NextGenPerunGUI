@@ -29,7 +29,7 @@ export class GroupSettingsAttributesComponent implements OnInit {
     private attributesService: AttributesService,
     private notificator: NotificatorService,
     private dialog: MatDialog,
-    private translate: TranslateService,
+    private translate: TranslateService
   ) {
     this.translate.get('GROUP_DETAIL.SETTINGS.ATTRIBUTES.SUCCESS_SAVE').subscribe(value => this.saveSuccessMessage = value);
     this.translate.get('GROUP_DETAIL.SETTINGS.ATTRIBUTES.SUCCESS_DELETE').subscribe(value => this.deleteSuccessMessage = value);
@@ -44,12 +44,13 @@ export class GroupSettingsAttributesComponent implements OnInit {
   attributes: Attribute[] = [];
   groupId: number;
 
+  loading: boolean;
+
   ngOnInit() {
     this.route.parent.parent.params.subscribe(params => {
       this.groupId = params['groupId'];
-      this.attributesService.getAllAttributes(this.groupId, 'group').subscribe(attributes => {
-        this.attributes = filterCoreAttributes(attributes);
-      });
+
+      this.refreshTable();
     });
   }
 
@@ -66,10 +67,7 @@ export class GroupSettingsAttributesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.attributesService.getAllAttributes(this.groupId, 'group').subscribe(attributes => {
-          this.attributes = filterCoreAttributes(attributes);
-          this.selection.clear();
-        });
+        this.refreshTable();
       }
     });
   }
@@ -98,11 +96,18 @@ export class GroupSettingsAttributesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(didConfirm => {
       if (didConfirm) {
-        this.attributesService.getAllAttributes(this.groupId, 'group').subscribe(attributes => {
-          this.attributes = filterCoreAttributes(attributes);
-          this.selection.clear();
-        });
+        this.refreshTable();
       }
+    });
+  }
+
+  refreshTable() {
+    // TODO Does not apply filter on refresh.
+    this.loading = true;
+    this.attributesService.getAllAttributes(this.groupId, 'group').subscribe(attributes => {
+      this.attributes = filterCoreAttributes(attributes);
+      this.selection.clear();
+      this.loading = false;
     });
   }
 }

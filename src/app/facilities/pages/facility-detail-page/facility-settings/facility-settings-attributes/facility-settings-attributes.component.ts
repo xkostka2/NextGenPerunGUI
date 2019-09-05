@@ -46,12 +46,12 @@ export class FacilitySettingsAttributesComponent implements OnInit {
   saveSuccessMessage: string;
   deleteSuccessMessage: string;
 
+  loading: boolean;
+
   ngOnInit() {
     this.route.parent.parent.params.subscribe(params => {
       this.facilityId = params['facilityId'];
-      this.attributesService.getAllAttributes(this.facilityId, 'facility').subscribe(attributes => {
-        this.attributes = filterCoreAttributes(attributes);
-      });
+      this.refreshTable();
     });
   }
 
@@ -67,10 +67,7 @@ export class FacilitySettingsAttributesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.attributesService.getAllAttributes(this.facilityId, 'facility').subscribe(attributes => {
-          this.attributes = filterCoreAttributes(attributes);
-          this.selection.clear();
-        });
+        this.refreshTable();
       }
     });
   }
@@ -100,10 +97,17 @@ export class FacilitySettingsAttributesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'saved') {
-        this.attributesService.getAllAttributes(this.facilityId, 'facility').subscribe(attributes => {
-          this.attributes = filterCoreAttributes(attributes);
-        });
+        this.refreshTable();
       }
+    });
+  }
+
+  refreshTable() {
+    this.loading = true;
+    this.attributesService.getAllAttributes(this.facilityId, 'facility').subscribe(attributes => {
+      this.attributes = filterCoreAttributes(attributes);
+      this.selection.clear();
+      this.loading = false;
     });
   }
 }

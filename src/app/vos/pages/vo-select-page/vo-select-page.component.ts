@@ -18,12 +18,19 @@ export class VoSelectPageComponent implements OnInit {
 
   vos: Vo[] = [];
   recentIds = [];
+  loading: boolean;
 
   ngOnInit() {
     this.sideMenuService.setAccessMenuItems([]);
+    this.refreshTable();
+  }
+
+  refreshTable() {
+    this.loading = true;
     this.voService.getVos().subscribe(vos => {
       this.vos = getRecentlyVisited('vos', vos);
       this.recentIds = getRecentlyVisitedIds('vos');
+      this.loading = false;
     });
   }
 }

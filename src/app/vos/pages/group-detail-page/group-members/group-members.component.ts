@@ -33,6 +33,14 @@ export class GroupMembersComponent implements OnInit {
   firstSearchDone = false;
 
   loading = false;
+  data: 'search' | 'all';
+
+  private attrNames = [
+    Urns.MEMBER_DEF_ORGANIZATION,
+    Urns.MEMBER_DEF_MAIL,
+    Urns.USER_DEF_ORGANIZATION,
+    Urns.USER_DEF_PREFERRED_MAIL
+  ];
 
   ngOnInit() {
     this.selection = new SelectionModel<RichMember>(true, []);
@@ -46,47 +54,17 @@ export class GroupMembersComponent implements OnInit {
   }
 
   onSearchByString() {
-    this.loading = true;
+    this.data = 'search';
     this.firstSearchDone = true;
 
-    this.selection.clear();
-
-    const attrNames = [
-      Urns.MEMBER_DEF_ORGANIZATION,
-      Urns.MEMBER_DEF_MAIL,
-      Urns.USER_DEF_ORGANIZATION,
-      Urns.USER_DEF_PREFERRED_MAIL
-    ];
-
-    this.membersService.findCompleteRichMembersForGroup(this.group.id, this.searchString, attrNames).subscribe(
-      members => {
-        this.members = members;
-        this.loading = false;
-      },
-      () => this.loading = false
-    );
+    this.refreshTable();
   }
 
   onListAll() {
-    this.loading = true;
+    this.data = 'all';
     this.firstSearchDone = true;
 
-    this.selection.clear();
-
-    const attrNames = [
-      Urns.MEMBER_DEF_ORGANIZATION,
-      Urns.USER_DEF_ORGANIZATION,
-      Urns.USER_DEF_PREFERRED_MAIL,
-      Urns.MEMBER_DEF_MAIL
-    ];
-
-    this.membersService.getCompleteRichMembersForGroup(this.group.id, attrNames).subscribe(
-      members => {
-        this.members = members;
-        this.loading = false;
-      },
-      () => this.loading = false
-    );
+   this.refreshTable();
   }
 
   onAddMember() {
@@ -100,5 +78,32 @@ export class GroupMembersComponent implements OnInit {
   }
 
   onRemoveMembers() {
+  }
+
+  refreshTable() {
+    this.loading = true;
+    this.selection.clear();
+    switch (this.data) {
+      case 'all': {
+        this.membersService.getCompleteRichMembersForGroup(this.group.id, this.attrNames).subscribe(
+          members => {
+            this.members = members;
+            this.loading = false;
+          },
+          () => this.loading = false
+        );
+        break;
+      }
+      case 'search': {
+        this.membersService.findCompleteRichMembersForGroup(this.group.id, this.searchString, this.attrNames).subscribe(
+          members => {
+            this.members = members;
+            this.loading = false;
+          },
+          () => this.loading = false
+        );
+        break;
+      }
+    }
   }
 }

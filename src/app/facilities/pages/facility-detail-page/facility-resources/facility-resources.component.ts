@@ -34,6 +34,8 @@ export class FacilityResourcesComponent implements OnInit {
   resources: RichResource[] = [];
   selected = new SelectionModel<RichResource>(false, []);
 
+  loading: boolean;
+
   ngOnInit() {
     this.route.parent.params.subscribe(parentParams => {
       const facilityId = parentParams['facilityId'];
@@ -41,9 +43,7 @@ export class FacilityResourcesComponent implements OnInit {
       this.facilityService.getFacilityById(facilityId).subscribe(facility => {
         this.facility = facility;
 
-        this.resourcesService.getAllResources(this.facility.id).subscribe(resources => {
-          this.resources = resources;
-        });
+        this.refreshTable();
       });
     });
   }
@@ -56,11 +56,17 @@ export class FacilityResourcesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.resourcesService.getAllResources(this.facility.id).subscribe(resources => {
-          this.resources = resources;
-          this.selected.clear();
-        });
+        this.refreshTable();
       }
+    });
+  }
+
+  refreshTable() {
+    this.loading = true;
+    this.resourcesService.getAllResources(this.facility.id).subscribe(resources => {
+      this.resources = resources;
+      this.selected.clear();
+      this.loading = false;
     });
   }
 }

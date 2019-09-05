@@ -28,7 +28,7 @@ export class MemberSettingsAttributesComponent implements OnInit {
     private attributesService: AttributesService,
     private notificator: NotificatorService,
     private dialog: MatDialog,
-    private translate: TranslateService,
+    private translate: TranslateService
   ) {
     this.translate.get('MEMBER_DETAIL.SETTINGS.ATTRIBUTES.SUCCESS_SAVE').subscribe(value => this.saveSuccessMessage = value);
     this.translate.get('MEMBER_DETAIL.SETTINGS.ATTRIBUTES.SUCCESS_DELETE').subscribe(value => this.deleteSuccessMessage = value);
@@ -43,12 +43,12 @@ export class MemberSettingsAttributesComponent implements OnInit {
   attributes: Attribute[] = [];
   memberId: number;
 
+  loading: boolean;
+
   ngOnInit() {
     this.route.parent.parent.params.subscribe(params => {
       this.memberId = params['memberId'];
-      this.attributesService.getAllAttributes(this.memberId, 'member').subscribe(attributes => {
-        this.attributes = filterCoreAttributes(attributes);
-      });
+      this.refreshTable();
     });
   }
 
@@ -65,10 +65,7 @@ export class MemberSettingsAttributesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.attributesService.getAllAttributes(this.memberId, 'member').subscribe(attributes => {
-          this.attributes = filterCoreAttributes(attributes);
-          this.selection.clear();
-        });
+        this.refreshTable();
       }
     });
   }
@@ -97,11 +94,17 @@ export class MemberSettingsAttributesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(didConfirm => {
       if (didConfirm) {
-        this.attributesService.getAllAttributes(this.memberId, 'member').subscribe(attributes => {
-          this.attributes = filterCoreAttributes(attributes);
-          this.selection.clear();
-        });
+        this.refreshTable();
       }
+    });
+  }
+
+  refreshTable() {
+    this.loading = true;
+    this.attributesService.getAllAttributes(this.memberId, 'member').subscribe(attributes => {
+      this.attributes = filterCoreAttributes(attributes);
+      this.selection.clear();
+      this.loading = false;
     });
   }
 }

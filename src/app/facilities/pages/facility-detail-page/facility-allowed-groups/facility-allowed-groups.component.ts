@@ -29,6 +29,8 @@ export class FacilityAllowedGroupsComponent implements OnInit {
 
   facilityId: number;
 
+  loading: boolean;
+
   @Input()
   groups: Group[] = [];
   selected = 'all';
@@ -42,13 +44,7 @@ export class FacilityAllowedGroupsComponent implements OnInit {
       this.facilityService.getAllowedVos(this.facilityId).subscribe(vos => {
           this.vos = vos;
 
-          vos.forEach(vo => {
-            this.facilityService.getAllowedGroups(this.facilityId, vo.id).subscribe(group => {
-              this.groups =  this.groups.concat(group);
-
-              this.groupsToShow = this.groups;
-            });
-          });
+          this.refreshTable();
         });
     });
   }
@@ -60,5 +56,18 @@ export class FacilityAllowedGroupsComponent implements OnInit {
     } else {
       this.groupsToShow = this.groups;
     }
+  }
+
+  refreshTable() {
+    this.loading = true;
+    this.groups = [];
+    this.vos.forEach(vo => {
+      this.facilityService.getAllowedGroups(this.facilityId, vo.id).subscribe(group => {
+        this.groups =  this.groups.concat(group);
+
+        this.groupsToShow = this.groups;
+        this.loading = false;
+      });
+    });
   }
 }

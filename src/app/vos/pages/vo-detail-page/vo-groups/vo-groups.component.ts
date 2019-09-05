@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, Input, OnInit, ViewChild} from '@angular/core';
 import {Vo} from '../../../../core/models/Vo';
 import {Group} from '../../../../core/models/Group';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,6 +11,7 @@ import {DeleteGroupDialogComponent} from '../../../../shared/components/dialogs/
 import {SelectionModel} from '@angular/cdk/collections';
 import {GroupFlatNode} from '../../../components/groups-tree/groups-tree.component';
 import {MoveGroupDialogComponent} from '../../../../shared/components/dialogs/move-group-dialog/move-group-dialog.component';
+import {MatCheckbox} from '@angular/material';
 
 @Component({
   selector: 'app-vo-groups',
@@ -28,7 +29,7 @@ export class VoGroupsComponent implements OnInit {
     private groupService: GroupService,
     private sideMenuService: SideMenuService,
     private voService: VoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) { }
 
   @Input()
@@ -40,18 +41,33 @@ export class VoGroupsComponent implements OnInit {
 
   selected = new SelectionModel<Group>(true, []);
 
+  loading: boolean;
+
+  @ViewChild('checkbox', {static: true})
+  checkbox: MatCheckbox;
+
   onCreateGroup() {
     const dialogRef = this.dialog.open(CreateGroupDialogComponent, {
       width: '350px',
       data: {voId: this.vo.id, parentGroup: null}
     });
 
-    dialogRef.afterClosed().subscribe(value => {
-      this.ngOnInit();
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadAllGroups();
     });
   }
 
   ngOnInit() {
+    if (localStorage.getItem('preferedValue') === 'list') {
+      this.checkbox.toggle();
+      this.selected.clear();
+      this.showGroupList = true;
+    }
+    this.checkbox.change.subscribe(() => {
+      const value = this.checkbox.checked ? 'list' : 'tree';
+      localStorage.setItem('preferedValue', value);
+    });
+
     this.route.parent.params.subscribe(parentParams => {
       const voId = parentParams['voId'];
 
@@ -71,10 +87,7 @@ export class VoGroupsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.groupService.getAllGroups(this.vo.id).subscribe(groups => {
-          this.groups = groups;
-          this.selected.clear();
-        });
+        this.loadAllGroups();
       }
     });
   }
@@ -99,9 +112,12 @@ export class VoGroupsComponent implements OnInit {
     });
   }
 
-  private loadAllGroups() {
+  loadAllGroups() {
+    this.loading = true;
     this.groupService.getAllGroups(this.vo.id).subscribe(groups => {
       this.groups = groups;
+      this.selected.clear();
+      this.loading = false;
     });
   }
 }

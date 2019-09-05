@@ -1,5 +1,5 @@
 <h1 class="page-subtitle">{{'VO_DETAIL.APPLICATION.TITLE' | translate}}</h1>
-
+<app-refresh-button (refresh)="select()"></app-refresh-button>
 <mat-form-field class="w-25 mr-2">
   <mat-label>{{'VO_DETAIL.APPLICATION.TABLE_STATE' | translate}}</mat-label>
   <mat-select (selectionChange)="select()" [(value)]="state" disableOptionCentering>

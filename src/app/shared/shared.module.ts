@@ -103,6 +103,7 @@ import {AttributeValueMapComponent} from './components/attributes-list/attribute
 import {
   AttributeValueStringComponent
 } from './components/attributes-list/attribute-value/attribute-value-string/attribute-value-string.component';
+import { RefreshButtonComponent } from './components/refresh-button/refresh-button.component';
 import { AddMemberDialogComponent } from './components/dialogs/add-member-dialog/add-member-dialog.component';
 import {MembersCandidatesListComponent} from './components/members-candidates-list/members-candidates-list.component';
 import {MemberCandidateEmailPipe} from './pipes/member-candidate-email.pipe';
@@ -110,7 +111,6 @@ import {VoOrExtSourcePipe} from './pipes/vo-or-ext-source.pipe';
 import { CreateResourceTagDialogComponent } from './components/dialogs/create-resource-tag-dialog/create-resource-tag-dialog.component';
 import { DeleteResourceTagDialogComponent } from './components/dialogs/delete-resource-tag-dialog/delete-resource-tag-dialog.component';
 import { MoveGroupDialogComponent } from './components/dialogs/move-group-dialog/move-group-dialog.component';
-import {VosModule} from '../vos/vos.module';
 import {GroupMenuComponent} from './components/group-menu/group-menu.component';
 
 @NgModule({
@@ -230,6 +230,8 @@ import {GroupMenuComponent} from './components/group-menu/group-menu.component';
     VoOrExtSourcePipe,
     AttributesListComponent,
     MatChipsModule,
+    RefreshButtonComponent,
+    MatChipsModule,
     MatExpansionModule,
     MatMenuModule,
     GroupMenuComponent
@@ -331,6 +333,7 @@ import {GroupMenuComponent} from './components/group-menu/group-menu.component';
     AttributeValueListComponent,
     AttributeValueMapComponent,
     AttributeValueStringComponent,
+    RefreshButtonComponent,
     CreateResourceTagDialogComponent,
     DeleteResourceTagDialogComponent,
     MoveGroupDialogComponent,

@@ -44,6 +44,13 @@ export class VoMembersComponent implements OnInit {
 
   loading = false;
 
+  private attrNames = [
+    Urns.MEMBER_DEF_ORGANIZATION,
+    Urns.MEMBER_DEF_MAIL,
+    Urns.USER_DEF_ORGANIZATION,
+    Urns.USER_DEF_PREFERRED_MAIL
+  ];
+
   ngOnInit() {
     this.route.parent.params.subscribe(parentParams => {
       const voId = parentParams['voId'];
@@ -60,14 +67,7 @@ export class VoMembersComponent implements OnInit {
 
     this.selection.clear();
 
-    const attrNames = [
-      Urns.MEMBER_DEF_ORGANIZATION,
-      Urns.MEMBER_DEF_MAIL,
-      Urns.USER_DEF_ORGANIZATION,
-      Urns.USER_DEF_PREFERRED_MAIL
-    ];
-
-    this.membersService.findCompleteRichMembers(this.vo.id, this.searchString, attrNames).subscribe(
+    this.membersService.findCompleteRichMembers(this.vo.id, this.searchString, this.attrNames).subscribe(
       members => {
         this.members = members;
         this.loading = false;
@@ -82,14 +82,7 @@ export class VoMembersComponent implements OnInit {
 
     this.selection.clear();
 
-    const attrNames = [
-      Urns.MEMBER_DEF_ORGANIZATION,
-      Urns.MEMBER_DEF_MAIL,
-      Urns.USER_DEF_ORGANIZATION,
-      Urns.USER_DEF_PREFERRED_MAIL
-    ];
-
-    this.membersService.getCompleteRichMembers(this.vo.id, attrNames).subscribe(
+    this.membersService.getCompleteRichMembers(this.vo.id, this.attrNames).subscribe(
       members => {
         this.members = members;
         this.loading = false;

@@ -12,6 +12,7 @@ import {
 } from '../../../../../shared/components/dialogs/delete-resource-tag-dialog/delete-resource-tag-dialog.component';
 import {TranslateService} from '@ngx-translate/core';
 import {NotificatorService} from '../../../../../core/services/common/notificator.service';
+import {CustomIconService} from '../../../../../core/services/api/custom-icon.service';
 
 @Component({
   selector: 'app-vo-resources-tags',
@@ -26,7 +27,8 @@ export class VoResourcesTagsComponent implements OnInit {
               private resourceService: ResourcesService,
               private dialog: MatDialog,
               private notificator: NotificatorService,
-              private translator: TranslateService) { }
+              private translator: TranslateService,
+              private customIconService: CustomIconService) { }
 
   loading = false;
   resourceTag: ResourceTag[] = [];
@@ -39,15 +41,11 @@ export class VoResourcesTagsComponent implements OnInit {
   dataSource: MatTableDataSource<ResourceTag>;
 
   ngOnInit() {
+    this.customIconService.registerPerunRefreshIcon();
     this.loading = true;
     this.route.parent.parent.params.subscribe(parentParams => {
-      const voId = parentParams['voId'];
-      this.voId = voId;
-      this.resourceService.getAllResourcesTagsForVo(voId).subscribe( tags => {
-        this.resourceTag = tags;
-        this.dataSource = new MatTableDataSource<ResourceTag>(this.resourceTag);
-        this.loading = false;
-      });
+      this.voId = parentParams['voId'];
+      this.updateData();
     });
   }
 
@@ -124,7 +122,7 @@ export class VoResourcesTagsComponent implements OnInit {
   updateData() {
     this.loading = true;
     this.selection.clear();
-    this.resourceService.getAllResourcesTagsForVo(this.voId).subscribe( tags => {
+    this.resourceService.getAllResourcesTagsForVo(this.voId).subscribe(tags => {
       this.resourceTag = tags;
       this.dataSource = new MatTableDataSource<ResourceTag>(this.resourceTag);
       this.loading = false;

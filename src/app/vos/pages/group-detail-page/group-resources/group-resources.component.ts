@@ -27,6 +27,8 @@ export class GroupResourcesComponent implements OnInit {
   resources: RichResource[] = null;
   selected = new SelectionModel<RichResource>(true, []);
 
+  loading: boolean;
+
   ngOnInit() {
     this.route.parent.params.subscribe(parentParams => {
       const groupId = parentParams['groupId'];
@@ -34,10 +36,16 @@ export class GroupResourcesComponent implements OnInit {
       this.groupService.getGroupById(groupId).subscribe(group => {
         this.group = group;
 
-        this.resourcesService.getResourcesByGroup(this.group.id).subscribe(resources => {
-          this.resources = resources;
-        });
+        this.refreshTable();
       });
+    });
+  }
+
+  refreshTable() {
+    this.loading = true;
+    this.resourcesService.getResourcesByGroup(this.group.id).subscribe(resources => {
+      this.resources = resources;
+      this.loading = false;
     });
   }
 }

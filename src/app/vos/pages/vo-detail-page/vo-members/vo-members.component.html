@@ -1,7 +1,6 @@
 <div (keyup)="onKeyInput($event)">
   <h1 class="page-subtitle">{{'VO_DETAIL.MEMBERS.TITLE' | translate}}</h1>
-
-  <button mat-flat-button color="accent" class="mr-2"(click)="onAddMember()">
+  <button mat-flat-button color="accent" class="mr-2" (click)="onAddMember()">
     {{'VO_DETAIL.MEMBERS.ADD_MEMBER' | translate}}
   </button>
   <button mat-flat-button color="warn" class="mr-2" [disabled]="selection.isEmpty()" (click)="onRemoveMembers()">
@@ -12,7 +11,9 @@
   </button>
 
   <mat-form-field class="mr-2 search-field no-border-mat-input">
-    <input matInput autocomplete="false" placeholder="{{'VO_DETAIL.MEMBERS.SEARCH_DESCRIPTION' | translate}}" [(ngModel)]="searchString">
+    <label>
+      <input matInput autocomplete="false" placeholder="{{'VO_DETAIL.MEMBERS.SEARCH_DESCRIPTION' | translate}}" [(ngModel)]="searchString">
+    </label>
   </mat-form-field>
   <button mat-flat-button color="primary" class="mr-2" [disabled]="searchString.length === 0" (click)="onSearchByString()">
     <mat-icon>search</mat-icon>

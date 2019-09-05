@@ -26,6 +26,8 @@ export class VoResourcesPreviewComponent implements OnInit {
   resources: RichResource[] = [];
   selected = new SelectionModel<RichResource>(true, []);
 
+  loading: boolean;
+
   ngOnInit() {
     this.route.parent.parent.params.subscribe(parentParams => {
       const voId = parentParams['voId'];
@@ -33,11 +35,16 @@ export class VoResourcesPreviewComponent implements OnInit {
       this.voService.getVoById(voId).subscribe(vo => {
         this.vo = vo;
 
-        this.resourcesService.getResourcesByVo(this.vo.id).subscribe(resources => {
-          this.resources = resources;
-        });
+        this.refreshTable();
       });
     });
   }
 
+  refreshTable() {
+    this.loading = true;
+    this.resourcesService.getResourcesByVo(this.vo.id).subscribe(resources => {
+      this.resources = resources;
+      this.loading = false;
+    });
+  }
 }

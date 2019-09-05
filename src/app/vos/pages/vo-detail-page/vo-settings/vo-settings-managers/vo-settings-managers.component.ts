@@ -78,6 +78,8 @@ export class VoSettingsManagersComponent implements OnInit {
         this.selectionUsers.clear();
         this.selectionGroups.clear();
         this.loading = false;
+      }, () => {
+          this.loading = false;
       });
     }
     if (this.selected === 'group') {
@@ -85,6 +87,8 @@ export class VoSettingsManagersComponent implements OnInit {
         this.groups = groups;
         this.selectionUsers.clear();
         this.selectionGroups.clear();
+        this.loading = false;
+      }, () => {
         this.loading = false;
       });
     }
@@ -97,7 +101,7 @@ export class VoSettingsManagersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(() => {
-      this.ngOnInit();
+      this.changeUser();
     });
   }
 
@@ -109,13 +113,7 @@ export class VoSettingsManagersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.loading = true;
-        this.authzService.getRichAdmins(this.selectedRole, this.vo.id, 'Vo',
-          [Urns.USER_DEF_ORGANIZATION, Urns.USER_DEF_PREFERRED_MAIL]).subscribe(managers => {
-            this.managers = managers;
-            this.selectionUsers.clear();
-            this.loading = false;
-          });
+        this.changeUser();
       }
     });
   }
@@ -128,12 +126,7 @@ export class VoSettingsManagersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.loading = true;
-        this.authzService.getManagerGroups(this.selectedRole, this.vo.id, 'Vo').subscribe(groups => {
-          this.groups = groups;
-          this.selectionGroups.clear();
-          this.loading = false;
-        });
+        this.changeUser();
       }
     });
   }
@@ -145,7 +138,7 @@ export class VoSettingsManagersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(() => {
-      this.ngOnInit();
+      this.changeUser();
     });
   }
 }

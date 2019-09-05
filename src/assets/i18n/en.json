@@ -819,6 +819,9 @@
       },
       "USERS_LIST": {
         "TABLE_SEARCH": "Filter by name or ID"
+      },
+      "REFRESH_BUTTON": {
+        "TOOLTIP": "Refresh"
       }
     }
   }

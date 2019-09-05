@@ -21,14 +21,22 @@ export class MemberGroupsComponent implements OnInit {
   ) { }
 
   groups: Group[];
+  memberId: number;
+  loading: boolean;
 
   ngOnInit() {
     this.route.parent.params.subscribe(parentParams => {
-      const memberId = parentParams['memberId'];
+      this.memberId = parentParams['memberId'];
 
-      this.groupsService.getMemberGroups(memberId).subscribe(groups => {
-        this.groups = groups;
-      });
+      this.refreshTable();
+    });
+  }
+
+  refreshTable() {
+    this.loading = true;
+    this.groupsService.getMemberGroups(this.memberId).subscribe(groups => {
+      this.groups = groups;
+      this.loading = false;
     });
   }
 }

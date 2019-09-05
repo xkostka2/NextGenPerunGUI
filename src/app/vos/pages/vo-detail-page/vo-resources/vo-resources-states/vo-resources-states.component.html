@@ -4,6 +4,7 @@
 </mat-spinner>
 
 <div *ngIf="!loading">
+  <app-refresh-button (refresh)="refreshTable()"></app-refresh-button>
   <mat-tab-group animationDuration="0ms">
     <mat-tab>
       <ng-template mat-tab-label>

@@ -1,11 +1,12 @@
 <div>
   <h1 class="page-subtitle">{{'FACILITY_DETAIL.RESOURCES.TITLE' | translate}}</h1>
-
+  <app-refresh-button (refresh)="refreshTable()"></app-refresh-button>
   <button mat-flat-button color="warn" [disabled]="selected.selected.length === 0"  (click)="removeResource()">
     {{'FACILITY_DETAIL.RESOURCES.DELETE' | translate}}
   </button>
-
+  <mat-spinner class="ml-auto mr-auto" *ngIf="loading"></mat-spinner>
   <app-resources-list
+    *ngIf="!loading"
     [resources]="resources"
     [selection]="selected">
   </app-resources-list>

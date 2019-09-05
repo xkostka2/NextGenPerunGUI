@@ -1,5 +1,7 @@
 <h1 class="page-subtitle">{{'MEMBER_DETAIL.GROUPS.TITLE' | translate}}</h1>
+<app-refresh-button (refresh)="refreshTable()" *ngIf="!loading"></app-refresh-button>
+<mat-spinner *ngIf="loading" class="mr-auto ml-auto"></mat-spinner>
 <!--this list is duplicated because it might contain
 other data than the one displayed in vo detail(e.g. members status-->
-<app-member-group-list [groups]="groups">
+<app-member-group-list [groups]="groups" *ngIf="!loading">
 </app-member-group-list>

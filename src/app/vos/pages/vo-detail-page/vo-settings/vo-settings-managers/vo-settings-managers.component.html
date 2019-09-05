@@ -2,7 +2,7 @@
   <h1 class="page-subtitle">
     {{'VO_DETAIL.SETTINGS.MANAGERS.TITLE' | translate}}
   </h1>
-
+  <app-refresh-button (refresh)="changeUser()"></app-refresh-button>
   <button mat-flat-button color="accent" class="mr-2" (click)="selected === 'user' ? addManager() : addGroup()">
     {{'VO_DETAIL.SETTINGS.MANAGERS.ADD' | translate}}
   </button>
@@ -30,17 +30,21 @@
   <mat-spinner *ngIf="loading" class="ml-auto mr-auto"></mat-spinner>
   <div *ngIf="!loading">
 
-    <div *ngIf="managers.length == 0 && selected === 'user'" class="perun-alert warn-alert">
+    <div *ngIf="managers !== null && managers.length == 0 && selected === 'user'" class="perun-alert warn-alert">
       {{'VO_DETAIL.SETTINGS.MANAGERS.NO_MANAGERS' | translate}}
     </div>
-    <app-users-list *ngIf="managers !== null && managers.length > 0 && selected === 'user'" [users]="managers" [selection]="selectionUsers">
+    <app-users-list
+      *ngIf="managers !== null && managers.length > 0 && selected === 'user'"
+      [users]="managers"
+      [selection]="selectionUsers">
     </app-users-list>
 
     <div *ngIf="groups.length == 0 && selected === 'group'" class="perun-alert warn-alert">
       {{'VO_DETAIL.SETTINGS.MANAGERS.NO_GROUP_MANAGERS' | translate}}
     </div>
+    <mat-spinner class="ml-auto mr-auto" *ngIf="loading"></mat-spinner>
     <app-groups-list
-      *ngIf="groups !== null && groups.length > 0 && selected === 'group'"
+      *ngIf="groups !== null && groups.length > 0 && selected === 'group' && !loading"
       [hideColumns]="['menu']"
       [groups]="groups"
       [selection]="selectionGroups">

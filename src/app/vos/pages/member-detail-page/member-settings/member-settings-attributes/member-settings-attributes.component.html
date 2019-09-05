@@ -1,6 +1,6 @@
 <div>
   <h1 class="page-subtitle">{{'MEMBER_DETAIL.SETTINGS.ATTRIBUTES.TITLE' | translate}}</h1>
-
+  <app-refresh-button (refresh)="refreshTable()"></app-refresh-button>
   <button mat-flat-button class="mr-2" color="accent" (click)="onCreate()">
     {{'MEMBER_DETAIL.SETTINGS.ATTRIBUTES.CREATE' | translate}}
   </button>
@@ -12,9 +12,10 @@
   <button mat-flat-button color="warn" (click)="onDelete()" [disabled]="selection.selected.length === 0">
     {{'MEMBER_DETAIL.SETTINGS.ATTRIBUTES.DELETE' | translate}}
   </button>
-
+  <mat-spinner *ngIf="loading" class="mr-auto ml-auto"></mat-spinner>
   <app-attributes-list
     #list
+    *ngIf="!loading"
     [attributes]="attributes"
     [selection]="selection">
   </app-attributes-list>

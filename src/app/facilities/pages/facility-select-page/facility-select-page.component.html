@@ -3,7 +3,10 @@
   </app-back-button>
 
   <h1 class="page-title">{{'FACILITY_MANAGEMENT.TITLE' | translate}}</h1>
+  <app-refresh-button (refresh)="refreshTable()" *ngIf="!loading"></app-refresh-button>
+  <mat-spinner class="ml-auto mr-auto" *ngIf="loading"></mat-spinner>
   <app-facility-select-table
+    *ngIf="!loading"
     [facilities]="facilities"
     [recentIds]="recentIds">
   </app-facility-select-table>
