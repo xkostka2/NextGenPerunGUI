@@ -7,6 +7,7 @@ import {RegistrarService} from '../../../../core/services/api/registrar.service'
 
 export interface AddApplicationFormItemDialogComponentData {
   voId: number;
+  groupId: number;
   applicationFormItems: ApplicationFormItem[];
 }
 
@@ -52,9 +53,15 @@ export class AddApplicationFormItemDialogComponent implements OnInit {
       });
     } else {
       const item = this.createApplicationItem();
-      this.registrarService.updateFormItems(this.data.voId, this.data.applicationFormItems).subscribe( () => {
-        this.dialogRef.close(item);
-      });
+      if (this.data.groupId) {      // if dialog is for group
+        this.registrarService.updateFormItemsForGroup(this.data.groupId, this.data.applicationFormItems).subscribe( () => {
+          this.dialogRef.close(item);
+        });
+      } else {
+        this.registrarService.updateFormItemsForVo(this.data.voId, this.data.applicationFormItems).subscribe( () => {
+          this.dialogRef.close(item);
+        });
+      }
     }
   }
 

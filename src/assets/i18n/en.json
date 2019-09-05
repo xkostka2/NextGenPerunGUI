@@ -194,7 +194,7 @@
         "COPY_VO_BUTTON": "Copy from VO",
         "PREVIEW_BUTTON": "Preview",
         "SETTINGS_BUTTON": "Change Settings",
-        "NO_APPLICATION_FORM": "Application form doesn't exists.",
+        "NO_APPLICATION_FORM": "Application form have no items.",
         "SHORTNAME": "Short name",
         "TYPE": "Type",
         "PREVIEW": "Preview",
@@ -374,6 +374,21 @@
       "EXPIRATION": {
         "SUCCESS_MESSAGE": "Settings saved.",
         "ERROR_MESSAGE": "Failed to save settings."
+      },
+      "APPLICATION_FORM": {
+        "TITLE": "Application form",
+        "MODULE_NAME": "Module name",
+        "APPLICATION_TYPE": "Approval style",
+        "AUTOMATIC": "Automatic",
+        "MANUAL": "Manual",
+        "SETTINGS_BUTTON": "Change Settings",
+        "ADD_BUTTON": "Add",
+        "COPY_GROUP_BUTTON": "Copy from VO/Group",
+        "PREVIEW_BUTTON": "Preview",
+        "DRAG_AND_DROP_INFO": "You can move with table items by dragging and dropping",
+        "NO_APPLICATION_FORM": "Application form doesn't exists",
+        "CREATE_APPLICATION_FORM": "Create empty form",
+        "CHANGE_SETTINGS_SUCCESS": "Settings were successfully changed."
       }
     }
   },
@@ -439,7 +454,8 @@
       "APPLICATIONS": "Applications",
       "SETTINGS": "Settings",
       "ATTRIBUTES": "Attributes",
-      "EXPIRATION": "Membership"
+      "EXPIRATION": "Membership",
+      "APPLICATION_FORM": "Application form"
     },
     "MEMBER": {
       "OVERVIEW": "Overview",

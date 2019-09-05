@@ -8,6 +8,7 @@ import {TranslateService} from '@ngx-translate/core';
 
 export interface EditApplicationFormItemDialogComponentData {
   voId: number;
+  groupId: number;
   applicationFormItem: ApplicationFormItem;
   applicationFormItems: ApplicationFormItem[];
 }
@@ -41,7 +42,6 @@ export class EditApplicationFormItemDialogComponent implements OnInit {
   federationAttribute = '';
   sourceAttributes: SelectionItem[] = [];
   destinationAttributes: SelectionItem[] = [];
-  forGroup = false; // if the edit dialog is for group application form
   optionsEn: [string, string][] = [];
   optionsCs: [string, string][] = [];
 
@@ -75,9 +75,15 @@ export class EditApplicationFormItemDialogComponent implements OnInit {
         break;
       }
     }
-    this.registrarService.updateFormItems(this.data.voId, this.data.applicationFormItems).subscribe(() => {
-      this.dialogRef.close(true);
-    });
+    if (this.data.groupId) {      // if the dialog is for group
+      this.registrarService.updateFormItemsForGroup(this.data.groupId, this.data.applicationFormItems).subscribe( () => {
+        this.dialogRef.close(true);
+      });
+    } else {
+      this.registrarService.updateFormItemsForVo(this.data.voId, this.data.applicationFormItems).subscribe(() => {
+        this.dialogRef.close(true);
+      });
+    }
   }
 
   onChangingType(type: string) {
@@ -112,7 +118,8 @@ export class EditApplicationFormItemDialogComponent implements OnInit {
           new SelectionItem(attribute.friendlyName + ' (' + attribute.entity + ' / ' + this.getDefinition(attribute) + ')',
             attribute.namespace + ':' + attribute.friendlyName)
         );
-      } else if (attribute.entity.toLowerCase() === 'group' && this.forGroup) {
+      } else if (attribute.entity.toLowerCase() === 'group' && this.data.groupId) {
+        // if dialog is for group
         this.sourceAttributes.push(
           new SelectionItem(attribute.friendlyName + ' (' + attribute.entity + ' / ' + this.getDefinition(attribute) + ')',
             attribute.namespace + ':' + attribute.friendlyName)

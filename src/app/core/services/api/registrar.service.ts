@@ -113,16 +113,23 @@ export class RegistrarService {
     }, showNotificationOnError);
   }
 
-  getFormItems(voId: number, showNotificationOnError = true): Observable<ApplicationFormItem[]> {
+  getFormItemsForVo(voId: number, showNotificationOnError = true): Observable<ApplicationFormItem[]> {
     return this.apiService.post('json/registrarManager/getFormItems', {
       'vo': voId
     }, showNotificationOnError);
   }
 
-  updateFormItems(voId: number, items: ApplicationFormItem[], showNotificationOnError = true): Observable<number> {
+  updateFormItemsForVo(voId: number, items: ApplicationFormItem[], showNotificationOnError = true): Observable<number> {
     return this.apiService.post('json/registrarManager/updateFormItems', {
       'items': items,
       'vo': voId
+    }, showNotificationOnError);
+  }
+
+  updateFormItemsForGroup(groupId: number, items: ApplicationFormItem[], showNotificationOnError = true): Observable<number> {
+    return this.apiService.post('json/registrarManager/updateFormItems', {
+      'items': items,
+      'group': groupId
     }, showNotificationOnError);
   }
 
@@ -218,6 +225,24 @@ export class RegistrarService {
     return this.apiService.post('json/registrarManager/copyMails', {
       'fromVo': fromVo,
       'toGroup': toGroup
+    }, showNotificationOnError);
+  }
+
+  getApplicationFormForGroup(group: number, showNotificationOnError = false): Observable<ApplicationForm> {
+    return this.apiService.post('json/registrarManager/getApplicationForm', {
+      'group': group
+    }, showNotificationOnError);
+  }
+
+  getFormItemsForGroup(group: number, showNotificationOnError = true): Observable<ApplicationFormItem[]> {
+    return this.apiService.post('json/registrarManager/getFormItems', {
+      'group': group
+    }, showNotificationOnError);
+  }
+
+  createApplicationForm(group: number, showNotificationOnError = true) {
+    return this.apiService.post('json/registrarManager/createApplicationForm', {
+      'group': group
     }, showNotificationOnError);
   }
 }

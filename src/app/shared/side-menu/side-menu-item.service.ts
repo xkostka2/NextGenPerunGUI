@@ -205,6 +205,11 @@ export class SideMenuItemService {
               url: [`/organizations/${group.voId}/groups/${group.id}/settings/expiration`],
               activatedRegex: '/organizations/\\d+/groups/\\d+/settings/expiration$'
             },
+            {
+              label: 'MENU_ITEMS.GROUP.APPLICATION_FORM',
+              url: [`/organizations/${group.voId}/groups/${group.id}/settings/applicationForm`],
+              activatedRegex: '/organizations/\\d+/groups/\\d+/settings/applicationForm$'
+            }
           ],
           showChildrenRegex: '/organizations/\\d+/groups/\\d+/settings'
         }

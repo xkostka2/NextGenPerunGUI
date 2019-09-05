@@ -42,7 +42,7 @@ import {
 } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form.component';
 import {ApplicationFormListComponent} from './components/application-form-list/application-form-list.component';
 // tslint:disable-next-line:max-line-length
-import {VoSettingsApplicationFormPreviewComponent} from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-preview/vo-settings-application-form-preview.component';
+import {ApplicationFormPreviewComponent} from './components/application-form-preview/application-form-preview.component';
 import { MemberSettingsComponent } from './pages/member-detail-page/member-settings/member-settings.component';
 import {
   MemberSettingsAttributesComponent
@@ -63,6 +63,9 @@ import { ExpirationSettingsComponent } from './components/expiration-settings/ex
 import {
   VoSettingsNotificationsComponent
 } from './pages/vo-detail-page/vo-settings/vo-settings-notifications/vo-settings-notifications.component';
+import {
+  GroupSettingsApplicationFormComponent
+} from './pages/group-detail-page/group-settings/group-settings-application-form/group-settings-application-form.component';
 
 @NgModule({
   imports: [
@@ -109,7 +112,7 @@ import {
     GroupSettingsOverviewComponent,
     VoSettingsApplicationFormComponent,
     ApplicationFormListComponent,
-    VoSettingsApplicationFormPreviewComponent,
+    ApplicationFormPreviewComponent,
     GroupSettingsOverviewComponent,
     VoSelectTableComponent,
     MemberSettingsComponent,
@@ -122,7 +125,8 @@ import {
     StateTabComponent,
     GroupSettingsExpirationComponent,
     ExpirationSettingsComponent,
-    VoSettingsNotificationsComponent
+    VoSettingsNotificationsComponent,
+    GroupSettingsApplicationFormComponent
   ],
   entryComponents: [
   ],

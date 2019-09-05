@@ -1,30 +1,30 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 import {RegistrarService} from '../../../../../core/services/api/registrar.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ApplicationForm} from '../../../../../core/models/ApplicationForm';
-import {ApplicationFormItem} from '../../../../../core/models/ApplicationFormItem';
 import {MatDialog} from '@angular/material';
-import {
-  UpdateApplicationFormDialogComponent
-} from '../../../../../shared/components/dialogs/update-application-form-dialog/update-application-form-dialog.component';
 import {NotificatorService} from '../../../../../core/services/common/notificator.service';
 import {TranslateService} from '@ngx-translate/core';
-import {
-  ApplicationFormCopyItemsDialogComponent
-} from '../../../../../shared/components/dialogs/application-form-copy-items-dialog/application-form-copy-items-dialog.component';
+import {ApplicationForm} from '../../../../../core/models/ApplicationForm';
+import {ApplicationFormItem} from '../../../../../core/models/ApplicationFormItem';
 import {
   AddApplicationFormItemDialogComponent
 } from '../../../../../shared/components/dialogs/add-application-form-item-dialog/add-application-form-item-dialog.component';
 import {
   EditApplicationFormItemDialogComponent
 } from '../../../../../shared/components/dialogs/edit-application-form-item-dialog/edit-application-form-item-dialog.component';
+import {
+  ApplicationFormCopyItemsDialogComponent
+} from '../../../../../shared/components/dialogs/application-form-copy-items-dialog/application-form-copy-items-dialog.component';
+import {
+  UpdateApplicationFormDialogComponent
+} from '../../../../../shared/components/dialogs/update-application-form-dialog/update-application-form-dialog.component';
 
 @Component({
-  selector: 'app-vo-settings-application-form',
-  templateUrl: './vo-settings-application-form.component.html',
-  styleUrls: ['./vo-settings-application-form.component.scss']
+  selector: 'app-group-settings-application-form',
+  templateUrl: './group-settings-application-form.component.html',
+  styleUrls: ['./group-settings-application-form.component.scss']
 })
-export class VoSettingsApplicationFormComponent implements OnInit {
+export class GroupSettingsApplicationFormComponent implements OnInit {
 
   @HostBinding('class.router-component') true;
 
@@ -39,18 +39,27 @@ export class VoSettingsApplicationFormComponent implements OnInit {
   applicationForm: ApplicationForm;
   applicationFormItems: ApplicationFormItem[] = [];
   voId: number;
+  groupId: number;
+  noApplicationForm = false;
 
   ngOnInit() {
     this.loading = true;
     this.route.parent.parent.params.subscribe(params => {
-      const voId = params['voId'];
-      this.voId = voId;
-      this.registrarService.getApplicationForm(voId).subscribe( form => {
+      this.voId = params['voId'];
+      this.groupId = params['groupId'];
+      this.registrarService.getApplicationFormForGroup(this.groupId).subscribe( form => {
         this.applicationForm = form;
-        this.registrarService.getFormItemsForVo(voId).subscribe( formItems => {
+        this.registrarService.getFormItemsForGroup(this.groupId).subscribe( formItems => {
           this.applicationFormItems = formItems;
           this.loading = false;
         });
+      }, error => {
+        if (error.name === 'FormNotExistsException') {
+          this.noApplicationForm = true;
+          this.loading = false;
+        } else {
+          this.notificator.showRPCError(error);
+        }
       });
     });
   }
@@ -58,16 +67,19 @@ export class VoSettingsApplicationFormComponent implements OnInit {
   add() {
     const dialog = this.dialog.open(AddApplicationFormItemDialogComponent, {
       width: '500px',
-      data: {voId: this.voId, applicationFormItems: this.applicationFormItems}
+      data: {voId: this.voId, groupId: this.groupId, applicationFormItems: this.applicationFormItems}
     });
     dialog.afterClosed().subscribe( success => {
       if (success) {
-        this.registrarService.getFormItemsForVo(this.voId).subscribe( formItems => {
+        this.registrarService.getFormItemsForGroup(this.groupId).subscribe( formItems => {
           this.applicationFormItems = formItems;
           const editDialog = this.dialog.open(EditApplicationFormItemDialogComponent, {
             width: '600px',
             height: '600px',
-            data: {voId: this.voId, applicationFormItem: formItems[success.ordnum], applicationFormItems: this.applicationFormItems}
+            data: {voId: this.voId,
+              groupId: this.groupId,
+              applicationFormItem: formItems[success.ordnum],
+              applicationFormItems: this.applicationFormItems}
           });
           editDialog.afterClosed().subscribe(() => {
             this.updateFormItems();
@@ -80,7 +92,7 @@ export class VoSettingsApplicationFormComponent implements OnInit {
   copy() {
     const dialog = this.dialog.open(ApplicationFormCopyItemsDialogComponent, {
       width: '500px',
-      data: {voId: this.voId}
+      data: {voId: this.voId, groupId: this.groupId}
     });
     dialog.afterClosed().subscribe( copyFrom => {
       if (copyFrom) {
@@ -96,7 +108,7 @@ export class VoSettingsApplicationFormComponent implements OnInit {
     });
     dialog.afterClosed().subscribe( newForm => {
       if (newForm) {
-        this.translate.get('VO_DETAIL.SETTINGS.APPLICATION_FORM.CHANGE_SETTINGS_SUCCESS').subscribe( successMessage => {
+        this.translate.get('GROUP_DETAIL.SETTINGS.APPLICATION_FORM.CHANGE_SETTINGS_SUCCESS').subscribe( successMessage => {
           this.notificator.showSuccess(successMessage);
         });
         this.applicationForm = newForm;
@@ -105,12 +117,12 @@ export class VoSettingsApplicationFormComponent implements OnInit {
   }
 
   preview() {
-    this.router.navigate(['/organizations', this.voId, 'settings', 'applicationForm', 'preview']);
+    this.router.navigate(['/organizations', this.voId, 'groups', this.groupId, 'settings', 'applicationForm', 'preview']);
   }
 
   updateFormItems() {
     this.loading = true;
-    this.registrarService.getFormItemsForVo(this.voId).subscribe( formItems => {
+    this.registrarService.getFormItemsForGroup(this.groupId).subscribe( formItems => {
       this.applicationFormItems = formItems;
       this.loading = false;
     });
@@ -118,5 +130,12 @@ export class VoSettingsApplicationFormComponent implements OnInit {
 
   changeItems(applicationFormItemsChange: ApplicationFormItem[]) {
     this.applicationFormItems = applicationFormItemsChange;
+  }
+
+  createEmptyApplicationForm() {
+    this.registrarService.createApplicationForm(this.groupId).subscribe( () => {
+      this.noApplicationForm = false;
+      this.ngOnInit();
+    });
   }
 }

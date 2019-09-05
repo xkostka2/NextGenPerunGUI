@@ -32,7 +32,8 @@ import {
   VoSettingsApplicationFormComponent
 } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form.component';
 // tslint:disable-next-line:max-line-length
-import { VoSettingsApplicationFormPreviewComponent } from './pages/vo-detail-page/vo-settings/vo-settings-application-form/vo-settings-application-form-preview/vo-settings-application-form-preview.component';
+import { ApplicationFormPreviewComponent } from './components/application-form-preview/application-form-preview.component';
+// tslint:disable-next-line:max-line-length
 import {MemberSettingsComponent} from './pages/member-detail-page/member-settings/member-settings.component';
 import {
   MemberSettingsOverviewComponent
@@ -50,6 +51,9 @@ import {
 import {
   VoSettingsNotificationsComponent
 } from './pages/vo-detail-page/vo-settings/vo-settings-notifications/vo-settings-notifications.component';
+import {
+  GroupSettingsApplicationFormComponent
+} from './pages/group-detail-page/group-settings/group-settings-application-form/group-settings-application-form.component';
 
 const routes: Routes = [
   {
@@ -142,7 +146,7 @@ const routes: Routes = [
           },
           {
             path: 'applicationForm/preview',
-            component: VoSettingsApplicationFormPreviewComponent,
+            component: ApplicationFormPreviewComponent,
             data: {animation: 'SettingsApplicationFormPreviewPage'}
           },
           {
@@ -233,6 +237,16 @@ const routes: Routes = [
             path: 'expiration',
             component: GroupSettingsExpirationComponent,
             data: {animation: 'GroupSettingsExpirationPage'}
+          },
+          {
+            path: 'applicationForm',
+            component: GroupSettingsApplicationFormComponent,
+            data: {animation: 'GroupSettingsApplicationFormPage'}
+          },
+          {
+            path: 'applicationForm/preview',
+            component: ApplicationFormPreviewComponent,
+            data: {animation: 'ApplicationFormPreviewPage'}
           }
         ]
       },

@@ -59,6 +59,12 @@ export class GroupSettingsOverviewComponent implements OnInit {
         label: 'MENU_ITEMS.GROUP.EXPIRATION',
         style: 'group-btn'
       },
+      {
+        icon: 'application_form-white.svg',
+        url: `/organizations/${this.vo.id}/groups/${this.group.id}/settings/applicationForm`,
+        label: 'MENU_ITEMS.GROUP.APPLICATION_FORM',
+        style: 'group-btn'
+      }
     ];
   }
 }

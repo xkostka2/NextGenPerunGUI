@@ -1,14 +1,14 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
-import {ApplicationFormItem} from '../../../../../../core/models/ApplicationFormItem';
+import {ApplicationFormItem} from '../../../core/models/ApplicationFormItem';
 import {ActivatedRoute} from '@angular/router';
-import {RegistrarService} from '../../../../../../core/services/api/registrar.service';
+import {RegistrarService} from '../../../core/services/api/registrar.service';
 
 @Component({
-  selector: 'app-vo-settings-application-form-preview',
-  templateUrl: './vo-settings-application-form-preview.component.html',
-  styleUrls: ['./vo-settings-application-form-preview.component.scss']
+  selector: 'app-application-form-preview',
+  templateUrl: './application-form-preview.component.html',
+  styleUrls: ['./application-form-preview.component.scss']
 })
-export class VoSettingsApplicationFormPreviewComponent implements OnInit {
+export class ApplicationFormPreviewComponent implements OnInit {
 
   @HostBinding('class.router-component') true;
 
@@ -24,10 +24,18 @@ export class VoSettingsApplicationFormPreviewComponent implements OnInit {
   ngOnInit() {
     this.route.parent.parent.params.subscribe(params => {
       const voId = params['voId'];
-      this.registrarService.getFormItems(voId).subscribe( formItems => {
-        this.applicationFormItems = formItems;
-        this.loading = false;
-      });
+      const groupId = params['groupId'];
+      if (groupId) {
+        this.registrarService.getFormItemsForGroup(groupId).subscribe( formItems => {
+          this.applicationFormItems = formItems;
+          this.loading = false;
+        });
+      } else {
+        this.registrarService.getFormItemsForVo(voId).subscribe( formItems => {
+          this.applicationFormItems = formItems;
+          this.loading = false;
+        });
+      }
     });
   }
 

@@ -53,14 +53,14 @@ export class ApplicationFormListComponent implements OnChanges {
     const editDialog = this.dialog.open(EditApplicationFormItemDialogComponent, {
       width: '600px',
       height: '600px',
-      data: {voId: this.applicationForm.vo.id, applicationFormItem: applicationFormItem, applicationFormItems: this.applicationFormItems}
+      data: {voId: this.applicationForm.vo.id,
+        groupId: this.applicationForm.group.id,
+        applicationFormItem: applicationFormItem,
+        applicationFormItems: this.applicationFormItems}
     });
     editDialog.afterClosed().subscribe((isChanged) => {
       if (isChanged) {
-        this.registrarService.getFormItems(this.applicationForm.vo.id).subscribe( formItems => {
-          this.applicationFormItems = formItems;
-          this.updateDataSource();
-        });
+        this.applicationForm.group ? this.getFormItemsForGroup() : this.getFormItemsForVo();
       }
     });
   }
@@ -73,17 +73,17 @@ export class ApplicationFormListComponent implements OnChanges {
       if (deleteItem) {
         applicationFormItem.forDelete = true;
         this.decreaseOrdnums(applicationFormItem.ordnum);
-        const index = this.applicationFormItems.indexOf(applicationFormItem, 0);
-        this.registrarService.updateFormItems(this.applicationForm.vo.id, this.applicationFormItems).subscribe(() => {
-          this.registrarService.getFormItems(this.applicationForm.vo.id).subscribe( items => {
-            this.applicationFormItems = items;
-            this.translate.get('VO_DETAIL.SETTINGS.APPLICATION_FORM.DELETE_MESSAGE').subscribe( successMessage => {
-              this.notificator.showSuccess(successMessage);
-              this.updateDataSource();
-            });
+        if (this.applicationForm.group) {
+          this.registrarService.updateFormItemsForGroup(this.applicationForm.group.id, this.applicationFormItems).subscribe( () => {
+            this.successDeleteNotification();
+            this.getFormItemsForGroup();
           });
-        });
-
+        } else {
+          this.registrarService.updateFormItemsForVo(this.applicationForm.vo.id, this.applicationFormItems).subscribe(() => {
+            this.successDeleteNotification();
+            this.getFormItemsForVo();
+          });
+        }
       }
     });
   }
@@ -94,12 +94,16 @@ export class ApplicationFormListComponent implements OnChanges {
     for (let i = 0; i < this.applicationFormItems.length; i++) {
       this.applicationFormItems[i].ordnum = i;
     }
-    this.dataSource = this.applicationFormItems;
-    this.changeDetectorRef.detectChanges();       // fix - when data in table changes, error appears
-    this.table.renderRows();
-    this.registrarService.updateFormItems(this.applicationForm.vo.id, this.applicationFormItems).subscribe( () => {
-      this.applicationFormItemsChange.emit(this.applicationFormItems);
-    });
+    this.updateDataSource();
+    if (this.applicationForm.group) {
+      this.registrarService.updateFormItemsForGroup(this.applicationForm.group.id, this.applicationFormItems).subscribe( () => {
+        this.applicationFormItemsChange.emit(this.applicationFormItems);
+      });
+    } else {
+      this.registrarService.updateFormItemsForVo(this.applicationForm.vo.id, this.applicationFormItems).subscribe( () => {
+        this.applicationFormItemsChange.emit(this.applicationFormItems);
+      });
+    }
   }
 
   getLocalizedOptions(applicationFormItem: ApplicationFormItem): string[] {
@@ -134,5 +138,25 @@ export class ApplicationFormListComponent implements OnChanges {
       return applicationFormItem.i18n[this.translate.getDefaultLang()].label;
     }
     return applicationFormItem.shortname;
+  }
+
+  getFormItemsForVo() {
+    this.registrarService.getFormItemsForVo(this.applicationForm.vo.id).subscribe( formItems => {
+      this.applicationFormItems = formItems;
+      this.updateDataSource();
+    });
+  }
+
+  getFormItemsForGroup() {
+    this.registrarService.getFormItemsForGroup(this.applicationForm.group.id).subscribe( formItems => {
+      this.applicationFormItems = formItems;
+      this.updateDataSource();
+    });
+  }
+
+  successDeleteNotification() {
+    this.translate.get('VO_DETAIL.SETTINGS.APPLICATION_FORM.DELETE_MESSAGE').subscribe( successMessage => {
+      this.notificator.showSuccess(successMessage);
+    });
   }
 }
