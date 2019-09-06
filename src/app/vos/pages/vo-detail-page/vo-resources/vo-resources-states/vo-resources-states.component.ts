@@ -20,11 +20,12 @@ export class VoResourcesStatesComponent implements OnInit {
               private customIconService: CustomIconService) { }
 
   loading = false;
-  okPropagation: ResourceState[] = [];
-  errorPropagation: ResourceState[] = [];
+  okPropagation: ResourceState[];
+  errorPropagation: ResourceState[];
   resourceStates: ResourceState[] = [];
 
   voId: number;
+  selectedIndex = 0;
 
   ngOnInit() {
     this.customIconService.registerPerunRefreshIcon();
@@ -36,9 +37,13 @@ export class VoResourcesStatesComponent implements OnInit {
   }
 
   refreshTable() {
+    console.log(this.selectedIndex);
     this.loading = true;
     this.propagationStatsReader.getAllResourcesState(this.voId).subscribe( resourceStates => {
       this.resourceStates = resourceStates;
+      this.okPropagation = [];
+      this.errorPropagation = [];
+
       for (const resourceState of resourceStates) {
         let indicator = true;
         for (const task of resourceState.taskList) {
