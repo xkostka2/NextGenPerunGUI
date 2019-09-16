@@ -1,55 +1,6 @@
-<div>
-  <h1 class="page-subtitle">
-    {{'VO_DETAIL.SETTINGS.MANAGERS.TITLE' | translate}}
-  </h1>
-  <app-refresh-button (refresh)="changeUser()"></app-refresh-button>
-  <button mat-flat-button color="accent" class="mr-2" (click)="selected === 'user' ? addManager() : addGroup()">
-    {{'VO_DETAIL.SETTINGS.MANAGERS.ADD' | translate}}
-  </button>
-  <button mat-flat-button color="warn" (click)="selected === 'user' ? removeManager() : removeGroup()"
-          [disabled]="selectionUsers.selected.length === 0 && selectionGroups.selected.length === 0">
-    {{'VO_DETAIL.SETTINGS.MANAGERS.REMOVE' | translate}}
-  </button>
-
-  <mat-form-field class="ml-2">
-    <mat-label>{{'VO_DETAIL.SETTINGS.MANAGERS.SELECT_MODE' | translate}}</mat-label>
-    <mat-select [(value)]="selected" (selectionChange)="changeUser()">
-      <mat-option value="user">{{'VO_DETAIL.SETTINGS.MANAGERS.USER' | translate}}</mat-option>
-      <mat-option value="group">{{'VO_DETAIL.SETTINGS.MANAGERS.GROUP' | translate}} </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field class="ml-2">
-    <mat-label>{{'VO_DETAIL.SETTINGS.MANAGERS.SELECT_ROLE' | translate}}</mat-label>
-    <mat-select [(value)]="selectedRole" (selectionChange)="changeUser()">
-      <mat-option value="VOADMIN">{{'VO_DETAIL.SETTINGS.ROLES.VO_ADMIN' | translate}}</mat-option>
-      <mat-option value="VOOBSERVER">{{'VO_DETAIL.SETTINGS.ROLES.VO_OBSERVER' | translate}} </mat-option>
-      <mat-option value="TOPGROUPCREATOR">{{'VO_DETAIL.SETTINGS.ROLES.TOP_GROUP_CREATOR' | translate}} </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-spinner *ngIf="loading" class="ml-auto mr-auto"></mat-spinner>
-  <div *ngIf="!loading">
-
-    <div *ngIf="managers !== null && managers.length == 0 && selected === 'user'" class="perun-alert warn-alert">
-      {{'VO_DETAIL.SETTINGS.MANAGERS.NO_MANAGERS' | translate}}
-    </div>
-    <app-users-list
-      [disableClick]="true"
-      *ngIf="managers !== null && managers.length > 0 && selected === 'user'"
-      [users]="managers"
-      [selection]="selectionUsers">
-    </app-users-list>
-
-    <div *ngIf="groups.length == 0 && selected === 'group'" class="perun-alert warn-alert">
-      {{'VO_DETAIL.SETTINGS.MANAGERS.NO_GROUP_MANAGERS' | translate}}
-    </div>
-    <mat-spinner class="ml-auto mr-auto" *ngIf="loading"></mat-spinner>
-    <app-groups-list
-      *ngIf="groups !== null && groups.length > 0 && selected === 'group' && !loading"
-      [hideColumns]="['menu']"
-      [groups]="groups"
-      [selection]="selectionGroups">
-    </app-groups-list>
-  </div>
-
-</div>
+<app-managers-page *ngIf="vo"
+                   [complementaryObject]="vo"
+                   [complementaryObjectType]="type"
+                   [theme]="theme"
+                   [availableRoles]="availableRoles"
+></app-managers-page>

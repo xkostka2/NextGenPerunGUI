@@ -4,11 +4,9 @@
   <div mat-dialog-content>
     <div class="inline-dialog-items">
       <mat-form-field class="mr-2">
-        <mat-label>{{'VO_DETAIL.SETTINGS.MANAGERS.SELECT_ROLE' | translate}}</mat-label>
+        <mat-label>{{'SHARED.COMPONENTS.MANAGERS_PAGE.SELECT_ROLE' | translate}}</mat-label>
         <mat-select [(value)]="selectedRole">
-          <mat-option value="VOADMIN">{{'VO_DETAIL.SETTINGS.ROLES.VO_ADMIN' | translate}}</mat-option>
-          <mat-option value="VOOBSERVER">{{'VO_DETAIL.SETTINGS.ROLES.VO_OBSERVER' | translate}} </mat-option>
-          <mat-option value="TOPGROUPCREATOR">{{'VO_DETAIL.SETTINGS.ROLES.TOP_GROUP_CREATOR' | translate}} </mat-option>
+          <mat-option *ngFor="let role of availableRoles" [value]="role">{{role | displayedRole}}</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -37,7 +35,7 @@
         {{'DIALOGS.ADD_MANAGERS.NO_USERS_FOUND' | translate}}
       </div>
       <app-users-list
-        [disableClick]="true"
+        [inDialog]="true"
         [selection]="selection"
         [users]="users"
         *ngIf="users.length !== 0">

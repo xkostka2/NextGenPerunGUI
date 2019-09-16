@@ -9,10 +9,14 @@ import {UsersService} from '../../../../core/services/api/users.service';
 import {AuthzService} from '../../../../core/services/api/authz.service';
 import {Vo} from '../../../../core/models/Vo';
 import {Role} from '../../../../core/models/PerunPrincipal';
+import {Group} from '../../../../core/models/Group';
+import {Facility} from '../../../../core/models/Facility';
 
 export interface AddManagerDialogData {
-  vo: Vo;
+  complementaryObject: Vo | Group | Facility;
   theme: string;
+  availableRoles: Role[];
+  selectedRole: Role;
 }
 
 @Component({
@@ -46,7 +50,7 @@ export class AddManagerDialogComponent implements OnInit {
 
   selectedRole: Role;
   firstSearchDone = false;
-
+  availableRoles: Role[];
   theme: string;
 
   onCancel(): void {
@@ -54,10 +58,12 @@ export class AddManagerDialogComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.authzService.setRole(this.selectedRole, this.selection.selected.map(u => u.id), this.data.vo).subscribe(() => {
+    this.loading = true;
+    this.authzService.setRole(this.selectedRole, this.selection.selected.map(u => u.id), this.data.complementaryObject).subscribe(() => {
       this.notificator.showSuccess(this.successMessage);
+      this.loading = false;
       this.dialogRef.close();
-    });
+    }, () => this.loading = false);
   }
 
   onSearchByString() {
@@ -77,6 +83,8 @@ export class AddManagerDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.theme = this.data.theme;
+    this.availableRoles = this.data.availableRoles;
+    this.selectedRole = this.data.selectedRole;
   }
 
 }

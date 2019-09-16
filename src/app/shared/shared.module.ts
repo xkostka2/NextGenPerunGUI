@@ -109,6 +109,7 @@ import { CreateResourceTagDialogComponent } from './components/dialogs/create-re
 import { DeleteResourceTagDialogComponent } from './components/dialogs/delete-resource-tag-dialog/delete-resource-tag-dialog.component';
 import { MoveGroupDialogComponent } from './components/dialogs/move-group-dialog/move-group-dialog.component';
 import {GroupMenuComponent} from './components/group-menu/group-menu.component';
+import { ManagersPageComponent } from './components/managers-page/managers-page.component';
 import {
   DeleteNotificationDialogComponent
 } from './components/dialogs/delete-notification-dialog/delete-notification-dialog.component';
@@ -124,6 +125,7 @@ import { TagBarComponent } from './components/dialogs/add-edit-notification-dial
 import {
   NotificationsCopyMailsDialogComponent
 } from './components/dialogs/notifications-copy-mails-dialog/notifications-copy-mails-dialog.component';
+import {DisplayedRolePipe} from './pipes/displayed-role.pipe';
 import { AnimatedRouterOutletComponent } from './components/animated-router-outlet/animated-router-outlet.component';
 import { UserEmailPipe } from './pipes/user-email.pipe';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
@@ -251,6 +253,10 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     MatExpansionModule,
     MatMenuModule,
     GroupMenuComponent,
+    ManagersPageComponent,
+    GroupMenuComponent,
+    ScrollingModule,
+    DisplayedRolePipe,
     ScrollingModule,
     AnimatedRouterOutletComponent
   ],
@@ -362,6 +368,10 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     AddEditNotificationDialogComponent,
     TagSectionComponent,
     TagBarComponent,
+    NotificationsCopyMailsDialogComponent,
+    GroupMenuComponent,
+    ManagersPageComponent,
+    DisplayedRolePipe,
     NotificationsCopyMailsDialogComponent,
     AnimatedRouterOutletComponent,
     UserEmailPipe,

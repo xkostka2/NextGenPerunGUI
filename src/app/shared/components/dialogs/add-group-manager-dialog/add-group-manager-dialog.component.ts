@@ -13,12 +13,13 @@ import {FormControl} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {AuthzService} from '../../../../core/services/api/authz.service';
 import {Role} from '../../../../core/models/PerunPrincipal';
+import {Facility} from '../../../../core/models/Facility';
 
 export interface AddGroupManagerDialogData {
-  groups: Group[];
-  vo: Vo;
-  role: Role;
+  complementaryObject: Vo | Group | Facility;
+  availableRoles: Role[];
   theme: string;
+  selectedRole: Role;
 }
 
 @Component({
@@ -53,10 +54,12 @@ export class AddGroupManagerDialogComponent implements OnInit {
   selected: number;
   vos: Vo[] = [];
 
+  selectedRole: Role;
   filteredOptions: Observable<Vo[]>;
   myControl = new FormControl();
   firstSearchDone = false;
 
+  availableRoles: Role[];
   theme: string;
 
   displayFn(vo?: Vo): string | undefined {
@@ -68,13 +71,18 @@ export class AddGroupManagerDialogComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.authzService.setRoleForGroups( this.data.role, this.selection.selected.map(group => group.id), this.data.vo).subscribe(() => {
-      this.notificator.showSuccess(this.successMessage);
-      this.dialogRef.close();
-    });
+    this.loading = true;
+    this.authzService.setRoleForGroups( this.selectedRole, this.selection.selected.map(group => group.id), this.data.complementaryObject)
+      .subscribe(() => {
+        this.notificator.showSuccess(this.successMessage);
+        this.loading = false;
+        this.dialogRef.close();
+    }, () => this.loading = false);
   }
 
   ngOnInit() {
+    this.availableRoles = this.data.availableRoles;
+    this.selectedRole = this.data.selectedRole;
     this.theme = this.data.theme;
     this.voService.getVos().subscribe(vos => {
       this.filteredOptions = this.myControl.valueChanges
@@ -102,8 +110,8 @@ export class AddGroupManagerDialogComponent implements OnInit {
           this.groups = groups;
           this.loading = false;
           this.firstSearchDone = true;
-        });
+        }, () => this.loading = false);
       }
-    });
+    }, () => this.loading = false);
   }
 }

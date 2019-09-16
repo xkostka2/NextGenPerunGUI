@@ -58,6 +58,14 @@ export class AuthzService {
     }, showNotificationOnError);
   }
 
+  unsetRole(role: Role, userIds: number[], complementaryObject: Object, showNotificationOnError = true): Observable<RichUser[]> {
+    return this.apiService.post('json/authzResolver/unsetRole', {
+      role: role,
+      users: userIds,
+      complementaryObject: complementaryObject
+    }, showNotificationOnError);
+  }
+
   unsetRoleForGroups(role: Role, groupIds: number[], complementaryObject: Object, showNotificationOnError = true): Observable<RichUser[]> {
     return this.apiService.post('json/authzResolver/unsetRole', {
       role: role,

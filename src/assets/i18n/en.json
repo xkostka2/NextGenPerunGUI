@@ -166,27 +166,6 @@
         "SUCCESS_MESSAGE": "Settings saved.",
         "ERROR_MESSAGE": "Failed to save settings."
       },
-      "MANAGERS": {
-        "TITLE": "Managers",
-        "ADD": "Add...",
-        "REMOVE": "Remove",
-        "SELECT_MODE": "Select mode",
-        "SELECT_ROLE": "Select role",
-        "USER": "User",
-        "GROUP": "Group",
-        "NO_MANAGERS": "This role has no managers.",
-        "NO_GROUP_MANAGERS": "This role has no group managers."
-      },
-      "ROLES": {
-        "VO_ADMIN": "Vo admin",
-        "VO_OBSERVER": "Vo observer",
-        "TOP_GROUP_CREATOR": "Top group creator",
-        "PERUN_ADMIN": "Perun admin",
-        "SELF": "Self",
-        "FACILITY_ADMIN": "Facility admin",
-        "GROUP_ADMIN": "Group admin",
-        "REMOVE": "Remove"
-      },
       "APPLICATION_FORM":{
         "TITLE": "Application form",
         "DRAG_AND_DROP_INFO": "You can move the table items by dragging them with the handle on the left side.",
@@ -375,6 +354,17 @@
         "SUCCESS_MESSAGE": "Settings saved.",
         "ERROR_MESSAGE": "Failed to save settings."
       },
+      "MANAGERS": {
+        "TITLE": "Managers",
+        "ADD": "Add...",
+        "REMOVE": "Remove",
+        "SELECT_MODE": "Select mode",
+        "SELECT_ROLE": "Select role",
+        "USER": "User",
+        "GROUP": "Group",
+        "NO_MANAGERS": "This role has no managers.",
+        "NO_GROUP_MANAGERS": "This role has no group managers."
+      },
       "APPLICATION_FORM": {
         "TITLE": "Application form",
         "MODULE_NAME": "Module name",
@@ -454,6 +444,7 @@
       "APPLICATIONS": "Applications",
       "SETTINGS": "Settings",
       "ATTRIBUTES": "Attributes",
+      "MANAGERS": "Managers",
       "EXPIRATION": "Membership",
       "APPLICATION_FORM": "Application form"
     },
@@ -956,7 +947,27 @@
       },
       "REFRESH_BUTTON": {
         "TOOLTIP": "Refresh"
+      },
+      "MANAGERS_PAGE": {
+        "TITLE": "Managers",
+        "ADD": "Add...",
+        "REMOVE": "Remove",
+        "SELECT_MODE": "Select mode",
+        "SELECT_ROLE": "Select role",
+        "USER": "User",
+        "GROUP": "Group",
+        "NO_MANAGERS": "This role has no managers.",
+        "NO_GROUP_MANAGERS": "This role has no group managers."
       }
     }
+  },
+  "ROLES": {
+    "VOADMIN": "Vo admin",
+    "VOOBSERVER": "Vo observer",
+    "TOPGROUPCREATOR": "Top group creator",
+    "PERUN_ADMIN": "Perun admin",
+    "SELF": "Self",
+    "FACILITYADMIN": "Facility admin",
+    "GROUPADMIN": "Group admin"
   }
 }

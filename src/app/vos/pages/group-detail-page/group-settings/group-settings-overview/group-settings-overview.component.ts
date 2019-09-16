@@ -60,6 +60,12 @@ export class GroupSettingsOverviewComponent implements OnInit {
         style: 'group-btn'
       },
       {
+        icon: 'manager-white.svg',
+        url: `/organizations/${this.vo.id}/groups/${this.group.id}/settings/managers`,
+        label: 'MENU_ITEMS.GROUP.MANAGERS',
+        style: 'group-btn'
+      },
+      {
         icon: 'application_form-white.svg',
         url: `/organizations/${this.vo.id}/groups/${this.group.id}/settings/applicationForm`,
         label: 'MENU_ITEMS.GROUP.APPLICATION_FORM',

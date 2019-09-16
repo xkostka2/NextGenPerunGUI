@@ -1,7 +1,7 @@
 <div class="{{theme}}">
 
   <h1 mat-dialog-title>{{'DIALOGS.REMOVE_MANAGERS.TITLE' | translate}}</h1>
-  <div mat-dialog-content>
+  <div mat-dialog-content *ngIf="!loading">
     <p>
       {{'DIALOGS.REMOVE_MANAGERS.DESCRIPTION' | translate}}
     </p>
@@ -21,6 +21,7 @@
     </table>
 
   </div>
+  <mat-spinner *ngIf="loading" class="mr-auto ml-auto"></mat-spinner>
   <div mat-dialog-actions>
     <button
       mat-flat-button

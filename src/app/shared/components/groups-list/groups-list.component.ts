@@ -34,6 +34,9 @@ export class GroupsListComponent implements AfterViewInit, OnChanges {
   @Input()
   hideColumns: string[] = [];
 
+  @Input()
+  inDialog: boolean;
+
   displayedColumns: string[] = ['select', 'id', 'name', 'description', 'menu'];
   dataSource: MatTableDataSource<Group>;
 

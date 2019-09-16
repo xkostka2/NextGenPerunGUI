@@ -30,10 +30,10 @@ export class UsersListComponent implements OnChanges {
   hideColumns: string[] = [];
 
   @Input()
-  disableClick = false;
+  selection = new SelectionModel<RichUser>(true, []);
 
   @Input()
-  selection = new SelectionModel<RichUser>(true, []);
+  inDialog: boolean;
 
   displayedColumns: string[] = ['select', 'id', 'name', 'email', 'organization'];
 

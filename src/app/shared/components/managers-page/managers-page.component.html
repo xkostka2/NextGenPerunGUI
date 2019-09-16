@@ -1,0 +1,52 @@
+<div>
+  <h1 class="page-subtitle">
+    {{'SHARED.COMPONENTS.MANAGERS_PAGE.TITLE' | translate}}
+  </h1>
+  <app-refresh-button (refresh)="changeUser()"></app-refresh-button>
+  <button mat-flat-button color="accent" class="mr-2" (click)="selected === 'user' ? addManager() : addGroup()">
+    {{'SHARED.COMPONENTS.MANAGERS_PAGE.ADD' | translate}}
+  </button>
+  <button mat-flat-button color="warn" (click)="selected === 'user' ? removeManager() : removeGroup()"
+          [disabled]="selectionUsers.selected.length === 0 && selectionGroups.selected.length === 0">
+    {{'SHARED.COMPONENTS.MANAGERS_PAGE.REMOVE' | translate}}
+  </button>
+
+  <mat-form-field class="ml-2">
+    <mat-label>{{'SHARED.COMPONENTS.MANAGERS_PAGE.SELECT_MODE' | translate}}</mat-label>
+    <mat-select [(value)]="selected" (selectionChange)="changeUser()">
+      <mat-option value="user">{{'SHARED.COMPONENTS.MANAGERS_PAGE.USER' | translate}}</mat-option>
+      <mat-option value="group">{{'SHARED.COMPONENTS.MANAGERS_PAGE.GROUP' | translate}} </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="ml-2">
+    <mat-label>{{'SHARED.COMPONENTS.MANAGERS_PAGE.SELECT_ROLE' | translate}}</mat-label>
+    <mat-select [(value)]="selectedRole" (selectionChange)="changeUser()">
+      <mat-option *ngFor="let role of availableRoles" [value]="role">{{role | displayedRole}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-spinner *ngIf="loading" class="ml-auto mr-auto"></mat-spinner>
+  <div *ngIf="!loading">
+
+    <div *ngIf="managers && managers.length == 0 && selected === 'user'" class="perun-alert warn-alert">
+      {{'SHARED.COMPONENTS.MANAGERS_PAGE.NO_MANAGERS' | translate}}
+    </div>
+    <app-users-list
+      *ngIf="managers && managers.length > 0 && selected === 'user'"
+      [users]="managers"
+      [selection]="selectionUsers">
+    </app-users-list>
+
+    <div *ngIf="groups && groups.length == 0 && selected === 'group'" class="perun-alert warn-alert">
+      {{'SHARED.COMPONENTS.MANAGERS_PAGE.NO_GROUP_MANAGERS' | translate}}
+    </div>
+    <mat-spinner class="ml-auto mr-auto" *ngIf="loading"></mat-spinner>
+    <app-groups-list
+      *ngIf="groups  && groups.length > 0 && selected === 'group' && !loading"
+      [hideColumns]="['menu']"
+      [groups]="groups"
+      [selection]="selectionGroups">
+    </app-groups-list>
+  </div>
+
+</div>

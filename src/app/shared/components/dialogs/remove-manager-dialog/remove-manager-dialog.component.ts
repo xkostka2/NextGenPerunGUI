@@ -6,9 +6,11 @@ import {TranslateService} from '@ngx-translate/core';
 import {AuthzService} from '../../../../core/services/api/authz.service';
 import {Vo} from '../../../../core/models/Vo';
 import {Role} from '../../../../core/models/PerunPrincipal';
+import {Group} from '../../../../core/models/Group';
+import {Facility} from '../../../../core/models/Facility';
 
 export interface RemoveManagerDialogData {
-  vo: Vo;
+  complementaryObject: Vo | Group | Facility;
   managers: RichUser[];
   role: Role;
   theme: string;
@@ -31,6 +33,7 @@ export class RemoveManagerDialogComponent implements OnInit {
   displayedColumns: string[] = ['name'];
   dataSource: MatTableDataSource<RichUser>;
 
+  loading: boolean;
   theme: string;
 
   ngOnInit() {
@@ -43,12 +46,15 @@ export class RemoveManagerDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authzService.removeManagers(this.data.role, this.data.managers.map(manager => manager.id), this.data.vo).subscribe(() => {
+    this.loading = true;
+    this.authzService.unsetRole(this.data.role, this.data.managers.map(manager => manager.id), this.data.complementaryObject)
+      .subscribe(() => {
       this.translate.get('DIALOGS.REMOVE_MANAGERS.SUCCESS').subscribe(successMessage => {
         this.notificator.showSuccess(successMessage);
+        this.loading = false;
         this.dialogRef.close(true);
-      });
-    });
+      }, () => this.loading = false);
+    }, () => this.loading = false);
   }
 
 }

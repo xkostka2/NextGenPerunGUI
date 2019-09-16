@@ -49,6 +49,9 @@ import {
   GroupSettingsExpirationComponent
 } from './pages/group-detail-page/group-settings/group-settings-expiration/group-settings-expiration.component';
 import {
+  GroupSettingsManagersComponent
+} from './pages/group-detail-page/group-settings/group-settings-managers/group-settings-managers.component';
+import {
   VoSettingsNotificationsComponent
 } from './pages/vo-detail-page/vo-settings/vo-settings-notifications/vo-settings-notifications.component';
 import {
@@ -237,6 +240,11 @@ const routes: Routes = [
             path: 'expiration',
             component: GroupSettingsExpirationComponent,
             data: {animation: 'GroupSettingsExpirationPage'}
+          },
+          {
+            path: 'managers',
+            component: GroupSettingsManagersComponent,
+            data: {animation: 'GroupSettingsManagersPage'}
           },
           {
             path: 'applicationForm',

@@ -6,9 +6,10 @@ import {AuthzService} from '../../../../core/services/api/authz.service';
 import {Vo} from '../../../../core/models/Vo';
 import {Group} from '../../../../core/models/Group';
 import {Role} from '../../../../core/models/PerunPrincipal';
+import {Facility} from '../../../../core/models/Facility';
 
 export interface RemoveGroupDialogData {
-  vo: Vo;
+  complementaryObject: Vo | Group | Facility;
   groups: Group[];
   role: Role;
   theme: string;
@@ -31,6 +32,7 @@ export class RemoveGroupManagerDialogComponent implements OnInit {
   displayedColumns: string[] = ['name'];
   dataSource: MatTableDataSource<Group>;
 
+  loading: boolean;
   theme: string;
 
   ngOnInit() {
@@ -43,12 +45,15 @@ export class RemoveGroupManagerDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authzService.unsetRoleForGroups(this.data.role, this.data.groups.map(group => group.id), this.data.vo).subscribe(() => {
-      this.translate.get('DIALOGS.REMOVE_GROUPS.SUCCESS').subscribe(successMessage => {
-        this.notificator.showSuccess(successMessage);
-        this.dialogRef.close(true);
-      });
-    });
+    this.loading = true;
+    this.authzService.unsetRoleForGroups(this.data.role, this.data.groups.map(group => group.id), this.data.complementaryObject)
+      .subscribe(() => {
+        this.translate.get('DIALOGS.REMOVE_GROUPS.SUCCESS').subscribe(successMessage => {
+          this.notificator.showSuccess(successMessage);
+          this.loading = false;
+          this.dialogRef.close(true);
+        }, () => this.loading = false);
+      }, () => this.loading = false);
   }
 
 }

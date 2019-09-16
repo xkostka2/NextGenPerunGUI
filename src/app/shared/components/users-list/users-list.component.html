@@ -34,22 +34,22 @@
       </ng-container>
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'MANAGERS_LIST.NAME' | translate}}</th>
-        <td mat-cell *matCellDef="let user">{{user | userFullName}}</td>
+        <td mat-cell *matCellDef="let manager">{{manager | userFullName}}</td>
       </ng-container>
       <ng-container matColumnDef="organization">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'MANAGERS_LIST.ORGANIZATION' | translate}}</th>
-        <td mat-cell *matCellDef="let user">{{user | userVo}}</td>
+        <td mat-cell *matCellDef="let manager">{{manager | userVo}}</td>
       </ng-container>
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'MANAGERS_LIST.EMAIL' | translate}}</th>
-        <td mat-cell *matCellDef="let user">{{user | userEmail}}</td>
+        <td mat-cell *matCellDef="let manager">{{manager | userEmail}}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr
         mat-row
         *matRowDef="let user; columns: displayedColumns;"
-        [routerLink]="disableClick ? undefined : ['/admin/users', user.id]"
+        [routerLink]="inDialog ? null : ['/admin/users', user.id]"
         class="dark-hover-list-item">
       </tr>
     </table>
