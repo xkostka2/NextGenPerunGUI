@@ -4,9 +4,13 @@
   <button mat-flat-button color="warn" [disabled]="selected.selected.length === 0"  (click)="removeResource()">
     {{'FACILITY_DETAIL.RESOURCES.DELETE' | translate}}
   </button>
+  <app-immediate-filter
+    [placeholder]="'SHARED.COMPONENTS.RESOURCES_LIST.TABLE_SEARCH'"
+    (filter)="applyFilter($event)"></app-immediate-filter>
   <mat-spinner class="ml-auto mr-auto" *ngIf="loading"></mat-spinner>
   <app-resources-list
     *ngIf="!loading"
+    [filterValue]="filterValue"
     [resources]="resources"
     [selection]="selected">
   </app-resources-list>

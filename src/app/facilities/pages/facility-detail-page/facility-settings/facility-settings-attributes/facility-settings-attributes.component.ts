@@ -47,6 +47,7 @@ export class FacilitySettingsAttributesComponent implements OnInit {
   deleteSuccessMessage: string;
 
   loading: boolean;
+  filterValue = '';
 
   ngOnInit() {
     this.route.parent.parent.params.subscribe(params => {
@@ -109,5 +110,9 @@ export class FacilitySettingsAttributesComponent implements OnInit {
       this.selection.clear();
       this.loading = false;
     });
+  }
+
+  applyFilter(filterValue: string) {
+    this.filterValue = filterValue;
   }
 }

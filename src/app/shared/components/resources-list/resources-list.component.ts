@@ -30,12 +30,16 @@ export class ResourcesListComponent implements AfterViewInit, OnChanges {
   @Input()
   selection;
 
+  @Input()
+  filterValue: string;
+
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   ngOnChanges(changes: SimpleChanges) {
     this.displayedColumns = this.displayedColumns.filter(x => !this.hideColumns.includes(x));
     this.dataSource = new MatTableDataSource<RichResource>(this.resources);
     this.setDataSource();
+    this.dataSource.filter = this.filterValue;
   }
 
   setDataSource() {
@@ -43,12 +47,6 @@ export class ResourcesListComponent implements AfterViewInit, OnChanges {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     }
-  }
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
-    this.dataSource.filter = filterValue;
   }
 
   /** Whether the number of selected elements matches the total number of rows. */

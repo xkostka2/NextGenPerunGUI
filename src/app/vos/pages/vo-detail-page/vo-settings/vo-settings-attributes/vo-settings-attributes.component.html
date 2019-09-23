@@ -12,10 +12,12 @@
   <button mat-flat-button color="warn" (click)="onDelete()" [disabled]="selection.selected.length === 0">
     {{'VO_DETAIL.SETTINGS.ATTRIBUTES.DELETE' | translate}}
   </button>
+  <app-immediate-filter [placeholder]="'SHARED.COMPONENTS.ATTRIBUTES_LIST.FILTER'" (filter)="applyFilter($event)"></app-immediate-filter>
   <mat-spinner class="ml-auto mr-auto" *ngIf="loading"></mat-spinner>
   <app-attributes-list
     #list
     *ngIf="!loading"
+    [filterValue]="filterValue"
     [attributes]="attributes"
     [selection]="selection">
   </app-attributes-list>

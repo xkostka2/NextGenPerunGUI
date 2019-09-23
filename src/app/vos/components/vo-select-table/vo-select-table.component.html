@@ -1,8 +1,3 @@
-<mat-form-field style="width:300px !important">
-  <input matInput (keyup)="applyFilter($event.target.value)"
-         autofocus
-         placeholder="{{'VO_MANAGEMENT.FILTER_PLACEHOLDER' | translate}}">
-</mat-form-field>
 <div class="card mt-3">
   <div class="card-body">
     <table mat-table [dataSource]="dataSource" matSort matSortDirection="asc" matSortDisableClear

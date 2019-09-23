@@ -125,6 +125,7 @@ import { TagBarComponent } from './components/dialogs/add-edit-notification-dial
 import {
   NotificationsCopyMailsDialogComponent
 } from './components/dialogs/notifications-copy-mails-dialog/notifications-copy-mails-dialog.component';
+import { ImmediateFilterComponent } from './components/immediate-filter/immediate-filter.component';
 import {DisplayedRolePipe} from './pipes/displayed-role.pipe';
 import { AnimatedRouterOutletComponent } from './components/animated-router-outlet/animated-router-outlet.component';
 import { UserEmailPipe } from './pipes/user-email.pipe';
@@ -253,6 +254,8 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     MatExpansionModule,
     MatMenuModule,
     GroupMenuComponent,
+    ScrollingModule,
+    ImmediateFilterComponent,
     ManagersPageComponent,
     GroupMenuComponent,
     ScrollingModule,
@@ -369,6 +372,7 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     TagSectionComponent,
     TagBarComponent,
     NotificationsCopyMailsDialogComponent,
+    ImmediateFilterComponent,
     GroupMenuComponent,
     ManagersPageComponent,
     DisplayedRolePipe,

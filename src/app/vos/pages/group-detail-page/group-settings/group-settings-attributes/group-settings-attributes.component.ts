@@ -45,6 +45,7 @@ export class GroupSettingsAttributesComponent implements OnInit {
   groupId: number;
 
   loading: boolean;
+  filterValue = '';
 
   ngOnInit() {
     this.route.parent.parent.params.subscribe(params => {
@@ -109,5 +110,9 @@ export class GroupSettingsAttributesComponent implements OnInit {
       this.selection.clear();
       this.loading = false;
     });
+  }
+
+  applyFilter(filterValue: string) {
+    this.filterValue = filterValue;
   }
 }

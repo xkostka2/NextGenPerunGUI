@@ -28,6 +28,7 @@ export class GroupResourcesComponent implements OnInit {
   selected = new SelectionModel<RichResource>(true, []);
 
   loading: boolean;
+  filterValue = '';
 
   ngOnInit() {
     this.route.parent.params.subscribe(parentParams => {
@@ -47,5 +48,9 @@ export class GroupResourcesComponent implements OnInit {
       this.resources = resources;
       this.loading = false;
     });
+  }
+
+  applyFilter(filterValue: string) {
+    this.filterValue = filterValue;
   }
 }

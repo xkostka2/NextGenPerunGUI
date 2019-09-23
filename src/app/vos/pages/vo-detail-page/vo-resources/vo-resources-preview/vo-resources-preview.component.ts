@@ -27,6 +27,7 @@ export class VoResourcesPreviewComponent implements OnInit {
   selected = new SelectionModel<RichResource>(true, []);
 
   loading: boolean;
+  filterValue = '';
 
   ngOnInit() {
     this.route.parent.parent.params.subscribe(parentParams => {
@@ -46,5 +47,9 @@ export class VoResourcesPreviewComponent implements OnInit {
       this.resources = resources;
       this.loading = false;
     });
+  }
+
+  applyFilter(filterValue: string) {
+    this.filterValue = filterValue;
   }
 }

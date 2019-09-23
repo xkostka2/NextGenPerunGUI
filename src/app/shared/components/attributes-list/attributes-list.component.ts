@@ -40,9 +40,13 @@ export class AttributesListComponent implements OnChanges, AfterViewInit {
   @Input()
   inDialog = false;
 
+  @Input()
+  filterValue = '';
+
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<Attribute>(this.attributes);
     this.setDataSource();
+    this.dataSource.filter = this.filterValue;
   }
 
   ngAfterViewInit(): void {
@@ -72,12 +76,6 @@ export class AttributesListComponent implements OnChanges, AfterViewInit {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
-  }
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
-    this.dataSource.filter = filterValue;
   }
 
   updateMapAttributes() {

@@ -19,6 +19,7 @@ export class VoSelectPageComponent implements OnInit {
   vos: Vo[] = [];
   recentIds = [];
   loading: boolean;
+  filterValue = '';
 
   ngOnInit() {
     this.sideMenuService.setAccessMenuItems([]);
@@ -32,5 +33,9 @@ export class VoSelectPageComponent implements OnInit {
       this.recentIds = getRecentlyVisitedIds('vos');
       this.loading = false;
     });
+  }
+
+  applyFilter(filterValue: string) {
+    this.filterValue = filterValue;
   }
 }

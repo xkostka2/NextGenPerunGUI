@@ -34,6 +34,8 @@ export class FacilityResourcesComponent implements OnInit {
   resources: RichResource[] = [];
   selected = new SelectionModel<RichResource>(false, []);
 
+  filterValue = '';
+
   loading: boolean;
 
   ngOnInit() {
@@ -68,5 +70,9 @@ export class FacilityResourcesComponent implements OnInit {
       this.selected.clear();
       this.loading = false;
     });
+  }
+
+  applyFilter(filterValue: string) {
+    this.filterValue = filterValue;
   }
 }

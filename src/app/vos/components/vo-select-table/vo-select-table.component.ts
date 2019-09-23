@@ -17,6 +17,9 @@ export class VoSelectTableComponent implements OnChanges, AfterViewInit {
   @Input()
   recentIds: number[];
 
+  @Input()
+  filterValue: string;
+
   @ViewChild(MatSort, { static: true }) set matSort(ms: MatSort) {
     this.sort = ms;
     this.setDataSource();
@@ -32,6 +35,7 @@ export class VoSelectTableComponent implements OnChanges, AfterViewInit {
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<Vo>(this.vos);
     this.setDataSource();
+    this.dataSource.filter = this.filterValue;
   }
 
   ngAfterViewInit(): void {
@@ -43,11 +47,5 @@ export class VoSelectTableComponent implements OnChanges, AfterViewInit {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     }
-  }
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
-    this.dataSource.filter = filterValue;
   }
 }

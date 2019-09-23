@@ -38,6 +38,7 @@ export class CreateAttributeDialogComponent implements OnInit {
   selected = new SelectionModel<Attribute>(true, []);
   saveSuccessMessage: string;
   showError = false;
+  filterValue = '';
 
   ngOnInit() {
     const unWanted = new Array<number>();
@@ -80,5 +81,9 @@ export class CreateAttributeDialogComponent implements OnInit {
       this.selected.clear();
       this.dialogRef.close('saved');
     });
+  }
+
+  applyFilter(filterValue: string) {
+    this.filterValue = filterValue;
   }
 }

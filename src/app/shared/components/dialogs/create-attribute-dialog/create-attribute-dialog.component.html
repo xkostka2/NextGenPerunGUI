@@ -10,10 +10,11 @@
   <button mat-flat-button (click)="onCancel()">
     {{'DIALOGS.CREATE_ATTRIBUTE.CANCEL' | translate}}
   </button>
-
+  <app-immediate-filter [placeholder]="'SHARED.COMPONENTS.ATTRIBUTES_LIST.FILTER'" (filter)="applyFilter($event)"></app-immediate-filter>
   <app-attributes-list
     *ngIf="attributes !== undefined"
     #list
+    [filterValue]="filterValue"
     [attributes]="attributes"
     [selection]="selected"
     [inDialog]="true">
