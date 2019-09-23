@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
 import {AttributeDefinition} from '../../../core/models/AttributeDefinition';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
@@ -8,7 +8,7 @@ import {SelectionModel} from '@angular/cdk/collections';
   templateUrl: './attr-def-list.component.html',
   styleUrls: ['./attr-def-list.component.scss']
 })
-export class AttrDefListComponent implements OnChanges {
+export class AttrDefListComponent implements OnChanges, AfterViewInit {
 
   constructor() { }
 
@@ -36,6 +36,10 @@ export class AttrDefListComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<AttributeDefinition>(this.definitions);
     this.setDataSource();
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
 
   setDataSource() {
