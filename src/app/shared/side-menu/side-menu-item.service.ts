@@ -214,7 +214,12 @@ export class SideMenuItemService {
               label: 'MENU_ITEMS.GROUP.APPLICATION_FORM',
               url: [`/organizations/${group.voId}/groups/${group.id}/settings/applicationForm`],
               activatedRegex: '/organizations/\\d+/groups/\\d+/settings/applicationForm$'
-            }
+            },
+            {
+              label: 'MENU_ITEMS.GROUP.NOTIFICATIONS',
+              url: [`/organizations/${group.voId}/groups/${group.id}/settings/notifications`],
+              activatedRegex: '/organizations/\\d+/groups/\\d+/settings/notifications$'
+            },
           ],
           showChildrenRegex: '/organizations/\\d+/groups/\\d+/settings'
         }

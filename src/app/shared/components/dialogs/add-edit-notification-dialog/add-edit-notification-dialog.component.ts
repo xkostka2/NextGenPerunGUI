@@ -6,6 +6,7 @@ import {RegistrarService} from '../../../../core/services/api/registrar.service'
 
 export interface ApplicationFormAddEditMailDialogData {
   voId: number;
+  groupId: number;
   createMailNotification: boolean;
   applicationMail: ApplicationMail;
   applicationMails: ApplicationMail[];
@@ -46,9 +47,15 @@ export class AddEditNotificationDialogComponent implements OnInit {
       return;
     }
     this.copyTexts(enInput, enTextarea, csInput, csTextarea);
-    this.registrarService.addApplicationMail(this.data.voId, this.applicationMail).subscribe( () => {
-      this.dialogRef.close(true);
-    });
+    if (this.data.groupId) {
+      this.registrarService.addApplicationMailForGroup(this.data.groupId, this.applicationMail).subscribe( () => {
+        this.dialogRef.close(true);
+      });
+    } else {
+      this.registrarService.addApplicationMailForVo(this.data.voId, this.applicationMail).subscribe( () => {
+        this.dialogRef.close(true);
+      });
+    }
   }
 
   save(enInput, enTextarea, csInput, csTextarea) {

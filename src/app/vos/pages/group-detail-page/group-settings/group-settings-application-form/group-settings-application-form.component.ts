@@ -47,7 +47,7 @@ export class GroupSettingsApplicationFormComponent implements OnInit {
     this.route.parent.parent.params.subscribe(params => {
       this.voId = params['voId'];
       this.groupId = params['groupId'];
-      this.registrarService.getApplicationFormForGroup(this.groupId).subscribe( form => {
+      this.registrarService.getApplicationFormForGroup(this.groupId, false).subscribe( form => {
         this.applicationForm = form;
         this.registrarService.getFormItemsForGroup(this.groupId).subscribe( formItems => {
           this.applicationFormItems = formItems;

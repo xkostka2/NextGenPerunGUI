@@ -57,6 +57,9 @@ import {
 import {
   GroupSettingsApplicationFormComponent
 } from './pages/group-detail-page/group-settings/group-settings-application-form/group-settings-application-form.component';
+import {
+  GroupSettingsNotificationsComponent
+} from './pages/group-detail-page/group-settings/group-settings-notifications/group-settings-notifications.component';
 
 const routes: Routes = [
   {
@@ -254,7 +257,11 @@ const routes: Routes = [
           {
             path: 'applicationForm/preview',
             component: ApplicationFormPreviewComponent,
-            data: {animation: 'ApplicationFormPreviewPage'}
+          },
+          {
+            path: 'notifications',
+            component: GroupSettingsNotificationsComponent,
+            data: {animation: 'GroupSettingsNotificationsPage'}
           }
         ]
       },

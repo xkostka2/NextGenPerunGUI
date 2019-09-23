@@ -98,78 +98,82 @@
         </div>
       </mat-tab>
       <mat-tab label="{{'DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.LANG_EN' | translate}}">
-        <div class="d-flex w-100">
-          <div class="pr-2 w-100">
-            <div class="pt-2">
-              <span class="font-weight-bold pr-2">{{'DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.SUBJECT' | translate}}:</span>
+        <ng-template matTabContent>
+          <div class="d-flex w-100">
+            <div class="pr-2 w-100">
+              <div class="pt-2">
+                <span class="font-weight-bold pr-2">{{'DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.SUBJECT' | translate}}:</span>
+                <mat-form-field class="w-100">
+                  <input
+                    matInput
+                    #enInput
+                    (focus)="isTextFocused = false"
+                    [(ngModel)]="this.applicationMail.message['en'].subject">
+                </mat-form-field>
+              </div>
+              <div class="font-weight-bold">
+                {{'DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.TEXT' | translate}}:
+              </div>
+              <button mat-stroked-button (click)="changeTagsAvailability()">
+                {{tagsAvailable ? ('DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.HIDE_TAGS' | translate) :
+                                  ('DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.SHOW_TAGS' | translate)}}
+              </button>
               <mat-form-field class="w-100">
-                <input
-                  matInput
-                  #enInput
-                  (focus)="isTextFocused = false"
-                  [(ngModel)]="this.applicationMail.message['en'].subject">
+                <textarea matInput
+                          #enTextarea
+                          rows="17"
+                          (focus)="isTextFocused = true"
+                          [(ngModel)]="this.applicationMail.message['en'].text">
+                </textarea>
               </mat-form-field>
             </div>
-            <div class="font-weight-bold">
-              {{'DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.TEXT' | translate}}:
-            </div>
-            <button mat-stroked-button (click)="changeTagsAvailability()">
-              {{tagsAvailable ? ('DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.HIDE_TAGS' | translate) :
-                                ('DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.SHOW_TAGS' | translate)}}
-            </button>
-            <mat-form-field class="w-100">
-              <textarea matInput
-                        #enTextarea
-                        rows="17"
-                        (focus)="isTextFocused = true"
-                        [(ngModel)]="this.applicationMail.message['en'].text">
-              </textarea>
-            </mat-form-field>
-          </div>
 
-          <div [@tagsOpenClose]="tagsAvailable ? 'open' : 'closed'">
-            <app-tag-bar
-              (addedTag)="addTag(enInput, enTextarea, $event)">
-            </app-tag-bar>
+            <div [@tagsOpenClose]="tagsAvailable ? 'open' : 'closed'">
+              <app-tag-bar
+                (addedTag)="addTag(enInput, enTextarea, $event)">
+              </app-tag-bar>
+            </div>
           </div>
-        </div>
+        </ng-template>
       </mat-tab>
       <mat-tab label="{{'DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.LANG_CS' | translate}}">
-        <div class="d-flex w-100">
-          <div class="pr-2 w-100">
-            <div class="pt-2">
-              <span class="font-weight-bold pr-2">{{'DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.SUBJECT' | translate}}:</span>
+        <ng-template matTabContent>
+          <div class="d-flex w-100">
+            <div class="pr-2 w-100">
+              <div class="pt-2">
+                <span class="font-weight-bold pr-2">{{'DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.SUBJECT' | translate}}:</span>
+                <mat-form-field class="w-100">
+                  <input
+                    matInput
+                    #csInput
+                    (focus)="isTextFocused = false"
+                    [(ngModel)]="this.applicationMail.message['cs'].subject">
+                </mat-form-field>
+              </div>
+              <div class="font-weight-bold">
+                {{'DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.TEXT' | translate}}:
+              </div>
+              <button mat-stroked-button (click)="changeTagsAvailability()">
+                {{tagsAvailable ? ('DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.HIDE_TAGS' | translate) :
+                ('DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.SHOW_TAGS' | translate)}}
+              </button>
               <mat-form-field class="w-100">
-                <input
-                  matInput
-                  #csInput
-                  (focus)="isTextFocused = false"
-                  [(ngModel)]="this.applicationMail.message['cs'].subject">
+                <textarea matInput
+                          #csTextarea
+                          rows="17"
+                          (focus)="isTextFocused = true"
+                          [(ngModel)]="this.applicationMail.message['cs'].text">
+                </textarea>
               </mat-form-field>
             </div>
-            <div class="font-weight-bold">
-              {{'DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.TEXT' | translate}}:
-            </div>
-            <button mat-stroked-button (click)="changeTagsAvailability()">
-              {{tagsAvailable ? ('DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.HIDE_TAGS' | translate) :
-              ('DIALOGS.NOTIFICATIONS_ADD_EDIT_MAIL.SHOW_TAGS' | translate)}}
-            </button>
-            <mat-form-field class="w-100">
-              <textarea matInput
-                        #csTextarea
-                        rows="17"
-                        (focus)="isTextFocused = true"
-                        [(ngModel)]="this.applicationMail.message['cs'].text">
-              </textarea>
-            </mat-form-field>
-          </div>
 
-          <div [@tagsOpenClose]="tagsAvailable ? 'open' : 'closed'">
-            <app-tag-bar
-              (addedTag)="addTag(csInput, csTextarea, $event)">
-            </app-tag-bar>
+            <div [@tagsOpenClose]="tagsAvailable ? 'open' : 'closed'">
+              <app-tag-bar
+                (addedTag)="addTag(csInput, csTextarea, $event)">
+              </app-tag-bar>
+            </div>
           </div>
-        </div>
+        </ng-template>
       </mat-tab>
     </mat-tab-group>
   </div>

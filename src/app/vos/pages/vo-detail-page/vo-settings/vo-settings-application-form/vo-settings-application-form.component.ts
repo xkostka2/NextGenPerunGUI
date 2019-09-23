@@ -45,7 +45,7 @@ export class VoSettingsApplicationFormComponent implements OnInit {
     this.route.parent.parent.params.subscribe(params => {
       const voId = params['voId'];
       this.voId = voId;
-      this.registrarService.getApplicationForm(voId).subscribe( form => {
+      this.registrarService.getApplicationFormForVo(voId).subscribe( form => {
         this.applicationForm = form;
         this.registrarService.getFormItemsForVo(voId).subscribe( formItems => {
           this.applicationFormItems = formItems;

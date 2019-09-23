@@ -1,0 +1,60 @@
+<h1 class="page-subtitle">
+  {{'GROUP_DETAIL.SETTINGS.NOTIFICATIONS.TITLE' | translate}}
+</h1>
+<mat-spinner *ngIf="loading" class="ml-auto mr-auto">
+</mat-spinner>
+<div *ngIf="!noApplicationForm && !loading">
+  <div class="w-100 d-flex">
+    <button
+      mat-flat-button
+      color="accent"
+      class="mr-2"
+      (click)="add()">
+      {{'GROUP_DETAIL.SETTINGS.NOTIFICATIONS.ADD' | translate}}
+    </button>
+
+    <button
+      mat-flat-button
+      color="warn"
+      class="mr-2"
+      (click)="remove()"
+      [disabled]="selection.selected.length === 0">
+      {{'GROUP_DETAIL.SETTINGS.NOTIFICATIONS.REMOVE' | translate}}
+    </button>
+
+    <button
+      mat-stroked-button
+      class="mr-2"
+      (click)="changeEmailFooter()">
+      <i class="material-icons">email</i>
+      {{'GROUP_DETAIL.SETTINGS.NOTIFICATIONS.EMAIL_FOOTER' | translate}}
+    </button>
+
+    <button
+      mat-stroked-button
+      class="ml-auto"
+      (click)="copy()">
+      <i class="material-icons">file_copy</i>
+      {{'GROUP_DETAIL.SETTINGS.NOTIFICATIONS.COPY_FROM_VO' | translate}}
+    </button>
+  </div>
+
+  <div *ngIf="applicationMails.length !== 0" class="card mt-2">
+    <app-notification-list
+      [applicationMails]="applicationMails"
+      [groupId]="groupId"
+      [selection]="selection"
+      (selectionChange)="changeSelection($event)"></app-notification-list>
+  </div>
+  <div *ngIf="this.applicationMails.length === 0" class="perun-alert warn-alert">
+    {{'GROUP_DETAIL.SETTINGS.NOTIFICATIONS.NO_EMAILS' | translate}}
+  </div>
+</div>
+<div *ngIf="noApplicationForm && !loading">
+  <div class="perun-alert warn-alert">{{'GROUP_DETAIL.SETTINGS.NOTIFICATIONS.NO_APPLICATION_FORM' | translate}}</div>
+  <button mat-stroked-button
+          (click)="createEmptyApplicationForm()">
+    {{'GROUP_DETAIL.SETTINGS.NOTIFICATIONS.CREATE_APPLICATION_FORM' | translate}}
+  </button>
+</div>
+

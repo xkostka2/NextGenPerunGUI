@@ -107,9 +107,15 @@ export class RegistrarService {
     }, showNotificationOnError);
   }
 
-  getApplicationForm(voId: number, showNotificationOnError = true): Observable<ApplicationForm> {
+  getApplicationFormForVo(voId: number, showNotificationOnError = true): Observable<ApplicationForm> {
     return this.apiService.post('json/registrarManager/getApplicationForm', {
       'vo': voId
+    }, showNotificationOnError);
+  }
+
+  getApplicationFormForGroup(groupId: number, showNotificationOnError = true): Observable<ApplicationForm> {
+    return this.apiService.post('json/registrarManager/getApplicationForm', {
+      'group': groupId
     }, showNotificationOnError);
   }
 
@@ -153,9 +159,15 @@ export class RegistrarService {
     }, showNotificationOnError);
   }
 
-  getApplicationMails(vo: number, showNotificationOnError = true): Observable<ApplicationMail[]> {
+  getApplicationMailsForVo(vo: number, showNotificationOnError = true): Observable<ApplicationMail[]> {
     return this.apiService.post('json/registrarManager/getApplicationMails', {
       'vo': vo
+    }, showNotificationOnError);
+  }
+
+  getApplicationMailsForGroup(group: number, showNotificationOnError = true): Observable<ApplicationMail[]> {
+    return this.apiService.post('json/registrarManager/getApplicationMails', {
+      'group': group
     }, showNotificationOnError);
   }
 
@@ -180,9 +192,16 @@ export class RegistrarService {
     }, showNotificationOnError);
   }
 
-  deleteApplicationMail(vo: number, id: number, showNotificationOnError = true) {
+  deleteApplicationMailForVo(vo: number, id: number, showNotificationOnError = true) {
     return this.apiService.post('json/registrarManager/deleteApplicationMail', {
       'vo': vo,
+      'id': id
+    }, showNotificationOnError);
+  }
+
+  deleteApplicationMailForGroup(group: number, id: number, showNotificationOnError = true) {
+    return this.apiService.post('json/registrarManager/deleteApplicationMail', {
+      'group': group,
       'id': id
     }, showNotificationOnError);
   }
@@ -193,9 +212,16 @@ export class RegistrarService {
     }, showNotificationOnError);
   }
 
-  addApplicationMail(vo: number, mail: ApplicationMail, showNotificationOnError = true): Observable<ApplicationMail> {
+  addApplicationMailForVo(vo: number, mail: ApplicationMail, showNotificationOnError = true): Observable<ApplicationMail> {
     return this.apiService.post('json/registrarManager/addApplicationMail', {
       'vo': vo,
+      'mail': mail
+    }, showNotificationOnError);
+  }
+
+  addApplicationMailForGroup(group: number, mail: ApplicationMail, showNotificationOnError = true): Observable<ApplicationMail> {
+    return this.apiService.post('json/registrarManager/addApplicationMail', {
+      'group': group,
       'mail': mail
     }, showNotificationOnError);
   }
@@ -225,12 +251,6 @@ export class RegistrarService {
     return this.apiService.post('json/registrarManager/copyMails', {
       'fromVo': fromVo,
       'toGroup': toGroup
-    }, showNotificationOnError);
-  }
-
-  getApplicationFormForGroup(group: number, showNotificationOnError = false): Observable<ApplicationForm> {
-    return this.apiService.post('json/registrarManager/getApplicationForm', {
-      'group': group
     }, showNotificationOnError);
   }
 

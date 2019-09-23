@@ -7,6 +7,7 @@ import {RegistrarService} from '../../../../core/services/api/registrar.service'
 
 export interface DeleteApplicationFormMailDialogData {
   voId: number;
+  groupId: number;
   mails: ApplicationMail[];
 }
 
@@ -35,10 +36,18 @@ export class DeleteNotificationDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    for (const mail of this.data.mails) {
-      this.registrarService.deleteApplicationMail(this.data.voId, mail.id).subscribe( () => {
-        this.dialogRef.close(true);
-      });
+    if (this.data.groupId) {
+      for (const mail of this.data.mails) {
+        this.registrarService.deleteApplicationMailForGroup(this.data.groupId, mail.id).subscribe(() => {
+          this.dialogRef.close(true);
+        });
+      }
+    } else {
+      for (const mail of this.data.mails) {
+        this.registrarService.deleteApplicationMailForVo(this.data.voId, mail.id).subscribe( () => {
+          this.dialogRef.close(true);
+        });
+      }
     }
   }
 

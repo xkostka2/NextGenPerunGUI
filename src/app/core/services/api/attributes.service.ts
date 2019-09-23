@@ -63,21 +63,15 @@ export class AttributesService {
     payload[entity] = entityId;
     payload['attributes'] = attributes;
 
-    return this.apiService.post('json/attributesManager/setAttributes', payload);
+    return this.apiService.post('json/attributesManager/setAttributes', payload, showNotificationOnError);
   }
 
-  getAttributes(vo: number, attrNames: string[], showNotificationOnError = true): Observable<Attribute[]> {
-    return this.apiService.post('json/attributesManager/getAttributes', {
-      'vo': vo,
-      'attrNames': attrNames
-    }, showNotificationOnError);
-  }
+  getAttributes(entityId: number, entity: Entity, attributes: string[], showNotificationOnError = true): Observable<Attribute[]> {
+    const payload = {};
+    payload[entity] = entityId;
+    payload['attrNames'] = attributes;
 
-  setAttributesToVo(vo: number, attributes: Attribute[], showNotificationOnError = true) {
-    return this.apiService.post('json/attributesManager/setAttributes', {
-      'vo': vo,
-      'attributes': attributes
-    }, showNotificationOnError);
+    return this.apiService.post('json/attributesManager/getAttributes', payload, showNotificationOnError);
   }
 }
 

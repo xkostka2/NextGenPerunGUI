@@ -69,6 +69,10 @@ import {
 import {
   GroupSettingsManagersComponent
 } from './pages/group-detail-page/group-settings/group-settings-managers/group-settings-managers.component';
+import {
+  GroupSettingsNotificationsComponent
+} from './pages/group-detail-page/group-settings/group-settings-notifications/group-settings-notifications.component';
+import { NotificationListComponent } from './components/notification-list/notification-list.component';
 
 @NgModule({
   imports: [
@@ -131,7 +135,9 @@ import {
     VoSettingsNotificationsComponent,
     GroupSettingsApplicationFormComponent,
     ExpirationSettingsComponent,
-    GroupSettingsManagersComponent
+    GroupSettingsManagersComponent,
+    GroupSettingsNotificationsComponent,
+    NotificationListComponent
   ],
   entryComponents: [
   ],

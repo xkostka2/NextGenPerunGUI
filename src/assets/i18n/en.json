@@ -377,8 +377,19 @@
         "PREVIEW_BUTTON": "Preview",
         "DRAG_AND_DROP_INFO": "You can move with table items by dragging and dropping",
         "NO_APPLICATION_FORM": "Application form doesn't exists",
-        "CREATE_APPLICATION_FORM": "Create empty form",
-        "CHANGE_SETTINGS_SUCCESS": "Settings were successfully changed."
+        "CREATE_APPLICATION_FORM": "Create empty form"
+      },
+      "NOTIFICATIONS": {
+        "TITLE": "Email notifications",
+        "ADD": "Add",
+        "REMOVE": "Remove",
+        "EMAIL_FOOTER": "E-mail footer",
+        "COPY_FROM_VO": "Copy from Vo/Group",
+        "NO_EMAILS": "No mail notifications found for this group.",
+        "ADD_SUCCESS": "Email notification was successfully added",
+        "DELETE_SUCCESS": "Email notification deleted.",
+        "NO_APPLICATION_FORM": "Application form doesn't exist",
+        "CREATE_APPLICATION_FORM": "Create application form"
       }
     }
   },
@@ -446,7 +457,8 @@
       "ATTRIBUTES": "Attributes",
       "MANAGERS": "Managers",
       "EXPIRATION": "Membership",
-      "APPLICATION_FORM": "Application form"
+      "APPLICATION_FORM": "Application form",
+      "NOTIFICATIONS": "Notifications"
     },
     "MEMBER": {
       "OVERVIEW": "Overview",

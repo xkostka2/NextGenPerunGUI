@@ -70,6 +70,12 @@ export class GroupSettingsOverviewComponent implements OnInit {
         url: `/organizations/${this.vo.id}/groups/${this.group.id}/settings/applicationForm`,
         label: 'MENU_ITEMS.GROUP.APPLICATION_FORM',
         style: 'group-btn'
+      },
+      {
+        icon: 'notification-white.svg',
+        url: `/organizations/${this.vo.id}/groups/${this.group.id}/settings/notifications`,
+        label: 'MENU_ITEMS.GROUP.NOTIFICATIONS',
+        style: 'group-btn'
       }
     ];
   }
