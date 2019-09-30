@@ -26,6 +26,7 @@ export class GroupApplicationsComponent implements OnInit {
   applications: Application[] = [];
   group: Group;
   displayedColumns: string[] = ['id', 'createdAt', 'type', 'state', 'user', 'extSourceLoa', 'modifiedBy'];
+  filterValue = '';
 
   ngOnInit() {
     this.loading = true;
@@ -80,5 +81,9 @@ export class GroupApplicationsComponent implements OnInit {
         break;
       }
     }
+  }
+
+  applyFilter(filterValue: string) {
+    this.filterValue = filterValue;
   }
 }

@@ -873,6 +873,12 @@ button:focus {
   width:350px !important;
 }
 
+.align-inline {
+  display: flex;
+  line-height: 75px;
+  align-items: flex-end;
+}
+
 .static-column-size {
   width: 80px;
 }

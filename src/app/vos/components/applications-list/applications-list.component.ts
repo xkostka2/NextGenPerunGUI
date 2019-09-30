@@ -32,6 +32,9 @@ export class ApplicationsListComponent implements OnChanges {
   @Input()
   displayedColumns: string[] = [];
 
+  @Input()
+  filterValue: string;
+
   dataSource: MatTableDataSource<Application>;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -40,6 +43,7 @@ export class ApplicationsListComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<Application>(this.applications);
     this.setDataSource();
+    this.dataSource.filter = this.filterValue;
   }
 
   setDataSource() {
@@ -77,13 +81,6 @@ export class ApplicationsListComponent implements OnChanges {
     }
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
 
   getFriendlyName(modifiedBy: string) {
     const index = modifiedBy.lastIndexOf('/CN=');

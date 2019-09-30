@@ -17,6 +17,9 @@ export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
   @Input()
   recentIds: number[];
 
+  @Input()
+  filterValue: string;
+
   @ViewChild(MatSort, { static: true }) set matSort(ms: MatSort) {
     this.sort = ms;
     this.setDataSource();
@@ -32,6 +35,7 @@ export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<RichFacility>(this.facilities);
     this.setDataSource();
+    this.dataSource.filter = this.filterValue;
   }
 
   ngAfterViewInit(): void {
@@ -56,11 +60,5 @@ export class FacilitySelectTableComponent implements AfterViewInit, OnChanges {
         return parseTechnicalOwnersNames(data.facilityOwners).toLowerCase().indexOf(lowerCaseFilter) !== -1;
       });
     }
-  }
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
-    this.dataSource.filter = filterValue;
   }
 }

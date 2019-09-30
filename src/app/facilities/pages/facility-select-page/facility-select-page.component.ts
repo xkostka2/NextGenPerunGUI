@@ -19,6 +19,7 @@ export class FacilitySelectPageComponent implements OnInit {
   facilities: RichFacility[] = [];
   recentIds: number[] = [];
   loading: boolean;
+  filterValue = '';
 
   ngOnInit() {
     this.sideMenuService.setFacilityMenuItems([]);
@@ -33,5 +34,9 @@ export class FacilitySelectPageComponent implements OnInit {
       this.recentIds = getRecentlyVisitedIds('facilities');
       this.loading = false;
     });
+  }
+
+  applyFilter(filterValue: string) {
+    this.filterValue = filterValue;
   }
 }

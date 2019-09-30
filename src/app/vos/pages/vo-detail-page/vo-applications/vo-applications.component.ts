@@ -26,6 +26,7 @@ export class VoApplicationsComponent implements OnInit {
   vo: Vo;
   displayedColumns: string[] = ['id', 'createdAt', 'type', 'state', 'user', 'extSourceLoa', 'group', 'modifiedBy'];
   firstSearchDone: boolean;
+  filterValue = '';
 
   ngOnInit() {
     this.loading = true;
@@ -80,5 +81,9 @@ export class VoApplicationsComponent implements OnInit {
         break;
       }
     }
+  }
+
+  applyFilter(filterValue: string) {
+    this.filterValue = filterValue;
   }
 }
