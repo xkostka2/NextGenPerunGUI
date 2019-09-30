@@ -11,7 +11,7 @@
     [resources]="resources"
     [selection]="selected">
   </app-resources-list>
-  <div *ngIf="resources !== null && resources.length === 0" class="perun-alert warn-alert">
+  <div *ngIf="resources !== null && resources.length === 0 && !loading" class="perun-alert warn-alert">
     {{'GROUP_DETAIL.RESOURCES.NO_RESOURCES_WARNING' | translate}}
   </div>
 </div>

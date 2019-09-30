@@ -61,13 +61,15 @@
     "BACK": "Back",
     "RESOURCES": {
       "TITLE": "Resources",
-      "DELETE": "Remove selected"
+      "DELETE": "Remove selected",
+      "NO_RESOURCES_ALERT": "No resources found."
     },
     "ALLOWED_GROUPS": {
       "SHOW_VOS_GROUPS": "Select organization",
       "TABLE_GROUP_ID": "Id",
       "TABLE_GROUP_NAME": "Name",
-      "ALL": "All"
+      "ALL": "All",
+      "NO_GROUPS_ALERT": "No groups found."
     },
     "SETTINGS": {
       "ATTRIBUTES": {
@@ -103,7 +105,8 @@
     "RESOURCES": {
       "LIST": {
         "TITLE": "Resources",
-        "DELETE": "Remove selected"
+        "DELETE": "Remove selected",
+        "NO_RESOURCES_ALERT": "No resources found."
       },
       "STATES": {
         "TITLE": "Resources state",
@@ -142,6 +145,7 @@
       "TITLE_SUBGROUPS": "Subgroups",
       "LIST_VIEW": "List view",
       "MENU_MOVE": "Move group",
+      "NO_GROUPS": "No groups found.",
       "MENU_RENAME": "Update name/description",
       "FILTER": "Filter"
     },
@@ -935,6 +939,7 @@
       "RESOURCES_TAGS_LIST": {
         "EDIT_SUCCESS": "Resource tag was successfully edited."
       },
+      "NO_FILTER_RESULTS_ALERT": "No results match given search criteria.",
       "RESOURCES_LIST": {
         "TITLE": "Resources",
         "DELETE": "Remove selected",
