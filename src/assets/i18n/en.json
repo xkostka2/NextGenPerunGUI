@@ -132,8 +132,7 @@
         "SAVE_BUTTON": "Save",
         "DELETE_SUCCESS": "Resource tags were successfully deleted.",
         "CREATE_SUCCESS": "Resource tag was successfully created.",
-        "NO_TAGS": "VO has no resource tags defined.",
-        "EDIT_SUCCESS": "Resource tag was successfully edited."
+        "NO_TAGS": "VO has no resource tags defined."
       }
     },
     "GROUPS": {
@@ -931,6 +930,9 @@
   },
   "SHARED": {
     "COMPONENTS": {
+      "RESOURCES_TAGS_LIST": {
+        "EDIT_SUCCESS": "Resource tag was successfully edited."
+      },
       "RESOURCES_LIST": {
         "TITLE": "Resources",
         "DELETE": "Remove selected",

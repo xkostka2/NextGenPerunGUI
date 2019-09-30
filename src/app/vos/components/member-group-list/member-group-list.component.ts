@@ -1,5 +1,5 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import {MatSort, MatTableDataSource} from '@angular/material';
+import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Group} from '../../../core/models/Group';
 import {SelectionModel} from '@angular/cdk/collections';
 import {ActivatedRoute} from '@angular/router';
@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './member-group-list.component.html',
   styleUrls: ['./member-group-list.component.scss']
 })
-export class MemberGroupListComponent implements OnInit, OnChanges {
+export class MemberGroupListComponent implements OnInit, OnChanges, AfterViewInit {
 
   constructor(
     private route: ActivatedRoute
@@ -22,8 +22,13 @@ export class MemberGroupListComponent implements OnInit, OnChanges {
     this.setDataSource();
   }
 
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+
   @Input()
   groups: Group[] = [];
+
+  @Input()
+  filterValue: string;
 
   @Input()
   selection = new SelectionModel<Group>(true, []);
@@ -42,6 +47,8 @@ export class MemberGroupListComponent implements OnInit, OnChanges {
   setDataSource() {
     if (!!this.dataSource) {
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.filter = this.filterValue;
     }
   }
 
@@ -66,5 +73,9 @@ export class MemberGroupListComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.route.parent.params.subscribe(parentParams => this.memberId = parentParams['memberId']);
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
 }

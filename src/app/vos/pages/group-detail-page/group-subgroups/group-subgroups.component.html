@@ -23,7 +23,7 @@
       *ngIf="showGroupList">
     </app-groups-list>
   </div>
-  <div *ngIf="groups.length == 0" class="perun-alert warn-alert">
+  <div *ngIf="groups.length == 0 && !loading" class="perun-alert warn-alert">
     {{'GROUP_DETAIL.SUBGROUPS.NO_SUBGROUPS' | translate}}
   </div>
 </div>

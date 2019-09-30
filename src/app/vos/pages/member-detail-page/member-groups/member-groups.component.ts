@@ -24,6 +24,8 @@ export class MemberGroupsComponent implements OnInit {
   memberId: number;
   loading: boolean;
 
+  filterValue = '';
+
   ngOnInit() {
     this.route.parent.params.subscribe(parentParams => {
       this.memberId = parentParams['memberId'];
@@ -37,6 +39,10 @@ export class MemberGroupsComponent implements OnInit {
     this.groupsService.getMemberGroups(this.memberId).subscribe(groups => {
       this.groups = groups;
       this.loading = false;
-    });
+    }, () => this.loading = false);
+  }
+
+  applyFilter(filterValue: string) {
+    this.filterValue = filterValue;
   }
 }

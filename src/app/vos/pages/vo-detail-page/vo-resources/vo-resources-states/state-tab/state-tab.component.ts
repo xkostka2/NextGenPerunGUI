@@ -21,7 +21,6 @@ export class StateTabComponent implements OnInit {
   ngOnInit() {
     this.getDataSource();
   }
-
   getErrorCountStates(resourceStatus: ResourceState) {
     let counter = 0;
     for (const task of resourceStatus.taskList) {

@@ -1,5 +1,5 @@
 <div class="card-body">
-  <table mat-table [dataSource]="dataSource" class="w-100">
+  <table mat-table [dataSource]="dataSource" matSort matSortDirection="asc" matSortDisableClear class="w-100">
     <ng-container matColumnDef="select">
       <th mat-header-cell *matHeaderCellDef>
         <mat-checkbox color="primary"
@@ -9,7 +9,7 @@
                       [aria-label]="checkboxLabel()">
         </mat-checkbox>
       </th>
-      <td mat-cell *matCellDef="let row">
+      <td mat-cell *matCellDef="let row" class="static-column-size">
         <mat-checkbox color="primary"
                       (click)="$event.stopPropagation()"
                       (change)="$event ? toggle(row) : null"
@@ -19,19 +19,19 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>
         {{'VO_DETAIL.SETTINGS.NOTIFICATIONS.TABLE_EMAIL_ID' | translate}}
       </th>
-      <td mat-cell *matCellDef="let applicationMail">{{applicationMail.id}}</td>
+      <td mat-cell  class="static-column-size" *matCellDef="let applicationMail">{{applicationMail.id}}</td>
     </ng-container>
     <ng-container matColumnDef="mailType">
-      <th mat-header-cell *matHeaderCellDef>
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>
         {{'VO_DETAIL.SETTINGS.NOTIFICATIONS.TABLE_EMAIL_TYPE' | translate}}
       </th>
       <td mat-cell *matCellDef="let applicationMail">{{getMailType(applicationMail)}}</td>
     </ng-container>
     <ng-container matColumnDef="appType">
-      <th mat-header-cell *matHeaderCellDef>
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>
         {{'VO_DETAIL.SETTINGS.NOTIFICATIONS.TABLE_APPLICATION_TYPE' | translate}}
       </th>
       <td mat-cell *matCellDef="let applicationMail">
@@ -46,7 +46,7 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="send">
-      <th mat-header-cell *matHeaderCellDef>
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>
         {{'VO_DETAIL.SETTINGS.NOTIFICATIONS.TABLE_SENDING_ENABLED' | translate}}
       </th>
       <td mat-cell *matCellDef="let applicationMail">
@@ -67,4 +67,5 @@
       class="dark-hover-list-item">
     </tr>
   </table>
+  <mat-paginator [length]="this.applicationMails.length" [pageSize]="10" [pageSizeOptions]="[5,10,25]"></mat-paginator>
 </div>

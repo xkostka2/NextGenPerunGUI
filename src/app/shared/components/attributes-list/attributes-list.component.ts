@@ -46,7 +46,6 @@ export class AttributesListComponent implements OnChanges, AfterViewInit {
   ngOnChanges(changes: SimpleChanges) {
     this.dataSource = new MatTableDataSource<Attribute>(this.attributes);
     this.setDataSource();
-    this.dataSource.filter = this.filterValue;
   }
 
   ngAfterViewInit(): void {
@@ -56,6 +55,8 @@ export class AttributesListComponent implements OnChanges, AfterViewInit {
   setDataSource() {
     if (!!this.dataSource) {
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.filter = this.filterValue;
     }
   }
 

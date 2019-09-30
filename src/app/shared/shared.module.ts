@@ -130,6 +130,7 @@ import {DisplayedRolePipe} from './pipes/displayed-role.pipe';
 import { AnimatedRouterOutletComponent } from './components/animated-router-outlet/animated-router-outlet.component';
 import { UserEmailPipe } from './pipes/user-email.pipe';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { ResourcesTagsListComponent } from './components/resources-tags-list/resources-tags-list.component';
 
 @NgModule({
   imports: [
@@ -261,7 +262,8 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     ScrollingModule,
     DisplayedRolePipe,
     ScrollingModule,
-    AnimatedRouterOutletComponent
+    AnimatedRouterOutletComponent,
+    ResourcesTagsListComponent
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -379,7 +381,8 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     NotificationsCopyMailsDialogComponent,
     AnimatedRouterOutletComponent,
     UserEmailPipe,
-    UserDetailComponent
+    UserDetailComponent,
+    ResourcesTagsListComponent
   ],
   providers: [
     AnyToStringPipe,

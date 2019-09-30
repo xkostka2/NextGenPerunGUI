@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnChanges, Output, ViewChild} from '@angular/core';
 import {ApplicationMail} from '../../../core/models/ApplicationMail';
-import {MatDialog, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {
   AddEditNotificationDialogComponent
@@ -14,7 +14,7 @@ import {NotificatorService} from '../../../core/services/common/notificator.serv
   templateUrl: './notification-list.component.html',
   styleUrls: ['./notification-list.component.scss']
 })
-export class NotificationListComponent implements OnChanges {
+export class NotificationListComponent implements OnChanges, AfterViewInit {
 
   constructor(private registrarService: RegistrarService,
               private translate: TranslateService,
@@ -39,8 +39,22 @@ export class NotificationListComponent implements OnChanges {
   @Output()
   selectionChange = new EventEmitter<SelectionModel<ApplicationMail>>();
 
+  @ViewChild(MatSort, { static: true }) set matSort(ms: MatSort) {
+    this.sort = ms;
+    this.setDataSource();
+  }
+
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+
+  private sort: MatSort;
+
   ngOnChanges() {
     this.dataSource = new MatTableDataSource<ApplicationMail>(this.applicationMails);
+    this.setDataSource();
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
 
   isAllSelected() {
@@ -125,5 +139,12 @@ export class NotificationListComponent implements OnChanges {
   updateTable(mails: ApplicationMail[]) {
     this.applicationMails = mails;
     this.dataSource = new MatTableDataSource<ApplicationMail>(this.applicationMails);
+  }
+
+  private setDataSource() {
+    if (!!this.dataSource) {
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    }
   }
 }
