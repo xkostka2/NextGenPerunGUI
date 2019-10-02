@@ -131,6 +131,7 @@ import { AnimatedRouterOutletComponent } from './components/animated-router-outl
 import { UserEmailPipe } from './pipes/user-email.pipe';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { ResourcesTagsListComponent } from './components/resources-tags-list/resources-tags-list.component';
+import { DebounceFilterComponent } from './components/debounce-filter/debounce-filter.component';
 
 @NgModule({
   imports: [
@@ -263,7 +264,8 @@ import { ResourcesTagsListComponent } from './components/resources-tags-list/res
     DisplayedRolePipe,
     ScrollingModule,
     AnimatedRouterOutletComponent,
-    ResourcesTagsListComponent
+    ResourcesTagsListComponent,
+    DebounceFilterComponent
   ],
   entryComponents: [
     CreateGroupDialogComponent,
@@ -382,7 +384,8 @@ import { ResourcesTagsListComponent } from './components/resources-tags-list/res
     AnimatedRouterOutletComponent,
     UserEmailPipe,
     UserDetailComponent,
-    ResourcesTagsListComponent
+    ResourcesTagsListComponent,
+    DebounceFilterComponent
   ],
   providers: [
     AnyToStringPipe,

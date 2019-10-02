@@ -3,6 +3,7 @@ import {User} from '../core/models/User';
 import {RichUser} from '../core/models/RichUser';
 import {Attribute} from '../core/models/Attribute';
 import {Owner} from '../core/models/Owner';
+import {Group} from '../core/models/Group';
 
 
 /**
@@ -282,4 +283,43 @@ export function parseVo(richUser: RichUser): string {
  */
 export function filterCoreAttributes(attributes: Attribute[]): Attribute[] {
   return attributes.filter(attribute => !attribute.namespace.includes('def:core'));
+}
+
+/**
+ * Filter groups by given filter string.
+ *
+ * @param filterValue filter string
+ * @param groups field of groups that its filtering
+ * return field - on first position is groups filtered by name, on second groups are filtered by shortName and added their parents
+ */
+export function applyFilter(filterValue: string, groups: Group[]) {
+  const filteredTreeGroups = [];
+  const filteredGroups = groups.filter( option => option.name.toLowerCase().includes(filterValue.toLowerCase()));
+  const treegroup = groups.filter( option => option.shortName.toLowerCase().includes(filterValue.toLowerCase()));
+  for (const group of treegroup) {
+    filteredTreeGroups.push(group);
+    if (group.parentGroupId) {
+      filteredTreeGroups.concat(findParent(group.parentGroupId, groups));
+    }
+  }
+  return [filteredGroups, filteredTreeGroups];
+}
+
+/**
+ * Find parents of given group in field of groups
+ * @param group that you parent you want to found
+ * @param groups field of groups where you want to find parent
+ * return field of parents
+ */
+export function findParent(group: number, groups: Group[]): Group[] {
+  const parent = groups.find( x => x.id === group);
+  if (parent) {
+    if (parent.parentGroupId) {
+      return findParent(parent.parentGroupId, groups).concat(parent);
+    } else {
+      return [parent];
+    }
+  } else {
+    return [];
+  }
 }

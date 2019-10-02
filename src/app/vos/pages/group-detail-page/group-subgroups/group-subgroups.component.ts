@@ -7,6 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {SelectionModel} from '@angular/cdk/collections';
 import {DeleteGroupDialogComponent} from '../../../../shared/components/dialogs/delete-group-dialog/delete-group-dialog.component';
 import {MatCheckbox} from '@angular/material';
+import {applyFilter} from '../../../../shared/utils';
 
 @Component({
   selector: 'app-group-subgroups',
@@ -30,11 +31,17 @@ export class GroupSubgroupsComponent implements OnInit {
 
   groups: Group[] = [];
 
+  filteredGroups: Group[] = [];
+
+  filteredTreeGroups: Group[] = [];
+
   selected = new SelectionModel<Group>(true, []);
 
   showGroupList = false;
 
   loading: boolean;
+
+  filtering = false;
 
   @ViewChild('checkbox', {static: true})
   checkbox: MatCheckbox;
@@ -88,8 +95,17 @@ export class GroupSubgroupsComponent implements OnInit {
     this.loading = true;
     this.groupService.getAllRichSubGroupsWithAttributesByNames(this.group.id).subscribe(groups => {
       this.groups = groups;
+      this.filteredTreeGroups = this.groups;
+      this.filteredGroups = this.groups;
       this.selected.clear();
       this.loading = false;
     });
+  }
+
+  applyFilter(filterValue: string) {
+    const results = applyFilter(filterValue, this.groups);
+    this.filteredGroups = results[0];
+    this.filteredTreeGroups = results[1];
+    this.filtering = filterValue !== '';
   }
 }

@@ -12,6 +12,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {GroupFlatNode} from '../../../components/groups-tree/groups-tree.component';
 import {MoveGroupDialogComponent} from '../../../../shared/components/dialogs/move-group-dialog/move-group-dialog.component';
 import {MatCheckbox} from '@angular/material';
+import {applyFilter} from '../../../../shared/utils';
 
 @Component({
   selector: 'app-vo-groups',
@@ -37,11 +38,17 @@ export class VoGroupsComponent implements OnInit {
 
   groups: Group[] = [];
 
+  filteredGroups: Group[] = [];
+
+  filteredTreeGroups: Group[] = [];
+
   showGroupList = false;
 
   selected = new SelectionModel<Group>(true, []);
 
   loading: boolean;
+
+  filtering = false;
 
   @ViewChild('checkbox', {static: true})
   checkbox: MatCheckbox;
@@ -116,8 +123,17 @@ export class VoGroupsComponent implements OnInit {
     this.loading = true;
     this.groupService.getAllGroups(this.vo.id).subscribe(groups => {
       this.groups = groups;
+      this.filteredGroups = groups;
+      this.filteredTreeGroups = groups;
       this.selected.clear();
       this.loading = false;
     });
+  }
+
+  applyFilter(filterValue: string) {
+    const results = applyFilter(filterValue, this.groups);
+    this.filteredGroups = results[0];
+    this.filteredTreeGroups = results[1];
+    this.filtering = filterValue !== '';
   }
 }

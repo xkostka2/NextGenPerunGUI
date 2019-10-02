@@ -47,6 +47,9 @@ export class GroupsTreeComponent implements OnChanges {
   groups: Group[];
 
   @Input()
+  expandAll = false;
+
+  @Input()
   selection = new SelectionModel<GroupFlatNode>(true, []);
 
   treeControl = new FlatTreeControl<GroupFlatNode>(
@@ -59,6 +62,9 @@ export class GroupsTreeComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     this.createGroupTrees(this.groups);
+    if (this.expandAll) {
+      this.treeControl.expandAll();
+    }
   }
 
   createGroupTrees(groups: Group[]) {

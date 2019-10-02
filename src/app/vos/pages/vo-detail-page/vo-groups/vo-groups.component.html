@@ -7,6 +7,10 @@
   <button mat-flat-button color="warn" class="ml-2" [disabled]="selected.selected.length === 0" (click)="deleteGroup()">
     {{'VO_DETAIL.GROUPS.DELETE_GROUP' | translate}}
   </button>
+  <app-debounce-filter
+    [placeholder]="'VO_DETAIL.GROUPS.FILTER'"
+    (filter)="applyFilter($event)">
+  </app-debounce-filter>
   <mat-checkbox color="primary" class="ml-3" [(ngModel)]="showGroupList" (change)="removeAllGroups()" #checkbox>
     {{'VO_DETAIL.GROUPS.LIST_VIEW' | translate}}
   </mat-checkbox>
@@ -15,12 +19,13 @@
     <app-groups-tree
       (moveGroup)="onMoveGroup($event)"
       *ngIf="!showGroupList"
-      [groups]="groups"
+      [groups]="filteredTreeGroups"
+      [expandAll]="filtering"
       [selection]="selected">
     </app-groups-tree>
     <app-groups-list
       (moveGroup)="onMoveGroup($event)"
-      [groups]="groups"
+      [groups]="filteredGroups"
       [selection]="selected"
       *ngIf="showGroupList">
     </app-groups-list>

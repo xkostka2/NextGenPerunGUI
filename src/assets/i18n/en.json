@@ -142,7 +142,8 @@
       "TITLE_SUBGROUPS": "Subgroups",
       "LIST_VIEW": "List view",
       "MENU_MOVE": "Move group",
-      "MENU_RENAME": "Update name/description"
+      "MENU_RENAME": "Update name/description",
+      "FILTER": "Filter"
     },
     "MEMBERS": {
       "TITLE": "Members",
@@ -321,7 +322,8 @@
       "CREATE_GROUP": "Create subgroup",
       "DELETE_GROUP": "Delete subgroup",
       "SHOW_LIST": "List view",
-      "NO_SUBGROUPS": "This group has no subgroups."
+      "NO_SUBGROUPS": "This group has no subgroups.",
+      "FILTER": "Filter"
     },
     "SUBGROUP_INFO": "This group is a subgroup of ",
     "MEMBERS": {
