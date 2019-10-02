@@ -3,6 +3,7 @@ import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {MainMenuPageComponent} from './main-menu-page/main-menu-page.component';
 import {DebuggerPageComponent} from './shared/debugger-page/debugger-page.component';
 import {AuthCallbackComponent} from './core/components/auth-callback/auth-callback.component';
+import {AuthSilentRefreshComponent} from './core/components/auth-silent-refresh/auth-silent-refresh.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'api-callback',
     component: AuthCallbackComponent,
+  },
+  {
+    path: 'silent-refresh',
+    component: AuthSilentRefreshComponent,
   },
   {
     path: 'organizations',
