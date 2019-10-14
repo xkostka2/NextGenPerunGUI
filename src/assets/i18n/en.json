@@ -878,7 +878,8 @@
       "TABLE_ATTR_UNIQUE": "Unique",
       "CREATE": "New attribute definition...",
       "DELETE": "Delete",
-      "SEARCH": "Search"
+      "SEARCH": "Search",
+      "NO_ATTRIBUTES": "There are no attributes available."
     },
     "USERS": {
       "TITLE": "Users",
@@ -948,7 +949,8 @@
         "TABLE_FACILITY_NAME": "Facility name",
         "TABLE_RESOURCE_TAGS": "Tags",
         "TABLE_SEARCH": "Filter by name, description or ID",
-        "TABLE_RESOURCE_DESCRIPTION": "Description"
+        "TABLE_RESOURCE_DESCRIPTION": "Description",
+        "NO_RESOURCES_WARNING": "No resources assigned."
       },
       "GROUPS_LIST": {
         "TABLE_GROUP_ID": "Id",

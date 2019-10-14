@@ -8,14 +8,10 @@
 
   <mat-spinner class="ml-auto mr-auto" *ngIf="loading"></mat-spinner>
   <app-resources-list
-    *ngIf="!loading && resources.length !== 0"
+    *ngIf="!loading"
     [filterValue]="filterValue"
     [resources]="resources"
     [selection]="selected">
   </app-resources-list>
-
-  <div *ngIf="resources.length === 0 && !loading" class="perun-alert warn-alert">
-    {{'VO_DETAIL.RESOURCES.NO_RESOURCES_ALERT' | translate}}
-  </div>
 </div>
 

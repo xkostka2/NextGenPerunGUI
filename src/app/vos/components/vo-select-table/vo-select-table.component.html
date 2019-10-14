@@ -1,4 +1,4 @@
-<div class="card mt-3" *ngIf="dataSource.filteredData.length !== 0">
+<div class="card mt-3" [hidden]="dataSource.filteredData.length === 0">
   <div class="card-body">
     <table mat-table [dataSource]="dataSource" matSort matSortDirection="asc" matSortDisableClear
            class="w-100">
