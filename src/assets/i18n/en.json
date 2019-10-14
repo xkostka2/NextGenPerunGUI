@@ -145,9 +145,9 @@
       "TITLE_SUBGROUPS": "Subgroups",
       "LIST_VIEW": "List view",
       "MENU_MOVE": "Move group",
-      "NO_GROUPS": "No groups found.",
+      "FILTER": "Filter",
       "MENU_RENAME": "Update name/description",
-      "FILTER": "Filter"
+      "NO_GROUPS": "No groups found."
     },
     "MEMBERS": {
       "TITLE": "Members",
